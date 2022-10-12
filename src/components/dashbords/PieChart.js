@@ -1,0 +1,12 @@
+import React, { useState, useEffect } from 'react';
+import { Pie } from "react-chartjs-2";
+import { Chart as ChartJS } from "chart.js/auto";
+
+export const PieChart = ({chartData}) => {
+    return <div>
+        <Pie
+            data={chartData}
+        />
+     </div>
+}
+export default PieChart;

@@ -33,27 +33,10 @@ export const insertUserData = createAsyncThunk("user/insertUserData",
   }
 )
 
-// .then(({data,status}) => {
-//       if (status ===200) {
-//           localStorage.setItem(
-//               "current-user",
-//               JSON.stringify(data)
-//           );
-//           localStorage.setItem(
-//               "access-token",
-//               JSON.stringify(data.token)
-//           );
-//           return data;
-//        }
-
-//   }
-
- 
 const initialState = {
-  users:{},
+  users: {},
   loading: null,
   error: null
-
 }
 
 export const userSlice = createSlice({
@@ -68,11 +51,10 @@ export const userSlice = createSlice({
 
     [insertUserData.fulfilled]: (state, action) => {
       console.log(action.payload);
-
-      state.users=action.payload;
+      state.users = action.payload;
       state.loading = false;
+    
     },
-
     [insertUserData.rejected]: (state, action) => {
       state.error = action.payload;
       state.loading = false;
