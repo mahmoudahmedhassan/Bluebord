@@ -10,3 +10,6 @@
 .closee{
     width: 95%;
 }
+.wrapper{
+    display: flex;
+}

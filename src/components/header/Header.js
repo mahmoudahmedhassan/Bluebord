@@ -5,7 +5,7 @@ import saudiFlag from '../../pages/auth/login/assets/saudi-arabia.png';
 import unitedFlag from '../../pages/auth/login/assets/united-kingdom.png';
 
 import Dropdown from 'react-bootstrap/Dropdown';
-import { FaUser, FaRegSun } from "react-icons/fa";
+import { FaUser, FaRegSun, FaBars } from "react-icons/fa";
 import { BiLogOut } from "react-icons/bi";
 
 import i18n from 'i18next';
@@ -15,27 +15,38 @@ import { useTranslation } from 'react-i18next';
 import { useProSidebar } from 'react-pro-sidebar';
 // redux
 import { useDispatch, useSelector } from 'react-redux'
-import {openSidebar} from '../../redux/togglesidebar'
+import {toggleSwitchAr,toggleSwitchEn} from '../../redux/toggledirction'
 
 function Header() {
-    const dispatch = useDispatch();
-    const {toggle} = useSelector(state => state.toggle);
+     const dispatch =useDispatch()
+
+ 
+
+    // useEffect(() => {
+    //     let mainLang;
+    //     if(lang){
+    //         mainLang = lang
+    //     } else {
+    //         mainLang = 'en';
+    //     }
+    //     initLang(mainLang);
+    // },[initLang,lang])
+
+    // const changelanguage =(lang)=>{ 
+    //     document.getElementsByTagName("html")[0].setAttribute("lang",lang);
+    //     initLang(lang)
+    // }
 
     const [t, i18n] = useTranslation();
 
     const { collapseSidebar } = useProSidebar();
-
     const toggleSidebarButton = () => {
         collapseSidebar();
-        dispatch(openSidebar());
     }
-
-    console.log(toggle)
-
 
     const UserDropdown = (
         <>
-            <Dropdown>
+            <Dropdown right>
                 <Dropdown.Toggle variant="success" id="dropdown-basic"   >
                     User
                 </Dropdown.Toggle>
@@ -50,11 +61,8 @@ function Header() {
     )
     return (
         <div className={classes.header}>
-            <div className={classes.logo}>
-                logo
-                <main>
-                    <button onClick={toggleSidebarButton}>Cole</button>
-                </main>
+            <div className={classes.menubar}>
+                <button onClick={toggleSidebarButton}><FaBars /></button>
             </div>
 
             <div className={classes.user} >
@@ -64,13 +72,19 @@ function Header() {
                             <img src={saudiFlag}
                                 alt='ar'
                                 height="30px"
-                                onClick={() => { i18n.changeLanguage('ar') }}
+                                onClick={() => {
+                                    i18n.changeLanguage('ar');
+                                    dispatch(toggleSwitchAr('ar')) 
+                                }}
                             />
                         ) : (
                             <img src={unitedFlag}
                                 alt='en'
                                 height="30px"
-                                onClick={() => { i18n.changeLanguage('en') }}
+                                onClick={() => {
+                                    i18n.changeLanguage('en');
+                                     dispatch(toggleSwitchEn('en') )
+                                }}
                             />
                         )
                     }

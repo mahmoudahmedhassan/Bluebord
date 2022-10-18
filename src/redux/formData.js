@@ -2,32 +2,26 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { toast } from 'react-toastify';
 import axios from 'axios';
 
-const URL = "https://tstm.smartgate-egypt.com/api/Values/GLog/admin/12";
+const URL = " ";
 
 // fetching
-export const insertUserData = createAsyncThunk("user/insertUserData",
+export const formData = createAsyncThunk("user/formData",
   async (values, thunkAPI) => {
-    const { rejectWithValue, getState } = thunkAPI;
+    console.log(values)
+    const { rejectWithValue } = thunkAPI;
     try {
       const res = await fetch(URL, {
-        mode: 'no-cors',
-        method: "GET",
+        method: "POST",
         body: JSON.stringify(values),
         headers: {
           'Content-type': 'application/json; charset=UTF-8',
         },
       });
-      console.log(res)
       const data = await res.json();
-      // localStorage.setItem(
-      //   "current-user",
-      //   JSON.stringify(data)
-      // );
-      // localStorage.setItem(
-      //   "access-token",
-      //   JSON.stringify(data.token)
-      // );
-
+      localStorage.setItem(
+        "tabledata",
+        JSON.stringify(data)
+      );
       return data
     } catch (e) {
       return rejectWithValue(e.message);
@@ -36,28 +30,28 @@ export const insertUserData = createAsyncThunk("user/insertUserData",
 )
 
 const initialState = {
-  users: {},
+  tableData: [],
   loading: null,
   error: null
 }
 
-export const userSlice = createSlice({
-  name: 'user',
+export const formDataSlice = createSlice({
+  name: 'taple',
   initialState,
   extraReducers: {
 
-    [insertUserData.pending]: (state) => {
+    [formData.pending]: (state) => {
       state.loading = true;
       state.error = false;
     },
 
-    [insertUserData.fulfilled]: (state, action) => {
+    [formData.fulfilled]: (state, action) => {
       console.log(action.payload);
       state.users = action.payload;
       state.loading = false;
     
     },
-    [insertUserData.rejected]: (state, action) => {
+    [formData.rejected]: (state, action) => {
       state.error = action.payload;
       state.loading = false;
     },
@@ -65,7 +59,7 @@ export const userSlice = createSlice({
 
 })
 
-export default userSlice.reducer;
+export default formDataSlice.reducer;
 
 
 

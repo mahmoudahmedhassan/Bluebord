@@ -51,3 +51,8 @@
  flex-direction: row-reverse;
  justify-content: space-around;
 }
+
+
+.rtlDir{
+  direction:rtl;
+}

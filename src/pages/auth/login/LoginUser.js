@@ -12,8 +12,8 @@ import { Col, Container, Row } from 'react-bootstrap';
 
 function UserDetails() {
   const dispatch = useDispatch();
-  const { users,loading, sss, error } = useSelector(state => state.users)
-  console.log('users :', sss)
+  const { users,loading, error } = useSelector(state => state.users)
+  console.log('users :',  users)
  
   const validate = Yup.object({
     userName: Yup.string()
@@ -72,7 +72,7 @@ function UserDetails() {
                           <TextField name="password" type="password" placeholder="password" password='password' />
                         </Col>
                       </Row>
-                      <div>{error && <p style={{ color: 'red' }}>  invalid login </p>}</div>
+                      <div>{error && <p style={{ color: 'red' }}> { error} </p>}</div>
 
                       <div className="">
                         <button className="btn btn-dark mt-3" type="submit" style={{ width: '100%', background:'#4B77BE', border:'none'}}>Login</button>

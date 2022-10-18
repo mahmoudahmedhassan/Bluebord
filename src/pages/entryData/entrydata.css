@@ -1,0 +1,22 @@
+.section_1 ,.section_2{
+    display:flex;
+    justify-content:space-around;
+    align-items: center;
+}
+.section_2{
+    padding-top: 7px;
+}
+.section_2 >div {
+    display:flex;
+}
+.switch{
+ margin: 0 10px;
+}
+
+.form{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    padding: 30px;
+    margin-bottom:50px;
+    border-radius: 20px;
+
+}
