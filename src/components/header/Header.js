@@ -15,34 +15,21 @@ import { useTranslation } from 'react-i18next';
 import { useProSidebar } from 'react-pro-sidebar';
 // redux
 import { useDispatch, useSelector } from 'react-redux'
-import {toggleSwitchAr,toggleSwitchEn} from '../../redux/toggledirction'
+import {  toggleSwitchAr,toggleSwitchEn } from '../../redux/toggledirction'
+import { switerSidebar } from '../../redux/switchSidebar'
 
 function Header() {
-     const dispatch =useDispatch()
-
- 
-
-    // useEffect(() => {
-    //     let mainLang;
-    //     if(lang){
-    //         mainLang = lang
-    //     } else {
-    //         mainLang = 'en';
-    //     }
-    //     initLang(mainLang);
-    // },[initLang,lang])
-
-    // const changelanguage =(lang)=>{ 
-    //     document.getElementsByTagName("html")[0].setAttribute("lang",lang);
-    //     initLang(lang)
-    // }
-
+    const dispatch = useDispatch()
     const [t, i18n] = useTranslation();
 
+    const [openSidebar, setOpenSidebar] = useState(true);
     const { collapseSidebar } = useProSidebar();
     const toggleSidebarButton = () => {
         collapseSidebar();
+        setOpenSidebar(!openSidebar)
+        dispatch(switerSidebar(openSidebar))
     }
+
 
     const UserDropdown = (
         <>
@@ -74,7 +61,7 @@ function Header() {
                                 height="30px"
                                 onClick={() => {
                                     i18n.changeLanguage('ar');
-                                    dispatch(toggleSwitchAr('ar')) 
+                                    dispatch(toggleSwitchAr('ar'))
                                 }}
                             />
                         ) : (
@@ -83,7 +70,7 @@ function Header() {
                                 height="30px"
                                 onClick={() => {
                                     i18n.changeLanguage('en');
-                                     dispatch(toggleSwitchEn('en') )
+                                    dispatch(toggleSwitchEn('en'))
                                 }}
                             />
                         )

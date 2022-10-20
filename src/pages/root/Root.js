@@ -1,25 +1,25 @@
 import { Outlet } from "react-router-dom";
-import SidebarMenu from '../../components/sidebar/Sidebar'
+import SidebarMenu from '../../components/sidebar/Sidebar';
 import Header from "../../components/header/Header";
 import Footer from "../../components/Footer/Footer";
- import './root.css'
-
-  import { useSelector } from 'react-redux'
+ import './root.css';
+ import { useSelector } from 'react-redux';
 
 const Root = () => {
-  const togglee = false
+  // const togglee = false
   const { dirction } = useSelector(state => state.dirction);
+  const { witchSidebar } = useSelector(state => state.switchSidebar);
+  console.log('witchSidebar',witchSidebar)
 
-  // height: 100%;
-  // top: 0;
-  // right: 0;
-  // overflow: auto;
+ 
   return (
-    <div className={ dirction==='ar'? 'rtlDir  wrapper' :'wrapper'}  >
-      <div className={togglee && "open"}>
+    <div className={ dirction ==='ar' ? 'rtlDir  wrapper' :'wrapper'}  >
+      <div 
+      className={!witchSidebar?'openSidebar':'closeSidebar'}
+       >
         <SidebarMenu />
       </div>
-      <div className={togglee ? "openn" : "closee"}>
+      <div className={!witchSidebar ? "open" : "close"}>
         <Header />
         <div className="main" style={{minHeight:'calc(100vh - 100px)'}}>
           <Outlet />

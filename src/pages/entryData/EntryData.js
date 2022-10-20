@@ -5,32 +5,26 @@ import EntryPopupData from '../../components/entrypopup/EntryPopupData';
 import { Container, Row, Col, FloatingLabel } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
-import axios from 'axios';
-
+import {useSelector} from 'react-redux';
+import {fetchTapleData} from '../../redux/tapleData'
 
 function EntryData() {
+  const {tapleData,loading,cc}= useSelector(state => state.tapleData)
+  console.log('cc ' ,tapleData)
+
+
   const url = 'https://tstm.smartgate-egypt.com/api/Values/GAJ'
   const [data, setData] = useState([]);
-  console.log(data ? data : null)
+  const [query, setQuery] = useState('');
 
-
+  useEffect(()=>{
+    fetchTapleData()
+  },[])
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch(url,
-           {
-          mode: 'no-cors',
-          method: 'GET',
-          body: JSON.stringify(),
-          headers: {
-            'Content-type': 'application/json; charset=UTF-8',
-          },
-        }
-        );
-
-        console.log(res)
-
+        const res = await fetch(url);
         if (res.status === 200) {
           const data = await res.json();
           return setData(data)
@@ -43,11 +37,15 @@ function EntryData() {
       }
     }
     fetchData();
- 
+
   }, []);
 
-  
-
+  const keys = ["sd", "oj", "odt","ofn","ofce","ocy","oprty","ostl","ohg"];
+  const search = (data) => {
+     return data.filter((item) => keys.some((key) => item[key].toString().toLowerCase().includes(query))
+    );
+  };
+ 
   return (
     <div>
       <Container>
@@ -62,7 +60,12 @@ function EntryData() {
             <Col>
               <div className="section_1">
                 <div>
-                  <Form.Control type="text" placeholder="text" />
+                  <Form.Control
+                    type="text"
+                    placeholder="search"
+                    onChange={e => setQuery(e.target.value)}
+
+                  />
                 </div>
 
                 <div>
@@ -106,7 +109,8 @@ function EntryData() {
           </Row>
         </form>
       </Container>
-      <Taple/>
+
+      {<Taple dataTable={search(data)} />}
     </div>
   )
 }

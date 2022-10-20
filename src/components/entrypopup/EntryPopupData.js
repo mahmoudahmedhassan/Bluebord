@@ -27,7 +27,7 @@ function EntryPopupData() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [Multiplying, setMultiplying] = useState('')
- 
+
   // ================= popup data ===============
   const init = {
     po1tx01: '',
@@ -54,7 +54,7 @@ function EntryPopupData() {
   const [data, setData] = useState(init);
 
   const handleChange = ({ target }) => {
-    setMultiplying( parseInt(data.g1_page1_nub02) * parseInt(data.g1_page1_nub01))
+    setMultiplying(parseInt(data.g1_page1_nub02) * parseInt(data.g1_page1_nub01))
 
     setData({
       ...data,
@@ -62,7 +62,7 @@ function EntryPopupData() {
       hey: Multiplying
     });
   };
-   // ================= popup data ===============
+  // ================= popup data ===============
 
   // const [ArithmeticData, setArithmeticData] = useState({
   //   g1_page1_nub01: '',
@@ -85,7 +85,7 @@ function EntryPopupData() {
   // }
 
   const sendData = () => {
-    // console.log(data)
+    console.log(data)
   }
 
   return (
@@ -152,7 +152,7 @@ function EntryPopupData() {
               <Row className='row_1'>
                 <Col md={9}>
                   <div className='d-flex mb-2'>
-                     
+
                     <div className=' me-2' >
                       <Form.Control
                         type="number"
@@ -204,8 +204,8 @@ function EntryPopupData() {
                         onChange={handleChange}
                       />
                     </div>
-                    <span style={{ fontSize: '20px', margin: '10px' }}> 
-                       {'*'}
+                    <span style={{ fontSize: '20px', margin: '10px' }}>
+                      {'*'}
                     </span>
 
 
@@ -240,36 +240,31 @@ function EntryPopupData() {
                   <div className="">
 
 
-                    <div className='d-flex mb-2'>
-                      <span>no</span>
-                      <Form.Check
-                        className="switch"
-                        type="switch"
-                        name="check_1"
-                        id="custom-switch"
+                  <div className='d-flex mb-2'>
+                      <span className='mx-2'>yes</span>
+                      <input
+                        id='switch-5'
+                        type="checkbox"
+                        name="check_2"
                         onChange={(val) => setData({ ...data, check_1: val.target.checked })}
-
-                        // onChange={e => {
-                        //   if (fnChange !== undefined) fnChange(e.target.checked);
-                        // }}
-
                         checked={data.check_1}
                       />
-                      <span>name</span>
+                      <label htmlFor="switch-5">Togglee</label>
+                      <span className='mx-2'>no</span>
                     </div>
 
+            
                     <div className='d-flex mb-2'>
-                      <span>no</span>
-                      <Form.Check
-                        className="switch"
-                        type="switch"
+                      <span className='mx-2'>yes</span>
+                      <input
+                        id='switch-155'
+                        type="checkbox"
                         name="check_2"
-                        id="custom-switch"
-
                         onChange={(val) => setData({ ...data, check_2: val.target.checked })}
                         checked={data.check_2}
                       />
-                      <span>yes</span>
+                      <label htmlFor="switch-155">Togglee</label>
+                      <span className='mx-2'>no</span>
                     </div>
                   </div>
 
@@ -329,30 +324,31 @@ function EntryPopupData() {
 
                 <Col md={3}>
                   <div className="">
-                    <div className='d-flex mb-2'>
-                      <span>no</span>
-                      <Form.Check
-                        className="switch"
-                        type="switch"
+    
+                  <div className='d-flex mb-2'>
+                      <span className='mx-2'>yes</span>
+                      <input
+                        id='switch-3'
+                        type="checkbox"
                         name="check_2"
-                        id="custom-switch"
                         onChange={(val) => setData({ ...data, check_3: val.target.checked })}
                         checked={data.check_3}
                       />
-                      <span>yes</span>
+                      <label htmlFor="switch-3">Togglee</label>
+                      <span className='mx-2'>no</span>
                     </div>
 
                     <div className='d-flex mb-2'>
-                      <span>no</span>
-                      <Form.Check
-                        className="switch"
-                        type="switch"
+                      <span className='mx-2'>yes</span>
+                      <input
+                        id='switch-4'
+                        type="checkbox"
                         name="check_2"
-                        id="custom-switch"
                         onChange={(val) => setData({ ...data, check_4: val.target.checked })}
                         checked={data.check_4}
                       />
-                      <span>yes</span>
+                      <label htmlFor="switch-4">Toggle</label>
+                      <span className='mx-2'>no</span>
                     </div>
                   </div>
 
@@ -363,6 +359,7 @@ function EntryPopupData() {
               <Row className='row_1'>
                 <Col md={8}>
                   <div className='d-flex mb-2'>
+
                     <Form.Control type="text"
                       placeholder="po1tx06"
                       name='po1tx06'
@@ -374,7 +371,7 @@ function EntryPopupData() {
 
                 </Col>
                 <Col md={4}>
-                  <div className='d-flex mb-2'>
+                  {/* <div className='d-flex mb-2'>
                     <span>no</span>
                     <Form.Check
                       className="switch"
@@ -385,7 +382,21 @@ function EntryPopupData() {
                       checked={data.check_5}
                     />
                     <span>yes</span>
-                  </div>
+                  </div> */}
+
+                  <div className='d-flex align-items-center'>
+                      <span className='mx-2'>yes</span>
+                      <input
+                         id='switch-1'
+                        type="checkbox"
+                        name="check_2"
+                        onChange={(val) => setData({ ...data, check_5: val.target.checked })}
+                        checked={data.check_5}
+                      />
+                      <label htmlFor="switch-1">Togglee</label>
+                      <span className='mx-2'>no</span>
+                    </div>
+
 
                   {/* <div class="button r" id="button-3">
                     <input type="checkbox" class="checkbox" name="check_1" onChange={handleChange} />

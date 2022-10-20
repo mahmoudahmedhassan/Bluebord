@@ -15,6 +15,8 @@ function SidebarMenu() {
 
     return (
     <div
+    className="sidebar"
+    
       style={{ display: 'flex', minHeight: '100vh', }
      }>
       <Sidebar backgroundColor="#4B77BE" dir >

@@ -1,15 +1,20 @@
-.open{
-    width: 17%;
-}
-.close{
-    width: 5%;
-}
-.openn{
-    width: 83%;
-}
-.closee{
-    width: 95%;
-}
-.wrapper{
+ .wrapper {
     display: flex;
 }
+
+.open {
+    width: 83%;
+}
+
+.close {
+    width: 95%;
+}
+.openSidebar{
+    width: 17%;
+    z-index: 99;
+}
+.closeSidebar{
+    width: 5%;
+    z-index: 99;
+}
+ 
