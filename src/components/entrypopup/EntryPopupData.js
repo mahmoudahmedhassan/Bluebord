@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import './EntryPopupData.css';
 import Multiplying from '../../assets/Multiplying.jpg'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import { Container, Row, Col, FloatingLabel } from 'react-bootstrap';
+import { use } from 'i18next';
 function EntryPopupData() {
 
   // const Checkbox = ({ name, fnChange, checked=false}) => (
@@ -26,7 +27,9 @@ function EntryPopupData() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const [Multiplying, setMultiplying] = useState('')
+  const [Multiplying, setMultiplying] = useState('');
+  const [MultiplyingNu3_4, setMultiplyingNu3_4] = useState('');
+  const [sum, setSum] = useState('');
 
   // ================= popup data ===============
   const init = {
@@ -54,7 +57,6 @@ function EntryPopupData() {
   const [data, setData] = useState(init);
 
   const handleChange = ({ target }) => {
-    setMultiplying(parseInt(data.g1_page1_nub02) * parseInt(data.g1_page1_nub01))
 
     setData({
       ...data,
@@ -62,27 +64,20 @@ function EntryPopupData() {
       hey: Multiplying
     });
   };
+  useEffect(() => {
+    setMultiplying(parseInt(data.g1_page1_nub01) * parseInt(data.g1_page1_nub02));
+    setMultiplyingNu3_4(parseInt(data.g1_page1_nub03) * parseInt(data.g1_page1_nub04))
+    setSum(parseInt((data.g1_page1_nub06)) + ( parseInt(data.g1_page1_nub07)))
+
+ },[data.g1_page1_nub02
+  ,data.g1_page1_nub01,
+  data.g1_page1_nub03,
+  data.g1_page1_nub04,
+  data.g1_page1_nub06,
+  data.g1_page1_nub07
+])
+
   // ================= popup data ===============
-
-  // const [ArithmeticData, setArithmeticData] = useState({
-  //   g1_page1_nub01: '',
-  //   g1_page1_nub02: '',
-  //   g1_page1_nub03: '',
-  //   g1_page1_nub04: '',
-  // })
-
-  // const handelArithmeticDataChange = ({ target }) => {
-  //   setArithmeticData({
-  //     ...ArithmeticData,
-  //     [target.name]: target.value,
-  //   });
-  // }
-
-  // const MultiplyingNumbers = (e) => {
-  //   e.preventDefault();
-  //   const x = parseInt(ArithmeticData.g1_page1_nub01) * parseInt(ArithmeticData.g1_page1_nub02);
-  //   setMultiplying(x)
-  // }
 
   const sendData = () => {
     console.log(data)
@@ -102,8 +97,10 @@ function EntryPopupData() {
         <Modal.Body>
           <Container>
             <form>
+              {/* section 1 */}
               <Row className="row_1">
-                <Col className='col-4'>
+
+                <Col className='col-sm-12 col-md-4'>
                   <div className="">
                     <div className='mb-2'>
                       <Form.Control
@@ -126,7 +123,7 @@ function EntryPopupData() {
                   </div>
                 </Col>
 
-                <Col>
+                <Col sm={12} md={8}>
                   <div className="">
                     <div className='mb-2'>
                       <Form.Select aria-label="Floating label select example" placeholder="drop" name='dropdown' onChange={handleChange}>
@@ -147,12 +144,13 @@ function EntryPopupData() {
 
                   </div>
                 </Col>
+
               </Row>
+              {/* section 2 */}
 
               <Row className='row_1'>
-                <Col md={9}>
-                  <div className='d-flex mb-2'>
-
+                <Col md={12} lg={9}>
+                  <div className='d-flex mb-2 row_2_col_1'>
                     <div className=' me-2' >
                       <Form.Control
                         type="number"
@@ -162,7 +160,8 @@ function EntryPopupData() {
                         onChange={handleChange}
                       />
                     </div>
-                    <span style={{ fontSize: '20px', margin: '10px' }}>*</span>
+
+                    <span className='multiplied_mark'>*</span>
 
                     <div className='me-2'>
                       <Form.Control
@@ -177,8 +176,8 @@ function EntryPopupData() {
                     {/* <button onClick={(e) => MultiplyingNumbers(e)}>Multiplying</button> */}
 
 
-                    <div className='me-2'>
-                      {Multiplying ? Multiplying : 'resalt'}
+                    <div className=' resalt'>
+                      {Multiplying ? Multiplying : null}
                     </div>
 
 
@@ -194,7 +193,7 @@ function EntryPopupData() {
 
                   </div>
 
-                  <div className='d-flex mb-2'>
+                  <div className='d-flex mb-2 row_2_col_1'>
                     <div className='me-2'>
                       <Form.Control
                         type="number"
@@ -204,7 +203,7 @@ function EntryPopupData() {
                         onChange={handleChange}
                       />
                     </div>
-                    <span style={{ fontSize: '20px', margin: '10px' }}>
+                    <span className='multiplied_mark'>
                       {'*'}
                     </span>
 
@@ -219,8 +218,8 @@ function EntryPopupData() {
                       />
                     </div>
 
-                    <div className='me-2'>
-                      {Multiplying ? Multiplying : 'resalt'}
+                    <div className='me-2 resalt'>
+                      {MultiplyingNu3_4 ? MultiplyingNu3_4 : null}
                     </div>
 
                     <div className='me-2'>
@@ -236,11 +235,9 @@ function EntryPopupData() {
                   </div>
                 </Col>
 
-                <Col md={3}>
-                  <div className="">
-
-
-                  <div className='d-flex mb-2'>
+                <Col md={12} lg={3}>
+                  <div className="row_checkbox">
+                    <div className='d-flex align-items-center  margin_4'>
                       <span className='mx-2'>yes</span>
                       <input
                         id='switch-5'
@@ -253,8 +250,7 @@ function EntryPopupData() {
                       <span className='mx-2'>no</span>
                     </div>
 
-            
-                    <div className='d-flex mb-2'>
+                    <div className='d-flex align-items-center mb-2'>
                       <span className='mx-2'>yes</span>
                       <input
                         id='switch-155'
@@ -271,13 +267,13 @@ function EntryPopupData() {
                 </Col>
 
               </Row>
+              {/* section 3 */}
 
               <Row className='row_1'>
-                <Col md={9}>
-                  <div className='d-flex mb-2'>
-                    <div className='me-2'>
-                      {/* <Form.Control type="number" placeholder="number" /> */}
-                      results
+                <Col md={12} lg={9}>
+                  <div className='d-flex mb-2 row_2_col_1'>
+                    <div className='me-2 resalt'>
+                      {Multiplying ? Multiplying : null}
                     </div>
                     <div className='me-2'>
                       <Form.Control
@@ -289,12 +285,18 @@ function EntryPopupData() {
                       />
                     </div>
                     <div className='me-2'>
-                      results
+                      <Form.Control
+                        type="number"
+                        placeholder="g1 page1 nub05"
+                        name='g1_page1_nub05'
+                        value={data.g1_page1_nub05}
+                        onChange={handleChange}
+                      />
                     </div>
 
                   </div>
 
-                  <div className='d-flex mb-2'>
+                  <div className='d-flex mb-2 row_2_col_1'>
                     <div className='me-2'>
                       <Form.Control
                         type="number"
@@ -314,18 +316,17 @@ function EntryPopupData() {
                         onChange={handleChange} />
                     </div>
 
-                    <div className='me-2'>
-
-                      results
+                    <div className='me-2 resalt'>
+                      {sum ? sum : null}
                     </div>
 
                   </div>
                 </Col>
 
-                <Col md={3}>
-                  <div className="">
-    
-                  <div className='d-flex mb-2'>
+                <Col md={12} lg={3}>
+                  <div className="row_checkbox">
+
+                    <div className='d-flex align-items-center mb-2'>
                       <span className='mx-2'>yes</span>
                       <input
                         id='switch-3'
@@ -338,8 +339,8 @@ function EntryPopupData() {
                       <span className='mx-2'>no</span>
                     </div>
 
-                    <div className='d-flex mb-2'>
-                      <span className='mx-2'>yes</span>
+                    <div className='d-flex align-items-center mb-2'>
+                      <span className='mx-2 multiplied_mark'>yes</span>
                       <input
                         id='switch-4'
                         type="checkbox"
@@ -355,6 +356,7 @@ function EntryPopupData() {
                 </Col>
 
               </Row>
+              {/* section 4 */}
 
               <Row className='row_1'>
                 <Col md={8}>
@@ -371,32 +373,18 @@ function EntryPopupData() {
 
                 </Col>
                 <Col md={4}>
-                  {/* <div className='d-flex mb-2'>
-                    <span>no</span>
-                    <Form.Check
-                      className="switch"
-                      type="switch"
-                      name="check_5"
-                      id="custom-switch"
+                  <div className='d-flex align-items-center'>
+                    <span className='mx-2'>yes</span>
+                    <input
+                      id='switch-1'
+                      type="checkbox"
+                      name="check_2"
                       onChange={(val) => setData({ ...data, check_5: val.target.checked })}
                       checked={data.check_5}
                     />
-                    <span>yes</span>
-                  </div> */}
-
-                  <div className='d-flex align-items-center'>
-                      <span className='mx-2'>yes</span>
-                      <input
-                         id='switch-1'
-                        type="checkbox"
-                        name="check_2"
-                        onChange={(val) => setData({ ...data, check_5: val.target.checked })}
-                        checked={data.check_5}
-                      />
-                      <label htmlFor="switch-1">Togglee</label>
-                      <span className='mx-2'>no</span>
-                    </div>
-
+                    <label htmlFor="switch-1">Togglee</label>
+                    <span className='mx-2'>no</span>
+                  </div>
 
                   {/* <div class="button r" id="button-3">
                     <input type="checkbox" class="checkbox" name="check_1" onChange={handleChange} />

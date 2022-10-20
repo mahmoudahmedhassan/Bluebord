@@ -1,12 +1,14 @@
-import { React } from 'react'
+import { React } from 'react';
 // import './taple.css';
+import SpinnerLoading from '../../components/sppiner/Sppiner'
 import Table from 'react-bootstrap/Table';
  
-export default function Taple({dataTable}) {
+export default function Taple({dataTable,loading, error}) {
   
     return (
-        <div className='container table'>
-            <Table className='table' striped bordered hover responsive>
+        <div className='container table text-center mb-5'>
+            {loading?(<SpinnerLoading />):(
+                 <Table className='table' striped bordered hover responsive style={{height:'600px !important'}}>
                 <thead className='text-center'>
                     <tr>
                         <th>index</th>
@@ -48,7 +50,9 @@ export default function Taple({dataTable}) {
                     ))}
 
                 </tbody>
-            </Table>
+            </Table>   
+            )}
+        
         </div>
     )
 }

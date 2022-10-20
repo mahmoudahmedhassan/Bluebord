@@ -1,6 +1,6 @@
- .wrapper {
+ /* .wrapper {
     display: flex;
-}
+} */
 
 .open {
     width: 83%;
@@ -17,4 +17,19 @@
     width: 5%;
     z-index: 99;
 }
+
+/* ======================== */
+.main{
+    display:flex;
+}
+.sidbar-fixed-sidebar{
+    width: 250px;
+    position: fixed;
+    height: 100%;
+    left: 0;
+ }
+.main-container{
+    width:calc(100% - 250px) ;
+}
+
  

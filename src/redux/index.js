@@ -2,33 +2,34 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { toast } from 'react-toastify';
 import axios from 'axios';
 
-const URL = "https://tstm.smartgate-egypt.com/api/Values/GLog/admin/12";
+const URL = "https://tstauth.smartgate-egypt.com/auth/token";
 
 // fetching
 export const insertUserData = createAsyncThunk("user/insertUserData",
   async (values, thunkAPI) => {
+    console.log(values);
     const { rejectWithValue, getState } = thunkAPI;
     try {
+ 
       const res = await fetch(URL, {
-        mode: 'no-cors',
-        method: "GET",
-        body: JSON.stringify(values),
+        method: 'POST',
         headers: {
           'Content-type': 'application/json; charset=UTF-8',
         },
-      });
+        body: JSON.stringify(values),
+        mode: 'no-cors',
+      })
       console.log(res)
       const data = await res.json();
-      // localStorage.setItem(
-      //   "current-user",
-      //   JSON.stringify(data)
-      // );
-      // localStorage.setItem(
-      //   "access-token",
-      //   JSON.stringify(data.token)
-      // );
-
-      return data
+      localStorage.setItem(
+        "current-user",
+        JSON.stringify(data)
+      );
+      localStorage.setItem(
+        "access-token",
+        JSON.stringify(data.token)
+      );
+       return data
     } catch (e) {
       return rejectWithValue(e.message);
     }
@@ -55,7 +56,7 @@ export const userSlice = createSlice({
       console.log(action.payload);
       state.users = action.payload;
       state.loading = false;
-    
+
     },
     [insertUserData.rejected]: (state, action) => {
       state.error = action.payload;

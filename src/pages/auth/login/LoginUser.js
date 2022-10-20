@@ -9,27 +9,25 @@ import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux'
 import { insertUserData } from '../../../redux/index'
 import { Col, Container, Row } from 'react-bootstrap';
+import { useNavigate } from "react-router-dom";
 
 function UserDetails() {
   const dispatch = useDispatch();
-  const { users,loading, error } = useSelector(state => state.users)
-  console.log('users :',  users)
- 
+  const navigate = useNavigate();
+
+  const { users, loading, error } = useSelector(state => state.users)
+  // console.log('users :',  users[0].usId)
+
   const validate = Yup.object({
-    userName: Yup.string()
+    UserName: Yup.string()
       .max(15, 'Must be 15 characters or less')
       .required('Required'),
-    password: Yup.string().required(),
+    Password: Yup.string().required(),
 
   })
   useEffect(() => {
     JSON.parse(localStorage.getItem("current-user"))
   }, [])
-
-  useEffect(() => {
-    insertUserData();
-  }, [users])
-  console.log(JSON.parse(localStorage.getItem("current-user")).user?.fullNamEn)
 
   return (
     <div className='userDetails'>
@@ -49,16 +47,16 @@ function UserDetails() {
               </div>
               <Formik
                 initialValues={{
-                  userName: '',
-                  password: '',
+                  UserName: '',
+                  Password: '',
                 }}
                 validationSchema={validate}
                 onSubmit={(values, { resetForm }) => {
                   dispatch(insertUserData(values))
                   resetForm({ values: '' });
+                  // navigate("/");
                 }}
               >
-
                 {(formik) => (
                   <div className='p-4'>
                     {/* <h1 className="my-4 font-weight-bold .display-4">Login </h1> */}
@@ -66,16 +64,16 @@ function UserDetails() {
                     <Form >
                       <Row>
                         <Col>
-                          <TextField name="userName" type="text" placeholder="UserName" />
+                          <TextField name="UserName" type="text" placeholder="UserName" />
                         </Col>
                         <Col>
-                          <TextField name="password" type="password" placeholder="password" password='password' />
+                          <TextField name="Password" type="Password" placeholder="Password" password='Password' />
                         </Col>
                       </Row>
-                      <div>{error && <p style={{ color: 'red' }}> { error} </p>}</div>
+                      <div>{error && <p style={{ color: 'red' }}> {error} </p>}</div>
 
                       <div className="">
-                        <button className="btn btn-dark mt-3" type="submit" style={{ width: '100%', background:'#4B77BE', border:'none'}}>Login</button>
+                        <button className="btn btn-dark mt-3" type="submit" style={{ width: '100%', background: '#4B77BE', border: 'none' }}>Login</button>
                       </div>
                     </Form>
 
@@ -86,7 +84,7 @@ function UserDetails() {
 
               <div className="support my-5">
                 <p className="text-center">
-                  for technical support call us on 
+                  for technical support call us on
                   <a className="text-center" href="/">
                     samrt@gate.com
                   </a>
@@ -107,7 +105,7 @@ function UserDetails() {
           </Col>
         </Row>
       </Container>
-      {loading? <p>loading...</p>:<div>{users?.fullNamEn}</div>}
+      {/* {loading? <p>loading...</p>:<div>{users?.fUserName}</div>} */}
 
 
     </div >

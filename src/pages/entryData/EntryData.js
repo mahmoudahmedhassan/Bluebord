@@ -1,51 +1,45 @@
 import { React, useState, useEffect } from 'react';
+
+// components
 import './entrydata.css';
-import Taple from '../../components/taple/Taple'
 import EntryPopupData from '../../components/entrypopup/EntryPopupData';
+import Taple from '../../components/taple/Taple';
+import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs'; // title components
+import SelectSearch from '../../components/dropdwon/SelectSearch'
+
+// bootstartp
 import { Container, Row, Col, FloatingLabel } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
-import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
-import {useSelector} from 'react-redux';
-import {fetchTapleData} from '../../redux/tapleData'
+
+
+// redux
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchTapleData } from '../../redux/tapleData'
 
 function EntryData() {
-  const {tapleData,loading,cc}= useSelector(state => state.tapleData)
-  console.log('cc ' ,tapleData)
 
+  const dispatch = useDispatch()
+  const { tapleData, loading, error } = useSelector(state => state.tapleDataSlice)
 
-  const url = 'https://tstm.smartgate-egypt.com/api/Values/GAJ'
-  const [data, setData] = useState([]);
+  // search state
   const [query, setQuery] = useState('');
+  // select state
+  const [selected, setSelection] = useState('');
+  console.log(selected);
 
-  useEffect(()=>{
-    fetchTapleData()
-  },[])
-
+  // fetch dispatch data 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch(url);
-        if (res.status === 200) {
-          const data = await res.json();
-          return setData(data)
-        } else {
-          console.log('not 200')
-        }
+    dispatch(fetchTapleData())
+  }, [dispatch])
 
-      } catch (e) {
-        return console.log(e.message);
-      }
-    }
-    fetchData();
-
-  }, []);
-
-  const keys = ["sd", "oj", "odt","ofn","ofce","ocy","oprty","ostl","ohg"];
+  // filter search
+  const keys = ["sd", "oj", "odt", "ofn", "ofce", "ocy", "oprty", "ostl", "ohg"];
+  const keysSlection = ["oj", "odt", "ofn"];
   const search = (data) => {
-     return data.filter((item) => keys.some((key) => item[key].toString().toLowerCase().includes(query))
-    );
+    return data.filter((item) => keys.some((key) => item[key].toString().toLowerCase().includes(query)))
+      .filter((item) => keysSlection.some((key) => item[key]===(selected === '' ? item[key] : selected)))
   };
- 
+
   return (
     <div>
       <Container>
@@ -57,51 +51,70 @@ function EntryData() {
 
         <form className="form">
           <Row>
-            <Col>
-              <div className="section_1">
+            <Col md={12} lg={6}>
+              <div className="section_1 " >
                 <div>
                   <Form.Control
                     type="text"
                     placeholder="search"
                     onChange={e => setQuery(e.target.value)}
-
                   />
                 </div>
-
-                <div>
-                  <Form.Select aria-label="Floating label select example">
-                    <option>Open this select menu</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                  </Form.Select>
-                </div>
-
+                <SelectSearch setSelection={setSelection} selected={selected} />
               </div>
-
             </Col>
 
-            <Col>
+            <Col md={12} lg={6}>
               <div className="section_2">
-                <div>
-                  <span>no</span>
-                  <Form.Check
-                    className="switch"
-                    type="switch"
-                    id="custom-switch"
+
+                <div className='d-flex align-items-center mb-2'>
+                  <span className='mx-2'>yes</span>
+                  <input
+                    id='switch-11'
+                    type="checkbox"
+                    name="check_2"
+
                   />
-                  <span>yse</span>
+                  <label htmlFor="switch-11"></label>
+                  <span className='mx-2'>no</span>
                 </div>
 
-                <div>
-                  <span>no</span>
-                  <Form.Check
-                    className="switch"
-                    type="switch"
-                    id="custom-switch"
+                <div className='d-flex align-items-center mb-2'>
+                  <span className='mx-2'>yes</span>
+                  <input
+                    id='switch-22'
+                    type="checkbox"
+                    name="check_2"
                   />
-                  <span>yes</span>
+                  <label htmlFor="switch-22"></label>
+                  <span className='mx-2'>no</span>
                 </div>
+              </div>
+
+              <div className="section_2">
+
+                <div className='d-flex align-items-center mb-2'>
+                  <span className='mx-2'>yes</span>
+                  <input
+                    id='switch-33'
+                    type="checkbox"
+                    name="check_2"
+                  />
+                  <label htmlFor="switch-33"></label>
+                  <span className='mx-2'>no</span>
+                </div>
+
+                <div className='d-flex align-items-center mb-2'>
+                  <span className='mx-2'>yes</span>
+                  <input
+                    id='switch-44'
+                    type="checkbox"
+                    name="check_2"
+                  />
+                  <label htmlFor="switch-44"></label>
+                  <span className='mx-2'>no</span>
+                </div>
+
 
               </div>
             </Col>
@@ -110,7 +123,7 @@ function EntryData() {
         </form>
       </Container>
 
-      {<Taple dataTable={search(data)} />}
+      {<Taple dataTable={search(tapleData)} loading={loading} error={error} />}
     </div>
   )
 }

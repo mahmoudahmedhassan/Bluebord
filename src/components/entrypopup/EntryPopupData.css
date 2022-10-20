@@ -106,6 +106,7 @@
 }
 
 
+
 /* style switch*/
  /* switch {
     position: relative;
@@ -244,4 +245,48 @@ input:checked + label:after {
 
 label:active:after {
 	width: 10px;
+}
+
+.resalt{
+  width: 150px;
+   border: 1px solid #ddd;
+  height: 37px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+.multiplied_mark{
+  font-size:20px;
+  margin:10px
+}
+.margin_4{
+  margin-bottom:40px;
+}
+
+@media only screen and (max-width: 991.99px) {
+ .row_2_col_1{
+  flex-direction: column;
+  margin-top: 40px;
+ }
+ .resalt{
+  margin: 10px 0  !important;
+  width: auto;
+
+ }
+ .multiplied_mark{
+  margin: 0;
+  text-align: center;
+
+ }
+ .margin_4{
+  margin-bottom:20px;
+}
+ .row_checkbox{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+ }
 }
