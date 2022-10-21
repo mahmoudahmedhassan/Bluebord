@@ -18,8 +18,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import { toggleSwitchAr, toggleSwitchEn } from '../../redux/toggledirction'
 import { switerSidebar } from '../../redux/switchSidebar'
 
+import { useNavigate } from "react-router-dom";
+
 function Header() {
-    const dispatch = useDispatch()
+    const navigate = useNavigate();
+
+    const dispatch = useDispatch();
+    const { users} = useSelector(state => state.users)
+
     const [t, i18n] = useTranslation();
 
     const [openSidebar, setOpenSidebar] = useState(true);
@@ -30,18 +36,27 @@ function Header() {
         dispatch(switerSidebar(openSidebar))
     }
 
+    const logOut =()=>{
+        localStorage.removeItem("current-user");
+        window.location.reload();
+        localStorage.removeItem('access-token');
+        navigate('/');
+    }
+    console.log(JSON.parse(localStorage.getItem("access-token")))
+ 
+
 
     const UserDropdown = (
         <>
             <Dropdown right>
                 <Dropdown.Toggle variant="success" id="dropdown-basic"   >
-                    User
+                {users && users.email}
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
-                    <Dropdown.Item href="#/action-1"><FaUser /> <span>{t("profile")} </span></Dropdown.Item>
+                    <Dropdown.Item href="#/action-1"><FaUser /> <span>{users && users.username} </span></Dropdown.Item>
                     <Dropdown.Item href="#/action-2"><FaRegSun /> <span>{t("settings")}</span></Dropdown.Item>
-                    <Dropdown.Item href="#/action-3"><BiLogOut /><span> {t("logout")}</span></Dropdown.Item>
+                    <Dropdown.Item href="#/action-3" onClick={logOut}><BiLogOut /><span > {t("logout")}</span></Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
             {/* <nav>

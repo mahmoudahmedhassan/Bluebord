@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './login.css';
 import saudiFlag from './assets/saudi-arabia.png';
 import unitedFlag from './assets/united-kingdom.png';
@@ -16,8 +16,9 @@ function UserDetails() {
   const navigate = useNavigate();
 
   const { users, loading, error } = useSelector(state => state.users)
-  // console.log('users :',  users[0].usId)
-
+  console.log('users :', users.isAuthenticated)
+  // const [state, setState] = useState(null)
+ 
   const validate = Yup.object({
     UserName: Yup.string()
       .max(15, 'Must be 15 characters or less')
@@ -26,8 +27,16 @@ function UserDetails() {
 
   })
   useEffect(() => {
-    JSON.parse(localStorage.getItem("current-user"))
-  }, [])
+  //   if (JSON.parse(localStorage.getItem("current-user")).length > 0) {
+  //     setState(
+  //       JSON.parse(localStorage.getItem("current-user")))
+  //   }
+
+    if(users && users.isAuthenticated){
+      navigate('/');
+    }
+
+  }, [users,navigate])
 
   return (
     <div className='userDetails'>
@@ -54,8 +63,7 @@ function UserDetails() {
                 onSubmit={(values, { resetForm }) => {
                   dispatch(insertUserData(values))
                   resetForm({ values: '' });
-                  // navigate("/");
-                }}
+                 }}
               >
                 {(formik) => (
                   <div className='p-4'>
@@ -73,7 +81,11 @@ function UserDetails() {
                       <div>{error && <p style={{ color: 'red' }}> {error} </p>}</div>
 
                       <div className="">
-                        <button className="btn btn-dark mt-3" type="submit" style={{ width: '100%', background: '#4B77BE', border: 'none' }}>Login</button>
+                        <button className="btn btn-dark mt-3"
+                          type="submit"
+                          style={{ width: '100%', background: '#4B77BE', border: 'none' }}>
+                          {loading ? 'Loading...' : 'Login'}
+                        </button>
                       </div>
                     </Form>
 

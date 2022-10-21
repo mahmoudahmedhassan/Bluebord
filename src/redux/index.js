@@ -38,7 +38,9 @@ export const insertUserData = createAsyncThunk("user/insertUserData",
 )
 
 const initialState = {
-  users: {},
+  users:  localStorage.getItem("current-user")
+  ? JSON.parse(localStorage.getItem("current-user"))
+  : {},
   loading: null,
   error: null
 }
