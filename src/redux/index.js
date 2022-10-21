@@ -14,10 +14,11 @@ export const insertUserData = createAsyncThunk("user/insertUserData",
       const res = await fetch(URL, {
         method: 'POST',
         headers: {
-          'Content-type': 'application/json; charset=UTF-8',
+          'Content-type': 'application/json'
         },
         body: JSON.stringify(values),
-        mode: 'no-cors',
+        mode: 'cors'
+
       })
       console.log(res)
       const data = await res.json();

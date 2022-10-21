@@ -15,7 +15,7 @@ import { useTranslation } from 'react-i18next';
 import { useProSidebar } from 'react-pro-sidebar';
 // redux
 import { useDispatch, useSelector } from 'react-redux'
-import {  toggleSwitchAr,toggleSwitchEn } from '../../redux/toggledirction'
+import { toggleSwitchAr, toggleSwitchEn } from '../../redux/toggledirction'
 import { switerSidebar } from '../../redux/switchSidebar'
 
 function Header() {
@@ -44,6 +44,17 @@ function Header() {
                     <Dropdown.Item href="#/action-3"><BiLogOut /><span> {t("logout")}</span></Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
+            {/* <nav>
+                <ul>
+                    <li> Style 1
+                        <ul className={`${classes.drop_menu} ${classes.menu_1}`}>
+                            <li>Lorem, ipsum.</li>
+                            <li>Lorem, ipsum.</li>
+                            <li>Lorem, ipsum.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav> */}
         </>
     )
     return (

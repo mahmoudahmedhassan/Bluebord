@@ -19,7 +19,7 @@ function SidebarMenu() {
 
       style={{ display: 'flex', minHeight: '100vh', }
       }>
-      <Sidebar backgroundColor="#4B77BE" dir >
+      <Sidebar backgroundColor="#4B77BE"  >
         <Menu>
           <p className="logo">logo</p>
              <MenuItem ><NavLink  to='./'><span style={{color:'#fff'}}>Main page</span> </NavLink> </MenuItem>
