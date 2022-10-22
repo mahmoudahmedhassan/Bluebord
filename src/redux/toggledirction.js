@@ -4,7 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const switchDrictionSlice = createSlice({
   name: 'Student',
   initialState: {
-    dirction: 'ar',
+    dirction: 'en',
   },
 
   reducers: {

@@ -3,7 +3,7 @@ import { Sidebar, Menu, MenuItem, SubMenu, useProSidebar } from 'react-pro-sideb
 import { FaUser, FaRegSun } from "react-icons/fa";
 import { BiLogOut } from "react-icons/bi";
 import { NavLink } from "react-router-dom";
-
+import logo from '../../assets/Sg.ico'
 import "./sidebar.css";
 import { useSelector } from 'react-redux'
 
@@ -21,8 +21,8 @@ function SidebarMenu() {
       }>
       <Sidebar backgroundColor="rgb(64,78,103)" className="sidebar-container" >
         <Menu>
-          <p className="logo">logo</p>
-             <MenuItem ><NavLink  to='./'><span style={{color:'#fff'}}>Main page</span> </NavLink> </MenuItem>
+          <p className="logo"> <img src={logo} alt='logo' height='50px' /> </p>
+          <MenuItem ><NavLink to='./'><span style={{ color: '#fff' }}>Main page</span> </NavLink> </MenuItem>
           <SubMenu icon={<FaUser />} label="Grop-1">
             <MenuItem><NavLink to='./entryData'> Grop-1 page01 </NavLink></MenuItem>
             <MenuItem> Grop-1 page02</MenuItem>

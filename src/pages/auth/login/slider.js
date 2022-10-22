@@ -3,6 +3,7 @@ import { Image } from 'react-bootstrap'
 import slide_1 from './assets/sl-1.jpg';
 import slide_2 from './assets/sl-2.jpg';
 import slide_3 from './assets/sl-3.jpg';
+import logo from '../../../assets/Sg.ico'
 
 function NoTransitionExample() {
     const itemsSlider = (props) => (
@@ -28,17 +29,17 @@ function NoTransitionExample() {
 
                 <Image
                     className="d-block w-100 slideLgin_img"
-                    src={slide_1}
+                    src={logo}
                     alt="First slide"
                     thumbnail
                 />
-                <Carousel.Caption>
+                <Carousel.Caption style={{ background:'#0000007d', borderRadius:'20px'}}>
                     <h3>First slide label</h3>
                     <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
                 </Carousel.Caption>
             </Carousel.Item>
 
-            <Carousel.Item>
+            {/* <Carousel.Item>
                 <Image
                     className="d-block w-100 slideLgin_img"
 
@@ -71,7 +72,7 @@ function NoTransitionExample() {
                         Praesent commodo cursus magna, vel scelerisque nisl consectetur.
                     </p>
                 </Carousel.Caption>
-            </Carousel.Item>
+            </Carousel.Item> */}
 
         </Carousel>
     );

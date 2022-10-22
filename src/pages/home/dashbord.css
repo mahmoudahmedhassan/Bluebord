@@ -1,0 +1,37 @@
+.counter-main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.counter-container{
+    background: #a47ea6;
+    width: 300px;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    background: linear-gradient(to right,#fe5d70,#fe909d);
+    border-radius: 10px;
+    margin: 15px;
+    padding: 15px;
+    color: white;
+}
+.counter-container .counter{
+    font-size: 1.4em;
+
+}
+.counter-container h3{
+    text-transform: capitalize;
+}
+.counter-container .icondate{
+    font-size:1,5em;
+    font-weight:bold;
+}
+.chart{
+    width: 300px;
+    padding: 10px;
+    background: white;
+    border-radius: 20px;
+    margin: 20px;
+    box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+}

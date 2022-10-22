@@ -39,7 +39,7 @@ function UserDetails() {
           <Col md={6} className='p-0'>
             <div className='ss'>
               <div className='platform'>
-                <div className=''>Bluebord</div>
+                <div className='platform_name'> <span>S</span>mart <span>G</span>ate</div>
                 <div className='login_lang'>
                   <img src={unitedFlag} alt={unitedFlag} height="30px" />
                 </div>

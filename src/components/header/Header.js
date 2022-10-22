@@ -45,9 +45,9 @@ function Header() {
    
     const UserDropdown = (
         <>
-            <Dropdown right>
+            <Dropdown style={{ backgroundColor:'#404e67 !important' ,border:'none'}}>
                 <Dropdown.Toggle variant="success" id="dropdown-basic"   >
-                {users && users.email}
+                {users && users.username}
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
