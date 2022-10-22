@@ -8,7 +8,7 @@ import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs'; // title com
 import SelectSearch from '../../components/dropdwon/SelectSearch'
 
 // bootstartp
-import { Container, Row, Col, FloatingLabel } from 'react-bootstrap';
+import { Container, Row, Col, } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import Collapse from 'react-bootstrap/Collapse';
 
@@ -21,15 +21,12 @@ function EntryData() {
 
   const dispatch = useDispatch()
   const { tapleData, loading, error } = useSelector(state => state.tapleDataSlice)
-  console.log(tapleData)
   const [open, setOpen] = useState(false);
 
   // search state
   const [query, setQuery] = useState('');
-  // select state
-  const [selected, setSelection] = useState('');
-  console.log(selected);
-
+ 
+ 
   // fetch dispatch data 
   useEffect(() => {
     dispatch(fetchTapleData())
@@ -37,7 +34,7 @@ function EntryData() {
 
   // filter search
   const keys = ["sd", "t102", "t103", "t104"];
-  const keysSlection = ["oj", "odt", "ofn"];
+  // const keysSlection = ["true", "false"];
   const search = (data) => {
     return data.filter((item) => keys.some((key) => item[key].toString().toLowerCase().includes(query)))
     // .filter((item) => keysSlection.some((key) => item[key]===(selected === '' ? item[key] : selected)))
@@ -69,7 +66,7 @@ function EntryData() {
                       onChange={e => setQuery(e.target.value)}
                     />
                   </div>
-                  <SelectSearch setSelection={setSelection} selected={selected} />
+                  <SelectSearch/>
                 </div>
               </Col>
 
