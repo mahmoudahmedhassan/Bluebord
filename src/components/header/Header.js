@@ -42,10 +42,7 @@ function Header() {
         localStorage.removeItem('access-token');
         navigate('/');
     }
-    console.log(JSON.parse(localStorage.getItem("access-token")))
- 
-
-
+   
     const UserDropdown = (
         <>
             <Dropdown right>

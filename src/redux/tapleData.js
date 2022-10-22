@@ -1,24 +1,29 @@
 
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-
 export const fetchTapleData = createAsyncThunk(
   'tapleData/fetchTapleData',
   async (_, thunkAPI) => {
     const { rejectWithValue } = thunkAPI;
     try {
-      const res = await fetch('https://smartgate-egypt.com/Jobs/GetAll',{
-         Authorization:JSON.parse(localStorage.getItem("access-token")),
-         mode:'no-cors'
-
+      const res = await fetch('https://tstAuth.smartgate-egypt.com/Jobs/Getpro', {
+        // headers: {
+        //   DataType: "JSON",
+        //   Authorization:
+        //     "Bearer " + JSON.parse(localStorage.getItem("access-token")),
+        //   mode: 'cors',
+        //   Accept: 'application/json',
+        // },
       });
+      console.log(res)
       const data = await res.json();
+
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
     }
   }
 );
- 
+
 
 const tapleDataSlice = createSlice({
   name: 'tapleData',

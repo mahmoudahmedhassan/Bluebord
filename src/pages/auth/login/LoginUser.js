@@ -17,7 +17,6 @@ function UserDetails() {
 
   const { users, loading, error } = useSelector(state => state.users)
   console.log('users :', users.isAuthenticated)
-  // const [state, setState] = useState(null)
  
   const validate = Yup.object({
     UserName: Yup.string()
@@ -27,16 +26,11 @@ function UserDetails() {
 
   })
   useEffect(() => {
-  //   if (JSON.parse(localStorage.getItem("current-user")).length > 0) {
-  //     setState(
-  //       JSON.parse(localStorage.getItem("current-user")))
-  //   }
-
-    if(users && users.isAuthenticated){
+    if (users && users.isAuthenticated) {
       navigate('/');
     }
 
-  }, [users,navigate])
+  }, [users, navigate])
 
   return (
     <div className='userDetails'>
@@ -63,7 +57,7 @@ function UserDetails() {
                 onSubmit={(values, { resetForm }) => {
                   dispatch(insertUserData(values))
                   resetForm({ values: '' });
-                 }}
+                }}
               >
                 {(formik) => (
                   <div className='p-4'>
@@ -113,7 +107,8 @@ function UserDetails() {
           </Col>
           <Col md={6} className='p-0'>
 
-            <NoTransitionExample />
+            <NoTransitionExample /> 
+
           </Col>
         </Row>
       </Container>

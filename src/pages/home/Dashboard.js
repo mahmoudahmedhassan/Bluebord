@@ -11,12 +11,14 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
+import axios from 'axios';
 
 import CountUp from 'react-countup';
 
-function Dashboard(){
-  const {data, error, loading }=UseFetch('url',)
- 
+function Dashboard() {
+  const [dashbords, setDashboards] = useState([]);
+  console.log(dashbords);
+  const { data, error, loading } = UseFetch('url',)
   const chartData =
     [
       {
@@ -71,32 +73,57 @@ function Dashboard(){
     ],
   }
 
+  useEffect(() => {
+    axios.get("https://tstAuth.smartgate-egypt.com/Jobs/GetDash")
+      .then(res => {
+        let chartData = [];
+        const data = res.data;
+        data.forEach(element => {
+          chartData.push({
+            labels: ['t202', 't203','t204'],
+            datasets: [{
+              data: [element.t202, element.t203, element.t204,],
+              backgroundColor: [
+                "rgba(75,192,192,1)",
+                "#f3ba2f",
+                "#2a71d0",
+              ],
+              borderColor: "black",
+              borderWidth: 2,
+            }],
+            all: element.t201
+          })
+        })
+        setDashboards(chartData)
+      })
+  }, [])
+
   return (
     <Container>
       <h1 className='text-bb text-center m-2'>welcome</h1>
+
       <Row>
-        <Col>
-          <div className="text-center m-5">
-            <CountUp
-              className="counter"
-              start={0}
-              end={1000}
-              duration={3}
-            ></CountUp>
-          </div>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <div style={{ width: 300 }} >
-            <PieChart chartData={x} />
-          </div>
-        </Col>
-        <Col>
-          <div style={{ width: 300 }} >
-            <PieChart chartData={x} />
-          </div>
-        </Col>
+        {dashbords.map(item => (
+          <Col md={4}>
+            <div>
+              <div className="text-center">
+                <CountUp
+                  className="counter"
+                  start={0}
+                  end={item.all}
+                  duration={3}
+                ></CountUp>
+              </div>
+
+              <div style={{ width: 300 }}>
+                <PieChart chartData={item} />
+              </div>
+
+            </div>
+
+          </Col>
+        ))}
+
       </Row>
 
 

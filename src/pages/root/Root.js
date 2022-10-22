@@ -27,7 +27,7 @@ const Root = () => {
         
         <div className={witchSidebar? "main-container-close": 'main-container-open'}>
           <Header />
-          <div className="main-outlet" style={{ minHeight: 'calc(100vh - 100px)' }}>
+          <div className="main-outlet" style={{ minHeight: 'calc(100vh - 100px)',backgroundColor:'#F6F7FB '}}>
             <Outlet />
           </div>
           <Footer />

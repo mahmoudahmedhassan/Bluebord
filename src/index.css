@@ -60,3 +60,16 @@
 a{
   text-decoration: none;
 }
+
+/* scrollbar */
+body::-webkit-scrollbar{
+	width: 10px;
+  }
+ body::-webkit-scrollbar-track{
+	 background:#eeeeeeba;
+   }
+body::-webkit-scrollbar-thumb{
+	 background: #3A445C;
+	 border-radius: 20px;
+	 border: 1px solid #ddd;
+   }
