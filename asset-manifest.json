@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/Bluebord/static/css/main.dc3895d6.css",
+    "main.js": "/Bluebord/static/js/main.6c13a5d9.js",
+    "static/media/sl-2.jpg": "/Bluebord/static/media/sl-2.9e7fb0b1d204dc256e87.jpg",
+    "static/media/bg.jpg": "/Bluebord/static/media/bg.b3c34d2548f9e30710c4.jpg",
+    "static/media/sl-3.jpg": "/Bluebord/static/media/sl-3.652bdcaadbf758f1c949.jpg",
+    "static/media/sl-1.jpg": "/Bluebord/static/media/sl-1.abcd72c911918f637bf0.jpg",
+    "static/media/Sg.ico": "/Bluebord/static/media/Sg.7345e665a43c01c15cc3.ico",
+    "static/media/saudi-arabia.png": "/Bluebord/static/media/saudi-arabia.b5c523c0e4789cdc074e.png",
+    "static/media/Multiplying.jpg": "/Bluebord/static/media/Multiplying.25a94f304b1829ff0217.jpg",
+    "index.html": "/Bluebord/index.html",
+    "main.dc3895d6.css.map": "/Bluebord/static/css/main.dc3895d6.css.map",
+    "main.6c13a5d9.js.map": "/Bluebord/static/js/main.6c13a5d9.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.dc3895d6.css",
+    "static/js/main.6c13a5d9.js"
+  ]
+}
