@@ -17,7 +17,7 @@ function UserDetails() {
 
   const { users, loading, error } = useSelector(state => state.users)
   console.log('users :', users.isAuthenticated)
- 
+
   const validate = Yup.object({
     UserName: Yup.string()
       .max(15, 'Must be 15 characters or less')
@@ -36,18 +36,29 @@ function UserDetails() {
     <div className='userDetails'>
       <Container className='main_container'>
         <Row>
-          <Col md={6} className='p-0'>
+          <Col md={6}>
+
             <div className='ss'>
               <div className='platform'>
-                <div className='platform_name'> <span>S</span>mart <span>G</span>ate</div>
-                <div className='login_lang'>
-                  <img src={unitedFlag} alt={unitedFlag} height="30px" />
+
+                <div className='platform-smart-gate'>
+
+                  <div className='platform_name'>
+                    <span>S</span>mart <span>G</span>ate
+                  </div>
+                  <div className='login_lang'>
+                    <img src={unitedFlag} alt={unitedFlag} height="30px" />
+                  </div>
+
                 </div>
+
+                <div className='platform-title text-center'>
+                  <h1>Hello!</h1>
+                  <p>this is our dashboard new version for al-azhar universities</p>
+                </div>
+
               </div>
-              <div className='header text-center'>
-                <h1>Hello!</h1>
-                <p>this is our dashboard new version for al-azhar universities</p>
-              </div>
+
               <Formik
                 initialValues={{
                   UserName: '',
@@ -60,15 +71,15 @@ function UserDetails() {
                 }}
               >
                 {(formik) => (
-                  <div className='p-4'>
+                  <div>
                     {/* <h1 className="my-4 font-weight-bold .display-4">Login </h1> */}
 
                     <Form >
                       <Row>
-                        <Col>
+                        <Col sm={12}>
                           <TextField name="UserName" type="text" placeholder="UserName" />
                         </Col>
-                        <Col>
+                        <Col sm={12}>
                           <TextField name="Password" type="Password" placeholder="Password" password='Password' />
                         </Col>
                       </Row>
@@ -88,31 +99,33 @@ function UserDetails() {
 
               </Formik>
 
-              <div className="support my-5">
-                <p className="text-center">
-                  for technical support call us on
-                  <a className="text-center" href="/">
-                    samrt@gate.com
-                  </a>
-                </p>
 
-              </div>
+
               <footer className="footer text-center">
-                All Rights Reserved by Smart Gate admin. Designed and Developed by
-                <a href="/"> Smart Gate</a>
+
+                <div className="support my-5">
+                  <p className="text-center">
+                    for technical support call us on
+                    <a className="text-center" href="/">
+                      samrt@gate.com
+                    </a>
+                  </p>
+                </div>
+                <div className='footer-footer'>
+                  <p>All Rights Reserved by Smart Gate admin. Designed and Developed by</p>
+                  <a href="/" style={{color:'#095ffc'}}> Smart Gate</a>
+                </div>
               </footer>
 
             </div>
 
           </Col>
+
           <Col md={6} className='p-0'>
-
-            <NoTransitionExample /> 
-
+            <NoTransitionExample />
           </Col>
         </Row>
       </Container>
-      {/* {loading? <p>loading...</p>:<div>{users?.fUserName}</div>} */}
 
 
     </div >

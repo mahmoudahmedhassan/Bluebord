@@ -3,26 +3,51 @@ import Form from 'react-bootstrap/Form';
 // redux
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchTapleDataGitAll } from '../../redux/tapleDataGetAll'
-
-function SelectSearch() {
+import { fetchTapleDataGitHid } from '../../redux/tapleDataGetHid'
+import { fetchTapleDataGitFin } from '../../redux/tapleDataGitFin'
+import { fetchTapleData } from '../../redux/tapleData'
+//  import './index.css'
+function SelectSearch({ setTapData }) {
     const dispatch = useDispatch()
-    const { tapleDataGitAll, loading, error } = useSelector(state => state.tapleDataGetAllSlice);
-    // fetch dispatch data 
-    useEffect(() => {
-        dispatch(fetchTapleDataGitAll())
-    }, [dispatch])
 
-    console.log('tapleDataGitAll', tapleDataGitAll)
+    // fetch dispatch data 
+    // useEffect(() => {
+    //     dispatch(fetchTapleDataGitAll())
+    //     dispatch(fetchTapleDataGitHid())
+    // }, [dispatch])
+
+    const getPro = (e) => {
+        e.preventDefault()
+        dispatch(fetchTapleData())
+        setTapData('pro')
+    }
+
+    const getAll = (e) => {
+        e.preventDefault()
+        dispatch(fetchTapleDataGitAll());
+        setTapData('all')
+    }
+    const getHid = (e) => {
+        e.preventDefault()
+        dispatch(fetchTapleDataGitHid());
+        setTapData('hid')
+    }
+    const getFin = (e) => {
+        e.preventDefault()
+        dispatch(fetchTapleDataGitFin());
+        setTapData('fin')
+    }
+
     return (
-        <div>
-            <Form.Select aria-label="Floating label select example">
-                <option>Open this select menu</option>
-                <option value="oj">git all data</option>
-                <option value="odt">odt</option>
-                <option value="ofn">ofn</option>
-                <option value="ofn">ofn</option>
-            </Form.Select>
-        </div>
+        <>
+            <div>
+                <button onClick={getPro}>pro</button>
+                <button onClick={getAll}>all</button>
+                <button onClick={getHid}>hid</button>
+                <button onClick={getFin}>fin</button>
+            </div>
+ 
+        </>
     )
 }
 

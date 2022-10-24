@@ -4,7 +4,10 @@ import dirction from './toggledirction';
 import formData from './formData';
 import switchSidebar from './switchSidebar';
 import tapleDataSlice from './tapleData';
-import tapleDataGetAllSlice from './tapleDataGetAll'
+import tapleDataGetAllSlice from './tapleDataGetAll';
+import tapleDataGetHidSlice from './tapleDataGetHid';
+import tapleDataGetFinSlice from './tapleDataGitFin';
+
 export  const store = configureStore({
   reducer: {
     users ,
@@ -12,6 +15,8 @@ export  const store = configureStore({
     switchSidebar,
     formData,
     tapleDataSlice,
-    tapleDataGetAllSlice
+    tapleDataGetAllSlice,
+    tapleDataGetHidSlice,
+    tapleDataGetFinSlice
   },
 })

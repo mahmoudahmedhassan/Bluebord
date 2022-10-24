@@ -45,7 +45,7 @@ function Header() {
    
     const UserDropdown = (
         <>
-            <Dropdown style={{ backgroundColor:'#404e67 !important' ,border:'none'}}>
+            <Dropdown>
                 <Dropdown.Toggle variant="success" id="dropdown-basic"   >
                 {users && users.username}
                 </Dropdown.Toggle>
@@ -71,9 +71,7 @@ function Header() {
     )
     return (
         <div className={classes.header}>
-            <div className={classes.menubar}>
-                <button onClick={toggleSidebarButton}><FaBars /></button>
-            </div>
+
 
             <div className={classes.user} >
                 <div className={classes.lang}>
@@ -101,6 +99,9 @@ function Header() {
 
                 </div>
                 <div className={classes.UserDropdown}>{UserDropdown}</div>
+            </div>
+            <div className={classes.menubar}>
+                <button onClick={toggleSidebarButton}><FaBars /></button>
             </div>
         </div>
     )

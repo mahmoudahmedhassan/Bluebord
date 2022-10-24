@@ -1,38 +1,163 @@
-
-.userDetails{
-    position: relative;
-    background: url('./assets/bg.jpg') no-repeat center center; ;
-    width: 100%;
-    min-height: 100vh;
+.ss {
+    padding: 0;
+    margin: 0;
+    height: 100%;
     display: flex;
-    justify-content:center;
-    align-items:center
+    justify-content: space-between;
+    flex-direction: column;
 }
-.main_container{
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    background: #fff;
-    border-radius: 10px;
 
-}
-.platform{
+.platform {
     display: flex;
-    justify-content:space-between;
-    align-items:center;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     padding: 20px;
     color: #c81919;
     font-size: 1.5rem;
     font-weight: bold;
 
 }
-.platform .platform_name{
+
+.platform-smart-gate {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
+.platform .platform_name {
     color: #132D6E;
     font-family: 'Playfair Display SC', serif;
     letter-spacing: 2px;
 }
-.platform .platform_name span{
-    color: #F7A72A;
- }
 
-.slideLgin_img{
-  min-height: 600px !important
+.platform .platform_name span {
+    color: #F7A72A;
+}
+
+.platform-title {
+    margin: 30px 20px 0px 20px;
+    color: #164e91;
+}
+
+.platform-title h1 {
+    color: #fbb61e;
+
+}
+
+.error {
+    color: red
+}
+
+.opps {
+    position: absolute;
+    top: 12px;
+    right: 10px;
+    color: red;
+}
+
+.is-invalid {
+    border: 2px solid red;
+}
+
+.buts {
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+.buts button {
+    width: 200px;
+}
+
+.users_title {
+    text-transform: capitalize;
+}
+
+.uses_info,
+.users_title {
+    margin: 50px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.uses_info>div {
+    font-size: 1.5em;
+    text-transform: capitalize;
+}
+
+.userdata {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+}
+
+.userDetails {
+    position: relative;
+    background: url('./assets/bg.jpg') no-repeat center center;
+    ;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+.main_container {
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    background: #fff;
+    border-radius: 10px;
+    margin: 50px;
+
+}
+
+.footer-footer {
+    font-size: 12px;
+    padding: 10px;
+}
+
+.footer-footer a {
+    text-decoration: underline;
+    color: red
+}
+
+
+.slideLgin_img {
+    min-height: 600px !important
+}
+
+.slider-overlay {
+    background: #0000007d;
+    border-radius: 20px;
+}
+
+@media only screen and (max-width: 450px) {
+    .main_container {
+        margin: 10px;
+    }
+
+    .platform .platform_name {
+        letter-spacing: unset;
+        font-size: 22px;
+    }
+
+    .platform-title {
+        margin-top: 23px;
+        font-size: 18px;
+    }
+
+    .slideLgin_img {
+        min-height: 300px !important
+    }
+    .slider-overlay{
+        display:none
+    }
+    .slider-overlay h3 {
+        font-size:18px
+    }
+    .slider-overlay p {
+        font-size:14px
+    }
+
 }

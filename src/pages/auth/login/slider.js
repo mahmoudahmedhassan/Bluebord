@@ -27,13 +27,13 @@ function NoTransitionExample() {
         <Carousel slide={false}>
             <Carousel.Item>
 
-                <Image
+                <img
                     className="d-block w-100 slideLgin_img"
                     src={logo}
                     alt="First slide"
                     thumbnail
                 />
-                <Carousel.Caption style={{ background:'#0000007d', borderRadius:'20px'}}>
+                <Carousel.Caption className='slider-overlay'>
                     <h3>First slide label</h3>
                     <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
                 </Carousel.Caption>

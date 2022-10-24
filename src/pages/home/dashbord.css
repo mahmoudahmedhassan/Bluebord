@@ -35,3 +35,18 @@
     margin: 20px;
     box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
 }
+
+@media only screen and (max-width: 600px) {
+    body {
+      background-color: lightblue;
+    }
+  }
+
+  @media (min-width: 991px) and (max-width: 1200px) {
+    .chart{
+        width: 200px;
+     }
+     .counter-container{
+        width: 200px;
+     }
+   }

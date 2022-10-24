@@ -85,7 +85,7 @@ function EntryPopupData() {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow} style={{ margin: '50px' }}>
+      <Button variant="primary" onClick={handleShow} style={{ margin: '20px' }}>
         Add
       </Button>
 
