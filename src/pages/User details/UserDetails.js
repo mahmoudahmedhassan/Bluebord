@@ -53,10 +53,10 @@ export default function UserDetails() {
               {/* UserTapleDetails_row_0 */}
               <div className={classes.UserTapleDetails_row_0}>
                 <Row>
-                  <Col sm={12} md={4}>
+                  <Col sm={12} md={2}>
                     <div className={classes.UserTapleDetails_label}>label-1</div>
                   </Col>
-                  <Col sm={12} md={8}>
+                  <Col sm={12} md={10}>
                     <div className='mb-2'>
                       <Form.Control
                         type="text"
@@ -77,7 +77,10 @@ export default function UserDetails() {
                   <Col md={3}>
                     <div className={classes.UserTapleDetails_label}>label-3</div>
                   </Col>
-                  <Col md={6}>
+                  <Col md={2}>
+                    <div className={classes.UserTapleDetails_label}>label-3</div>
+                  </Col>
+                  <Col md={4}>
                     <div>
                       <Form.Control
                         type="text"
@@ -99,7 +102,10 @@ export default function UserDetails() {
                   <Col md={3}>
                     <div className={classes.UserTapleDetails_label}>label-5</div>
                   </Col>
-                  <Col md={6}>
+                  <Col md={2}>
+                    <div className={classes.UserTapleDetails_label}>label-5</div>
+                  </Col>
+                  <Col md={4}>
                     <div>
                       <Form.Control
                         type="text"

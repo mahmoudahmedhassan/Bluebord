@@ -5,7 +5,7 @@ import slide_2 from './assets/sl-2.jpg';
 import slide_3 from './assets/sl-3.jpg';
 import logo from '../../../assets/Sg.ico'
 
-function NoTransitionExample() {
+function SliderLogin() {
     const itemsSlider = (props) => (
         <Carousel.Item>
 
@@ -28,15 +28,12 @@ function NoTransitionExample() {
             <Carousel.Item>
 
                 <img
-                    className="d-block w-100 slideLgin_img"
+                    className="d-block slideLgin_img"
                     src={logo}
                     alt="First slide"
-                    thumbnail
+                    // thumbnail
                 />
-                <Carousel.Caption className='slider-overlay'>
-                    <h3>First slide label</h3>
-                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                </Carousel.Caption>
+               
             </Carousel.Item>
 
             {/* <Carousel.Item>
@@ -78,4 +75,4 @@ function NoTransitionExample() {
     );
 }
 
-export default NoTransitionExample;
+export default SliderLogin;

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './login.css';
 import saudiFlag from './assets/saudi-arabia.png';
 import unitedFlag from './assets/united-kingdom.png';
-import NoTransitionExample from './slider'
+import SliderLogin from './slider'
 import { Formik, Form, } from 'formik';
 import { TextField } from './TextField';
 import * as Yup from 'yup';
@@ -54,8 +54,7 @@ function UserDetails() {
 
                 <div className='platform-title text-center'>
                   <h1>Hello!</h1>
-                  <p>this is our dashboard new version for al-azhar universities</p>
-                </div>
+                 </div>
 
               </div>
 
@@ -99,8 +98,6 @@ function UserDetails() {
 
               </Formik>
 
-
-
               <footer className="footer text-center">
 
                 <div className="support my-5">
@@ -122,7 +119,9 @@ function UserDetails() {
           </Col>
 
           <Col md={6} className='p-0'>
-            <NoTransitionExample />
+            <div className='slider_login'>
+               <SliderLogin />
+            </div>
           </Col>
         </Row>
       </Container>

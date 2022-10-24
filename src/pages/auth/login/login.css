@@ -37,7 +37,7 @@
 }
 
 .platform-title {
-    margin: 30px 20px 0px 20px;
+    margin: 30px 20px 50px 20px;
     color: #164e91;
 }
 
@@ -64,8 +64,7 @@
 .buts {
     display: flex;
     justify-content: space-evenly;
-
-}
+ }
 
 .buts button {
     width: 200px;
@@ -122,14 +121,31 @@
     color: red
 }
 
+.slider_login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
 
 .slideLgin_img {
-    min-height: 600px !important
+    min-height: 400px !important
 }
 
 .slider-overlay {
     background: #0000007d;
     border-radius: 20px;
+}
+
+.support{
+    margin-top: 50px;
+}
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .slideLgin_img {
+        min-height: 350px !important
+    }
+ 
 }
 
 @media only screen and (max-width: 450px) {

@@ -89,7 +89,7 @@ function EntryPopupData() {
         Add
       </Button>
 
-      <Modal show={show} onHide={handleClose} size="xl">
+      <Modal show={show} onHide={handleClose} size="lg">
         <Modal.Header closeButton>
           <Modal.Title>Modal heading</Modal.Title>
         </Modal.Header>
@@ -149,7 +149,7 @@ function EntryPopupData() {
               {/* section 2 */}
 
               <Row className='row_1'>
-                <Col md={12} lg={9}>
+                <Col md={12} lg={7}>
                   <div className='d-flex mb-2 row_2_col_1'>
                     <div className=' me-2' >
                       <Form.Control
@@ -235,7 +235,7 @@ function EntryPopupData() {
                   </div>
                 </Col>
 
-                <Col md={12} lg={3}>
+                <Col md={12} lg={5}>
                   <div className="row_checkbox">
                     <div className='d-flex align-items-center  margin_4'>
                       <span className='mx-2'>yes</span>
@@ -270,7 +270,7 @@ function EntryPopupData() {
               {/* section 3 */}
 
               <Row className='row_1'>
-                <Col md={12} lg={9}>
+                <Col md={12} lg={7}>
                   <div className='d-flex mb-2 row_2_col_1'>
                     <div className='me-2 resalt'>
                       {Multiplying ? Multiplying : null}
@@ -323,7 +323,7 @@ function EntryPopupData() {
                   </div>
                 </Col>
 
-                <Col md={12} lg={3}>
+                <Col md={12} lg={5}>
                   <div className="row_checkbox">
 
                     <div className='d-flex align-items-center mb-2'>
@@ -359,7 +359,7 @@ function EntryPopupData() {
               {/* section 4 */}
 
               <Row className='row_1'>
-                <Col md={8}>
+                <Col md={7}>
                   <div className='d-flex mb-2'>
 
                     <Form.Control type="text"
@@ -367,12 +367,11 @@ function EntryPopupData() {
                       name='po1tx06'
                       value={data.po1tx06}
                       onChange={handleChange}
-
-                    />
+                     />
                   </div>
 
                 </Col>
-                <Col md={4}>
+                <Col md={5}>
                   <div className='d-flex align-items-center'>
                     <span className='mx-2'>yes</span>
                     <input

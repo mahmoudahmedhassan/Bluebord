@@ -21,7 +21,10 @@ body::-webkit-scrollbar-thumb{
 	 border-radius: 20px;
 	 border: 1px solid #ddd;
    }
-
+   tbody {
+  font-size: 10px;
+  text-align: center;
+}
 
    :root {
     --blue: #007bff;
