@@ -24,6 +24,8 @@ function SelectSearch({ setTapData }) {
         e.preventDefault()
         dispatch(fetchTapleData())
         setTapData('pro')
+        setShow(false)
+
     }
 
     const getAll = (e) => {
@@ -44,18 +46,10 @@ function SelectSearch({ setTapData }) {
         dispatch(fetchTapleDataGitFin());
         setTapData('fin')
         setShow(false)
-
-    }
+     }
 
     return (
         <>
-            {/* <div>
-                <button onClick={getPro}>pro</button>
-                <button onClick={getAll}>all</button>
-                <button onClick={getHid}>hid</button>
-                <button onClick={getFin}>fin</button>
-            </div> */}
-
             <div className={classes.drpdowndown}>
                 <div className={classes.container}>
                     <div className={classes.labal} onClick={() => setShow(!show)}>select</div>
@@ -67,7 +61,6 @@ function SelectSearch({ setTapData }) {
                     </ul>
                 </div>
             </div>
-
         </>
     )
 }
