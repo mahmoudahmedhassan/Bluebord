@@ -78,7 +78,7 @@ export default function Taple({ dataTablePro, tapleDataGitAll, dataTableHid, tap
                 ))
 
             case "fin":
-                return  tapleDataGitFin.map((el, index) => (
+                return tapleDataGitFin.map((el, index) => (
                     <tr key={index}>
                         <td>{index}</td>
                         <td>{el.sd}</td>

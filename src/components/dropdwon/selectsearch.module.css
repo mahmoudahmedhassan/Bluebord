@@ -1,4 +1,4 @@
-
+/* 
  
 .sec-center {
   position: relative;
@@ -351,4 +351,49 @@ a .uil {
   top: 20px;
   right: 20px;
 }
+} */
+.drpdowndown{
+  position: relative;
+  width: 100%;
+
+
+}
+.container{
+  position: absolute;
+   width: 100%;
+   /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+}
+
+.labal{
+  background: #ededed;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+.drpdowndown ul{
+  list-style: none;
+    background: #ededed;
+    padding: 10px;
+    opacity: 0;
+    visibility: hidden;
+    transition : all 0.2s ease-in-out;
+}
+.showw{
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+.drpdowndown ul li{
+  width: 100%;
+}
+.drpdowndown ul li button{
+  width: 100%;
+  border: navajowhite;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.drpdowndown ul li:hover button{
+  background: #fff;
 }

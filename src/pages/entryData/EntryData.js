@@ -70,7 +70,7 @@ function EntryData() {
       <Container>
         <Breadcrumbs className='mr-3' main="Grop-1" sub="Page01" />
       </Container>
- 
+
       <Container>
         <EntryPopupData />
 
@@ -83,17 +83,25 @@ function EntryData() {
           <form className="form" style={{ backgroundColor: 'white' }}>
             <Row>
               <Col md={12} lg={6}>
-                <div className="section_1 " >
-                  <div>
-                    <Form.Control
-                      type="text"
-                      placeholder="search"
-                      onChange={e => setQuery(e.target.value)}
-                    />
-                  </div>
-                  <SelectSearch setTapData={setTapData} />
 
+                <div className="section_1 " >
+                  <Row>
+                    <Col>
+                      <div>
+                        <Form.Control
+                          type="text"
+                          placeholder="search"
+                          onChange={e => setQuery(e.target.value)}
+                        />
+                      </div>
+                    </Col>
+                    <Col>
+                      <SelectSearch setTapData={setTapData} />
+
+                    </Col>
+                  </Row>
                 </div>
+                
               </Col>
 
               <Col md={12} lg={6}>
@@ -138,8 +146,6 @@ function EntryData() {
                       name="sW_R"
                       onChange={handleChangeSwitch}
                       checked={switchValue.sW_R}
-
-
                     />
                     <label htmlFor="switch-33"></label>
                     <span className='mx-2'>no</span>
