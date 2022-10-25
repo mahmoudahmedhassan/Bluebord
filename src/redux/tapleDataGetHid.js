@@ -10,6 +10,10 @@ export const fetchTapleDataGitHid = createAsyncThunk(
       const res = await fetch("https://tstAuth.smartgate-egypt.com/Jobs/GetHld");
       console.log(res)
       const data = await res.json();
+      localStorage.setItem(
+        "tapleDataGitHid",
+        JSON.stringify(data)
+      );
 
       return data;
     } catch (error) {
@@ -18,9 +22,15 @@ export const fetchTapleDataGitHid = createAsyncThunk(
   }
 );
 
- const tapleDataGetHidSlice = createSlice({
+const tapleDataGetHidSlice = createSlice({
   name: 'tapleDataGitHid',
-  initialState: { tapleDataGitHid: [], loadingGitHid: false, errorGitHid: null },
+  initialState: {
+    tapleDataGitHid: localStorage.getItem("tapleDataGitHid")
+    ? JSON.parse(localStorage.getItem("tapleDataGitHid"))
+    : [],
+    loadingGitHid: false,
+    errorGitHid: null
+  },
   reducers: {},
   extraReducers: {
     //fetch

@@ -1,6 +1,6 @@
 
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-const URL ="https://tstauth.smartgate-egypt.com/Jobs/Getall";
+const URL = "https://tstauth.smartgate-egypt.com/Jobs/Getall";
 
 export const fetchTapleDataGitFin = createAsyncThunk(
   'tapleDataGitFin/fetchTapleDataGitFin',
@@ -10,6 +10,10 @@ export const fetchTapleDataGitFin = createAsyncThunk(
       const res = await fetch("https://tstauth.smartgate-egypt.com/Jobs/Getfin");
       console.log(res)
       const data = await res.json();
+      localStorage.setItem(
+        "tapleDataGitFin",
+        JSON.stringify(data)
+      );
 
       return data;
     } catch (error) {
@@ -18,9 +22,15 @@ export const fetchTapleDataGitFin = createAsyncThunk(
   }
 );
 
- const tapleDataGetFinSlice = createSlice({
+const tapleDataGetFinSlice = createSlice({
   name: 'tapleDataGitFin',
-  initialState: { tapleDataGitFin: [], loadingGitFin: false, errorGitFin: null },
+  initialState: {
+    tapleDataGitFin:  localStorage.getItem("tapleDataGitFin")
+    ? JSON.parse(localStorage.getItem("tapleDataGitFin"))
+    : [],
+    loadingGitFin: false,
+    errorGitFin: null
+  },
   reducers: {},
   extraReducers: {
     //fetch

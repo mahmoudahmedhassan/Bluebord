@@ -1,6 +1,6 @@
 
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
- 
+
 export const fetchTapleDataGitAll = createAsyncThunk(
   'tapleDataGitAll/fetchTapleData',
   async (_, thunkAPI) => {
@@ -9,6 +9,10 @@ export const fetchTapleDataGitAll = createAsyncThunk(
       const res = await fetch("https://tstauth.smartgate-egypt.com/Jobs/Getall");
       console.log(res)
       const data = await res.json();
+      localStorage.setItem(
+        "tapleDataGitAll",
+        JSON.stringify(data)
+      );
 
       return data;
     } catch (error) {
@@ -17,9 +21,15 @@ export const fetchTapleDataGitAll = createAsyncThunk(
   }
 );
 
- const tapleDataGetAllSlice = createSlice({
+const tapleDataGetAllSlice = createSlice({
   name: 'tapleDataGitAll',
-  initialState: { tapleDataGitAll: [], loadingGitAll: false, errorGitAll: null },
+  initialState: {
+    tapleDataGitAll:localStorage.getItem("tapleDataGitAll")
+    ? JSON.parse(localStorage.getItem("tapleDataGitAll"))
+    : [],
+    loadingGitAll: false,
+    errorGitAll: null
+  },
   reducers: {},
   extraReducers: {
     //fetch

@@ -30,9 +30,7 @@ function EntryData() {
   const [open, setOpen] = useState(false);
 
   const [tapData, setTapData] = useState(1);
-  console.log('tapleDataGitAll', tapleDataGitAll)
-  console.log('tapleDataGitHid', tapleDataGitHid)
-  console.log('tapleDataGitHid', tapleDataGitFin)
+
 
   // search state
   const [query, setQuery] = useState('');
@@ -48,7 +46,7 @@ function EntryData() {
     sW_R: false,
     sw_ST: false
   })
-  console.log(switchValue)
+
   const handleChangeSwitch = ({ target }) => {
     setSwitchValue({
       ...switchValue,
@@ -57,7 +55,7 @@ function EntryData() {
   }
   // filter search
   const keys = ["sd", "t102", "t103", "t104"];
-  const keysSlection = ['sW_N', 'sW_S', 'sW_R', 'sw_ST'];
+  // const keysSlection = ['sW_N', 'sW_S', 'sW_R', 'sw_ST'];
 
   const search = (data) => {
     return data.filter((item) => keys.some((key) => item[key].toString().toLowerCase().includes(query)))

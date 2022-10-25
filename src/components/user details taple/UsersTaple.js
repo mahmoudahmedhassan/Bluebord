@@ -1,29 +1,24 @@
-import { React, useEffect, useState } from 'react';
+import { React } from 'react';
 // redux
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchUsersTapleData } from '../../redux/usersTaple'
 import { fetchUserDetailsTapleData } from '../../redux/userDetailsTapleData'
 import SpinnerLoading from '../../components/sppiner/Sppiner'
 import Table from 'react-bootstrap/Table';
-import { FaUser, FaRegSun, FaBars } from "react-icons/fa";
+import { FaBars } from "react-icons/fa";
 
-function UsersTaple() {
+function UsersTaple({ usersTapleData }) {
+    // redux 
     const dispatch = useDispatch();
-    const { usrsTapleData, loading, error } = useSelector(state => state.UsersTapleDataSlice)
-    console.log('usrsTapleData' , usrsTapleData);
-  // fetch dispatch data 
-  useEffect(() => {
-    dispatch(fetchUsersTapleData())
-  }, [dispatch]);
+    const { loading } = useSelector(state => state.UsersTapleDataSlice)
 
-  const getDetailsUserData = (id)=> {
-    console.log(id)
-    dispatch(fetchUserDetailsTapleData(id))
-  }
+    const getDetailsUserData = (id) => {
+        console.log(id)
+        dispatch(fetchUserDetailsTapleData(id))
+    }
 
     return (
         <div>
-            {loading ? (<SpinnerLoading />) : (
+            {loading ? (<div className='text-center'> <SpinnerLoading /></div>) : (
                 <Table className='table' striped bordered hover responsive style={{ height: '600px !important' }}>
                     <thead className='text-center'>
                         <tr>
@@ -34,19 +29,19 @@ function UsersTaple() {
                             <th className='row-5 row-test-6'> T104</th>
                             <th className='row-6 row-test-7'> T105</th>
                             <th className='row-15 row-test-16'> option</th>
-                         </tr>
+                        </tr>
                     </thead>
                     <tbody >
                         {
-                            usrsTapleData.map((el, index) => (
-                                <tr key={index} onClick={()=>{getDetailsUserData(el.sd)} } >
+                            usersTapleData.map((el, index) => (
+                                <tr key={index} onClick={() => { getDetailsUserData(el.sd) }} >
                                     <td>{el.sd}</td>
                                     <td>{el.t101}</td>
                                     <td>{el.t102}</td>
                                     <td>{el.t103}</td>
                                     <td>{el.t104}</td>
                                     <td>{new Date(el.t105).toLocaleString('en-us', { month: 'short', year: 'numeric' })}</td>
-                                    <td> <FaBars/> </td>
+                                    <td> <FaBars /> </td>
                                 </tr>
                             ))
                         }

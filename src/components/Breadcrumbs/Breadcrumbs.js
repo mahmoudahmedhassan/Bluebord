@@ -6,7 +6,7 @@ const Breadcrumbs = (props) => {
     const { t } = useTranslation();
     return (
         <div className="breadcrumb-container">
-            <h3>
+            <h5>
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb mb-0">
                         <li className="breadcrumb-item"> {t(props.main)}</li>
@@ -16,7 +16,7 @@ const Breadcrumbs = (props) => {
                     </ol>
                 </nav>
 
-            </h3>
+            </h5>
         </div>
     );
 };

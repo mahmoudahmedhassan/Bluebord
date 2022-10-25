@@ -6,7 +6,7 @@
 }
 .counter-container{
     background: #a47ea6;
-    width: 200px;
+    width: 250px;
     height: 100px;
     display: flex;
     justify-content: space-between;
@@ -28,7 +28,7 @@
     font-weight:bold;
 }
 .chart{
-    width: 200px;
+    width: 250px;
     padding: 10px;
     background: white;
     border-radius: 20px;
@@ -36,11 +36,11 @@
     box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
 }
 
-@media only screen and (max-width: 600px) {
+/* @media only screen and (max-width: 600px) {
     body {
       background-color: lightblue;
     }
-  }
+  } */
 
   @media (min-width: 991px) and (max-width: 1200px) {
     .chart{

@@ -2,6 +2,7 @@ import { React } from 'react';
 // import './taple.css';
 import SpinnerLoading from '../../components/sppiner/Sppiner'
 import Table from 'react-bootstrap/Table';
+import { FaUser, FaRegSun, FaBars } from "react-icons/fa";
 
 export default function Taple({ dataTablePro, tapleDataGitAll, dataTableHid, tapleDataGitFin, tapData, loading, error }) {
 
@@ -26,7 +27,7 @@ export default function Taple({ dataTablePro, tapleDataGitAll, dataTableHid, tap
                         <td>{new Date(el.t112).toLocaleString('en-us', { month: 'short', year: 'numeric' })}</td>
                         <td>{el.t113}</td>
                         <td>{el.t114}</td>
-                        <td><button>Edit</button></td>
+                        <td><FaBars/></td>
 
                     </tr>
                 ))
@@ -49,7 +50,7 @@ export default function Taple({ dataTablePro, tapleDataGitAll, dataTableHid, tap
                         <td>{new Date(el.t112).toLocaleString('en-us', { month: 'short', year: 'numeric' })}</td>
                         <td>{el.t113}</td>
                         <td>{el.t114}</td>
-                        <td><button>Edit</button></td>
+                        <td><FaBars/></td>
 
                     </tr>
                 ))
@@ -72,7 +73,7 @@ export default function Taple({ dataTablePro, tapleDataGitAll, dataTableHid, tap
                         <td>{new Date(el.t112).toLocaleString('en-us', { month: 'short', year: 'numeric' })}</td>
                         <td>{el.t113}</td>
                         <td>{el.t114}</td>
-                        <td><button>Edit</button></td>
+                        <td><FaBars/></td>
 
                     </tr>
                 ))
@@ -103,7 +104,6 @@ export default function Taple({ dataTablePro, tapleDataGitAll, dataTableHid, tap
 
                 return dataTablePro.map((el, index) => (
                     <tr key={index}>
-                        <td>{index}</td>
                         <td>{el.sd}</td>
                         <td>{el.t102}</td>
                         <td>{el.t103}</td>
@@ -118,15 +118,12 @@ export default function Taple({ dataTablePro, tapleDataGitAll, dataTableHid, tap
                         <td>{new Date(el.t112).toLocaleString('en-us', { month: 'short', year: 'numeric' })}</td>
                         <td>{el.t113}</td>
                         <td>{el.t114}</td>
-                        <td><button>Edit</button></td>
+                        <td><FaBars/></td>
 
                     </tr>
                 ))
         }
     }
-
-
-
 
     return (
         <div className='container table text-center mb-5'>
@@ -134,22 +131,21 @@ export default function Taple({ dataTablePro, tapleDataGitAll, dataTableHid, tap
                 <Table className='table' striped bordered hover responsive style={{ height: '600px !important' }}>
                     <thead className='text-center'>
                         <tr>
-                            <th className='row-1 row-index'>index</th>
-                            <th className='row-2 row-test-2'> test-1</th>
-                            <th className='row-3 row-test-3'> test-2</th>
-                            <th className='row-4 row-test-4'> test-3</th>
-                            <th className='row-5 row-test-5'> test-4</th>
-                            <th className='row-5 row-test-6'> test-5</th>
-                            <th className='row-6 row-test-7'> test-6</th>
-                            <th className='row-7 row-test-8'> test-7</th>
-                            <th className='row-8 row-test-9'> test-8</th>
-                            <th className='row-9 row-test-10'> test-9</th>
-                            <th className='row-10 row-test-11'> test-10</th>
-                            <th className='row-11 row-test-12'> test-11</th>
-                            <th className='row-12 row-test-13'> test-12</th>
-                            <th className='row-13 row-test-14'> test-13</th>
-                            <th className='row-14 row-test-15'> test-14</th>
-                            <th className='row-15 row-test-16'> buttons</th>
+                             <th className='row-2 row-test-2'> SD</th>
+                            <th className='row-3 row-test-3'> t102</th>
+                            <th className='row-4 row-test-4'> t103</th>
+                            <th className='row-5 row-test-5'> t104</th>
+                            <th className='row-5 row-test-6'> t105</th>
+                            <th className='row-6 row-test-7'> t106</th>
+                            <th className='row-7 row-test-8'> t107</th>
+                            <th className='row-8 row-test-9'> t108</th>
+                            <th className='row-9 row-test-10'> t109</th>
+                            <th className='row-10 row-test-11'> t110</th>
+                            <th className='row-11 row-test-12'> t111</th>
+                            <th className='row-12 row-test-13'> t112</th>
+                            <th className='row-13 row-test-14'> t113</th>
+                            <th className='row-14 row-test-15'> t114</th>
+                            <th className='row-15 row-test-16'> options</th>
 
                         </tr>
                     </thead>
