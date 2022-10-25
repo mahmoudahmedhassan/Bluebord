@@ -6,7 +6,7 @@
 }
 .counter-container{
     background: #a47ea6;
-    width: 300px;
+    width: 200px;
     height: 100px;
     display: flex;
     justify-content: space-between;
@@ -28,7 +28,7 @@
     font-weight:bold;
 }
 .chart{
-    width: 300px;
+    width: 200px;
     padding: 10px;
     background: white;
     border-radius: 20px;

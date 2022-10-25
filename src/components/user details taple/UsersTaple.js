@@ -2,6 +2,7 @@ import { React, useEffect, useState } from 'react';
 // redux
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchUsersTapleData } from '../../redux/usersTaple'
+import { fetchUserDetailsTapleData } from '../../redux/userDetailsTapleData'
 import SpinnerLoading from '../../components/sppiner/Sppiner'
 import Table from 'react-bootstrap/Table';
 import { FaUser, FaRegSun, FaBars } from "react-icons/fa";
@@ -13,9 +14,13 @@ function UsersTaple() {
   // fetch dispatch data 
   useEffect(() => {
     dispatch(fetchUsersTapleData())
-  }, [dispatch])
+  }, [dispatch]);
 
- 
+  const getDetailsUserData = (id)=> {
+    console.log(id)
+    dispatch(fetchUserDetailsTapleData(id))
+  }
+
     return (
         <div>
             {loading ? (<SpinnerLoading />) : (
@@ -31,10 +36,10 @@ function UsersTaple() {
                             <th className='row-15 row-test-16'> option</th>
                          </tr>
                     </thead>
-                    <tbody>
+                    <tbody >
                         {
                             usrsTapleData.map((el, index) => (
-                                <tr key={index}>
+                                <tr key={index} onClick={()=>{getDetailsUserData(el.sd)} } >
                                     <td>{el.sd}</td>
                                     <td>{el.t101}</td>
                                     <td>{el.t102}</td>

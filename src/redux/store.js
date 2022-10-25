@@ -7,7 +7,8 @@ import tapleDataSlice from './tapleData';
 import tapleDataGetAllSlice from './tapleDataGetAll';
 import tapleDataGetHidSlice from './tapleDataGetHid';
 import tapleDataGetFinSlice from './tapleDataGitFin';
-import UsersTapleDataSlice from './usersTaple'
+import UsersTapleDataSlice from './usersTaple';
+import UserTapleDataSlice from './userDetailsTapleData'
 
 export  const store = configureStore({
   reducer: {
@@ -19,6 +20,7 @@ export  const store = configureStore({
     tapleDataGetAllSlice,
     tapleDataGetHidSlice,
     tapleDataGetFinSlice,
-    UsersTapleDataSlice
+    UsersTapleDataSlice,
+    UserTapleDataSlice
   },
 })

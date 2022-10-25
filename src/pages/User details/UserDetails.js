@@ -2,6 +2,7 @@ import React from 'react';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs'; // title components
 import UsersTaple from '../../components/user details taple/UsersTaple';
 import TapleDetailsUser from '../../components/user details taple/TapleDetailsUser';
+import { useSelector, useDispatch } from 'react-redux';
 
 import classes from './userdetails.module.css'
 // bootstartp
@@ -12,7 +13,9 @@ import Button from 'react-bootstrap/Button';
 
 
 export default function UserDetails() {
-
+  const { userTapleData, loading, error } = useSelector(state => state.UserTapleDataSlice)
+  const [pG03Lb02a, pG03Lb04a, pG03Lb05a, pG03Lb07a, pG03Lb08a, pG03Sw02, pG03Sw03, pG03Tx02a, pG03Tx04a, pG03Tx05a, pG03Tx06, G03Tx02a, G03Tx06] = userTapleData;
+  console.log(pG03Lb02a?.pG03Lb02a)
   return (
     <div className={classes.userDetails}>
       <Container>
@@ -53,14 +56,16 @@ export default function UserDetails() {
               {/* UserTapleDetails_row_0 */}
               <div className={classes.UserTapleDetails_row_0}>
                 <Row>
-                  <Col sm={12} md={2}>
-                    <div className={classes.UserTapleDetails_label}>label-1</div>
+                  <Col sm={12} md={2} className='d-flex'>
+                    <div className={classes.UserTapleDetails_label}>pG03Lb02</div>
                   </Col>
                   <Col sm={12} md={10}>
-                    <div className='mb-2'>
+                    <div>
                       <Form.Control
                         type="text"
                         placeholder="text-1"
+                        name='pG03Lb02a'
+                        value={pG03Tx02a?.pG03Tx02a}
                       />
                     </div>
                   </Col>
@@ -71,13 +76,13 @@ export default function UserDetails() {
 
               <div className={classes.UserTapleDetails_row_1}>
                 <Row>
-                  <Col md={3}>
+                  <Col md={2} className='d-flex'>
                     <div className={classes.UserTapleDetails_label}>label-2</div>
                   </Col>
-                  <Col md={3}>
-                    <div className={classes.UserTapleDetails_label}>label-3</div>
+                  <Col md={4} className='d-flex'>
+                    <div className={classes.UserTapleDetails_label}>{pG03Lb02a?.pG03Lb02a}</div>
                   </Col>
-                  <Col md={2}>
+                  <Col md={2} className='d-flex'>
                     <div className={classes.UserTapleDetails_label}>label-3</div>
                   </Col>
                   <Col md={4}>
@@ -85,7 +90,6 @@ export default function UserDetails() {
                       <Form.Control
                         type="text"
                         placeholder="labla-1 "
-                        className='mb-2'
                       />
                     </div>
                   </Col>
@@ -96,13 +100,13 @@ export default function UserDetails() {
 
               <div className={classes.UserTapleDetails_row_2}>
                 <Row>
-                  <Col md={3}>
+                  <Col md={2} className='d-flex'>
                     <div className={classes.UserTapleDetails_label}>label-4</div>
                   </Col>
-                  <Col md={3}>
-                    <div className={classes.UserTapleDetails_label}>label-5</div>
+                  <Col md={4} className='d-flex'>
+                    <div className={classes.UserTapleDetails_label}>{pG03Lb04a?.pG03Lb04a}</div>
                   </Col>
-                  <Col md={2}>
+                  <Col md={2} className='d-flex'>
                     <div className={classes.UserTapleDetails_label}>label-5</div>
                   </Col>
                   <Col md={4}>
@@ -110,6 +114,7 @@ export default function UserDetails() {
                       <Form.Control
                         type="text"
                         placeholder="labla-1 "
+                        value={pG03Tx04a?.pG03Tx04a}
                       />
                     </div>
                   </Col>
@@ -122,25 +127,25 @@ export default function UserDetails() {
               <div className={classes.UserTapleDetails_row_3}>
 
                 <Row>
-                  <Col md={2}>
+                  <Col md={2} className='d-flex'>
                     <div className={classes.UserTapleDetails_label}>label-6</div>
                   </Col>
-                  <Col md={2}>
-                    <div className={classes.UserTapleDetails_label}>label-7</div>
+                  <Col md={2} className='d-flex'>
+                    <div className={classes.UserTapleDetails_label}> {pG03Lb05a?.pG03Lb05a}</div>
                   </Col>
-                  <Col md={2}>
+                  <Col md={2} className='d-flex'>
                     <div className={classes.UserTapleDetails_label}>label-8</div>
                   </Col>
 
-                  <Col md={2}>
-                    <div className={classes.UserTapleDetails_label}>label-9</div>
+                  <Col md={2} className='d-flex'>
+                    <div className={classes.UserTapleDetails_label}>{pG03Lb07a?.pG03Lb07a}</div>
                   </Col>
-                  <Col md={2}>
-                    <div>X</div>
+                  <Col md={2} className='d-flex'>
+                    <div className={classes.multiplie}>X</div>
                   </Col>
 
-                  <Col md={2}>
-                    <div className={classes.UserTapleDetails_label}>label-10</div>
+                  <Col md={2} className='d-flex'>
+                    <div className={classes.UserTapleDetails_label}>{pG03Lb08a?.pG03Lb08a}</div>
                   </Col>
                 </Row>
 
@@ -148,11 +153,11 @@ export default function UserDetails() {
               </div>
 
               <div className={classes.UsersTaple}>
-                <UsersTaple />
+                <TapleDetailsUser />
               </div>
               {/*  row-4*/}
               <div className={classes.UserTapleDetails_textarea}>
-                <textarea placeholder="text area" disabled />
+                <textarea placeholder="text area" disabled value={pG03Tx05a?.pG03Tx05a} />
               </div>
               {/*  row-5*/}
               <div>
@@ -165,23 +170,27 @@ export default function UserDetails() {
                     <div className='d-flex align-items-center mb-2'>
                       <span className='mx-2'>yes</span>
                       <input
-                        id='switch-1111'
+                        id='pG03Sw02'
                         type="checkbox"
                         name="sW_N"
+                        checked={pG03Sw02?.pG03Sw02}
+
                       />
-                      <label htmlFor="switch-1111"></label>
+                      <label htmlFor="pG03Sw02"></label>
                       <span className='mx-2'>no</span>
-                    </div>                  </Col>
+                    </div> 
+                     </Col>
 
                   <Col>
                     <div className='d-flex align-items-center mb-2'>
                       <span className='mx-2'>yes</span>
                       <input
-                        id='switch-1111'
+                        id='pG03Sw03'
                         type="checkbox"
                         name="sW_N"
+                        checked={pG03Sw03?.pG03Sw03}
                       />
-                      <label htmlFor="switch-1111"></label>
+                      <label htmlFor="pG03Sw03"></label>
                       <span className='mx-2'>no</span>
                     </div>
                   </Col>
@@ -196,13 +205,11 @@ export default function UserDetails() {
                   <Form.Control
                     type="text"
                     placeholder=""
+                    value={G03Tx06?.G03Tx06}
                   />
                 </div>
 
               </div>
-
-
-
 
             </div>
           </Col>
