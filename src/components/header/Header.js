@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import classes from './header.module.css';
-
+import AccountMenu from '../../components/profile menu/ProfileMenu'
 import saudiFlag from '../../pages/auth/login/assets/saudi-arabia.png';
 import unitedFlag from '../../pages/auth/login/assets/united-kingdom.png';
 
@@ -36,16 +36,11 @@ function Header() {
         dispatch(switerSidebar(openSidebar))
     }
 
-    const logOut =()=>{
-        localStorage.removeItem("current-user");
-        window.location.reload();
-        localStorage.removeItem('access-token');
-        navigate('/');
-    }
+ 
    
     const UserDropdown = (
         <>
-            <Dropdown>
+            {/* <Dropdown>
                 <Dropdown.Toggle variant="success" id="dropdown-basic"   >
                 {users && users.username}
                 </Dropdown.Toggle>
@@ -55,18 +50,9 @@ function Header() {
                     <Dropdown.Item href="#/action-2"><FaRegSun /> <span>{t("settings")}</span></Dropdown.Item>
                     <Dropdown.Item href="#/action-3" onClick={logOut}><BiLogOut /><span > {t("logout")}</span></Dropdown.Item>
                 </Dropdown.Menu>
-            </Dropdown>
-            {/* <nav>
-                <ul>
-                    <li> Style 1
-                        <ul className={`${classes.drop_menu} ${classes.menu_1}`}>
-                            <li>Lorem, ipsum.</li>
-                            <li>Lorem, ipsum.</li>
-                            <li>Lorem, ipsum.</li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav> */}
+            </Dropdown> */}
+            <AccountMenu/>
+
         </>
     )
     return (

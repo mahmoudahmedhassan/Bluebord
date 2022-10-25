@@ -23,7 +23,7 @@ function SidebarMenu() {
           <SubMenu icon={<FaUser />} label="Grop-1">
             <MenuItem><NavLink to='./entryData'> Grop-1 page01 </NavLink></MenuItem>
             <MenuItem> <NavLink to='./userDetails'> Grop-1 page02 </NavLink></MenuItem>
-            <MenuItem> Grop-1 page03</MenuItem>
+         <NavLink to='./TextTaple'> <MenuItem>  Grop-1 page03 </MenuItem></NavLink>
           </SubMenu>
 
           <SubMenu icon={<FaUser />} label="Maps">
