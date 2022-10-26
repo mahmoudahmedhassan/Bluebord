@@ -19,7 +19,7 @@ export default function AccountMenu() {
 
     const { users} = useSelector(state => state.users);
     const logOut =()=>{
-        localStorage.removeItem("current-user");
+        localStorage.clear();
         window.location.reload();
         localStorage.removeItem('access-token');
         navigate('/');

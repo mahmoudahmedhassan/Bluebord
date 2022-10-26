@@ -14,8 +14,8 @@ function SidebarMenu() {
   const dir = dirction && rtl;
 
   return (
-    <div className="sidebar"style={{ display: 'flex', minHeight: '100vh', }}>
-      
+    <div className="sidebar" style={{ display: 'flex', minHeight: '100vh', }}>
+
       <Sidebar backgroundColor="rgb(64,78,103)" className="sidebar-container" >
         <Menu>
           <p className="logo"> <img src={logo} alt='logo' height='50px' /> </p>
@@ -23,7 +23,7 @@ function SidebarMenu() {
           <SubMenu icon={<FaUser />} label="Grop-1">
             <MenuItem><NavLink to='./entryData'> Grop-1 page01 </NavLink></MenuItem>
             <MenuItem> <NavLink to='./userDetails'> Grop-1 page02 </NavLink></MenuItem>
-         <NavLink to='./TextTaple'> <MenuItem>  Grop-1 page03 </MenuItem></NavLink>
+            <NavLink to='./userDetails_2'> <MenuItem>  Grop-1 page03 </MenuItem></NavLink>
           </SubMenu>
 
           <SubMenu icon={<FaUser />} label="Maps">
