@@ -24,8 +24,7 @@ function Header() {
     const navigate = useNavigate();
 
     const dispatch = useDispatch();
-    const { users} = useSelector(state => state.users)
-
+ 
     const [t, i18n] = useTranslation();
 
     const [openSidebar, setOpenSidebar] = useState(true);
@@ -35,7 +34,6 @@ function Header() {
         setOpenSidebar(!openSidebar)
         dispatch(switerSidebar(openSidebar))
     }
-
 
     const UserDropdown = (
         <>
@@ -51,7 +49,17 @@ function Header() {
                 </Dropdown.Menu>
             </Dropdown> */}
             <AccountMenu/>
-
+            {/* <nav>
+                <ul>
+                    <li> Style 1
+                        <ul className={`${classes.drop_menu} ${classes.menu_1}`}>
+                            <li>Lorem, ipsum.</li>
+                            <li>Lorem, ipsum.</li>
+                            <li>Lorem, ipsum.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav> */}
         </>
     )
     return (
@@ -61,13 +69,13 @@ function Header() {
             <div className={classes.user} >
                 <div className={classes.lang}>
                     {
-                        i18n.language === 'en' ? (
+                        i18n.language === 'ar' ? (
                             <img src={saudiFlag}
                                 alt='ar'
                                 height="30px"
                                 onClick={() => {
-                                    i18n.changeLanguage('ar');
-                                    dispatch(toggleSwitchAr('ar'))
+                                    i18n.changeLanguage('en');
+                                    dispatch(toggleSwitchAr('en'))
                                 }}
                             />
                         ) : (
@@ -75,14 +83,14 @@ function Header() {
                                 alt='en'
                                 height="30px"
                                 onClick={() => {
-                                    i18n.changeLanguage('en');
-                                    dispatch(toggleSwitchEn('en'))
+                                    i18n.changeLanguage('ar');
+                                    dispatch(toggleSwitchEn('ar'))
                                 }}
                             />
                         )
                     }
-
-                </div>
+                    
+                 </div>
                 <div className={classes.UserDropdown}>{UserDropdown}</div>
             </div>
             <div className={classes.menubar}>

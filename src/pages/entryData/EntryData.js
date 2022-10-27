@@ -72,10 +72,10 @@ function EntryData() {
       <Container>
         <EntryPopupData />
 
-        <Button variant="primary"
+        <button variant="primary" className='searchTaple_but'
           onClick={() => setOpen(!open)}
 
-        >search</Button>
+        >search</button>
 
         <Collapse in={open}>
           <form className="form" style={{ backgroundColor: 'white' }}>
@@ -99,7 +99,7 @@ function EntryData() {
                     </Col>
                   </Row>
                 </div>
-                
+
               </Col>
 
               <Col md={12} lg={6}>

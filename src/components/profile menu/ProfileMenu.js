@@ -11,13 +11,20 @@ import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+
 import {useSelector} from 'react-redux';
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 
 export default function AccountMenu() {
     const navigate = useNavigate();
+    const [t, i18n] = useTranslation();
 
     const { users} = useSelector(state => state.users);
+
+    const { dirction } = useSelector(state => state.dirction);
+    console.log(dirction)
+
     const logOut =()=>{
         localStorage.clear();
         window.location.reload();
@@ -59,6 +66,7 @@ export default function AccountMenu() {
         PaperProps={{
           elevation: 0,
           sx: {
+             direction: 'rtl',
             overflow: 'visible',
             filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
             mt: 1.5,
@@ -86,29 +94,29 @@ export default function AccountMenu() {
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
         <MenuItem>
-          <Avatar /> Profile
+          <Avatar /> {t("Profile")}
         </MenuItem>
-        <MenuItem>
-          <Avatar /> My account
-        </MenuItem>
+        {/* <MenuItem>
+          <Avatar /><span>{t("My account")}</span>
+        </MenuItem> */}
         <Divider />
         <MenuItem onClick={logOut}>
           <ListItemIcon>
             <PersonAdd fontSize="small" />
           </ListItemIcon>
-          Add another account
+          {t("Add another account")}
         </MenuItem>
         <MenuItem>
           <ListItemIcon>
             <Settings fontSize="small" />
           </ListItemIcon>
-          Settings
+         {t("Settings")}
         </MenuItem>
         <MenuItem onClick={logOut}>
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>
-          Logout
+         {t("Logout")}
         </MenuItem>
       </Menu>
     </React.Fragment>

@@ -1,3 +1,14 @@
+.searchTaple_but{
+    width: 120px;
+    border: none;
+    padding: 5px;
+    text-transform: capitalize;
+    background: #222e3c;
+    color: #fff;
+    border-radius: 6px;
+    margin: 10px;
+
+}
 .section_2{
     display:flex;
     justify-content:space-around;
@@ -15,8 +26,8 @@
 
 .form{
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-    padding: 30px;
-    margin-bottom:50px;
+    padding: 10px;
+    margin-bottom: 15px;
     border-radius: 20px;
 
 }

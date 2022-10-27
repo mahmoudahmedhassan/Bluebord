@@ -10,9 +10,9 @@ import SideBarTest from "../../components/sidebar/SideBarTest";
 const Root = () => {
   // const togglee = false
   const { dirction } = useSelector(state => state.dirction);
+  console.log('dirction',dirction)
   const { witchSidebar } = useSelector(state => state.switchSidebar);
-  console.log(witchSidebar)
-
+ 
   return (
     <div className={dirction === 'ar' ? 'rtlDir  wrapper' : 'wrapper'}  >
       <div className='main'>

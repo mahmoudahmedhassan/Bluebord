@@ -1,3 +1,4 @@
+ // eslint-disable-next-line import/no-anonymous-default-export
  export default {
     en: {
         translation: {
@@ -10,9 +11,14 @@
             "B": "ا",
             "lueboard": "lueboard",
             "logo":"بدج",
-            'profile':"الصفحة الشخصية",
-            "settings":"الاعدادات",
-            "logout":"تسجيل الخروج"
+            "Account settings": "اعدادت الحساب",
+            "Add another account": "اضافه حساب جديد",
+            'Profile':"الصفحة الشخصية",
+            "My account" :"حسابي",
+            "Settings":"الاعدادات",
+            "Logout":"تسجيل الخروج",
+            "add":"اضافة",
+            "search":"بحث"
         },
     },
 };
