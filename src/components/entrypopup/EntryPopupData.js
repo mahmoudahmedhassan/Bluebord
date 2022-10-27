@@ -149,8 +149,22 @@ function EntryPopupData() {
               {/* section 2 */}
 
               <Row className='row_1'>
+               {/* {col-1 } */}
+                {/* <Col>
+
+                </Col> */}
+
+               {/* {col-2 } */}
+                {/* <Col></Col> */}
+
+                {/* {col-3 } */}
+                {/* <Col></Col> */}
+
+ 
+ 
                 <Col md={12} lg={7}>
                   <div className='d-flex mb-2 row_2_col_1'>
+
                     <div className=' me-2' >
                       <Form.Control
                         type="number"
@@ -172,9 +186,6 @@ function EntryPopupData() {
                         onChange={handleChange}
                       />
                     </div>
-
-                    {/* <button onClick={(e) => MultiplyingNumbers(e)}>Multiplying</button> */}
-
 
                     <div className=' resalt'>
                       {Multiplying ? Multiplying : null}
@@ -267,6 +278,7 @@ function EntryPopupData() {
                 </Col>
 
               </Row>
+
               {/* section 3 */}
 
               <Row className='row_1'>

@@ -17,16 +17,26 @@ function SelectSearch({ setTapData }) {
     const dispatch = useDispatch();
     const [show, setShow] = useState(false);
     console.log(show)
+    const [select, setSelect] = useState('')
+    console.log(select)
 
+    const handleChange = (event) => {
+        setSelect(event.target.value);
+    };
 
-    // fetch dispatch data 
-    // useEffect(() => {
-    //     dispatch(fetchTapleDataGitAll())
-    //     dispatch(fetchTapleDataGitHid())
-    // }, [dispatch])
+     useEffect(() => {
+       if(select=== "pro"){
+        getPro()
+       }else if(select==='all'){
+        getAll()
+       }else if(select==='hid'){
+        getHid()
+       }else if(select==='fin'){
+        getFin()
+       }
+    }, [select])
 
     const getPro = (e) => {
-        e.preventDefault()
         dispatch(fetchTapleData())
         setTapData('pro')
         setShow(false)
@@ -34,21 +44,18 @@ function SelectSearch({ setTapData }) {
     }
 
     const getAll = (e) => {
-        e.preventDefault()
-        dispatch(fetchTapleDataGitAll());
+         dispatch(fetchTapleDataGitAll());
         setTapData('all')
         setShow(false)
     }
     const getHid = (e) => {
-        e.preventDefault()
         dispatch(fetchTapleDataGitHid());
         setTapData('hid')
         setShow(false)
 
     }
     const getFin = (e) => {
-        e.preventDefault()
-        dispatch(fetchTapleDataGitFin());
+         dispatch(fetchTapleDataGitFin());
         setTapData('fin')
         setShow(false)
     }
@@ -66,8 +73,9 @@ function SelectSearch({ setTapData }) {
                     </ul>
                 </div>
             </div> */}
+
             <div className='mb-2'>
-                <Form.Select aria-label="Floating label select example" placeholder="drop" name='dropdown'>
+                <Form.Select aria-label="Floating label select example" placeholder="drop" name='dropdown' onChange={handleChange}>
                     <option><button onClick={getPro}>pro</button></option>
                     <option><button onClick={getAll}>all</button></option>
                     <option><button onClick={getHid}>hid</button></option>
