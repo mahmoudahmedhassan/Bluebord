@@ -10,7 +10,7 @@
     height: 100px;
     display: flex;
     justify-content: space-between;
-    background: linear-gradient(to right,#fe5d70,#fe909d);
+    background: #222e3c;;
     border-radius: 10px;
     margin: 15px;
     padding: 15px;
@@ -30,7 +30,7 @@
 .chart{
     width: 250px;
     padding: 10px;
-    background: white;
+    background: #222e3c;;
     border-radius: 20px;
     margin: 20px;
     box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;

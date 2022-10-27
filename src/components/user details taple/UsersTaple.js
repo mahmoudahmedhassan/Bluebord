@@ -1,7 +1,8 @@
 import { React } from 'react';
 // redux
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchUserDetailsTapleData } from '../../redux/userDetailsTapleData'
+import { fetchUserDetailsTapleData } from '../../redux/userDetailsTapleData';
+import {fetchUserDetailsTapleData_2} from '../../redux/userDetailsTapleData_2'
 import SpinnerLoading from '../../components/sppiner/Sppiner'
 import Table from 'react-bootstrap/Table';
 import { FaBars } from "react-icons/fa";
@@ -12,8 +13,8 @@ function UsersTaple({ usersTapleData }) {
     const { loading } = useSelector(state => state.UsersTapleDataSlice)
 
     const getDetailsUserData = (id) => {
-        console.log(id)
-        dispatch(fetchUserDetailsTapleData(id))
+        dispatch(fetchUserDetailsTapleData(id));
+        dispatch(fetchUserDetailsTapleData_2(id));
     }
 
     return (

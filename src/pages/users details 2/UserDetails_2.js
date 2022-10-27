@@ -15,18 +15,19 @@ function UserDetailsTow() {
     const dispatch = useDispatch();
     const { usrsTapleData_2 } = useSelector(state => state.UsersTapleData_2Slice)
     const [query, setQuery] = useState('');
+    const [switchValue,setSwitchValue] = useState(false)
+    console.log('switchValue',switchValue)
 
     useEffect(() => {
         dispatch(fetchUsersTapleData_2())
     }, [dispatch]);
+
     // filter search
     const keys = ["t101", "t102", "t103"];
-
     const search = (data) => {
         return data.filter((item) => keys.some((key) => item[key].toString().toLowerCase().includes(query)))
-        // .filter((item) => keysSlection.some((keySw) => item[keySw].includes(switchValue) ))
-        // .filter((item) => keysSlection.some((key) => item[key].includes(switchValue) ))
-    };
+                    // .filter(item=> item === switchValue ? item : null)
+     };
     return (
         <div className={classes.userDetails_2}>
             <Container> <Breadcrumbs className='mr-2' main="Grop-1" sub="Page03" /> </Container>
@@ -50,12 +51,13 @@ function UserDetailsTow() {
                                     <div className='d-flex align-items-center justify-content-center mb-2'>
                                         <span className='mx-2'>yes</span>
                                         <input
-                                            id='switch-1111'
+                                            id='switch-SearchTaple-2'
                                             type="checkbox"
                                             name="sW_N"
-
+                                            onChange={(e)=>setSwitchValue(e.target.checked)}
+                                            checked={switchValue}
                                         />
-                                        <label htmlFor="switch-1111"></label>
+                                        <label htmlFor="switch-SearchTaple-2"></label>
                                         <span className='mx-2'>no</span>
                                     </div>
                                 </Col>
@@ -158,6 +160,7 @@ function UserDetailsTow() {
                             </div>
 
                             {/*  row-4*/}
+
                             <div>
                                 <Row>
                                     <Col lg={8}>

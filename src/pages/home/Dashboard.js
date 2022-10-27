@@ -27,7 +27,7 @@ function Dashboard() {
         setLoading(false)
         data.forEach(element => {
           chartData.push({
-            labels: ['t202 :' + element.t202, 't203 : ' +element.t203, 't204 : ' + element.t204],
+            labels: [element.t202Lb+":"+element.t202,element.t203Lb+":"+element.t203,element.t204Lb+":"+element.t204],
             datasets: [{
               data: [element.t202, element.t203, element.t204,],
               backgroundColor: [
@@ -38,7 +38,8 @@ function Dashboard() {
               borderColor: "black",
               borderWidth: 2,
             }],
-            all: element.t201
+            all: element.t201,
+            title:element.title
           })
         })
         setDashboards(chartData)
@@ -51,11 +52,11 @@ function Dashboard() {
        <Row>
         {loading ? <div className='text-center'><Spinner/></div>:
          dashbords.map(item => (
-          <Col md={12} lg={4}>
+           <Col md={12} lg={4}>
             <div className="counter-main">
               <div className="counter-container" >
                 <div>
-                  <h3>title</h3>
+                  <h3>{item.title}</h3>
                   <CountUp
                     className="counter"
                     start={0}

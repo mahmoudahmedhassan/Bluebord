@@ -1,6 +1,11 @@
 import { React, useState, useEffect } from 'react';
 import classes from './selectsearch.module.css'
 import Form from 'react-bootstrap/Form';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+
 // redux
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchTapleDataGitAll } from '../../redux/tapleDataGetAll'
@@ -46,11 +51,11 @@ function SelectSearch({ setTapData }) {
         dispatch(fetchTapleDataGitFin());
         setTapData('fin')
         setShow(false)
-     }
+    }
 
     return (
-        <>
-            <div className={classes.drpdowndown}>
+        <div>
+            {/* <div className={classes.drpdowndown}>
                 <div className={classes.container}>
                     <div className={classes.labal} onClick={() => setShow(!show)}>select</div>
                     <ul className={show ? classes.showw : ''}>
@@ -60,8 +65,17 @@ function SelectSearch({ setTapData }) {
                         <li> <button onClick={getFin}>fin</button></li>
                     </ul>
                 </div>
+            </div> */}
+            <div className='mb-2'>
+                <Form.Select aria-label="Floating label select example" placeholder="drop" name='dropdown'>
+                    <option><button onClick={getPro}>pro</button></option>
+                    <option><button onClick={getAll}>all</button></option>
+                    <option><button onClick={getHid}>hid</button></option>
+                    <option><button onClick={getFin}>fin</button></option>
+                </Form.Select>
             </div>
-        </>
+
+        </div>
     )
 }
 

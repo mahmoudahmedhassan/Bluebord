@@ -4,7 +4,9 @@ import Header from "../../components/header/Header";
 import Footer from "../../components/Footer/Footer";
 import './root.css';
 import { useSelector } from 'react-redux';
+ 
 
+import SideBarTest from "../../components/sidebar/SideBarTest";
 const Root = () => {
   // const togglee = false
   const { dirction } = useSelector(state => state.dirction);
@@ -13,21 +15,16 @@ const Root = () => {
 
   return (
     <div className={dirction === 'ar' ? 'rtlDir  wrapper' : 'wrapper'}  >
-      <div className='main'
-      // className={!witchSidebar ? "open" : "close"}
-      >
+      <div className='main'>
 
-        {/* <div className={!witchSidebar ? 'openSidebar' : 'closeSidebar'}>
-          <SidebarMenu />
-        </div> */}
-        
-        <div className={dirction === 'ar'? "sidbar-fixed-sidebar-ar" :"sidbar-fixed-sidebar-en"}>
+        <div style={{zIndex:'99'}} className='scrollbar'>
         <SidebarMenu />
+        {/* <SideBarTest/> */}
         </div>
         
-        <div className={witchSidebar? "main-container-close": 'main-container-open'}>
+        <div className={dirction==="en"? witchSidebar? "main-container-close": 'main-container-open':witchSidebar? "main-container-ar-close": 'main-containe-ar-open'}>
           <Header />
-          <div className="main-outlet" style={{ minHeight: 'calc(100vh - 100px)',backgroundColor:'#F6F7FB '}}>
+          <div className="main-outlet">
             <Outlet />
           </div>
           <Footer />

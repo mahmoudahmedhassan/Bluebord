@@ -12,6 +12,17 @@
     height: 100%;
     transition: all 0.4s ease-in-out;
  }
+ .sidebar-container::-webkit-scrollbar{
+	width: 10px;
+  }
+ .sidebar-container::-webkit-scrollbar-track{
+	 background:#eeeeeeba;
+   }
+.sidebar-container::-webkit-scrollbar-thumb{
+	 background: #3A445C;
+	 border-radius: 20px;
+	 border: 1px solid #ddd;
+   }
  /* .bOQEtf{
    width: auto !important;
    min-width: none !important;
@@ -22,17 +33,25 @@
  }
  .lkTtqM:hover {
   background-color: #dc3545 !important;
+  color: #fff !important;
+
 }
 /* .lkTtqM:hover {
   background-color: unset !important;
 } */
-.gnJkew{
-  color: rgb(64,78,103) !important;
+.active{
+  color: #dc3545 ;
+  font-weight: bold;
+  font-size: 1.2rem;
+
 
 }
+.gnJkew{
+  color: rgb(64,78,103) !important;
+ }
 a:hover {
-  color: unset !important;
-  text-decoration: none;
+  color: unset !important ; 
+  text-decoration: none !important;
 
 }
 a {
@@ -51,3 +70,61 @@ a {
 	 border-radius: 20px;
 	 border: 1px solid #ddd;
    }
+.active{
+  color:#fff
+}
+
+   /* test */
+/*     
+  .menu-container{
+    width: 70px;
+    display:inline-block;
+    -moz-transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-perspective: 800px;
+      perspective: 800px;
+    float: left;
+  
+  }
+  .menu{
+    height: 60px;
+    line-height: 60px;
+  }
+  .menu .icon{
+    padding: 20px 20px;
+    font-size: 22px;
+    color: #6295c9;
+    background: white;
+    border-right: 0.5px solid lightgrey;
+  }
+  .menu .text{
+    width: 180px;
+    position:absolute; 
+    transition: 0.7s;
+    transform-origin: 0px 0px;
+    transform: rotateY(90deg);
+    padding: 0px 20px;
+    backface-visibility: hidden;
+    background: white;
+  }
+  .menu-container:hover .text{
+    transform: rotateY(0deg);
+  }
+  .fa{
+    width: 20px;
+  }
+  .menu a{
+    text-decoration: none;
+    color: #333;
+  }
+  .menu .text:hover,.menu .text:focus{
+    background: #6295c9;
+    color: #fff;
+  }
+  .content{
+    margin-left: 70px;
+    width:100%;
+    text-align:center;
+  } */

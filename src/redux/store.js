@@ -10,6 +10,7 @@ import tapleDataGetFinSlice from './tapleDataGitFin';
 import UsersTapleDataSlice from './usersTaple';
 import UserTapleDataSlice from './userDetailsTapleData';
 import UsersTapleData_2Slice from './usersTaple_2'
+import UserTapleData_2Slice from './userDetailsTapleData_2'
 
 export  const store = configureStore({
   reducer: {
