@@ -9,10 +9,14 @@
   margin: 10px;
 
 }
+
 .row_1{
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-    padding: 20px;
-    margin: 20px;
+    padding: 5px;
+    margin: 5px;
+}
+.section-1 span{
+  font-size: 12px
 }
 .button-cover, .knobs, .layer
 {
@@ -194,6 +198,21 @@ label:active:after {
 }
 .margin_4{
   margin-bottom:40px;
+}
+.col-1-inputs span{
+  font-size: 12px;
+
+}
+.section-2-row2 span{
+  font-size: 12px;
+}
+.section-2-row2-div1{
+  align-items: center;
+
+}
+.section-2-row2-resalt{
+  width: 46%;
+  margin-top: 20px;
 }
 
 @media only screen and (max-width: 991.99px) {

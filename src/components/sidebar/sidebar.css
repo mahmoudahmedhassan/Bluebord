@@ -32,7 +32,7 @@
   color: #DCDCDC !important;
  }
  .lkTtqM:hover {
-  background-color: #dc3545 !important;
+  background-color: #2a9d8f !important;
   color: #fff !important;
 
 }
@@ -40,7 +40,7 @@
   background-color: unset !important;
 } */
 .active{
-  color: #dc3545 ;
+  color: #2a9d8f ;
   font-weight: bold;
   font-size: 1.2rem;
 

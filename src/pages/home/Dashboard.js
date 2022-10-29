@@ -30,10 +30,18 @@ function Dashboard() {
             labels: [element.t202Lb+":"+element.t202,element.t203Lb+":"+element.t203,element.t204Lb+":"+element.t204],
             datasets: [{
               data: [element.t202, element.t203, element.t204,],
+              // backgroundColor: [
+              //   "#FFAFCD",
+              //   "#FFC8DD",
+              //   "#CDB4DC",
+              // ],
               backgroundColor: [
-                "#FFAFCD",
-                "#FFC8DD",
-                "#CDB4DC",
+                // "#2a9d8f",
+                "#e9c46a",
+                "#f4a261",
+                "#2a9d8f",
+
+
               ],
               borderColor: "black",
               borderWidth: 2,

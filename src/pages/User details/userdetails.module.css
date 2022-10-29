@@ -31,22 +31,32 @@
     font-size:1.2em
 }
 .UserTapleDetails_row_0{
-    margin-bottom: 30px;
+    margin-bottom: 10px;
+}
+.UserTapleDetails_row_0 button{
+    border: none;
+    padding: 5px;
+    background: #222e3c;
+    color: #fff;
+    border-radius: 5px;
 }
 .UserTapleDetails_label{
     display: flex;
     align-items: center;
     border-bottom: 1px solid #ddd;
     text-align: center;
-    justify-content: center;
+    /* justify-content: center; */
 }
 .UserTapleDetails_label_api{
     font-weight: bold;
+    font-size: 12px;
 }
 .UserTapleDetails_row_1 ,.UserTapleDetails_row_2 ,.UserTapleDetails_row_3{
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
+.UserTapleDetails_row_1{
 
+}
 
 .multiplie{
     display: flex;

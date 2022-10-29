@@ -1,51 +1,44 @@
+import React from 'react'
+import { useSelector, useDispatch } from 'react-redux';
+import Table from 'react-bootstrap/Table';
+import SpinnerLoading from '../../components/sppiner/Sppiner'
 
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-export const fetchUserDetailsTapleData_2 = createAsyncThunk(
-    'userTapleData_2/fetchUserDetailsTapleData_2',
-    async (id, thunkAPI) => {
-        const { rejectWithValue } = thunkAPI;
-        try {
-            const res = await fetch(`https://tstauth.smartgate-egypt.com/jobs/getinfoprod/${id}`, {
-            });
-            const data = await res.json();
-            localStorage.setItem(
-                "userTapleData_2",
-                JSON.stringify(data)
-            );
-            return data;
-        } catch (error) {
-            return rejectWithValue(error.message);
-        }
-    }
-);
+function TapleDetailsUserTow() {
+  const { userTapleData, loading, error } = useSelector(state => state.UserTapleDataSlice)
+ 
+  return (
+    <div>
+    {loading ? (<div className='text-center'><SpinnerLoading /></div>) : (
+        <Table className='table' striped bordered hover responsive style={{ height: '600px !important' }}>
+            <thead className='text-center'>
+                <tr>
+                    <th className='row-2 row-test-2'> SD</th>
+                    <th className='row-3 row-test-3'> T101</th>
+                    <th className='row-4 row-test-4'> T102</th>
+                    <th className='row-5 row-test-5'> T103 </th>
+                    <th className='row-5 row-test-6'> T104</th>
+                    <th className='row-6 row-test-7'> T105</th>
+                    <th className='row-6 row-test-7'> T106</th>
+                  </tr>
+            </thead>
+            <tbody >
+                {
+                    userTapleData.map((el, index) => (
+                        <tr key={index} >
+                            <td>{el.sd}</td>
+                            <td>{el.t101}</td>
+                            <td>{el.t102}</td>
+                            <td>{el.t103}</td>
+                            <td>{el.t104}</td>
+                            <td>{el.t105}</td>
+                            <td>{el.t106}</td>
+                          </tr>
+                    ))
+                }
+            </tbody>
+        </Table>
+    )}
+</div>  )
+}
 
-const UserTapleData_2Slice = createSlice({
-    name: 'userTapleData_2',
-    initialState: {
-        userTapleData_2: localStorage.getItem("userTapleData_2")
-        ? JSON.parse(localStorage.getItem("userTapleData_2"))
-        : [],
-        loading: false,
-        error: null
-    },
-    reducers: {},
-    extraReducers: {
-
-        //fetch
-        [fetchUserDetailsTapleData_2.pending]: (state, action) => {
-            state.loading = true;
-            state.error = null;
-        },
-        [fetchUserDetailsTapleData_2.fulfilled]: (state, action) => {
-            state.userTapleData_2 = action.payload;
-            state.loading = false;
-        },
-        [fetchUserDetailsTapleData_2.rejected]: (state, action) => {
-            state.error = action.payload;
-            state.loading = false;
-        },
-    },
-});
-
-export default UserTapleData_2Slice.reducer;
-
+export default TapleDetailsUserTow

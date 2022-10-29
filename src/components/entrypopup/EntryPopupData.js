@@ -68,16 +68,16 @@ function EntryPopupData() {
     });
   };
   useEffect(() => {
-    setMultiplying(parseInt(data.g1_page1_nub01) * parseInt(data.g1_page1_nub02));
-    setMultiplyingNu3_4(parseInt(data.g1_page1_nub03) * parseInt(data.g1_page1_nub04))
-    setSum(parseInt((data.g1_page1_nub06)) + (parseInt(data.g1_page1_nub07)))
+    setMultiplying(parseInt(data.PG2Md01Tx4) * parseInt(data.PG2Md01Tx5));
+    setMultiplyingNu3_4(parseInt(data.PG2Md01Tx6) * parseInt(data.PG2Md01Tx7))
+    setSum(parseInt((data.PG2Md01Tx11)) + (parseInt(data.PG2Md01Tx12)))
 
-  }, [data.g1_page1_nub02
-    , data.g1_page1_nub01,
-  data.g1_page1_nub03,
-  data.g1_page1_nub04,
-  data.g1_page1_nub06,
-  data.g1_page1_nub07
+  }, [data.PG2Md01Tx4
+    , data.PG2Md01Tx5,
+  data.PG2Md01Tx7,
+  data.PG2Md01Tx6,
+  data.PG2Md01Tx11,
+  data.PG2Md01Tx12
   ])
 
   // ================= popup data ===============
@@ -100,12 +100,12 @@ function EntryPopupData() {
           <Container>
             <form>
               {/* section 1 */}
-              <Row className="row_1">
+              <Row className="row_1 section-1">
 
                 <Col className='col-sm-12 col-md-4'>
                   <div className="">
                     <div className='mb-2'>
-                      <div className='text-center'>PG2md01</div>
+                      <span className='text-center'>PG2md01</span>
                       <Form.Control
                         type="text"
                         placeholder="PG2md01"
@@ -115,7 +115,7 @@ function EntryPopupData() {
                       />
                     </div>
                     <div className='mb-2'>
-                    <div  className='text-center'>PG2md02</div>
+                    <span className='text-center'>PG2md02</span>
                       <Form.Control
                         type="text"
                         placeholder="PG2md02"
@@ -130,7 +130,7 @@ function EntryPopupData() {
                 <Col sm={12} md={8}>
                   <div className="">
                     <div className='mb-2'>
-                    <div  className='text-center'>PG2md03</div>
+                    <span  className='text-center'>PG2md03</span>
                       <Form.Select aria-label="Floating label select example" placeholder="PG2md03" name='PG2Md01Comb1' onChange={handleChange}>
                         <option value="1">One</option>
                         <option value="2">Two</option>
@@ -138,7 +138,7 @@ function EntryPopupData() {
                       </Form.Select>
                     </div>
                     <div className='mb-2'>
-                    <div  className='text-center'>PG2md04</div>
+                    <span  className='text-center'>PG2md04</span>
                       <Form.Control
                         type="text"
                         placeholder="PG2md04"
@@ -153,7 +153,6 @@ function EntryPopupData() {
 
               </Row>
 
-
               {/* section 2 */}
 
               <Row className='row_1 '>
@@ -161,7 +160,7 @@ function EntryPopupData() {
                 <Col md={8}>
                   <Row className='col-1-inputs'>
                     <Col md={8}>
-                      <div className='d-flex'>
+                      <div className='d-flex mb-2'>
                         <div className=' me-2' >
                           <Form.Control
                             type="number"
@@ -189,7 +188,7 @@ function EntryPopupData() {
                         </div>
                       </div>
 
-                      <div className='d-flex'>
+                      <div className='d-flex mb-2'>
                         <div className='me-2'>
                           <Form.Control
                             type="number"
@@ -250,14 +249,14 @@ function EntryPopupData() {
                     </Col>
                   </Row>
 
-                  <Row>
-                    <Col md={9}>
-                      <div className='d-flex mb-2 row_2_col_1'>
+                  <Row className='section-2-row2'>
+                    <Col md={8}>
+                      <div className='d-flex mb-2 row_2_col_1 section-2-row2-div1'>
 
-                        <div className='me-2 resalt'>
+                        <div className='me-2 resalt section-2-row2-resalt'>
                           {Multiplying ? Multiplying : null}
                         </div>
-                        <span style={{ margin: '10px' }}> X </span>
+                        <span style={{ margin:'20px 10px 0px' }}> x </span>
 
                         <div className='me-2'>
                           <span>PG2md01Lb7</span>
@@ -284,10 +283,10 @@ function EntryPopupData() {
                             onChange={handleChange}
                           />
                         </div>
-                        <span style={{ margin: '10px' }}> + </span>
+                        <span style={{ margin:'30px 10px 0px' }}> + </span>
 
                         <div className='me-2'>
-                        <span>PG2md01Lb9</span>
+                        <span >PG2md01Lb9</span>
 
                           <Form.Control type="number"
                             placeholder="PG2Md01Tx12"
@@ -303,7 +302,7 @@ function EntryPopupData() {
                       </div>
                     </Col>
 
-                    <Col md={3}>
+                    <Col md={4}>
                       <div>
                         <div className='me-2  mb-2'>
                         <span>PG2md01Lb10</span>
@@ -345,8 +344,8 @@ function EntryPopupData() {
                         id='PGMd01Sw1'
                         type="checkbox"
                         name="check_1"
-                        onChange={(val) => setData({ ...data, check_3: val.target.checked })}
-                        checked={data.check_3}
+                        onChange={(val) => setData({ ...data, check_1: val.target.checked })}
+                        checked={data.check_1}
                       />
                       <label htmlFor="PGMd01Sw1"></label>
                       <span className='mx-2'>PGMd01Sw1-2</span>
@@ -358,8 +357,8 @@ function EntryPopupData() {
                         id='PGMd01Sw2'
                         type="checkbox"
                         name="check_2"
-                        onChange={(val) => setData({ ...data, check_4: val.target.checked })}
-                        checked={data.check_4}
+                        onChange={(val) => setData({ ...data, check_2: val.target.checked })}
+                        checked={data.check_2}
                       />
                       <label htmlFor="PGMd01Sw2">Toggle</label>
                       <span className='mx-2'>PGMd01Sw2-2</span>
@@ -402,14 +401,13 @@ function EntryPopupData() {
                         id='PGMd01Sw5'
                         type="checkbox"
                         name="check_5"
-                        onChange={(val) => setData({ ...data, check_3: val.target.checked })}
-                        checked={data.check_3}
+                        onChange={(val) => setData({ ...data, check_5: val.target.checked })}
+                        checked={data.check_5}
                       />
                       <label htmlFor="PGMd01Sw5">Togglee</label>
                       <span className='mx-2'>PGMd01Sw5</span>
                     </div>
 
-                 
                   </div>
 
                 </Col>
@@ -418,9 +416,9 @@ function EntryPopupData() {
 
               {/* section 4 */}
 
-              <Row className='row_1'>
+              <Row className='row_1 align-items-center'>
                 <Col md={8}>
-                  <div>PG2Md01Lb14</div>
+                  <span style={{fontSize:'12px'}}>PG2Md01Lb14</span>
                   <div className='d-flex mb-2'>
                     <Form.Control type="text"
                       placeholder="PG2Md01Tx16"
@@ -431,7 +429,7 @@ function EntryPopupData() {
                   </div>
                 </Col>
 
-                <Col md={4} className='d-flex align-content-center ' style={{height:'40px'}}>
+                <Col md={4} className='d-flex align-content-center ' style={{height:'40px', marginTop:'11px'}}>
                  <Button>PG2Md01But1</Button>
                 </Col>
 
