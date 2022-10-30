@@ -6,6 +6,13 @@ export const fetchUserDetailsTapleData_2 = createAsyncThunk(
         const { rejectWithValue } = thunkAPI;
         try {
             const res = await fetch(`https://tstauth.smartgate-egypt.com/jobs/getinfoprod/${id}`, {
+                headers: {
+                    DataType: "JSON",
+                    Authorization:
+                      "Bearer " + JSON.parse(localStorage.getItem("access-token")),
+                    mode: 'cors',
+                    Accept: 'application/json',
+                  },
             });
             const data = await res.json();
             localStorage.setItem(

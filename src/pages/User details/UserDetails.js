@@ -16,6 +16,7 @@ export default function UserDetails() {
 
   const dispatch = useDispatch();
   const { usrsTapleData,loading } = useSelector(state => state.UsersTapleDataSlice)
+  // console.log('usrsTapleData',usrsTapleData)
   const [query, setQuery] = useState('');
   // fetch dispatch data 
   useEffect(() => {

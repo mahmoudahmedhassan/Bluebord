@@ -20,7 +20,15 @@ function Dashboard() {
   const [dashbords, setDashboards] = useState([]);
   const [loading,setLoading] = useState(true);
    useEffect(() => {
-    axios.get("https://tstAuth.smartgate-egypt.com/Jobs/GetDash")
+    axios.get("https://tstAuth.smartgate-egypt.com/Jobs/GetDash",{
+      headers: {
+        DataType: "JSON",
+        Authorization:
+          "Bearer " + JSON.parse(localStorage.getItem("access-token")),
+        mode: 'cors',
+        Accept: 'application/json',
+      },
+    })
       .then(res => {
         let chartData = [];
         const data = res.data;
@@ -30,18 +38,11 @@ function Dashboard() {
             labels: [element.t202Lb+":"+element.t202,element.t203Lb+":"+element.t203,element.t204Lb+":"+element.t204],
             datasets: [{
               data: [element.t202, element.t203, element.t204,],
-              // backgroundColor: [
-              //   "#FFAFCD",
-              //   "#FFC8DD",
-              //   "#CDB4DC",
-              // ],
+             
               backgroundColor: [
-                // "#2a9d8f",
-                "#e9c46a",
+                 "#e9c46a",
                 "#f4a261",
                 "#2a9d8f",
-
-
               ],
               borderColor: "black",
               borderWidth: 2,

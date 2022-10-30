@@ -7,7 +7,15 @@ export const fetchTapleDataGitHid = createAsyncThunk(
   async (_, thunkAPI) => {
     const { rejectWithValue } = thunkAPI;
     try {
-      const res = await fetch("https://tstAuth.smartgate-egypt.com/Jobs/GetHld");
+      const res = await fetch("https://tstAuth.smartgate-egypt.com/Jobs/GetHld",{
+        headers: {
+          DataType: "JSON",
+          Authorization:
+            "Bearer " + JSON.parse(localStorage.getItem("access-token")),
+          mode: 'cors',
+          Accept: 'application/json',
+        },
+      });
       console.log(res)
       const data = await res.json();
       localStorage.setItem(

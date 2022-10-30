@@ -3,14 +3,26 @@ import { React } from 'react';
 import SpinnerLoading from '../../components/sppiner/Sppiner'
 import Table from 'react-bootstrap/Table';
 import { FaUser, FaRegSun, FaBars } from "react-icons/fa";
+import { useTable } from 'react-table';
+ 
+export default function Taple(
+    { dataTablePro,
+    tapleDataGitAll,
+    dataTableHid,
+    tapleDataGitFin,
+    tapData,
+    loading,
+    error
+}
+) {
 
-export default function Taple({ dataTablePro, tapleDataGitAll, dataTableHid, tapleDataGitFin, tapData, loading, error }) {
 
     const data = () => {
 
         switch (tapData) {
             case "pro":
                 return dataTablePro.map((el, index) => (
+                    
                     <tr key={index}>
                         <td>{index}</td>
                         <td>{el.sd}</td>
@@ -27,7 +39,7 @@ export default function Taple({ dataTablePro, tapleDataGitAll, dataTableHid, tap
                         <td>{new Date(el.t112).toLocaleString('en-us', { month: 'short', year: 'numeric' })}</td>
                         <td>{el.t113}</td>
                         <td>{el.t114}</td>
-                        <td><FaBars/></td>
+                        <td><FaBars /></td>
 
                     </tr>
                 ))
@@ -50,7 +62,7 @@ export default function Taple({ dataTablePro, tapleDataGitAll, dataTableHid, tap
                         <td>{new Date(el.t112).toLocaleString('en-us', { month: 'short', year: 'numeric' })}</td>
                         <td>{el.t113}</td>
                         <td>{el.t114}</td>
-                        <td><FaBars/></td>
+                        <td><FaBars /></td>
 
                     </tr>
                 ))
@@ -73,7 +85,7 @@ export default function Taple({ dataTablePro, tapleDataGitAll, dataTableHid, tap
                         <td>{new Date(el.t112).toLocaleString('en-us', { month: 'short', year: 'numeric' })}</td>
                         <td>{el.t113}</td>
                         <td>{el.t114}</td>
-                        <td><FaBars/></td>
+                        <td><FaBars /></td>
 
                     </tr>
                 ))
@@ -118,7 +130,7 @@ export default function Taple({ dataTablePro, tapleDataGitAll, dataTableHid, tap
                         <td>{new Date(el.t112).toLocaleString('en-us', { month: 'short', year: 'numeric' })}</td>
                         <td>{el.t113}</td>
                         <td>{el.t114}</td>
-                        <td><FaBars/></td>
+                        <td><FaBars /></td>
 
                     </tr>
                 ))
@@ -131,7 +143,7 @@ export default function Taple({ dataTablePro, tapleDataGitAll, dataTableHid, tap
                 <Table className='table' striped bordered hover responsive style={{ height: '600px !important' }}>
                     <thead className='text-center'>
                         <tr>
-                             <th className='row-2 row-test-2'> SD</th>
+                            <th className='row-2 row-test-2'> SD</th>
                             <th className='row-3 row-test-3'> t102</th>
                             <th className='row-4 row-test-4'> t103</th>
                             <th className='row-5 row-test-5'> t104</th>

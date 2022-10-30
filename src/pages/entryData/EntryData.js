@@ -3,7 +3,7 @@ import { React, useState, useEffect } from 'react';
 // components
 import './entrydata.css';
 import EntryPopupData from '../../components/entrypopup/EntryPopupData';
-import Taple from '../../components/taple/Taple';
+import TapleTest from '../../components/taple/TapleTest'
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs'; // title components
 import SelectSearch from '../../components/dropdwon/SelectSearch'
 
@@ -46,6 +46,7 @@ function EntryData() {
     sW_R: false,
     sw_ST: false
   })
+  console.log(switchValue)
 
   const handleChangeSwitch = ({ target }) => {
     setSwitchValue({
@@ -55,16 +56,16 @@ function EntryData() {
   }
   // filter search
   const keys = ["sd", "t102", "t103", "t104"];
-  // const keysSlection = ['sW_N', 'sW_S', 'sW_R', 'sw_ST'];
+  const keysSlection = ['sW_N', 'sW_S', 'sW_R', 'sw_ST'];
 
   const search = (data) => {
     return data.filter((item) => keys.some((key) => item[key].toString().toLowerCase().includes(query)))
-    // .filter((item) => keysSlection.some((keySw) => item[keySw].includes(switchValue) ))
+      .filter((item) => keysSlection.some((keySw) => item[keySw] !== switchValue))
     // .filter((item) => keysSlection.some((key) => item[key].includes(switchValue) ))
   };
 
   return (
-    <div>
+    <div style={{marginBottom:'30px'}}>
       <Container>
         <Breadcrumbs className='mr-3' main="Grop-1" sub="Page01" />
       </Container>
@@ -170,15 +171,27 @@ function EntryData() {
           </form>
         </Collapse>
 
-      </Container>
-
-      {<Taple
+        {<TapleTest
         dataTablePro={search(tapleData)}
         dataTableHid={search(tapleDataGitHid)}
         tapleDataGitAll={search(tapleDataGitAll)}
         tapleDataGitFin={search(tapleDataGitFin)}
         tapData={tapData}
-        loading={loading} error={error} />}
+        loading={loading} error={error}
+      />}
+
+      </Container>
+
+      {/* {<Taple
+        dataTablePro={search(tapleData)}
+        dataTableHid={search(tapleDataGitHid)}
+        tapleDataGitAll={search(tapleDataGitAll)}
+        tapleDataGitFin={search(tapleDataGitFin)}
+        tapData={tapData}
+        loading={loading} error={error}
+         />} */}
+
+ 
 
     </div>
   )

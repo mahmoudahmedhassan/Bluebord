@@ -12,7 +12,7 @@ function TapleDetailsUser() {
         <Table className='table' striped bordered hover responsive style={{ height: '600px !important' }}>
             <thead className='text-center'>
                 <tr>
-                    <th className='row-2 row-test-2'> SD</th>
+                    <th className='row-2 row-test-2'> tableIndex</th>
                     <th className='row-3 row-test-3'> T101</th>
                     <th className='row-4 row-test-4'> T102</th>
                     <th className='row-5 row-test-5'> T103 </th>

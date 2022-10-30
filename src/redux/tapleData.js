@@ -6,13 +6,13 @@ export const fetchTapleData = createAsyncThunk(
     const { rejectWithValue } = thunkAPI;
     try {
       const res = await fetch('https://tstAuth.smartgate-egypt.com/Jobs/Getpro', {
-        // headers: {
-        //   DataType: "JSON",a
-        //   Authorization:
-        //     "Bearer " + JSON.parse(localStorage.getItem("access-token")),
-        //   mode: 'cors',
-        //   Accept: 'application/json',
-        // },
+        headers: {
+          DataType: "JSON",
+          Authorization:
+            "Bearer " + JSON.parse(localStorage.getItem("access-token")),
+          mode: 'cors',
+          Accept: 'application/json',
+        },
       });
        const data = await res.json();
 

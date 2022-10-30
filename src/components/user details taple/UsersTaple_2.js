@@ -15,11 +15,15 @@ function UsersTapleTow({ usersTapleData }) {
     const getDetailsUserData = (id) => {
          dispatch(fetchUserDetailsTapleData_2(id));
     }
+    const styleTaple ={
+        overflow: 'auto',
+        width:' 530px',
+    }
 
     return (
-        <div>
+        <div style={styleTaple}>
             {loading ? (<div className='text-center'> <SpinnerLoading /></div>) : (
-                <Table className='table' striped bordered hover responsive style={{ height: '600px !important' }}>
+                <Table className='table' striped bordered hover responsive style={{ height: '600px !important',overflow:'auto',width:'800px' }}>
                     <thead className='text-center'>
                         <tr>
                             <th className='row-2 row-test-2'> SD</th>

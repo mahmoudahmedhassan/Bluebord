@@ -3,7 +3,7 @@
 }
 
 .main_container{
-    margin-top: 20px;
+    margin-top: 7px;
 }
 .SearchTaple{
     display: flex;
@@ -13,11 +13,11 @@
 .UserTapleDetails{
     background-color: #fff;
     padding: 10px;
-    margin-top: 57px;
+    margin-top: 43px;
 
 }
 .UsersTaple{
-    margin-top:20px;
+    margin-top:5px;
 }
 .UserTapleDetails_textarea{
     width: 100%;
@@ -36,7 +36,7 @@
 .UserTapleDetails_row_0 button{
     border: none;
     padding: 5px;
-    background: #222e3c;
+    background: #2A9D8F;
     color: #fff;
     border-radius: 5px;
 }

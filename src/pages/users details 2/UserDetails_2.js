@@ -4,7 +4,7 @@ import Spinner from '../../components/sppiner/Sppiner';
  
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs'; // title components
 import UsersTapleTow from '../../components/user details taple/UsersTaple_2';
-import TapleDetailsUser from '../../components/user details taple/TapleDetailsUser';
+import TapleDetailsUserTow from '../../components/user details taple/TapleDetailsUser_2';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchUsersTapleData_2 } from '../../redux/usersTaple_2'
 
@@ -30,10 +30,10 @@ function UserDetailsTow() {
         pG04Lb06a1,
         pG04Lb06a2,
         pG04Lb07a,
-        pG04Tx02a,
-        tableIndex
-       
+        pG04Tx02a,       
          ] = userTapleData_2;
+
+    console.log("test",pG04Lb06a1?.pG04Lb06a1)
     
     const [query, setQuery] = useState('');
     const [switchValue, setSwitchValue] = useState(false)
@@ -41,6 +41,7 @@ function UserDetailsTow() {
     useEffect(() => {
         dispatch(fetchUsersTapleData_2())
     }, [dispatch]);
+
 
     // filter search
     const keys = ["t101", "t102", "t103"];
@@ -132,9 +133,9 @@ function UserDetailsTow() {
                                         <Col lg={6}>
                                             <div className='d-flex align-items-center justify-content-between'>
                                                 <div className={classes.UserTapleDetails_label}>pG03Lb06</div>
-                                                <div className={classes.UserTapleDetails_label_api}>{pG04Lb06a1? pG04Lb06a1.pG04Lb06a1: "notfound"}</div>
+                                                <div className={classes.UserTapleDetails_label_api}>{pG04Lb06a1&&pG04Lb06a1.pG04Lb06a1}</div>
                                                 <span> X </span>
-                                                <div className={classes.UserTapleDetails_label_api}>{pG04Lb06a2? pG04Lb06a2.pG04Lb06a3: "notfound"}</div>
+                                                <div className={classes.UserTapleDetails_label_api}>{pG04Lb06a2 && pG04Lb06a2.pG04Lb06a2 }</div>
                                             </div>
                                         </Col>
                                         <Col lg={3}>
@@ -184,7 +185,7 @@ function UserDetailsTow() {
                                 </div>
 
                                 <div className={classes.UsersTaple}>
-                                    <TapleDetailsUser />
+                                    <TapleDetailsUserTow />
                                 </div>
 
                                 {/*  row-4*/}
