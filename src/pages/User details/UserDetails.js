@@ -24,7 +24,9 @@ export default function UserDetails() {
     dispatch(fetchUsersTapleData())
   }, [dispatch]);
 
-  const { userTapleData } = useSelector(state => state.UserTapleDataSlice)
+  const { userTapleData } = useSelector(state => state.UserTapleDataSlice);
+  let firstObj = userTapleData[0]
+
   const [
     pG03Lb02a,
     pG03Lb04a,
@@ -102,7 +104,7 @@ export default function UserDetails() {
                       <div>
                         <Form.Control
                           type="text"
-                          placeholder={pG03Tx02a ? pG03Tx02a.pG03Tx02a : "notfound"}
+                          placeholder={firstObj ? firstObj.pG03Tx02a : "notfound"}
                           name='pG03Lb02a'
                           value={pG03Tx02a?.pG03Tx02a}
                         />
@@ -120,7 +122,7 @@ export default function UserDetails() {
                       <div className={classes.UserTapleDetails_label}>label-2</div>
                     </Col>
                     <Col md={4} className='d-flex'>
-                      <div className={`${classes.UserTapleDetails_label} ${classes.UserTapleDetails_label_api} `}>{pG03Lb02a ? pG03Lb02a.pG03Lb02a : "notfound"}</div>
+                      <div className={`${classes.UserTapleDetails_label} ${classes.UserTapleDetails_label_api} `}>{firstObj ? firstObj.pG03Lb02a : "notfound"}</div>
                     </Col>
                     <Col md={2} className='d-flex'>
                       <div className={classes.UserTapleDetails_label}>label-3</div>
@@ -129,7 +131,7 @@ export default function UserDetails() {
                       <div>
                         <Form.Control
                           type="text"
-                          placeholder={G03Tx02a ? G03Tx02a.G03Tx02a : "notfound"}
+                          placeholder={firstObj ? firstObj.G03Tx02a : "notfound"}
                           value={G03Tx02a?.G03Tx02a}
                         />
                       </div>
@@ -148,7 +150,7 @@ export default function UserDetails() {
                     </Col>
 
                     <Col md={3}>
-                      <div className={`${classes.UserTapleDetails_label} ${classes.UserTapleDetails_label_api} `}>{pG03Lb04a ? pG03Lb04a.pG03Lb04a : "notfound"}</div>
+                      <div className={`${classes.UserTapleDetails_label} ${classes.UserTapleDetails_label_api} `}>{firstObj ? firstObj.pG03Lb04a : "notfound"}</div>
                     </Col>
 
                     <Col md={2} className='d-flex'>
@@ -156,14 +158,14 @@ export default function UserDetails() {
                     </Col>
 
                     <Col md={2} className='d-flex'>
-                      <div className={`${classes.UserTapleDetails_label} ${classes.UserTapleDetails_label_api} `}>{pG03Lb07a ? pG03Lb07a.pG03Lb07a : "pG03Lb07a"}</div>
+                      <div className={`${classes.UserTapleDetails_label} ${classes.UserTapleDetails_label_api} `}>{firstObj ? firstObj.pG03Lb07a : "pG03Lb07a"}</div>
                     </Col>
                     <Col md={1} className='d-flex'>
                       <div className={classes.multiplie}>X</div>
                     </Col>
 
                     <Col md={2} className='d-flex'>
-                      <div className={`${classes.UserTapleDetails_label} ${classes.UserTapleDetails_label_api} `}>{pG03Lb08a ? pG03Lb08a.pG03Lb08a : 'notfound'}</div>
+                      <div className={`${classes.UserTapleDetails_label} ${classes.UserTapleDetails_label_api} `}>{firstObj ? firstObj.pG03Lb08a : 'notfound'}</div>
                     </Col>
                   </Row>
                 </div>
@@ -176,7 +178,7 @@ export default function UserDetails() {
                       <div className={classes.UserTapleDetails_label}>label-6</div>
                     </Col>
                     <Col md={10} className='d-flex'>
-                      <div className={`${classes.UserTapleDetails_label} ${classes.UserTapleDetails_label_api} `}> {pG03Lb05a ? pG03Lb05a.pG03Lb05a : "notfound"}</div>
+                      <div className={`${classes.UserTapleDetails_label} ${classes.UserTapleDetails_label_api} `}> {firstObj ? firstObj.pG03Lb05a : "notfound"}</div>
                     </Col>
                   </Row>
 
@@ -192,7 +194,7 @@ export default function UserDetails() {
 
                 {/*  row-4*/}
                 <div className={classes.UserTapleDetails_textarea}>
-                  <textarea placeholder="text area" disabled value={pG03Tx05a ? pG03Tx05a.pG03Tx05a : 'notfound'} />
+                  <textarea placeholder="text area" disabled value={firstObj ? firstObj.pG03Tx05a : 'notfound'} />
                 </div>
                 {/*  row-5*/}
                 <div>
@@ -208,7 +210,7 @@ export default function UserDetails() {
                           id='pG03Sw02'
                           type="checkbox"
                           name="sW_N"
-                          checked={pG03Sw02?.pG03Sw02}
+                          checked={firstObj?.pG03Sw02}
 
                         />
                         <label htmlFor="pG03Sw02"></label>
@@ -223,7 +225,7 @@ export default function UserDetails() {
                           id='pG03Sw03'
                           type="checkbox"
                           name="sW_N"
-                          checked={pG03Sw03?.pG03Sw03}
+                          checked={firstObj?.pG03Sw03}
                         />
                         <label htmlFor="pG03Sw03"></label>
                         <span className='mx-2'>no</span>
@@ -239,8 +241,8 @@ export default function UserDetails() {
                   <div>
                     <Form.Control
                       type="text"
-                      placeholder={G03Tx06 ? G03Tx06.G03Tx06 : "notfound"}
-                      value={G03Tx06?.G03Tx06}
+                      placeholder={firstObj ? firstObj.G03Tx06 : "notfound"}
+                      value={firstObj?.G03Tx06}
                     />
                   </div>
 

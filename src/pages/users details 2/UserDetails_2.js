@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import classes from './userdetails-2.module.css'
 import Spinner from '../../components/sppiner/Sppiner';
- 
+
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs'; // title components
 import UsersTapleTow from '../../components/user details taple/UsersTaple_2';
 import TapleDetailsUserTow from '../../components/user details taple/TapleDetailsUser_2';
@@ -15,26 +15,13 @@ import Form from 'react-bootstrap/Form';
 function UserDetailsTow() {
     const dispatch = useDispatch();
     // left taple
-    const { usrsTapleData_2 ,loading} = useSelector(state => state.UsersTapleData_2Slice);
+    const { usrsTapleData_2, loading } = useSelector(state => state.UsersTapleData_2Slice);
 
-     // right taple
-    const {userTapleData_2} = useSelector(state => state.UserTapleData_2Slice);
-    console.log('right taple',userTapleData_2);
-
-    const [
-        pG04Lb01a,
-        pG04Lb02a,
-        pG04Lb03a,
-        pG04Lb04a,
-        pG04Lb05a,
-        pG04Lb06a1,
-        pG04Lb06a2,
-        pG04Lb07a,
-        pG04Tx02a,       
-         ] = userTapleData_2;
-
-    console.log("test",pG04Lb06a1?.pG04Lb06a1)
-    
+    // right taple
+    const { userTapleData_2 } = useSelector(state => state.UserTapleData_2Slice);
+    // console.log('right taple', userTapleData_2[0]);
+    let firstObj = userTapleData_2[0]
+ 
     const [query, setQuery] = useState('');
     const [switchValue, setSwitchValue] = useState(false)
 
@@ -94,6 +81,7 @@ function UserDetailsTow() {
                     {/* secnd col */}
                     <Col>
                         {loading ? (<div className='text-center'><Spinner /> </div>) : (
+
                             <div className={classes.UserTapleDetails}>
 
                                 {/* UserTapleDetails_row_0 */}
@@ -102,19 +90,19 @@ function UserDetailsTow() {
                                         <Col lg={3}>
                                             <div className='d-flex align-items-center '>
                                                 <div className={classes.UserTapleDetails_label}>pG03Lb01</div>
-                                                <div className={classes.UserTapleDetails_label_api}>{pG04Lb01a ? pG04Lb01a.pG04Lb01a : "notfound"}</div>
+                                                <div className={classes.UserTapleDetails_label_api}>{firstObj ? firstObj.pG04Lb01a : "notfound"}</div>
                                             </div>
                                         </Col>
                                         <Col lg={5}>
                                             <div className='d-flex align-items-center '>
                                                 <div className={classes.UserTapleDetails_label}>pG03Lb04</div>
-                                                <div className={classes.UserTapleDetails_label_api}>{pG04Lb04a ? pG04Lb04a.pG04Lb04a : "notfound"}</div>
+                                                <div className={classes.UserTapleDetails_label_api}>{firstObj ? firstObj.pG04Lb04a : "notfound"}</div>
                                             </div>
                                         </Col>
                                         <Col lg={4}>
                                             <div className='d-flex align-items-center'>
                                                 <div className={classes.UserTapleDetails_label}>pG03Lb05</div>
-                                                <div className={classes.UserTapleDetails_label_api}>{pG04Lb05a ? pG04Lb05a.pG04Lb05a : "notfound"}</div>
+                                                <div className={classes.UserTapleDetails_label_api}>{firstObj ? firstObj.pG04Lb05a : "notfound"}</div>
                                             </div>
                                         </Col>
                                     </Row>
@@ -127,21 +115,21 @@ function UserDetailsTow() {
                                         <Col lg={3}>
                                             <div className='d-flex align-items-center justify-content-between'>
                                                 <div className={classes.UserTapleDetails_label}>pG03Lb02</div>
-                                                <div className={classes.UserTapleDetails_label_api}>{pG04Lb02a? pG04Lb02a.pG04Lb02a: "notfound"}</div>
+                                                <div className={classes.UserTapleDetails_label_api}>{firstObj ? firstObj.pG04Lb02a : "notfound"}</div>
                                             </div>
                                         </Col>
                                         <Col lg={6}>
                                             <div className='d-flex align-items-center justify-content-between'>
                                                 <div className={classes.UserTapleDetails_label}>pG03Lb06</div>
-                                                <div className={classes.UserTapleDetails_label_api}>{pG04Lb06a1&&pG04Lb06a1.pG04Lb06a1}</div>
+                                                <div className={classes.UserTapleDetails_label_api}>{firstObj && firstObj.pG04Lb06a1}</div>
                                                 <span> X </span>
-                                                <div className={classes.UserTapleDetails_label_api}>{pG04Lb06a2 && pG04Lb06a2.pG04Lb06a2 }</div>
+                                                <div className={classes.UserTapleDetails_label_api}>{firstObj && firstObj.pG04Lb06a2}</div>
                                             </div>
                                         </Col>
                                         <Col lg={3}>
                                             <div className='d-flex align-items-center justify-content-between'>
                                                 <div className={classes.UserTapleDetails_label}>pG04Lb07a</div>
-                                                <div className={classes.UserTapleDetails_label_api}>{pG04Lb07a? pG04Lb07a.pG04Lb07a: "notfound"}</div>
+                                                <div className={classes.UserTapleDetails_label_api}>{firstObj ? firstObj.pG04Lb07a : "notfound"}</div>
                                             </div>
                                         </Col>
 
@@ -155,24 +143,24 @@ function UserDetailsTow() {
                                         <Col>
                                             <div className='d-flex align-items-center'>
                                                 <div className={classes.UserTapleDetails_label}>pG04Lb03a</div>
-                                                <div className={classes.UserTapleDetails_label_api}>{pG04Lb03a? pG04Lb03a.pG04Lb03a : "notfound"}</div>
+                                                <div className={classes.UserTapleDetails_label_api}>{firstObj ? firstObj.pG04Lb03a : "notfound"}</div>
                                             </div>
                                         </Col>
-                                     
+
                                     </Row>
 
                                 </div>
 
                                 {/* UserTapleDetails_row_3 */}
 
-                                <div className={classes.UserTapleDetails_row_3}>
+                                 <div className={classes.UserTapleDetails_row_3}>
                                     <div className="d-flex">
                                         <div className={classes.UserTapleDetails_label}>pG04Tx02a</div>
                                         <div>
                                             <Form.Control
                                                 type="text"
                                                 placeholder="text"
-                                                value={pG04Tx02a&& pG04Tx02a.pG04Tx02a}
+                                                value={firstObj && firstObj.pG04Tx02a}
                                             />
                                         </div>
                                     </div>
@@ -181,7 +169,7 @@ function UserDetailsTow() {
 
                                 <div className={classes.UsersTaple}>
                                     <TapleDetailsUserTow />
-                                </div>
+                                </div>  
 
                                 {/*  row-4*/}
 
@@ -194,7 +182,8 @@ function UserDetailsTow() {
                                                     <Form.Control
                                                         type="text"
                                                         placeholder="text"
-                                                     />
+                                                        value={firstObj.pG04Tx02a}
+                                                    />
                                                 </div>
                                             </div>
 
@@ -206,6 +195,7 @@ function UserDetailsTow() {
                                     </Row>
                                 </div>
                             </div>
+
                         )}
 
                     </Col>
