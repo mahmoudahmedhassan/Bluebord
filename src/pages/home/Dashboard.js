@@ -60,8 +60,8 @@ function Dashboard() {
       <h1 className='text-bb text-center m-2'>welcome</h1>
        <Row>
         {loading ? <div className='text-center'><Spinner/></div>:
-         dashbords.map(item => (
-           <Col md={12} lg={4}>
+         dashbords.map((item,index) => (
+           <Col md={12} lg={4} key={index}>
             <div className="counter-main">
               <div className="counter-container" >
                 <div>

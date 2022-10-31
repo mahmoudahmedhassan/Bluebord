@@ -1,0 +1,21 @@
+
+.UsersTapleTow{
+    overflow:auto;
+    width: 530px;
+    height:700px;
+}
+/* scrollbar */
+.UsersTapleTow::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  .UsersTapleTow::-webkit-scrollbar-track {
+    background: #eeeeeeba;
+  }
+  
+  .UsersTapleTow::-webkit-scrollbar-thumb {
+    background: #2A9D8F;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+  }
+  

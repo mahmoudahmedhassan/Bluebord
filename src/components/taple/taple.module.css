@@ -47,7 +47,6 @@ th {
   border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
-
 }
 
 th {
@@ -66,5 +65,34 @@ tbody {
   text-align: center;
   overflow-y: scroll;
   overflow-x: hidden;
-  height: 250px;
+  /* height: 250px; */
+}
+
+/* taple test */
+.pagination{
+  display: flex;
+  justify-content:space-evenly;
+  align-items:center;
+  margin-top:30px
+}
+.pagination button {
+  width: 100px;
+  border: none;
+  background: #2a9d8f;
+  color: #fff;
+  padding: 5px;
+}
+.pagination input {
+  width: 150px;
+  border: none;
+  background: #2a9d8f;
+  color: #fff;
+  padding: 5px;
+}
+.pagination select {
+  width: 100px;
+  border: none;
+  background: #2a9d8f;
+  color: #fff;
+  padding: 5px;
 }

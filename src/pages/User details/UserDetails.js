@@ -5,6 +5,7 @@ import Spinner from '../../components/sppiner/Sppiner';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs'; // title components
 import UsersTaple from '../../components/user details taple/UsersTaple';
 import TapleDetailsUser from '../../components/user details taple/TapleDetailsUser';
+import TapleDetailsUserTest from '../../components/user details taple/TapleDetailsUserTest';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchUsersTapleData } from '../../redux/usersTaple'
 
@@ -185,7 +186,8 @@ export default function UserDetails() {
                 {/* taple */}
 
                 <div className={classes.UsersTaple}>
-                  <TapleDetailsUser />
+                  {/* <TapleDetailsUser /> */}
+                  <TapleDetailsUserTest/>
                 </div>
 
                 {/*  row-4*/}

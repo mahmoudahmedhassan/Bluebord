@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from 'react';
-import classes from './selectsearch.module.css'
+import classes from './selectsearch.module.css';
 import Form from 'react-bootstrap/Form';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';

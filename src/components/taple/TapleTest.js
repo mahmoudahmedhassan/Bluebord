@@ -106,54 +106,81 @@ function TapleTest(
         getTableBodyProps,
         headerGroups,
         rows,
-        prepareRow,
-        canPreviousPage,
-        canNextPage,
-        pageOptions,
-        pageCount,
-        gotoPage,
+        page,
         nextPage,
         previousPage,
+        canNextPage,
+        canPreviousPage,
+        gotoPage,
         setPageSize,
+        prepareRow,
+        state: { pageIndex, pageSize },
     } = useTable({
         columns,
         data,
-        usePagination
-    });
+        initialState: { pageIndex: 0 },
+    },
+    usePagination
+    );
 
     return (
-             <div className={classes.taple_container}>
-                {loading ? (<div className='text-center'><SpinnerLoading /></div>) : (
+        <div className={classes.taple_container}>
+            {loading ? (<div className='text-center'><SpinnerLoading /></div>) : (
 
-                    <table {...getTableProps()}>
-                        <thead className={classes.thead} >
-                            {headerGroups.map(headerGroup => (
-                                <tr  {...headerGroup.getHeaderGroupProps()}>
-                                    {headerGroup.headers.map(column => (
-                                        <th {...column.getHeaderProps()}>{column.render('Header')}</th>
-                                    ))}
-                                    <th>opstions</th>
+                <table {...getTableProps()}>
+                    <thead className={classes.thead} >
+                        {headerGroups.map(headerGroup => (
+                            <tr  {...headerGroup.getHeaderGroupProps()}>
+                                {headerGroup.headers.map(column => (
+                                    <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+                                ))}
+                                <th>opstions</th>
+                            </tr>
+
+                        ))}
+                    </thead>
+                    <tbody className={classes.tbody} {...getTableBodyProps()}>
+                        {page?.map((row, i) => {
+                            prepareRow(row)
+                            return (
+                                <tr {...row.getRowProps()}>
+                                    {row.cells.map(cell => {
+                                        return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                                    })}
+                                    <td><FaBars /></td>
                                 </tr>
-
-                            ))}
-                        </thead>
-                        <tbody className={classes.tbody} {...getTableBodyProps()}>
-                            {rows?.map((row, i) => {
-                                prepareRow(row)
-                                return (
-                                    <tr {...row.getRowProps()}>
-                                        {row.cells.map(cell => {
-                                            return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
-                                        })}
-                                        <td><FaBars /></td>
-                                    </tr>
-                                )
-                            })}
-                        </tbody>
-                    </table>
-                )}
+                            )
+                        })}
+                    </tbody>
+                </table>
+            )}
+            <div className={classes.pagination}>
+                <button className='next' onClick={() => nextPage()} disabled={!canNextPage}>next</button>
+                <button onClick={() => previousPage()} disabled={!canPreviousPage} >prev</button>
+                <input
+                    type="number"
+                    min="1"
+                    defaultValue={pageIndex + 1}
+                    onChange={e => {
+                        const page = e.target.value ? Number(e.target.value) - 1 : 0
+                        gotoPage(page)
+                    }}
+                />
+                <select
+                    value={pageSize}
+                    onChange={e => {
+                        setPageSize(Number(e.target.value))
+                    }}
+                >
+                    {[10, 20, 30, 40, 50].map(pageSize => (
+                        <option key={pageSize} value={pageSize}>
+                            Show {pageSize}
+                        </option>
+                    ))}
+                </select>
             </div>
-     )
+        </div>
+    )
 }
 
 export default TapleTest

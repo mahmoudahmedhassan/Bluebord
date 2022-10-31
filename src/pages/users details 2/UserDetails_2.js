@@ -158,12 +158,7 @@ function UserDetailsTow() {
                                                 <div className={classes.UserTapleDetails_label_api}>{pG04Lb03a? pG04Lb03a.pG04Lb03a : "notfound"}</div>
                                             </div>
                                         </Col>
-                                        {/* <Col>
-                                            <div className='d-flex align-items-center justify-content-between'>
-                                                <div className={classes.UserTapleDetails_label}>pG03Lb02</div>
-                                                <div className={classes.UserTapleDetails_label_api}>pG03Lb02</div>
-                                            </div>
-                                        </Col> */}
+                                     
                                     </Row>
 
                                 </div>

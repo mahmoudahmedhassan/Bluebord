@@ -24,7 +24,7 @@ function Header() {
     const navigate = useNavigate();
 
     const dispatch = useDispatch();
- 
+
     const [t, i18n] = useTranslation();
 
     const [openSidebar, setOpenSidebar] = useState(true);
@@ -37,29 +37,7 @@ function Header() {
 
     const UserDropdown = (
         <>
-            {/* <Dropdown>
-                <Dropdown.Toggle variant="success" id="dropdown-basic"   >
-                {users && users.username}
-                </Dropdown.Toggle>
-
-                <Dropdown.Menu>
-                    <Dropdown.Item href="#/action-1"><FaUser /> <span>{users && users.username} </span></Dropdown.Item>
-                    <Dropdown.Item href="#/action-2"><FaRegSun /> <span>{t("settings")}</span></Dropdown.Item>
-                    <Dropdown.Item href="#/action-3" onClick={logOut}><BiLogOut /><span > {t("logout")}</span></Dropdown.Item>
-                </Dropdown.Menu>
-            </Dropdown> */}
-            <AccountMenu/>
-            {/* <nav>
-                <ul>
-                    <li> Style 1
-                        <ul className={`${classes.drop_menu} ${classes.menu_1}`}>
-                            <li>Lorem, ipsum.</li>
-                            <li>Lorem, ipsum.</li>
-                            <li>Lorem, ipsum.</li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav> */}
+            <AccountMenu />
         </>
     )
     return (
@@ -89,8 +67,8 @@ function Header() {
                             />
                         )
                     }
-                    
-                 </div>
+
+                </div>
                 <div className={classes.UserDropdown}>{UserDropdown}</div>
             </div>
             <div className={classes.menubar}>

@@ -1,5 +1,5 @@
 import React from 'react';
-import './index.css'
+import classes from './index.module.css'
 import { useSelector, useDispatch } from 'react-redux';
 import Table from 'react-bootstrap/Table';
 import SpinnerLoading from '../../components/sppiner/Sppiner'
@@ -7,8 +7,7 @@ import { useTable } from 'react-table'
 
 function TapleDetailsUserTow() {
     const { userTapleData_2, loading } = useSelector(state => state.UserTapleData_2Slice);
-    console.log('userTapleData', userTapleData_2)
-
+    // console.log('userTapleData', userTapleData_2)
 
     const data = React.useMemo(() => userTapleData_2, [userTapleData_2])
 
