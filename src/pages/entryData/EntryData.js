@@ -65,7 +65,7 @@ function EntryData() {
   };
 
   return (
-    <div style={{marginBottom:'30px'}}>
+    <div style={{ marginBottom: '30px' }}>
       <Container>
         <Breadcrumbs className='mr-3' main="Grop-1" sub="Page01" />
       </Container>
@@ -171,14 +171,15 @@ function EntryData() {
           </form>
         </Collapse>
 
-        {<TapleTest
-        dataTablePro={search(tapleData)}
-        dataTableHid={search(tapleDataGitHid)}
-        tapleDataGitAll={search(tapleDataGitAll)}
-        tapleDataGitFin={search(tapleDataGitFin)}
-        tapData={tapData}
-        loading={loading} error={error}
-      />}
+        {
+          <TapleTest
+            dataTablePro={search(tapleData)}
+            dataTableHid={search(tapleDataGitHid)}
+            tapleDataGitAll={search(tapleDataGitAll)}
+            tapleDataGitFin={search(tapleDataGitFin)}
+            tapData={tapData}
+            loading={loading} error={error}
+          />}
 
       </Container>
 
@@ -190,8 +191,6 @@ function EntryData() {
         tapData={tapData}
         loading={loading} error={error}
          />} */}
-
- 
 
     </div>
   )

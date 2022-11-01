@@ -5,6 +5,7 @@ import Spinner from '../../components/sppiner/Sppiner';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs'; // title components
 import UsersTapleTow from '../../components/user details taple/UsersTaple_2';
 import TapleDetailsUserTow from '../../components/user details taple/TapleDetailsUser_2';
+import TapleDetailsUserTowTest from '../../components/user details taple/TapleDetailsUserTowTest'
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchUsersTapleData_2 } from '../../redux/usersTaple_2'
 
@@ -42,7 +43,7 @@ function UserDetailsTow() {
             <Container>
                 <Row>
                     {/* first col */}
-                    <Col>
+                    <Col md={5}>
                         <Row>
 
                             <div className={classes.SearchTaple}>
@@ -79,7 +80,7 @@ function UserDetailsTow() {
 
                     </Col>
                     {/* secnd col */}
-                    <Col>
+                    <Col md={7}>
                         {loading ? (<div className='text-center'><Spinner /> </div>) : (
 
                             <div className={classes.UserTapleDetails}>
@@ -168,7 +169,8 @@ function UserDetailsTow() {
                                 </div>
 
                                 <div className={classes.UsersTaple}>
-                                    <TapleDetailsUserTow />
+                                    {/* <TapleDetailsUserTow /> */}
+                                    <TapleDetailsUserTowTest/>
                                 </div>  
 
                                 {/*  row-4*/}
@@ -182,7 +184,7 @@ function UserDetailsTow() {
                                                     <Form.Control
                                                         type="text"
                                                         placeholder="text"
-                                                        value={firstObj.pG04Tx02a}
+                                                        value={firstObj?.pG04Tx02a}
                                                     />
                                                 </div>
                                             </div>

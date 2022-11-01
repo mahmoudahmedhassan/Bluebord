@@ -96,7 +96,7 @@
  
  
 /* Button 3 */
-#button-3 .knobs:before
+/* #button-3 .knobs:before
 {
    
     content: 'توصيل الي العمل';
@@ -112,32 +112,32 @@
     line-height: 2;
     padding: 9px 4px;
     background-color: #03A9F4;
-    /* border-radius: 50%; */
+    border-radius: 50%;
     transition: 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15) all;
-}
+} */
 
 #button-3 .checkbox:active + .knobs:before
 {
-    width: 46px;
+    /* width: 46px; */
     /* border-radius: 100px; */
 }
 
-#button-3 .checkbox:checked:active + .knobs:before
+/* #button-3 .checkbox:checked:active + .knobs:before
 {
     margin-left: -26px;
-}
-
+} */
+/* 
 #button-3 .checkbox:checked + .knobs:before
 {
     content: 'توصيل الي المنزل';
     left: 134px;
     background-color: #f44336;
-}
+} */
 
-#button-3 .checkbox:checked ~ .layer
+/* #button-3 .checkbox:checked ~ .layer
 {
     background-color: #fcebeb;
-}
+} */
 
   input[type=checkbox]{
 	height: 0;

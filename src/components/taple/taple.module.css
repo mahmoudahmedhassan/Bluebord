@@ -5,7 +5,6 @@
 } */
 
 .taple_container {
-  height: 700px;
   overflow: auto;
 }
 
@@ -40,7 +39,7 @@ thead {
   background-color: #2a9d8f;
   overflow-y: auto;
   overflow-x: hidden;
-} 
+}
 
 td,
 th {
@@ -69,12 +68,13 @@ tbody {
 }
 
 /* taple test */
-.pagination{
+.pagination {
   display: flex;
-  justify-content:space-evenly;
-  align-items:center;
-  margin-top:30px
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 30px
 }
+
 .pagination button {
   width: 100px;
   border: none;
@@ -82,6 +82,7 @@ tbody {
   color: #fff;
   padding: 5px;
 }
+
 .pagination input {
   width: 150px;
   border: none;
@@ -89,10 +90,18 @@ tbody {
   color: #fff;
   padding: 5px;
 }
+
 .pagination select {
   width: 100px;
   border: none;
   background: #2a9d8f;
   color: #fff;
   padding: 5px;
+}
+
+  .openModal{
+  border: none;
+  background: transparent;
+  font-size: large;
+  color: #2a9d8f;
 }

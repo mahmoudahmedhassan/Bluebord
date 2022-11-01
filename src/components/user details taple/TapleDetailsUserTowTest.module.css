@@ -1,0 +1,8 @@
+.input_value_checkbox{
+    width: 60px;
+}
+.input_checkbox{
+    height: 12px !important;
+	width: 12px !important;
+    visibility: visible !important;
+}

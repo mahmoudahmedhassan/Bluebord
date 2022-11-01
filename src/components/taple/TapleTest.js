@@ -1,11 +1,11 @@
-import { React, useMemo } from 'react';
+import { React, useMemo,useRef } from 'react';
 import classes from './taple.module.css'
-import { useTable, usePagination } from 'react-table'
+import { useTable, usePagination, useRowSelect } from 'react-table'
 import SpinnerLoading from '../../components/sppiner/Sppiner'
 import { FaBars } from "react-icons/fa";
 import 'react-perfect-scrollbar/dist/css/styles.css';
-import PerfectScrollbar from 'react-perfect-scrollbar'
 
+import { useReactToPrint } from 'react-to-print';
 
 function TapleTest(
     { dataTablePro,
@@ -18,6 +18,31 @@ function TapleTest(
     }
 ) {
 
+    const componentRef = useRef();
+    const handlePrint = useReactToPrint({
+      content: () => componentRef.current,
+    });
+
+//  add option button 
+    const tableHooks = (hooks) => {
+
+        hooks.visibleColumns.push((columns) => [
+          ...columns,
+          {
+            id: "Opstions",
+            Header: "Opstions",
+            Cell: ({ row }) => (
+              <button className={classes.openModal} onClick={() => gitSd(row.values.sd)}>
+                <FaBars />
+              </button>
+            ),
+          },
+        ]);
+      };
+
+      const gitSd = (id) => {
+        console.log(id)
+    }
 
     const data = useMemo(() => {
         if (tapData === "all") {
@@ -32,9 +57,11 @@ function TapleTest(
             return dataTablePro;
 
         }
+
     }, [tapData, tapleDataGitAll, dataTablePro, dataTableHid, tapleDataGitFin]);
-    console.log(data)
-    const columns = useMemo(
+    // console.log("datadd", data)
+
+     const columns = useMemo(
         () => [
             {
                 Header: 'SD',
@@ -96,7 +123,6 @@ function TapleTest(
                 accessor: "t114"
             },
 
-
         ],
         []
     )
@@ -114,46 +140,52 @@ function TapleTest(
         gotoPage,
         setPageSize,
         prepareRow,
-        state: { pageIndex, pageSize },
+         state: { pageIndex, pageSize },
     } = useTable({
         columns,
         data,
         initialState: { pageIndex: 0 },
     },
-    usePagination
+        usePagination,
+        useRowSelect,
+        tableHooks
     );
 
+
+
     return (
-        <div className={classes.taple_container}>
-            {loading ? (<div className='text-center'><SpinnerLoading /></div>) : (
+        <>
+            <div className={classes.taple_container}>
+                {loading ? (<div className='text-center'><SpinnerLoading /></div>) : (
 
-                <table {...getTableProps()}>
-                    <thead className={classes.thead} >
-                        {headerGroups.map(headerGroup => (
-                            <tr  {...headerGroup.getHeaderGroupProps()}>
-                                {headerGroup.headers.map(column => (
-                                    <th {...column.getHeaderProps()}>{column.render('Header')}</th>
-                                ))}
-                                <th>opstions</th>
-                            </tr>
+                    <table {...getTableProps()} ref={componentRef}>
+                        <thead className={classes.thead} >
+                            {headerGroups.map(headerGroup => (
+                                <tr  {...headerGroup.getHeaderGroupProps()}>
+                                    {headerGroup.headers.map(column => (
+                                        <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+                                    ))}
+                                 </tr>
 
-                        ))}
-                    </thead>
-                    <tbody className={classes.tbody} {...getTableBodyProps()}>
-                        {page?.map((row, i) => {
-                            prepareRow(row)
-                            return (
-                                <tr {...row.getRowProps()}>
-                                    {row.cells.map(cell => {
-                                        return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
-                                    })}
-                                    <td><FaBars /></td>
-                                </tr>
-                            )
-                        })}
-                    </tbody>
-                </table>
-            )}
+                            ))}
+                        </thead>
+                        <tbody className={classes.tbody} {...getTableBodyProps()}>
+                            {page?.map((row, i) => {
+                                prepareRow(row)
+                                return (
+                                    <tr {...row.getRowProps()}>
+                                        {row.cells.map(cell => {
+                                            return <td className='text-center' {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                                        })}
+
+                                     </tr>
+                                )
+                            })}
+                        </tbody>
+                    </table>
+                )}
+             </div>
+
             <div className={classes.pagination}>
                 <button className='next' onClick={() => nextPage()} disabled={!canNextPage}>next</button>
                 <button onClick={() => previousPage()} disabled={!canPreviousPage} >prev</button>
@@ -178,8 +210,10 @@ function TapleTest(
                         </option>
                     ))}
                 </select>
-            </div>
-        </div>
+             </div>
+             <button onClick={handlePrint}>Print</button>
+
+        </>
     )
 }
 
