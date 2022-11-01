@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 import BootstrapTable from 'react-bootstrap-table-next';
-import cellEditFactory, { type } from 'react-bootstrap-table2-editor';
+import cellEditFactory, { Type } from 'react-bootstrap-table2-editor';
 
 
 function TapleDetailsUserTest() {
