@@ -18,7 +18,7 @@ function UsersTapleTow({ usersTapleData }) {
     }
     const styleTaple = {
         overflow: 'auto',
-        width: '530px',
+        // width: '530px',
         height:'700px'
     }
 

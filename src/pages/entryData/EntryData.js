@@ -25,7 +25,7 @@ function EntryData() {
   const { tapleDataGitAll, loadingGitAll, errorGitAll } = useSelector(state => state.tapleDataGetAllSlice);
   const { tapleDataGitHid, loadingGitHid, errorGitHid } = useSelector(state => state.tapleDataGetHidSlice);
   const { tapleDataGitFin, } = useSelector(state => state.tapleDataGetFinSlice);
-
+// console.log(tapleData)
   // Collapse
   const [open, setOpen] = useState(false);
 
@@ -42,11 +42,13 @@ function EntryData() {
 
   const [switchValue, setSwitchValue] = useState({
     sW_N: false,
-    sW_S: true,
+    sW_S: false,
     sW_R: false,
     sw_ST: false
   })
+  console.log(switchValue.sw_ST) 
   console.log(switchValue)
+
 
   const handleChangeSwitch = ({ target }) => {
     setSwitchValue({
@@ -60,8 +62,11 @@ function EntryData() {
 
   const search = (data) => {
     return data.filter((item) => keys.some((key) => item[key].toString().toLowerCase().includes(query)))
-      .filter((item) => keysSlection.some((keySw) => item[keySw] !== switchValue))
-    // .filter((item) => keysSlection.some((key) => item[key].includes(switchValue) ))
+       // .filter((item) => keysSlection.some((key) => item[key] === switchValue ))
+       .filter((item) => item.sW_S === switchValue.sW_S )
+       .filter((item) => item.sW_N === switchValue.sW_N )
+       .filter((item) => item.sW_R === switchValue.sW_R )
+       .filter((item) => item.sw_ST === switchValue.sw_ST )
   };
 
   return (

@@ -17,6 +17,7 @@ function TapleTest(
         error
     }
 ) {
+    console.log('dataTablePro',dataTablePro)
 
     const componentRef = useRef();
     const handlePrint = useReactToPrint({

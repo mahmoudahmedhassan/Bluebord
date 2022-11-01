@@ -70,8 +70,8 @@ function TapleDetailsUserTest() {
                 return true;
             }
         },
-
-    ];
+     ];
+     
     return (
         <div>
             <BootstrapTable
