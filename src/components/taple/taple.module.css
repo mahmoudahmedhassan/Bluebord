@@ -6,6 +6,8 @@
 
 .taple_container {
   overflow: auto;
+  height: calc(100vh - 180px);
+
 }
 
 /* scrollbar */
@@ -75,8 +77,8 @@ tbody {
   margin-top: 30px
 }
 
-.pagination button {
-  width: 100px;
+.pagination button, .print {
+  width: 50px;
   border: none;
   background: #2a9d8f;
   color: #fff;
@@ -84,11 +86,12 @@ tbody {
 }
 
 .pagination input {
-  width: 150px;
+  width: 100px;
   border: none;
   background: #2a9d8f;
   color: #fff;
   padding: 5px;
+  margin-right: 10px;
 }
 
 .pagination select {

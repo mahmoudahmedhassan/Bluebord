@@ -1,4 +1,4 @@
-import { React, useMemo,useRef } from 'react';
+import { React, useMemo, useRef } from 'react';
 import classes from './taple.module.css'
 import { useTable, usePagination, useRowSelect } from 'react-table'
 import SpinnerLoading from '../../components/sppiner/Sppiner'
@@ -17,31 +17,31 @@ function TapleTest(
         error
     }
 ) {
-    console.log('dataTablePro',dataTablePro)
+    console.log('dataTablePro', dataTablePro)
 
     const componentRef = useRef();
     const handlePrint = useReactToPrint({
-      content: () => componentRef.current,
+        content: () => componentRef.current,
     });
 
-//  add option button 
+    //  add option button 
     const tableHooks = (hooks) => {
 
         hooks.visibleColumns.push((columns) => [
-          ...columns,
-          {
-            id: "Opstions",
-            Header: "Opstions",
-            Cell: ({ row }) => (
-              <button className={classes.openModal} onClick={() => gitSd(row.values.sd)}>
-                <FaBars />
-              </button>
-            ),
-          },
+            ...columns,
+            {
+                id: "Opstions",
+                Header: "Opstions",
+                Cell: ({ row }) => (
+                    <button className={classes.openModal} onClick={() => gitSd(row.values.sd)}>
+                        <FaBars />
+                    </button>
+                ),
+            },
         ]);
-      };
+    };
 
-      const gitSd = (id) => {
+    const gitSd = (id) => {
         console.log(id)
     }
 
@@ -62,7 +62,7 @@ function TapleTest(
     }, [tapData, tapleDataGitAll, dataTablePro, dataTableHid, tapleDataGitFin]);
     // console.log("datadd", data)
 
-     const columns = useMemo(
+    const columns = useMemo(
         () => [
             {
                 Header: 'SD',
@@ -141,7 +141,9 @@ function TapleTest(
         gotoPage,
         setPageSize,
         prepareRow,
-         state: { pageIndex, pageSize },
+        pageCount,
+        pageOptions,
+        state: { pageIndex, pageSize },
     } = useTable({
         columns,
         data,
@@ -166,7 +168,7 @@ function TapleTest(
                                     {headerGroup.headers.map(column => (
                                         <th {...column.getHeaderProps()}>{column.render('Header')}</th>
                                     ))}
-                                 </tr>
+                                </tr>
                             ))}
                         </thead>
                         <tbody className={classes.tbody} {...getTableBodyProps()}>
@@ -177,39 +179,63 @@ function TapleTest(
                                         {row.cells.map(cell => {
                                             return <td className='text-center' {...cell.getCellProps()}>{cell.render('Cell')}</td>
                                         })}
-                                     </tr>
+                                    </tr>
                                 )
                             })}
                         </tbody>
                     </table>
                 )}
-             </div>
+            </div>
             <div className={classes.pagination}>
-                <button className='next' onClick={() => nextPage()} disabled={!canNextPage}>next</button>
-                <button onClick={() => previousPage()} disabled={!canPreviousPage} >prev</button>
-                <input
-                    type="number"
-                    min="1"
-                    defaultValue={pageIndex + 1}
-                    onChange={e => {
-                        const page = e.target.value ? Number(e.target.value) - 1 : 0
-                        gotoPage(page)
-                    }}
-                />
-                <select
-                    value={pageSize}
-                    onChange={e => {
-                        setPageSize(Number(e.target.value))
-                    }}
-                >
-                    {[10, 20, 30, 40, 50].map(pageSize => (
-                        <option key={pageSize} value={pageSize}>
-                            Show {pageSize}
-                        </option>
-                    ))}
-                </select>
-             </div>
-             <button onClick={handlePrint}>Print</button>
+                {/* <button className='next' onClick={() => nextPage()} disabled={!canNextPage}>next</button>
+                <button onClick={() => previousPage()} disabled={!canPreviousPage} >prev</button> */}
+                <div>
+                    <input
+                        type="number"
+                        min="1"
+                        defaultValue={pageIndex + 1}
+                        onChange={e => {
+                            const page = e.target.value ? Number(e.target.value) - 1 : 0
+                            gotoPage(page)
+                        }}
+                    />
+                    <select
+                        value={pageSize}
+                        onChange={e => {
+                            setPageSize(Number(e.target.value))
+                        }}
+                    >
+                        {[10, 20, 30, 40, 50].map(pageSize => (
+                            <option key={pageSize} value={pageSize}>
+                                Show {pageSize}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+
+                <div>
+                    <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
+                        {'<<'}
+                    </button>{' '}
+                    <button onClick={() => previousPage()} disabled={!canPreviousPage}>
+                        {'<'}
+                    </button>
+                    <span style={{padding:'10px'}}>
+                        Page{' '}
+                        <strong>
+                            {pageIndex + 1} of {pageOptions.length}
+                        </strong>{' '}
+                    </span>
+                    <button onClick={() => nextPage()} disabled={!canNextPage}>
+                        {'>'}
+                    </button>{' '}
+                    <button onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
+                        {'>>'}
+                    </button>{' '}
+                </div>
+
+            </div>
+            <button className={classes.print} onClick={handlePrint}>Print</button>
         </>
     )
 }
