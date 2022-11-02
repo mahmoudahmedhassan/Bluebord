@@ -25,16 +25,21 @@ function EntryData() {
   const { tapleDataGitAll, loadingGitAll, errorGitAll } = useSelector(state => state.tapleDataGetAllSlice);
   const { tapleDataGitHid, loadingGitHid, errorGitHid } = useSelector(state => state.tapleDataGetHidSlice);
   const { tapleDataGitFin, } = useSelector(state => state.tapleDataGetFinSlice);
-// console.log(tapleData)
+  // console.log(tapleData)
   // Collapse
   const [open, setOpen] = useState(false);
 
   const [tapData, setTapData] = useState(1);
+  const [toggleSwitches, setToggleSwitches]= useState(0);
 
 
   // search state
   const [query, setQuery] = useState('');
+  const handelQuery =(e)=>{
+    setQuery(e.target.value)
+    setToggleSwitches(0)
 
+  }
   // fetch dispatch data 
   useEffect(() => {
     dispatch(fetchTapleData())
@@ -46,7 +51,7 @@ function EntryData() {
     sW_R: false,
     sw_ST: false
   })
-  console.log(switchValue.sw_ST) 
+  console.log(switchValue.key)
   console.log(switchValue)
 
 
@@ -55,18 +60,22 @@ function EntryData() {
       ...switchValue,
       [target.name]: target.checked,
     });
-  }
+    setToggleSwitches(1)
+   }
   // filter search
   const keys = ["sd", "t102", "t103", "t104"];
   const keysSlection = ['sW_N', 'sW_S', 'sW_R', 'sw_ST'];
+   
 
-  const search = (data) => {
-    return data.filter((item) => keys.some((key) => item[key].toString().toLowerCase().includes(query)))
-       // .filter((item) => keysSlection.some((key) => item[key] === switchValue ))
-       .filter((item) => item.sW_S === switchValue.sW_S )
-       .filter((item) => item.sW_N === switchValue.sW_N )
-       .filter((item) => item.sW_R === switchValue.sW_R )
-       .filter((item) => item.sw_ST === switchValue.sw_ST )
+    const search = (data) => {
+      if(toggleSwitches===0){
+         return  data.filter((item) => keys.some((key) => item[key].toString().toLowerCase().includes(query)))
+      }else{
+     return data.filter((item) => keys.some((key) => item[key].toString().toLowerCase().includes(query)))
+            .filter((item) => item.sW_N === switchValue.sW_N )
+            .filter((item) => item.sW_R === switchValue.sW_R )
+            .filter((item) => item.sw_ST  === switchValue.sw_ST) 
+      }
   };
 
   return (
@@ -80,7 +89,6 @@ function EntryData() {
 
         <button variant="primary" className='searchTaple_but'
           onClick={() => setOpen(!open)}
-
         >search</button>
 
         <Collapse in={open}>
@@ -95,12 +103,12 @@ function EntryData() {
                         <Form.Control
                           type="text"
                           placeholder="search"
-                          onChange={e => setQuery(e.target.value)}
+                          onChange={handelQuery}
                         />
                       </div>
                     </Col>
                     <Col>
-                      <SelectSearch setTapData={setTapData} />
+                      <SelectSearch setTapData={setTapData} setToggleSwitches={setToggleSwitches}/>
 
                     </Col>
                   </Row>
@@ -112,60 +120,58 @@ function EntryData() {
                 <div className="section_2">
 
                   <div className='d-flex align-items-center mb-2'>
-                    <span className='mx-2'>yes</span>
+                    <span className='mx-2'>sW_N_false</span>
                     <input
                       id='switch-11'
                       type="checkbox"
                       name="sW_N"
                       onChange={handleChangeSwitch}
                       checked={switchValue.sW_N}
-                    />
+                     />
                     <label htmlFor="switch-11"></label>
-                    <span className='mx-2'>no</span>
+                    <span className='mx-2'>sW_N_true</span>
                   </div>
 
                   <div className='d-flex align-items-center mb-2'>
-                    <span className='mx-2'>yes</span>
+                    <span className='mx-2'>sW_S_false</span>
                     <input
                       id='switch-22'
                       type="checkbox"
                       name="sW_S"
                       onChange={handleChangeSwitch}
                       checked={switchValue.sW_S}
-
-
                     />
                     <label htmlFor="switch-22"></label>
-                    <span className='mx-2'>no</span>
+                    <span className='mx-2'>sW_S_true</span>
                   </div>
                 </div>
 
                 <div className="section_2">
 
                   <div className='d-flex align-items-center mb-2'>
-                    <span className='mx-2'>yes</span>
+                    <span className='mx-2'>sW_R_false</span>
                     <input
                       id='switch-33'
                       type="checkbox"
                       name="sW_R"
                       onChange={handleChangeSwitch}
                       checked={switchValue.sW_R}
-                    />
+                     />
                     <label htmlFor="switch-33"></label>
-                    <span className='mx-2'>no</span>
+                    <span className='mx-2'>sW_R_true</span>
                   </div>
 
                   <div className='d-flex align-items-center mb-2'>
-                    <span className='mx-2'>yes</span>
+                    <span className='mx-2'>sw_ST_false</span>
                     <input
                       id='switch-44'
                       type="checkbox"
                       name="sw_ST"
                       onChange={handleChangeSwitch}
                       checked={switchValue.sw_ST}
-                    />
+                     />
                     <label htmlFor="switch-44"></label>
-                    <span className='mx-2'>no</span>
+                    <span className='mx-2'>sw_ST_true</span>
                   </div>
 
 

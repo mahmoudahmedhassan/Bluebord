@@ -167,7 +167,6 @@ function TapleTest(
                                         <th {...column.getHeaderProps()}>{column.render('Header')}</th>
                                     ))}
                                  </tr>
-
                             ))}
                         </thead>
                         <tbody className={classes.tbody} {...getTableBodyProps()}>
@@ -178,7 +177,6 @@ function TapleTest(
                                         {row.cells.map(cell => {
                                             return <td className='text-center' {...cell.getCellProps()}>{cell.render('Cell')}</td>
                                         })}
-
                                      </tr>
                                 )
                             })}
@@ -186,7 +184,6 @@ function TapleTest(
                     </table>
                 )}
              </div>
-
             <div className={classes.pagination}>
                 <button className='next' onClick={() => nextPage()} disabled={!canNextPage}>next</button>
                 <button onClick={() => previousPage()} disabled={!canPreviousPage} >prev</button>
@@ -213,7 +210,6 @@ function TapleTest(
                 </select>
              </div>
              <button onClick={handlePrint}>Print</button>
-
         </>
     )
 }
