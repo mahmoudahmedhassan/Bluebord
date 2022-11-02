@@ -186,7 +186,7 @@ function TapleTest(
                     </table>
                 )}
             </div>
-            <div className={classes.pagination}>
+            <div className={ loading ? `${classes.hide}`  :`${classes.pagination}` } >
                 {/* <button className='next' onClick={() => nextPage()} disabled={!canNextPage}>next</button>
                 <button onClick={() => previousPage()} disabled={!canPreviousPage} >prev</button> */}
                 <div>
@@ -235,7 +235,7 @@ function TapleTest(
                 </div>
 
             </div>
-            <button className={classes.print} onClick={handlePrint}>Print</button>
+            <button className={ loading ? `${classes.hide}`  :`${classes.print}` }  onClick={handlePrint}>Print</button>
         </>
     )
 }
