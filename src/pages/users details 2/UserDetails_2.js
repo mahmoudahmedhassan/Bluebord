@@ -12,6 +12,7 @@ import { fetchUsersTapleData_2 } from '../../redux/usersTaple_2'
 // bootstartp
 import { Container, Row, Col, } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
+import TableDetailsUserTow from '../../components/user details taple/App';
 
 function UserDetailsTow() {
     const dispatch = useDispatch();
@@ -45,7 +46,6 @@ function UserDetailsTow() {
                     {/* first col */}
                     <Col md={5}>
                         <Row>
-
                             <div className={classes.SearchTaple}>
                                 <Col>
                                     <div>
@@ -170,7 +170,8 @@ function UserDetailsTow() {
 
                                 <div className={classes.UsersTaple}>
                                     {/* <TapleDetailsUserTow /> */}
-                                    <TapleDetailsUserTowTest/>
+                                    {/* <TapleDetailsUserTowTest/> */}
+                                    <TableDetailsUserTow/>
                                 </div>  
 
                                 {/*  row-4*/}

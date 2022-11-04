@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react';
 import classes from './userdetails.module.css'
 import Spinner from '../../components/sppiner/Sppiner';
 
-import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs'; // title components
+import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs'; // title components g2K 
 import UsersTaple from '../../components/user details taple/UsersTaple';
 import TapleDetailsUser from '../../components/user details taple/TapleDetailsUser';
 import TapleDetailsUserTest from '../../components/user details taple/TapleDetailsUserTest';
+import PageTowTableRight from '../../components/user details taple/Editable Taple/PageTowTableRight';
+import Test from '../../components/user details taple/Editable Taple/Apprr';
+// redux
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchUsersTapleData } from '../../redux/usersTaple'
 
@@ -14,11 +17,16 @@ import { Container, Row, Col, } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 
 export default function UserDetails() {
-
+  
+ // redux
   const dispatch = useDispatch();
-  const { usrsTapleData,loading } = useSelector(state => state.UsersTapleDataSlice)
-  // console.log('usrsTapleData',usrsTapleData)
+  const { usrsTapleData, loading } = useSelector(state => state.UsersTapleDataSlice);
+
+  //  search
   const [query, setQuery] = useState('');
+ 
+  const [dataTable, setDataTable] = useState('');
+ 
   // fetch dispatch data 
   useEffect(() => {
     dispatch(fetchUsersTapleData())
@@ -27,29 +35,16 @@ export default function UserDetails() {
   const { userTapleData } = useSelector(state => state.UserTapleDataSlice);
   let firstObj = userTapleData[0]
 
-  const [
-    pG03Lb02a,
-    pG03Lb04a,
-    pG03Lb05a,
-    pG03Lb07a,
-    pG03Lb08a,
-    pG03Sw02,
-    pG03Sw03,
-    pG03Tx02a,
-    pG03Tx04a,
-    pG03Tx05a,
-    pG03Tx06,
-    G03Tx02a,
-    G03Tx06] = userTapleData;
+  const logDataTable = (data) => {
+     setDataTable(data)
+  }
 
- 
+
   // filter search
   const keys = ["t101", "t102", "t103"];
 
   const search = (data) => {
     return data.filter((item) => keys.some((key) => item[key].toString().toLowerCase().includes(query)))
-    // .filter((item) => keysSlection.some((keySw) => item[keySw].includes(switchValue) ))
-    // .filter((item) => keysSlection.some((key) => item[key].includes(switchValue) ))
   };
   return (
     <div className={classes.userDetails}>
@@ -93,7 +88,7 @@ export default function UserDetails() {
           </Col>
 
           <Col>
-          {loading ? (<div className='text-center'><Spinner/> </div>):(
+            {loading ? (<div className='text-center'><Spinner /> </div>) : (
               <div className={classes.UserTapleDetails}>
 
                 {/* UserTapleDetails_row_0 */}
@@ -106,7 +101,7 @@ export default function UserDetails() {
                           type="text"
                           placeholder={firstObj ? firstObj.pG03Tx02a : "notfound"}
                           name='pG03Lb02a'
-                          value={pG03Tx02a?.pG03Tx02a}
+                          // value={pG03Tx02a?.pG03Tx02a}
                         />
                       </div>
                     </Col>
@@ -132,7 +127,7 @@ export default function UserDetails() {
                         <Form.Control
                           type="text"
                           placeholder={firstObj ? firstObj.G03Tx02a : "notfound"}
-                          value={G03Tx02a?.G03Tx02a}
+                          // value={G03Tx02a?.G03Tx02a}
                         />
                       </div>
                     </Col>
@@ -189,9 +184,11 @@ export default function UserDetails() {
 
                 <div className={classes.UsersTaple}>
                   {/* <TapleDetailsUser /> */}
-                  <TapleDetailsUserTest/>
+                  <TapleDetailsUserTest logDataTable={logDataTable} />
+                  {/* <PageTowTableRight/> */}
+                  {/* <Test logDataTable={logDataTable} /> */}
                 </div>
-
+ 
                 {/*  row-4*/}
                 <div className={classes.UserTapleDetails_textarea}>
                   <textarea placeholder="text area" disabled value={firstObj ? firstObj.pG03Tx05a : 'notfound'} />
@@ -249,8 +246,8 @@ export default function UserDetails() {
                 </div>
 
               </div>
-          ) }
-           
+            )}
+
           </Col>
         </Row>
       </Container>

@@ -7,8 +7,7 @@ import { useTable } from 'react-table';
 
 function TapleDetailsUserTow() {
     const { userTapleData_2, loading } = useSelector(state => state.UserTapleData_2Slice);
-    console.log('userTapleDatahdjshdkjdshj', userTapleData_2)
-
+ 
     const data = React.useMemo(() => userTapleData_2, [userTapleData_2])
 
     const columns = React.useMemo(
