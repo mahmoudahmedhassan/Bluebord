@@ -4,8 +4,8 @@ import { useSelector } from 'react-redux';
 import BootstrapTable from 'react-bootstrap-table-next';
 import cellEditFactory, { Type } from 'react-bootstrap-table2-editor';
 
-
 function TapleDetailsUserTest({ logDataTable }) {
+
     const { userTapleData, loading, error } = useSelector(state => state.UserTapleDataSlice);
     const [dataTable, setDataTable] = useState([]);
     const [newTable, setNewTable] = useState([]);
@@ -13,8 +13,7 @@ function TapleDetailsUserTest({ logDataTable }) {
     useEffect(() => {
         logDataTable(newTable)
     }, [newTable, logDataTable])
-
-
+ 
     useEffect(() => {
         let newArr = userTapleData.map(item => {
             return {
@@ -30,8 +29,7 @@ function TapleDetailsUserTest({ logDataTable }) {
         setNewTable(newArr);
     }, [userTapleData])
 
-
-    const columns = [
+     const columns = [
         {
             dataField: "t201",
             text: 'T201',
@@ -95,17 +93,17 @@ function TapleDetailsUserTest({ logDataTable }) {
             }
         },
     ];
-
+ 
     function beforeSaveCell(oldValue, newValue, row, column, done) {
         let newData = newTable.filter(item => item.id !== row.id);
         setNewTable([...newData, row]);
         console.log(row)
     }
-
+ 
     useEffect(() => {
         console.log(newTable)
     }, [newTable])
-
+ 
     return (
         <div>
             <BootstrapTable
@@ -114,11 +112,12 @@ function TapleDetailsUserTest({ logDataTable }) {
                 columns={columns}
                 cellEdit={cellEditFactory({
                     mode: 'click',
+                    blurToSave: true,
                     beforeSaveCell
                 })}
             />
         </div>
     )
 }
-
+ 
 export default TapleDetailsUserTest

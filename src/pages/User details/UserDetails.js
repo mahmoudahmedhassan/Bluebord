@@ -88,7 +88,7 @@ export default function UserDetails() {
           </Col>
 
           <Col>
-            {loading ? (<div className='text-center'><Spinner /> </div>) : (
+            {loading ? (<div className='d-flex justify-content-center align-items-center '><Spinner /> </div>) : (
               <div className={classes.UserTapleDetails}>
 
                 {/* UserTapleDetails_row_0 */}

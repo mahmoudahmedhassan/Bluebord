@@ -5,10 +5,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchUserDetailsTapleData_2 } from '../../redux/userDetailsTapleData_2'
 import SpinnerLoading from '../../components/sppiner/Sppiner'
 import Table from 'react-bootstrap/Table';
-// import { useTable, usePagination } from 'react-table';
+import { useTable, usePagination } from 'react-table';
 
 function UsersTapleTow({ usersTapleData }) {
-    console.log("sgadgjskajkasbkjwdu", usersTapleData)
+    // console.log("sgadgjskajkasbkjwdu", usersTapleData)
     // redux 
     const dispatch = useDispatch();
     const { loading } = useSelector(state => state.UsersTapleDataSlice)
@@ -18,12 +18,13 @@ function UsersTapleTow({ usersTapleData }) {
     }
     const styleTaple = {
         overflow: 'auto',
-        // width: '530px',
-        height:'700px'
+         height: '700px'
     }
 
-    // const data = useMemo(() => usersTapleData, [usersTapleData])
 
+//  react table library
+
+    // const data = useMemo(() => usersTapleData, [usersTapleData])
     // const columns = useMemo(
     //     () => [
     //         {
@@ -74,15 +75,15 @@ function UsersTapleTow({ usersTapleData }) {
     //     columns,
     //     data,
     //     initialState: { pageIndex: 0 },
-
     // },
     //     usePagination
-
     // );
 
     return (
         <div className={classes.UsersTapleTow} style={styleTaple}>
             {loading ? (<div className='text-center'> <SpinnerLoading /></div>) : (
+
+                // native taple
                 <Table className='table' striped bordered hover responsive style={{ height: '600px !important',overflow:'auto',width:'800px' }}>
                     <thead className='text-center'>
                         <tr>
@@ -111,6 +112,9 @@ function UsersTapleTow({ usersTapleData }) {
                         }
                     </tbody>
                 </Table>
+
+            //   react taple library
+
                 // <table {...getTableProps()}>
                 //     <thead>
                 //         {headerGroups.map(headerGroup => (
@@ -127,7 +131,7 @@ function UsersTapleTow({ usersTapleData }) {
                 //             return (
                 //                 <tr key={i} {...row.getRowProps()} >
                 //                     {row.cells.map(cell => {
-                //                         // console.log('cell', cell.row.values.sd)
+                //                         // console.log('cell', cell.render('Cell'))
                 //                         return <td  {...cell.getCellProps()}>{cell.render('Cell')}</td>
                 //                     })}
                 //                 </tr>

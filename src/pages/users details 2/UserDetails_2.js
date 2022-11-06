@@ -12,6 +12,7 @@ import { fetchUsersTapleData_2 } from '../../redux/usersTaple_2'
 // bootstartp
 import { Container, Row, Col, } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
+
 import TableDetailsUserTow from '../../components/user details taple/App';
 
 function UserDetailsTow() {
@@ -30,6 +31,10 @@ function UserDetailsTow() {
     useEffect(() => {
         dispatch(fetchUsersTapleData_2())
     }, [dispatch]);
+
+    const [isAllChecked, setAllChecked] = useState(false);
+  
+    console.log('isAllChecked',isAllChecked)
 
 
     // filter search
@@ -171,12 +176,12 @@ function UserDetailsTow() {
                                 <div className={classes.UsersTaple}>
                                     {/* <TapleDetailsUserTow /> */}
                                     {/* <TapleDetailsUserTowTest/> */}
-                                    <TableDetailsUserTow/>
+                                    <TableDetailsUserTow setAllChecked={setAllChecked}/>
                                 </div>  
 
                                 {/*  row-4*/}
 
-                                <div>
+                                <div style={{ marginTop: '20px' }}>
                                     <Row>
                                         <Col lg={8}>
                                             <div className='d-flex align-items-center '>
@@ -193,7 +198,14 @@ function UserDetailsTow() {
                                         </Col>
 
                                         <Col className="text-center" lg={4}>
-                                            <button className={classes.last_bun}> PG03Bt03 </button>
+                                            {
+                                                isAllChecked ? (
+                                                    <button className={classes.last_bun}> PG03Bt03 </button>
+
+                                                ): (
+                                                    <button disabled title="check last column" className={classes.last_bun}> PG03Bt03 </button>
+                                                )
+                                            }
                                         </Col>
                                     </Row>
                                 </div>

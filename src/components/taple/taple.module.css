@@ -26,7 +26,7 @@
 }
 
 tbody {
-  font-size: 12px;
+  font-size: 11px !important;
   text-align: center;
 }
 
@@ -83,16 +83,16 @@ tbody {
 .pagination button, .print {
   width: 50px;
   border: none;
-  background: #2a9d8f;
-  color: #fff;
+  background: #fff;
+  color: #2a9d8f;
   padding: 5px;
 }
 
 .pagination input {
   width: 100px;
   border: none;
-  background: #2a9d8f;
-  color: #fff;
+  background: #fff;
+  color: #2a9d8f;
   padding: 5px;
   margin-right: 10px;
 }
@@ -100,8 +100,8 @@ tbody {
 .pagination select {
   width: 100px;
   border: none;
-  background: #2a9d8f;
-  color: #fff;
+  background: #fff;
+  color: #2a9d8f;
   padding: 5px;
 }
 

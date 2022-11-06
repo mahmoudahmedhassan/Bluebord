@@ -39,8 +39,12 @@
 .last_bun{
     border: none;
     padding: 5px;
-    background: #222e3c;
+    background: #2A9D8F;
     color: #fff;
     border-radius: 5px;
 }
 
+.last_bun:disabled {
+    background: #dddddd;
+    cursor: not-allowed;
+  }
