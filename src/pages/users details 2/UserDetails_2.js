@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import classes from './userdetails-2.module.css'
 import Spinner from '../../components/sppiner/Sppiner';
-
+import axios from 'axios'
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs'; // title components
 import UsersTapleTow from '../../components/user details taple/UsersTaple_2';
 import TapleDetailsUserTow from '../../components/user details taple/TapleDetailsUser_2';
@@ -24,7 +24,7 @@ function UserDetailsTow() {
     const { userTapleData_2 } = useSelector(state => state.UserTapleData_2Slice);
     // console.log('right taple', userTapleData_2[0]);
     let firstObj = userTapleData_2[0]
- 
+
     const [query, setQuery] = useState('');
     const [switchValue, setSwitchValue] = useState(false)
 
@@ -33,8 +33,28 @@ function UserDetailsTow() {
     }, [dispatch]);
 
     const [isAllChecked, setAllChecked] = useState(false);
-  
-    console.log('isAllChecked',isAllChecked)
+
+    console.log('isAllChecked', isAllChecked)
+
+    // =================== select box =================
+    const [isAppear, setAppear] = useState(false);
+    const [reasonDataSelection, setReasonDataSelection] = useState([])
+    const [Selection, setSelection] = useState('');
+    console.log(Selection)
+    useEffect(() => {
+        const fetchReasonDataSelection = async () => {
+            const result = await axios(
+                'https://tstauth.smartgate-egypt.com/jobs/GetPG04Combo01a',
+            );
+            setReasonDataSelection(result.data);
+        };
+        fetchReasonDataSelection();
+    }, []);
+    const handelSubmit =()=>{
+        
+
+    }
+
 
 
     // filter search
@@ -159,7 +179,7 @@ function UserDetailsTow() {
 
                                 {/* UserTapleDetails_row_3 */}
 
-                                 <div className={classes.UserTapleDetails_row_3}>
+                                <div className={classes.UserTapleDetails_row_3}>
                                     <div className="d-flex">
                                         <div className={classes.UserTapleDetails_label}>pG04Tx02a</div>
                                         <div>
@@ -176,8 +196,34 @@ function UserDetailsTow() {
                                 <div className={classes.UsersTaple}>
                                     {/* <TapleDetailsUserTow /> */}
                                     {/* <TapleDetailsUserTowTest/> */}
-                                    <TableDetailsUserTow setAllChecked={setAllChecked}/>
-                                </div>  
+
+                                    <div className={isAppear ? `${classes.Reason}` : `${classes.ReasonHidden}`}>
+                                        <Row>
+                                            <Col>
+                                                <div className='d-flex align-items-center'>
+                                                    <span>Reason</span>
+                                                    <Form.Select aria-label="Default select example" onChange={(e) => setSelection(e.target.value)}>
+                                                        <option>select</option>
+
+                                                        {reasonDataSelection &&
+                                                            reasonDataSelection.map((el )=> (
+                                                            <option value={el.sd}>{el.rs}</option>
+                                                             ))
+                                                        }
+                                                    </Form.Select>
+                                                </div>
+                                            </Col>
+                                            <Col>
+                                                <div className='d-flex align-items-center justify-content-around'>
+                                                    <button onClick={handelSubmit}>PG04Buo1</button>
+                                                    <button onClick={() => setAppear(false)}>PG04Buo1</button>
+                                                </div>
+                                            </Col>
+                                        </Row>
+
+                                    </div>
+                                    <TableDetailsUserTow setAllChecked={setAllChecked} setAppear={setAppear} />
+                                </div>
 
                                 {/*  row-4*/}
 
@@ -202,7 +248,7 @@ function UserDetailsTow() {
                                                 isAllChecked ? (
                                                     <button className={classes.last_bun}> PG03Bt03 </button>
 
-                                                ): (
+                                                ) : (
                                                     <button disabled title="check last column" className={classes.last_bun}> PG03Bt03 </button>
                                                 )
                                             }
@@ -216,7 +262,7 @@ function UserDetailsTow() {
                     </Col>
                 </Row>
             </Container>
-        </div>
+        </div >
     )
 }
 

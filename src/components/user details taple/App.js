@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux';
 let CheckInput = (props) => {
   return (
     <input
-      style={{ visibility: "visible", height: "12px", width: "12px" }}
+      style={{ visibility: "visible", height: "12px", width: "12px",cursor:"pointer" }}
       id={props.id}
       disabled={props.disabled}
       type="checkbox"
@@ -44,7 +44,7 @@ let NumberInput = (props) => {
   )
 }
 
-function TableDetailsUserTow({ setAllChecked }) {
+function TableDetailsUserTow({ setAllChecked,setAppear }) {
   const { userTapleData_2, loading } = useSelector(state => state.UserTapleData_2Slice);
   const [data, setData] = useState(userTapleData_2);
   // const [isAllChecked, setAllChecked] = useState(false);
@@ -56,14 +56,14 @@ function TableDetailsUserTow({ setAllChecked }) {
         t201: item.t201,
         t202: item.t202,
         t203: item.t203,
-        t204: false,
+        t204: item.t204,
         t204tx: item.t204tx,
         t205: false,
         t206: false,
         t207: false,
         t207tx: item.t207tx,
         t208: false,
-        t209: false,
+        t209: item.t209,
         t209tx: item.t209tx,
         t210: false,
         t211: false,
@@ -129,6 +129,7 @@ function TableDetailsUserTow({ setAllChecked }) {
       console.log(obj)
     }
 
+   
   }
    
 
@@ -146,14 +147,12 @@ function TableDetailsUserTow({ setAllChecked }) {
 
     {
       name: 'T201',
-      selector: row => row.t201,
-      // sortable:true
-    },
+      selector: row => <span style={{cursor:"pointer"}} onDoubleClick={()=>setAppear(true)}>{row.t201}</span> 
+     },
     {
       name: 'T203',
-      selector: row => row.t203,
-      // sortable:true
-    },
+      selector: row => <span style={{cursor:"pointer"}} onDoubleClick={()=>setAppear(true)}>{row.t203}</span> 
+     },
     {
       name: 'T204',
       selector: row => row.t204,

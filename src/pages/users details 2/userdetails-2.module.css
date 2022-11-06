@@ -48,3 +48,20 @@
     background: #dddddd;
     cursor: not-allowed;
   }
+  .Reason{
+    margin: 20px 0;
+   }
+  .Reason span {
+    padding-inline-end: 10px;
+
+  }
+  .Reason button{
+    border: none;
+    padding: 5px;
+    background: #2A9D8F;
+    color: #fff;
+    border-radius: 5px;
+  }
+  .ReasonHidden{
+    display: none;
+  }
