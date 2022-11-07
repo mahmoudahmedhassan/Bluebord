@@ -21,6 +21,8 @@ export default function UserDetails() {
  // redux
   const dispatch = useDispatch();
   const { usrsTapleData, loading } = useSelector(state => state.UsersTapleDataSlice);
+  let rowsLength = usrsTapleData.length;
+
 
   //  search
   const [query, setQuery] = useState('');
@@ -73,8 +75,7 @@ export default function UserDetails() {
                     id='switch-1111'
                     type="checkbox"
                     name="sW_N"
-
-                  />
+                   />
                   <label htmlFor="switch-1111"></label>
                   <span className='mx-2'>no</span>
                 </div>
@@ -84,6 +85,8 @@ export default function UserDetails() {
 
             <div className={classes.UsersTaple}>
               <UsersTaple usersTapleData={search(usrsTapleData)} />
+              {<span>rows : {usrsTapleData && rowsLength}</span>}
+
             </div>
           </Col>
 
@@ -208,8 +211,7 @@ export default function UserDetails() {
                           type="checkbox"
                           name="sW_N"
                           checked={firstObj?.pG03Sw02}
-
-                        />
+                         />
                         <label htmlFor="pG03Sw02"></label>
                         <span className='mx-2'>no</span>
                       </div>

@@ -11,6 +11,7 @@ import Table from 'react-bootstrap/Table';
 // import { FaBars } from "react-icons/fa";
 
 function UsersTaple({ usersTapleData }) {
+
     // redux 
     const dispatch = useDispatch();
     // const data = useMemo(() => usersTapleData, [usersTapleData])
@@ -79,6 +80,7 @@ function UsersTaple({ usersTapleData }) {
     return (
         <div className={classes.usersTaple}>
             {loading ? (<div className='text-center'> <SpinnerLoading /></div>) : (
+                <>
                 <Table className='table' striped bordered hover responsive style={{ height: '600px !important' }}>
                     <thead className='text-center'>
                         <tr>
@@ -105,6 +107,8 @@ function UsersTaple({ usersTapleData }) {
                         }
                     </tbody>
                 </Table>
+                </>
+
 
                 // <table {...getTableProps()}>
                 //     <thead>
@@ -155,6 +159,7 @@ function UsersTaple({ usersTapleData }) {
                     ))}
                 </select>
             </div> */}
+
 
         </div>
     )

@@ -19,6 +19,8 @@ function UserDetailsTow() {
     const dispatch = useDispatch();
     // left taple
     const { usrsTapleData_2, loading } = useSelector(state => state.UsersTapleData_2Slice);
+    let rowsLength = usrsTapleData_2.length;
+
 
     // right taple
     const { userTapleData_2 } = useSelector(state => state.UserTapleData_2Slice);
@@ -50,8 +52,8 @@ function UserDetailsTow() {
         };
         fetchReasonDataSelection();
     }, []);
+
     const handelSubmit =()=>{
-   
 
     }
 
@@ -99,6 +101,8 @@ function UserDetailsTow() {
 
                         <div className={classes.UsersTaple}>
                             <UsersTapleTow usersTapleData={search(usrsTapleData_2)} />
+                            {<span>rows : {usrsTapleData_2 && rowsLength}</span>}
+
                         </div>
 
                     </Col>

@@ -1,10 +1,11 @@
 import { React, useMemo, useRef } from 'react';
-import classes from './taple.module.css'
-import { useTable, usePagination, useRowSelect } from 'react-table'
-import SpinnerLoading from '../../components/sppiner/Sppiner'
+import classes from './taple.module.css';
+import { useTable, usePagination, useRowSelect } from 'react-table';
+import SpinnerLoading from '../../components/sppiner/Sppiner';
 import { FaBars } from "react-icons/fa";
 import 'react-perfect-scrollbar/dist/css/styles.css';
 
+import {Container, Row, Col } from 'react-bootstrap';
 import { useReactToPrint } from 'react-to-print';
 
 function TapleTest(
@@ -61,6 +62,7 @@ function TapleTest(
 
     }, [tapData, tapleDataGitAll, dataTablePro, dataTableHid, tapleDataGitFin]);
     // console.log("datadd", data)
+    let rowsLength = data.length;
 
     const columns = useMemo(
         () => [
@@ -186,56 +188,70 @@ function TapleTest(
                     </table>
                 )}
             </div>
-            <div className={ loading ? `${classes.hide}`  :`${classes.pagination}` } >
+            {<span>rows : {data && rowsLength}</span>}
+
+
+            <div className={loading ? `${classes.hide}` : `${classes.pagination}`} >
                 {/* <button className='next' onClick={() => nextPage()} disabled={!canNextPage}>next</button>
                 <button onClick={() => previousPage()} disabled={!canPreviousPage} >prev</button> */}
-                <div>
-                    <input
-                        type="number"
-                        min="1"
-                        defaultValue={pageIndex + 1}
-                        onChange={e => {
-                            const page = e.target.value ? Number(e.target.value) - 1 : 0
-                            gotoPage(page)
-                        }}
-                    />
-                    <select
-                        value={pageSize}
-                        onChange={e => {
-                            setPageSize(Number(e.target.value))
-                        }}
-                    >
-                        {[10, 20, 30, 40, 50].map(pageSize => (
-                            <option key={pageSize} value={pageSize}>
-                                Show {pageSize}
-                            </option>
-                        ))}
-                    </select>
-                </div>
+                <Container fluid>
+                <Row className='align-items-center'>
+                    <Col>
+                        <div className={classes.pagination_section_1}>
+                            <input
+                                type="number"
+                                min="1"
+                                defaultValue={pageIndex + 1}
+                                onChange={e => {
+                                    const page = e.target.value ? Number(e.target.value) - 1 : 0
+                                    gotoPage(page)
+                                }}
+                            />
+                            <select
+                                value={pageSize}
+                                onChange={e => {
+                                    setPageSize(Number(e.target.value))
+                                }}
+                            >
+                                {[10, 20, 30, 40, 50].map(pageSize => (
+                                    <option key={pageSize} value={pageSize}>
+                                        Show {pageSize}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                    </Col>
+                    <Col>
 
-                <div>
-                    <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
-                        {'<<'}
-                    </button>{' '}
-                    <button onClick={() => previousPage()} disabled={!canPreviousPage}>
-                        {'<'}
-                    </button>
-                    <span style={{padding:'10px'}}>
-                        Page{' '}
-                        <strong>
-                            {pageIndex + 1} of {pageOptions.length}
-                        </strong>{' '}
-                    </span>
-                    <button onClick={() => nextPage()} disabled={!canNextPage}>
-                        {'>'}
-                    </button>{' '}
-                    <button onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
-                        {'>>'}
-                    </button>{' '}
-                </div>
+                        <div className={classes.pagination_section_2}>
+                            <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
+                                {'<<'}
+                            </button>{' '}
+                            <button onClick={() => previousPage()} disabled={!canPreviousPage}>
+                                {'<'}
+                            </button>
+                            <span style={{ padding: '10px' }}>
+                                Page{' '}
+                                <strong>
+                                    {pageIndex + 1} of {pageOptions.length}
+                                </strong>{' '}
+                            </span>
+                            <button onClick={() => nextPage()} disabled={!canNextPage}>
+                                {'>'}
+                            </button>{' '}
+                            <button onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
+                                {'>>'}
+                            </button>{' '}
+                        </div>
+                    </Col>
+                </Row>
+                </Container>
+
+
+
 
             </div>
-            <button className={ loading ? `${classes.hide}` :`${classes.print}` }  onClick={handlePrint}>Print</button>
+            <button className={loading ? `${classes.hide}` : `${classes.print}`} onClick={handlePrint}>Print</button>
         </>
     )
 }

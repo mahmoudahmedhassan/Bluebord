@@ -6,6 +6,7 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import { Container, Row, Col, FloatingLabel } from 'react-bootstrap';
 import { use } from 'i18next';
+import axios from 'axios';
 function EntryPopupData() {
 
   // const Checkbox = ({ name, fnChange, checked=false}) => (
@@ -86,6 +87,21 @@ function EntryPopupData() {
     console.log(data)
   }
 
+  // const [Selection, setSelection] = useState('');
+  const [reasonDataSelection, setReasonDataSelection] = useState([])
+  console.log('reasonDataSelection reasonDataSelection',reasonDataSelection)
+
+  console.log(Selection)
+  useEffect(() => {
+    const fetchReasonDataSelection = async () => {
+      const result = await axios(
+        'https://tstauth.smartgate-egypt.com/jobs/GetCname',
+      );
+      setReasonDataSelection(result.data);
+    };
+    fetchReasonDataSelection();
+  }, []);
+
   return (
     <>
       <button variant="primary" onClick={handleShow} className="add_btn">
@@ -115,7 +131,7 @@ function EntryPopupData() {
                       />
                     </div>
                     <div className='mb-2'>
-                    <span className='text-center'>PG2md02</span>
+                      <span className='text-center'>PG2md02</span>
                       <Form.Control
                         type="text"
                         placeholder="PG2md02"
@@ -130,15 +146,21 @@ function EntryPopupData() {
                 <Col sm={12} md={8}>
                   <div className="">
                     <div className='mb-2'>
-                    <span  className='text-center'>PG2md03</span>
-                      <Form.Select aria-label="Floating label select example" placeholder="PG2md03" name='PG2Md01Comb1' onChange={handleChange}>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                      <span className='text-center'>PG2md03</span>
+
+                      <Form.Select aria-label="Floating label select example" placeholder="PG2md03" name='PG2Md01Comb1'>
+                        <option>select</option>
+
+                        {reasonDataSelection &&
+                          reasonDataSelection.map((el) => (
+                            <option value={el.cid}>{el.pG2Md01Comb1}</option>
+                          ))
+                        }
                       </Form.Select>
+
                     </div>
                     <div className='mb-2'>
-                    <span  className='text-center'>PG2md04</span>
+                      <span className='text-center'>PG2md04</span>
                       <Form.Control
                         type="text"
                         placeholder="PG2md04"
@@ -235,7 +257,7 @@ function EntryPopupData() {
                         </div>
                         <div className='me-2 mr-2 PG2Md01Lb'>
 
-                        <span className=''>PG2Md01Lb6</span>
+                          <span className=''>PG2Md01Lb6</span>
                           <Form.Control
                             type="text"
                             placeholder="PG2Md01Tx9"
@@ -256,7 +278,7 @@ function EntryPopupData() {
                         <div className='me-2 resalt section-2-row2-resalt'>
                           {Multiplying ? Multiplying : null}
                         </div>
-                        <span style={{ margin:'20px 10px 0px' }}> x </span>
+                        <span style={{ margin: '20px 10px 0px' }}> x </span>
 
                         <div className='me-2'>
                           <span>PG2md01Lb7</span>
@@ -273,7 +295,7 @@ function EntryPopupData() {
 
                       <div className='d-flex mb-2 row_2_col_1'>
                         <div className='me-2'>
-                        <span>PG2md01Lb8</span>
+                          <span>PG2md01Lb8</span>
 
                           <Form.Control
                             type="number"
@@ -283,10 +305,10 @@ function EntryPopupData() {
                             onChange={handleChange}
                           />
                         </div>
-                        <span style={{ margin:'30px 10px 0px' }}> + </span>
+                        <span style={{ margin: '30px 10px 0px' }}> + </span>
 
                         <div className='me-2'>
-                        <span >PG2md01Lb9</span>
+                          <span >PG2md01Lb9</span>
 
                           <Form.Control type="number"
                             placeholder="PG2Md01Tx12"
@@ -305,7 +327,7 @@ function EntryPopupData() {
                     <Col md={4}>
                       <div>
                         <div className='me-2  mb-2'>
-                        <span>PG2md01Lb10</span>
+                          <span>PG2md01Lb10</span>
 
                           <Form.Control
                             type="text"
@@ -316,7 +338,7 @@ function EntryPopupData() {
                           />
                         </div>
                         <div className='me-2'>
-                        <span>PG2md01Lb11</span>
+                          <span>PG2md01Lb11</span>
 
                           <Form.Control
                             type="text"
@@ -418,7 +440,7 @@ function EntryPopupData() {
 
               <Row className='row_1 align-items-center'>
                 <Col md={8}>
-                  <span style={{fontSize:'12px'}}>PG2Md01Lb14</span>
+                  <span style={{ fontSize: '12px' }}>PG2Md01Lb14</span>
                   <div className='d-flex mb-2'>
                     <Form.Control type="text"
                       placeholder="PG2Md01Tx16"
@@ -429,8 +451,8 @@ function EntryPopupData() {
                   </div>
                 </Col>
 
-                <Col md={4} className='d-flex align-content-center ' style={{height:'40px', marginTop:'11px'}}>
-                 <Button>PG2Md01But1</Button>
+                <Col md={4} className='d-flex align-content-center ' style={{ height: '40px', marginTop: '11px' }}>
+                  <Button>PG2Md01But1</Button>
                 </Col>
 
               </Row>

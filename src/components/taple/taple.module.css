@@ -79,6 +79,11 @@ tbody {
 .hide{
   display: none;
 }
+.pagination_section_1 , .pagination_section_2{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .pagination button, .print {
   margin-top: 20px;
@@ -88,6 +93,11 @@ tbody {
   color: #2a9d8f;
   padding: 5px;
   font-size: bold;
+  margin: 5px;
+
+}
+.pagination button:disabled{
+  cursor: not-allowed;
 }
 
 .pagination input {
