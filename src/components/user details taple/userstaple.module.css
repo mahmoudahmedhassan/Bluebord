@@ -29,7 +29,7 @@
   }
   
   .usersTaple{
-    max-height: 700px;
+    height: 100vh;
     overflow: auto;
 
   }

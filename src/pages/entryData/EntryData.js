@@ -30,12 +30,12 @@ function EntryData() {
   const [open, setOpen] = useState(false);
 
   const [tapData, setTapData] = useState(1);
-  const [toggleSwitches, setToggleSwitches]= useState(0);
+  const [toggleSwitches, setToggleSwitches] = useState(0);
 
 
   // search state
   const [query, setQuery] = useState('');
-  const handelQuery =(e)=>{
+  const handelQuery = (e) => {
     setQuery(e.target.value)
     setToggleSwitches(0)
 
@@ -61,35 +61,34 @@ function EntryData() {
       [target.name]: target.checked,
     });
     setToggleSwitches(1)
-   }
+  }
   // filter search
   const keys = ["sd", "t102", "t103", "t104"];
-  const keysSlection = ['sW_N', 'sW_S', 'sW_R', 'sw_ST'];
-   
+  // const keysSlection = ['sW_N', 'sW_S', 'sW_R', 'sw_ST'];
 
-    const search = (data) => {
-      if(toggleSwitches===0){
-         return  data.filter((item) => keys.some((key) => item[key].toString().toLowerCase().includes(query)))
-      }else{
-     return data.filter((item) => keys.some((key) => item[key].toString().toLowerCase().includes(query)))
-            .filter((item) => item.sW_N === switchValue.sW_N )
-            .filter((item) => item.sW_R === switchValue.sW_R )
-            .filter((item) => item.sw_ST  === switchValue.sw_ST) 
-      }
+
+  const search = (data) => {
+    if (toggleSwitches === 0) {
+      return data.filter((item) => keys.some((key) => item[key].toString().toLowerCase().includes(query)))
+    } else {
+      return data.filter((item) => keys.some((key) => item[key].toString().toLowerCase().includes(query)))
+        .filter((item) => item.sW_N === switchValue.sW_N)
+        .filter((item) => item.sW_R === switchValue.sW_R)
+        .filter((item) => item.sw_ST === switchValue.sw_ST)
+    }
   };
 
   return (
     <div style={{ marginBottom: '30px' }}>
-      <Container>
+      <Container fluid>
         <Breadcrumbs className='mr-3' main="Grop-1" sub="Page01" />
       </Container>
 
-      <Container>
+      <Container fluid>
         <EntryPopupData />
 
         <button variant="primary" className='searchTaple_but'
-          onClick={() => setOpen(!open)}
-        >search</button>
+          onClick={() => setOpen(!open)}>search</button>
 
         <Collapse in={open}>
           <form className="form" style={{ backgroundColor: 'white' }}>
@@ -108,17 +107,14 @@ function EntryData() {
                       </div>
                     </Col>
                     <Col>
-                      <SelectSearch setTapData={setTapData} setToggleSwitches={setToggleSwitches}/>
-
+                      <SelectSearch setTapData={setTapData} setToggleSwitches={setToggleSwitches} />
                     </Col>
                   </Row>
                 </div>
-
               </Col>
 
               <Col md={12} lg={6}>
                 <div className="section_2">
-
                   <div className='d-flex align-items-center mb-2'>
                     <span className='mx-2'>sW_N_false</span>
                     <input
@@ -127,7 +123,7 @@ function EntryData() {
                       name="sW_N"
                       onChange={handleChangeSwitch}
                       checked={switchValue.sW_N}
-                     />
+                    />
                     <label htmlFor="switch-11"></label>
                     <span className='mx-2'>sW_N_true</span>
                   </div>
@@ -156,7 +152,7 @@ function EntryData() {
                       name="sW_R"
                       onChange={handleChangeSwitch}
                       checked={switchValue.sW_R}
-                     />
+                    />
                     <label htmlFor="switch-33"></label>
                     <span className='mx-2'>sW_R_true</span>
                   </div>
@@ -169,7 +165,7 @@ function EntryData() {
                       name="sw_ST"
                       onChange={handleChangeSwitch}
                       checked={switchValue.sw_ST}
-                     />
+                    />
                     <label htmlFor="switch-44"></label>
                     <span className='mx-2'>sw_ST_true</span>
                   </div>

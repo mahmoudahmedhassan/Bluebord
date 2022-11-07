@@ -17,7 +17,7 @@
 .section_2{
     padding-top: 7px;
 }
-.section_2 >div {
+.section_2 > div {
     display:flex;
 }
 .switch{

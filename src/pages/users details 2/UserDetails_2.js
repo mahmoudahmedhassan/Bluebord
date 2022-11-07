@@ -51,11 +51,9 @@ function UserDetailsTow() {
         fetchReasonDataSelection();
     }, []);
     const handelSubmit =()=>{
-        
+   
 
     }
-
-
 
     // filter search
     const keys = ["t101", "t102", "t103"];
@@ -65,8 +63,8 @@ function UserDetailsTow() {
     };
     return (
         <div className={classes.userDetails_2}>
-            <Container> <Breadcrumbs className='mr-2' main="Grop-1" sub="Page03" /> </Container>
-            <Container>
+            <Container fluid> <Breadcrumbs className='mr-2' main="Grop-1" sub="Page03" /> </Container>
+            <Container fluid>
                 <Row>
                     {/* first col */}
                     <Col md={5}>
@@ -109,7 +107,6 @@ function UserDetailsTow() {
                         {loading ? (<div className='text-center'><Spinner /> </div>) : (
 
                             <div className={classes.UserTapleDetails}>
-
                                 {/* UserTapleDetails_row_0 */}
                                 <div className={classes.UserTapleDetails_row_0}>
                                     <Row>

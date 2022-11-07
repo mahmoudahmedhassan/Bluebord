@@ -56,7 +56,7 @@ function Dashboard() {
   }, [])
 
   return (
-    <Container>
+    <Container fluid>
       <h1 className='text-bb text-center m-2'>welcome</h1>
        <Row>
         {loading ? <div className='text-center'><Spinner/></div>:

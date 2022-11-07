@@ -48,11 +48,11 @@ export default function UserDetails() {
   };
   return (
     <div className={classes.userDetails}>
-      <Container>
+      <Container fluid>
         <Breadcrumbs className='mr-2' main="Grop-1" sub="Page02" />
       </Container>
 
-      <Container className={classes.main_container}>
+      <Container fluid className={classes.main_container}>
         <Row>
           <Col>
 

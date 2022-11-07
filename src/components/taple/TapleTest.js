@@ -235,7 +235,7 @@ function TapleTest(
                 </div>
 
             </div>
-            <button className={ loading ? `${classes.hide}`  :`${classes.print}` }  onClick={handlePrint}>Print</button>
+            <button className={ loading ? `${classes.hide}` :`${classes.print}` }  onClick={handlePrint}>Print</button>
         </>
     )
 }
