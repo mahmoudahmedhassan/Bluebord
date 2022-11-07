@@ -1,0 +1,28 @@
+.main{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    padding: 10px;
+}
+.main_1{
+    display: flex;
+    align-items: center;
+    margin-bottom:20px;
+ }
+
+.UserTapleDetails_label{
+    font-weight: bold;
+    margin-inline-end: 20px;
+}
+.UserTapleDetails_label_api{
+    border-bottom: 1px dotted #ddd ;
+}
+.buttons{
+    display:flex;
+    justify-content:space-around;
+    align-items: center;
+}
+.buttons button{
+    border: none;
+    background: #2a9d8f;
+    color: #fff;
+    padding: 10px;
+}

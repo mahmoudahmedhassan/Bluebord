@@ -8,12 +8,12 @@ import TapleDetailsUserTow from '../../components/user details taple/TapleDetail
 import TapleDetailsUserTowTest from '../../components/user details taple/TapleDetailsUserTowTest'
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchUsersTapleData_2 } from '../../redux/usersTaple_2'
-
-// bootstartp
+ // bootstartp
 import { Container, Row, Col, } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 
 import TableDetailsUserTow from '../../components/user details taple/App';
+import PopupPG03Bt03 from '../../components/modalPage03/PopupPG03Bt03';
 
 function UserDetailsTow() {
     const dispatch = useDispatch();
@@ -57,12 +57,15 @@ function UserDetailsTow() {
 
     }
 
+    const [Show, setShow] = useState(false);
+
+
     // filter search
     const keys = ["t101", "t102", "t103"];
     const search = (data) => {
         return data.filter((item) => keys.some((key) => item[key].toString().toLowerCase().includes(query)))
-        // .filter(item=> item === switchValue ? item : null)
-    };
+        //.filter(item=> item === switchValue ? item : null)
+     };
     return (
         <div className={classes.userDetails_2}>
             <Container fluid> <Breadcrumbs className='mr-2' main="Grop-1" sub="Page03" /> </Container>
@@ -221,8 +224,7 @@ function UserDetailsTow() {
                                                 </div>
                                             </Col>
                                         </Row>
-
-                                    </div>
+                                     </div>
                                     <TableDetailsUserTow setAllChecked={setAllChecked} setAppear={setAppear} />
                                 </div>
 
@@ -244,10 +246,10 @@ function UserDetailsTow() {
 
                                         </Col>
 
-                                        <Col className="text-center" lg={4}>
+                                         <Col className="text-center" lg={4}>
                                             {
                                                 isAllChecked ? (
-                                                    <button className={classes.last_bun}> PG03Bt03 </button>
+                                                    <button className={classes.last_bun} onClick={() => setShow(true)}> PG03Bt03 </button>
 
                                                 ) : (
                                                     <button disabled title="check last column" className={classes.last_bun}> PG03Bt03 </button>
@@ -263,7 +265,9 @@ function UserDetailsTow() {
                     </Col>
                 </Row>
             </Container>
+            <PopupPG03Bt03 Show={Show} setShow={setShow} pG04Lb01a={firstObj && firstObj.pG04Lb01a }/>
         </div >
+        
     )
 }
 
