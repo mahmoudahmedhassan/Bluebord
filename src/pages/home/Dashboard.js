@@ -15,6 +15,7 @@ import Col from 'react-bootstrap/Col';
 import axios from 'axios';
 import { BsCalendarDateFill } from "react-icons/bs";
 import CountUp from 'react-countup';
+import PrintModal from './PrintModal';
 
 function Dashboard() {
   const [dashbords, setDashboards] = useState([]);
@@ -58,6 +59,7 @@ function Dashboard() {
   return (
     <Container fluid>
       <h1 className='text-bb text-center m-2'>welcome</h1>
+      <PrintModal/>
        <Row>
         {loading ? <div className='text-center'><Spinner/></div>:
          dashbords.map((item,index) => (

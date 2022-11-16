@@ -7,7 +7,7 @@ import SpinnerLoading from '../../components/sppiner/Sppiner'
 import Table from 'react-bootstrap/Table';
 import { useTable, usePagination } from 'react-table';
 
-function UsersTapleTow({ usersTapleData }) {
+function UsersTapleTow({ usersTapleData ,setAllChecked,setShow }) {
     // console.log("sgadgjskajkasbkjwdu", usersTapleData)
     // redux 
     const dispatch = useDispatch();
@@ -15,6 +15,8 @@ function UsersTapleTow({ usersTapleData }) {
 
     const getDetailsUserData = (id) => {
         dispatch(fetchUserDetailsTapleData_2(id));
+        setAllChecked(false);
+        setShow(true)
     }
     const styleTaple = {
         overflow: 'auto',
@@ -99,7 +101,7 @@ function UsersTapleTow({ usersTapleData }) {
                     <tbody >
                         {
                             usersTapleData.map((el, index) => (
-                                <tr key={index} onClick={() => { getDetailsUserData(el.sd) }} >
+                                <tr key={index} onClick={() => { getDetailsUserData(el.sd);  }} >
                                     <td>{el.sd}</td>
                                     <td>{el.t101}</td>
                                     <td>{el.t102}</td>

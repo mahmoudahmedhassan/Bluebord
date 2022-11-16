@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import classes from './userdetails.module.css'
 import Spinner from '../../components/sppiner/Sppiner';
+import axios from 'axios';
 
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs'; // title components g2K 
 import UsersTaple from '../../components/user details taple/UsersTaple';
@@ -17,8 +18,8 @@ import { Container, Row, Col, } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 
 export default function UserDetails() {
-  
- // redux
+
+  // redux
   const dispatch = useDispatch();
   const { usrsTapleData, loading } = useSelector(state => state.UsersTapleDataSlice);
   let rowsLength = usrsTapleData.length;
@@ -26,9 +27,9 @@ export default function UserDetails() {
 
   //  search
   const [query, setQuery] = useState('');
- 
+
   const [dataTable, setDataTable] = useState('');
- 
+
   // fetch dispatch data 
   useEffect(() => {
     dispatch(fetchUsersTapleData())
@@ -38,8 +39,25 @@ export default function UserDetails() {
   let firstObj = userTapleData[0]
 
   const logDataTable = (data) => {
-     setDataTable(data)
+    setDataTable(data)
   }
+
+  // switch tableData 
+
+  const [switchValue, setSwitchValue] = useState(false)
+  const [switchData, setSwitchData] = useState([])
+  console.log('switchData', switchData)
+  useEffect(() => {
+    const fetchReasonDataSelection = async () => {
+      const result = await axios(
+        'https://tstauth.smartgate-egypt.com/jobs/GetFinPress',
+      );
+      setSwitchData(result.data);
+    };
+    fetchReasonDataSelection();
+  }, []);
+
+  // switch tableData 
 
 
   // filter search
@@ -75,7 +93,9 @@ export default function UserDetails() {
                     id='switch-1111'
                     type="checkbox"
                     name="sW_N"
-                   />
+                    onChange={(e) => setSwitchValue(e.target.checked)}
+
+                  />
                   <label htmlFor="switch-1111"></label>
                   <span className='mx-2'>no</span>
                 </div>
@@ -84,8 +104,10 @@ export default function UserDetails() {
             </div>
 
             <div className={classes.UsersTaple}>
-              <UsersTaple usersTapleData={search(usrsTapleData)} />
-              {<span>rows : {usrsTapleData && rowsLength}</span>}
+              <UsersTaple usersTapleData={search(switchValue ? switchData : usrsTapleData)} />
+              {
+                switchValue ? (<span>rows : {switchData && switchData.length}</span>) : (<span>rows : {usrsTapleData && rowsLength}</span>)
+              }
 
             </div>
           </Col>
@@ -104,7 +126,7 @@ export default function UserDetails() {
                           type="text"
                           placeholder={firstObj ? firstObj.pG03Tx02a : "notfound"}
                           name='pG03Lb02a'
-                          // value={pG03Tx02a?.pG03Tx02a}
+                        // value={pG03Tx02a?.pG03Tx02a}
                         />
                       </div>
                     </Col>
@@ -130,7 +152,7 @@ export default function UserDetails() {
                         <Form.Control
                           type="text"
                           placeholder={firstObj ? firstObj.G03Tx02a : "notfound"}
-                          // value={G03Tx02a?.G03Tx02a}
+                        // value={G03Tx02a?.G03Tx02a}
                         />
                       </div>
                     </Col>
@@ -182,7 +204,6 @@ export default function UserDetails() {
 
                 </div>
 
-
                 {/* taple */}
 
                 <div className={classes.UsersTaple}>
@@ -191,7 +212,7 @@ export default function UserDetails() {
                   {/* <PageTowTableRight/> */}
                   {/* <Test logDataTable={logDataTable} /> */}
                 </div>
- 
+
                 {/*  row-4*/}
                 <div className={classes.UserTapleDetails_textarea}>
                   <textarea placeholder="text area" disabled value={firstObj ? firstObj.pG03Tx05a : 'notfound'} />
@@ -211,7 +232,7 @@ export default function UserDetails() {
                           type="checkbox"
                           name="sW_N"
                           checked={firstObj?.pG03Sw02}
-                         />
+                        />
                         <label htmlFor="pG03Sw02"></label>
                         <span className='mx-2'>no</span>
                       </div>
@@ -251,6 +272,7 @@ export default function UserDetails() {
             )}
 
           </Col>
+
         </Row>
       </Container>
 

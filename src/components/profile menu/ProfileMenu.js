@@ -104,13 +104,13 @@ export default function AccountMenu() {
           <ListItemIcon>
             <PersonAdd fontSize="small" />
           </ListItemIcon>
-          {t("Add another account")}
+          {t("Add another account")} 
         </MenuItem>
         <MenuItem>
           <ListItemIcon>
             <Settings fontSize="small" />
           </ListItemIcon>
-         {t("Settings")}
+         {t("Settings")} 
         </MenuItem>
         <MenuItem onClick={logOut}>
           <ListItemIcon>

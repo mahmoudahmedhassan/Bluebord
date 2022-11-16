@@ -18,10 +18,7 @@ export const fetchTapleDataGitHid = createAsyncThunk(
       });
       console.log(res)
       const data = await res.json();
-      localStorage.setItem(
-        "tapleDataGitHid",
-        JSON.stringify(data)
-      );
+      localStorage.setItem("tapleDataGitHid",JSON.stringify(data));
 
       return data;
     } catch (error) {

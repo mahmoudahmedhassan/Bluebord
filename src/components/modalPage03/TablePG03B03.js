@@ -120,8 +120,7 @@ function TablePG03B03({modalData}) {
         setNewTable([...newData, row]);
         console.log(row)
     }
-
-    return (
+     return (
         <div>
             <BootstrapTable
                 keyField="id"
@@ -130,7 +129,7 @@ function TablePG03B03({modalData}) {
                 cellEdit={cellEditFactory({
                     mode: 'click',
                     blurToSave: true,
-                    beforeSaveCell
+                     beforeSaveCell
                 })}
             />
 

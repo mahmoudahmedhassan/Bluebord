@@ -1,0 +1,30 @@
+.date_print{
+    border: 1px solid #000;
+    width: 400px;
+    margin: auto;
+    text-align: center;
+    margin-bottom: 30px;
+
+}
+.Table_container{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+.table{
+    font-size:12px;
+    text-align:center;
+}
+
+.TR, .TD, .TH {
+    border-color: inherit;
+    border-style: solid;
+    border-width: 0;
+    text-align: center !important;
+    padding: 3px !important;
+}
+td, th {
+    border: 1px solid #000 !important;
+    text-align: center !important;
+    padding: 3px !important;
+}

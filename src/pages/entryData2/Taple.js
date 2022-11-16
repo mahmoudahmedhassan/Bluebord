@@ -1,18 +1,14 @@
 import { React, useMemo, useRef } from 'react';
-import classes from './taple.module.css';
+import classes from './index.module.css';
 import { useTable, usePagination, useRowSelect } from 'react-table';
 import SpinnerLoading from '../../components/sppiner/Sppiner';
 import { FaBars } from "react-icons/fa";
 import 'react-perfect-scrollbar/dist/css/styles.css';
 
-import {Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import { useReactToPrint } from 'react-to-print';
-import Options from './Options';
-import {useSelector,useDispatch} from 'react-redux';
-import {toggleModal} from '../../redux/allstateofmaintable';
-import TableModal from './TableModal';
-
-function TapleTest(
+  
+function Taple(
     { dataTablePro,
         tapleDataGitAll,
         dataTableHid,
@@ -22,17 +18,14 @@ function TapleTest(
         error
     }
 ) {
-    console.log('dataTablePro', dataTablePro)
-    // const {Show} =useSelector(state => state.stateOfMainTable)
-    // const dispatch = useDispatch()
-    const componentRef = useRef();
+     const componentRef = useRef();
     const handlePrint = useReactToPrint({
         content: () => componentRef.current,
     });
 
     //  add option button 
     const getSd = (id) => {
-        console.log('id',id)
+        console.log('id', id)
     }
 
     const tableHooks = (hooks) => {
@@ -43,23 +36,23 @@ function TapleTest(
                 id: "Opstions",
                 Header: "Opstions",
                 Cell: ({ row }) => (
-                    // <button className={classes.openModal} onClick={() => getSd(row.values.sd)}>
-                    //     <FaBars />
-                    // </button>
-                    <Options id={row.values.sd}/>
+                    <button className={classes.openModal} onClick={() => getSd(row.values.sd)}>
+                        <FaBars />
+                    </button>
                 ),
             },
         ]);
     };
 
+
     const data = useMemo(() => {
-        if (tapData === "all") {
+        if (tapData === "PG05Tp01") {
             return tapleDataGitAll;
-        } else if (tapData === "pro") {
+        } else if (tapData === "PG05Ch01") {
             return dataTablePro;
-        } else if (tapData === "hid") {
+        } else if (tapData === "PG05Ch02") {
             return dataTableHid;
-        } else if (tapData === "fin") {
+        } else if (tapData === "PG05Ch03") {
             return tapleDataGitFin;
         } else {
             return dataTablePro;
@@ -68,13 +61,13 @@ function TapleTest(
 
     }, [tapData, tapleDataGitAll, dataTablePro, dataTableHid, tapleDataGitFin]);
     // console.log("datadd", data)
-    let rowsLength = data.length;
+    // let rowsLength = data.length;
 
     const columns = useMemo(
         () => [
             {
-                Header: 'SD',
-                accessor: "sd"
+                Header: 'T101',
+                accessor: "t101"
             },
             {
                 Header: 'T102',
@@ -88,8 +81,6 @@ function TapleTest(
                 Header: 'T104',
                 accessor: "t104"
             },
-
-
             {
                 Header: 'T105',
                 accessor: "t105"
@@ -107,31 +98,6 @@ function TapleTest(
                 Header: 'T108',
                 accessor: "t108"
             },
-            {
-                Header: 'T109',
-                accessor: "t109"
-            },
-            {
-                Header: 'T110',
-                accessor: "t110"
-            },
-            {
-                Header: 'T111',
-                accessor: "t111"
-            },
-            {
-                Header: 'T112',
-                accessor: "t112"
-            },
-            {
-                Header: 'T113',
-                accessor: "t113"
-            },
-            {
-                Header: 'T114',
-                accessor: "t114"
-            },
-
         ],
         []
     )
@@ -194,63 +160,62 @@ function TapleTest(
                     </table>
                 )}
             </div>
-            {<span>rows : {data && rowsLength}</span>}
+            {/* {<span>rows : {data && rowsLength}</span>} */}
 
 
             <div className={loading ? `${classes.hide}` : `${classes.pagination}`} >
-                {/* <button className='next' onClick={() => nextPage()} disabled={!canNextPage}>next</button>
-                <button onClick={() => previousPage()} disabled={!canPreviousPage} >prev</button> */}
-                <Container fluid>
-                <Row className='align-items-center'>
-                    <Col>
-                        <div className={classes.pagination_section_1}>
-                            <input
-                                type="number"
-                                min="1"
-                                defaultValue={pageIndex + 1}
-                                onChange={e => {
-                                    const page = e.target.value ? Number(e.target.value) - 1 : 0
-                                    gotoPage(page)
-                                }}
-                            />
-                            <select
-                                value={pageSize}
-                                onChange={e => {
-                                    setPageSize(Number(e.target.value))
-                                }}
-                            >
-                                {[10, 20, 30, 40, 50].map(pageSize => (
-                                    <option key={pageSize} value={pageSize}>
-                                        Show {pageSize}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-                    </Col>
-                    <Col>
 
-                        <div className={classes.pagination_section_2}>
-                            <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
-                                {'<<'}
-                            </button>{' '}
-                            <button onClick={() => previousPage()} disabled={!canPreviousPage}>
-                                {'<'}
-                            </button>
-                            <span style={{ padding: '10px' }}>
-                                Page{' '}
-                                <strong>
-                                    {pageIndex + 1} of {pageOptions.length}
-                                </strong>{' '}
-                            </span>
-                            <button onClick={() => nextPage()} disabled={!canNextPage}>
-                                {'>'}
-                            </button>{' '}
-                            <button onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
-                                {'>>'}
-                            </button>{' '}
-                        </div>
-                    </Col>
-                </Row>
+                <Container fluid>
+                    <Row className='align-items-center'>
+                        <Col>
+                            <div className={classes.pagination_section_1}>
+                                <input
+                                    type="number"
+                                    min="1"
+                                    defaultValue={pageIndex + 1}
+                                    onChange={e => {
+                                        const page = e.target.value ? Number(e.target.value) - 1 : 0
+                                        gotoPage(page)
+                                    }}
+                                />
+                                <select
+                                    value={pageSize}
+                                    onChange={e => {
+                                        setPageSize(Number(e.target.value))
+                                    }}
+                                >
+                                    {[10, 20, 30, 40, 50].map(pageSize => (
+                                        <option key={pageSize} value={pageSize}>
+                                            Show {pageSize}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+                        </Col>
+                        <Col>
+
+                            <div className={classes.pagination_section_2}>
+                                <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
+                                    {'<<'}
+                                </button>{' '}
+                                <button onClick={() => previousPage()} disabled={!canPreviousPage}>
+                                    {'<'}
+                                </button>
+                                <span style={{ padding: '10px' }}>
+                                    Page{' '}
+                                    <strong>
+                                        {pageIndex + 1} of {pageOptions.length}
+                                    </strong>{' '}
+                                </span>
+                                <button onClick={() => nextPage()} disabled={!canNextPage}>
+                                    {'>'}
+                                </button>{' '}
+                                <button onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
+                                    {'>>'}
+                                </button>{' '}
+                            </div>
+                        </Col>
+                    </Row>
                 </Container>
 
 
@@ -258,9 +223,8 @@ function TapleTest(
 
             </div>
             <button className={loading ? `${classes.hide}` : `${classes.print}`} onClick={handlePrint}>Print</button>
-            <TableModal/>
-        </>
+         </>
     )
 }
 
-export default TapleTest
+export default Taple

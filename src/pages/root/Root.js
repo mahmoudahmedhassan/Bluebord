@@ -5,9 +5,7 @@ import Footer from "../../components/Footer/Footer";
 import './root.css';
 import { useSelector } from 'react-redux';
  
-
-import SideBarTest from "../../components/sidebar/SideBarTest";
-const Root = () => {
+ const Root = () => {
   // const togglee = false
   const { dirction } = useSelector(state => state.dirction);
   console.log('dirction',dirction)

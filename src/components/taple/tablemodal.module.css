@@ -1,0 +1,15 @@
+.SectionOne{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size:12px
+}
+.SectionOne span{
+    margin-inline-end: 10px;
+}
+.InputField{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size:12px
+}

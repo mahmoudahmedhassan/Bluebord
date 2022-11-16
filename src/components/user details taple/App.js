@@ -43,13 +43,14 @@ let NumberInput = (props) => {
   )
 }
 
-function TableDetailsUserTow({ setAllChecked, setAppear }) {
-  const { userTapleData_2, loading } = useSelector(state => state.UserTapleData_2Slice);
-  const [data, setData] = useState(userTapleData_2);
+function TableDetailsUserTow({dataTable, setAllChecked, setAppear }) {
+  // const { userTapleData_2 } = useSelector(state => state.UserTapleData_2Slice);
+  const [data, setData] = useState(dataTable);
   // const [isAllChecked, setAllChecked] = useState(false);
+  console.log('dataTable dataTable dataTable',dataTable)
 
   useEffect(() => {
-    let newArr = userTapleData_2.map(item => {
+    let newArr = dataTable.map(item => {
       return {
         id: item.tableIndex,
         t201: item.t201,
@@ -71,7 +72,7 @@ function TableDetailsUserTow({ setAllChecked, setAppear }) {
       }
     });
     setData(newArr)
-  }, [userTapleData_2]);
+  }, [dataTable]);
 
   useEffect(() => {
     let AllChecked = true;
@@ -84,7 +85,7 @@ function TableDetailsUserTow({ setAllChecked, setAppear }) {
   }, [data, setAllChecked])
 
 
-  console.log('data', userTapleData_2)
+  console.log('data', dataTable)
 
   // const [data, setData] = useState(userTapleData_2);
 
@@ -107,7 +108,7 @@ function TableDetailsUserTow({ setAllChecked, setAppear }) {
     newData[nodeIndex] = newRow
     setData([...newData])
 
-    let nextIndex = Object.keys(newRow).findIndex(item => item == selector) + 1;
+    let nextIndex = Object.keys(newRow).findIndex(item => item === selector) + 1;
     let nextSelector = Object.keys(newRow)[nextIndex];
 
     if (typeof newRow[nextSelector] !== "boolean") {

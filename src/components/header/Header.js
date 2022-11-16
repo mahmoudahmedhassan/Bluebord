@@ -4,13 +4,9 @@ import AccountMenu from '../../components/profile menu/ProfileMenu'
  
 import egy from '../../assets/egypt.png'
 import unitedstates from '../../assets/united-states.png'
-
- import { FaBars } from "react-icons/fa";
- 
+import { FaBars } from "react-icons/fa";
 import i18n from 'i18next';
-
 import { useTranslation } from 'react-i18next';
-
 import { useProSidebar } from 'react-pro-sidebar';
 // redux
 import { useDispatch } from 'react-redux'

@@ -6,7 +6,7 @@ const switcherSidebarSlice = createSlice({
   initialState: {
     witchSidebar: false,
   },
-
+   
   reducers: {
     switerSidebar: (state, action) => {
       state.witchSidebar = action.payload;
