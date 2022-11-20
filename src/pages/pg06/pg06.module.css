@@ -1,0 +1,10 @@
+
+.search{
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    max-width: 300px;
+}
+.search span{
+    margin-inline-end: 10px;
+}

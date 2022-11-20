@@ -1,19 +1,18 @@
 import { React, useState, useEffect } from 'react';
 // import classes from './selectsearch.module.css';
 import Form from 'react-bootstrap/Form';
- 
+
 // redux
-import {  useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { fetchTapleDataGitAll } from '../../redux/tapleDataGetAll'
 import { fetchTapleDataGitHid } from '../../redux/tapleDataGetHid'
 import { fetchTapleDataGitFin } from '../../redux/tapleDataGitFin'
 import { fetchTapleData } from '../../redux/tapleData'
- 
+
 function SelectSearch({ setTapData, setToggleSwitches }) {
     const dispatch = useDispatch();
-    const [show, setShow] = useState(false);
-    console.log(show)
+
     const [select, setSelect] = useState('')
     console.log(select)
 
@@ -36,7 +35,6 @@ function SelectSearch({ setTapData, setToggleSwitches }) {
     const getPro = (e) => {
         dispatch(fetchTapleData())
         setTapData('pro');
-        setShow(false);
         setToggleSwitches(0);
 
     }
@@ -44,14 +42,12 @@ function SelectSearch({ setTapData, setToggleSwitches }) {
     const getAll = (e) => {
         dispatch(fetchTapleDataGitAll());
         setTapData('all');
-        setShow(false);
         setToggleSwitches(0);
 
     }
     const getHid = (e) => {
         dispatch(fetchTapleDataGitHid());
         setTapData('hid');
-        setShow(false);
         setToggleSwitches(0);
 
 
@@ -59,7 +55,6 @@ function SelectSearch({ setTapData, setToggleSwitches }) {
     const getFin = (e) => {
         dispatch(fetchTapleDataGitFin());
         setTapData('fin');
-        setShow(false);
         setToggleSwitches(0);
     }
 

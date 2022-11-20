@@ -59,7 +59,7 @@ function UserDetails() {
                 </div>
 
                 <div className='platform-title text-center'>
-                  <h1>  {t("Hello!")}</h1>        
+                  <h1>  {t("Hello!")}</h1> 
 
                 </div>
 

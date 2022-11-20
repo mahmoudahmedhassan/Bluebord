@@ -8,6 +8,7 @@ import NotFound from './pages/notFoundPage/NotFound';
 import PrivateRoute from './pages/PrivateRoute';
 import Root from './pages/root/Root'
 import { BrowserRouter, Routes, Route, } from "react-router-dom";
+import Pg06 from './pages/pg06/Pg06';
 
 function App() {
   // const user_1 = true;
@@ -27,6 +28,8 @@ function App() {
               <Route path="/userDetails" exact element={<UserDetails />} />
               <Route path="/userDetails_2" exact element={<UserDetailsTow />} />
               <Route path="/entryDataTow" exact element={<EntryDataTow />} />
+              <Route path="/pg06" exact element={<Pg06 />} />
+               
              </Route>
           </Route>
         </Routes>

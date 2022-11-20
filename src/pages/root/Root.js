@@ -8,7 +8,6 @@ import { useSelector } from 'react-redux';
  const Root = () => {
   // const togglee = false
   const { dirction } = useSelector(state => state.dirction);
-  console.log('dirction',dirction)
   const { witchSidebar } = useSelector(state => state.switchSidebar);
  
   return (

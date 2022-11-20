@@ -40,20 +40,14 @@ function DropDwon({ setTapData }) {
     const getPG05Ch01 = (e) => {
         dispatch(fetchEntryDatatable_PG05Ch01());
         setTapData('PG05Ch01');
- 
-
     }
     const getPG05Ch02 = (e) => {
         dispatch(fetchEntryDatatable_PG05Ch02());
         setTapData('PG05Ch02');
-      
-
-
     }
     const getPG05Ch03 = (e) => {
         dispatch(fetchEntryDatatable_PG05Ch03());
-        setTapData('PG05Ch03');
-        
+        setTapData('PG05Ch03'); 
     }
 
     return (

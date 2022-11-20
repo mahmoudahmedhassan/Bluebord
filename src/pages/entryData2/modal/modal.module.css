@@ -1,0 +1,36 @@
+.PG05Bt01{
+    border:none;
+    padding: 10px;
+    color: #fff;
+    background-color:#2a9d8f;
+}
+.labels{
+    display: flex;
+    font-size: 12px;
+}
+.label{
+    font-weight: bold;
+    margin-inline-end: 10px;
+}
+.label_api{
+    border-bottom: 1px dotted #ddd;
+}
+.input_filed{
+    display: flex;
+    align-items: center;
+}
+.input_filed span{
+margin-inline-end: 10px;
+}
+.submit{
+    display: flex;
+    align-items: center;
+    justify-content:center
+}
+.submit button{
+    padding: 7px;
+    border: none;
+    color: #fff;
+    background-color:gray;
+}
+    

@@ -3,9 +3,11 @@ import { ErrorMessage, useField } from 'formik';
 import { BiErrorCircle } from "react-icons/bi";
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
-
+import {useSelector} from 'react-redux';
 export const TextField = ({ label, ...props }) => {
   const [field, meta] = useField(props);
+  const { dirction } = useSelector(state => state.dirction);
+
   return (
     <div className="mb-2">
 
@@ -15,7 +17,7 @@ export const TextField = ({ label, ...props }) => {
         autoComplete="off"
       /> */}
 
-      <InputGroup className="mb-3">
+      <InputGroup className="mb-3" dir={dirction ==="ar" ? "rtl" :null}>
         <InputGroup.Text id="basic-addon1">
           {props.icon}
         </InputGroup.Text>

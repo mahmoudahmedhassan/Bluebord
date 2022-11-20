@@ -16,7 +16,8 @@ import stateOfMainTable from './allstateofmaintable';
 import entryDatatablePG05Tp01Slice from './entryData2PG05Tp01';
 import entryDatatable_PG05Ch01Slice from './entryData2PG05Ch01';
 import entryDatatable_PG05Ch02Slice from './entryData2PG05Ch02';
-import entryDatatable_PG05Ch03Slice from './entryData2PG05Ch03';
+import entryDatatable_PG05Ch03Slice from './entryData2PG05Ch03'; 
+import PG5MdDataSlice from './PG5MdSlice'
 
 export  const store = configureStore({
   reducer: {
@@ -37,7 +38,8 @@ export  const store = configureStore({
     entryDatatablePG05Tp01Slice,
     entryDatatable_PG05Ch01Slice,
     entryDatatable_PG05Ch02Slice,
-    entryDatatable_PG05Ch03Slice
+    entryDatatable_PG05Ch03Slice,
+    PG5MdDataSlice,
 
   },
 })

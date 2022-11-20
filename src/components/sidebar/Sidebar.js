@@ -47,16 +47,17 @@ function SidebarMenu() {
 
             <MenuItem icon={<RiDashboardFill />}><NavLink to='./userDetails'><span style={{ color: '#fff' }}>Grop-2</span> </NavLink> </MenuItem>
             <MenuItem icon={<RiDashboardFill />}><NavLink to='./userDetails_2'><span style={{ color: '#fff' }}>Grop-3</span> </NavLink> </MenuItem>
+            <MenuItem icon={<RiDashboardFill />}><NavLink to='./pg06'><span style={{ color: '#fff' }}>Grop-4</span> </NavLink> </MenuItem>
 
 
-            <SubMenu icon={<FaRegSun />} label="Maps">
+            {/* <SubMenu icon={<FaRegSun />} label="Maps">
               <MenuItem> Google maps</MenuItem>
               <MenuItem> Open street maps</MenuItem>
             </SubMenu>
             <SubMenu icon={<BiLogOut />} label="Theme">
               <MenuItem> Dark </MenuItem>
               <MenuItem> Light </MenuItem>
-            </SubMenu>
+            </SubMenu> */}
           </Menu>
         </Sidebar>
 

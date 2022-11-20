@@ -18,13 +18,12 @@ import { useTranslation } from 'react-i18next';
 
 export default function AccountMenu() {
     const navigate = useNavigate();
-    const [t, i18n] = useTranslation();
+    const [t] = useTranslation();
 
     const { users} = useSelector(state => state.users);
 
-    const { dirction } = useSelector(state => state.dirction);
-    console.log(dirction)
-
+    // const { dirction } = useSelector(state => state.dirction);
+ 
     const logOut =()=>{
         localStorage.clear();
         window.location.reload();

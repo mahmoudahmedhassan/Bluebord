@@ -1,67 +1,12 @@
-import { React, useMemo, useRef } from 'react';
-import classes from './index.module.css';
+import React, { useEffect, useState, useMemo } from 'react';
+import classes from './table1.module.css'
 import { useTable, usePagination } from 'react-table';
-import SpinnerLoading from '../../components/sppiner/Sppiner';
-  
 import { Container, Row, Col } from 'react-bootstrap';
-import { useReactToPrint } from 'react-to-print';
-import {useDispatch} from 'react-redux';
-import {fetchPG5MdData} from '../../redux/PG5MdSlice';
-function Taple(
-    { tableDataPG05Tp01,
-        tableData_PG05Ch01,
-        tableData_PG05Ch02,
-        tableData_PG05Ch03,
-        tapData,
-        loading,
-        error
-    }
-) {
-    const dispatch = useDispatch()
-    const componentRef = useRef();
-    const handlePrint = useReactToPrint({
-        content: () => componentRef.current,
-    });
+import SpinnerLoading from '../../../components/sppiner/Sppiner';
+function FirstTable({ tableData, loading }) {
+      console.log(tableData);
 
-    //  add option button 
-    // const getSd = (id) => {
-    //     console.log('id', id)
-    // }
-
-    // const tableHooks = (hooks) => {
-
-    //     hooks.visibleColumns.push((columns) => [
-    //         ...columns,
-    //         {
-    //             id: "Opstions",
-    //             Header: "Opstions",
-    //             Cell: ({ row }) => (
-    //                 <button className={classes.openModal} onClick={() => getSd(row.values.sd)} >
-    //                     <FaBars />
-    //                 </button>
-    //             ),
-    //         },
-    //     ]);
-    // };
-
-    const data = useMemo(() => {
-        if (tapData === "PG05Tp01") {
-            return tableDataPG05Tp01;
-        } else if (tapData === "PG05Ch01") {
-            return tableData_PG05Ch01;
-        } else if (tapData === "PG05Ch02") {
-            return tableData_PG05Ch02;
-        } else if (tapData === "PG05Ch03") {
-            return tableData_PG05Ch03;
-        } else {
-            return tableDataPG05Tp01;
-
-        }
-
-    }, [tapData, tableDataPG05Tp01, tableData_PG05Ch01, tableData_PG05Ch02, tableData_PG05Ch03]);
-    // console.log("datadd", data)
-    // let rowsLength = data.length;
-
+ 
     const columns = useMemo(
         () => [
             {
@@ -98,9 +43,28 @@ function Taple(
                 Header: 'T108',
                 accessor: "t108"
             },
+            {
+                Header: 'T109',
+                accessor: "t109"
+            },
+
+            {
+                Header: 'T110',
+                accessor: "t110"
+            },
+            {
+                Header: 'T111',
+                accessor: "t112"
+            },
+            {
+                Header: 'T113',
+                accessor: "t113"
+            },
+
         ],
         []
     )
+    const data =useMemo(() => tableData , [tableData])
 
     const {
         getTableProps,
@@ -124,29 +88,13 @@ function Taple(
         initialState: { pageIndex: 0 },
     },
         usePagination,
-        // useRowSelect,
-        // tableHooks
     );
-    const gitId = (id) => {
-        let t101 = id.t101;
-        let t102 = id.t102;
-        let t101Array = t101.split('');
-        for (var i = 0; i < t101Array.length; i++) {
-            if (t101Array[i] === "/") {
-                t101Array.splice(i, 1);
-                i--;
-            }
-        }
-         let t101String =t101Array.join(" ").replace(/ /g, "");
-         dispatch(fetchPG5MdData({t101String,t102}))
-     }
-
     return (
-        <>
+        <div>
             <div className={classes.taple_container}>
                 {loading ? (<div className='text-center'><SpinnerLoading /></div>) : (
 
-                    <table {...getTableProps()} ref={componentRef}>
+                    <table {...getTableProps()}>
                         <thead className={classes.thead} >
                             {headerGroups.map(headerGroup => (
                                 <tr  {...headerGroup.getHeaderGroupProps()}>
@@ -161,7 +109,6 @@ function Taple(
                                 prepareRow(row)
                                 return (
                                     <tr {...row.getRowProps()}
-                                        onClick={() => gitId(row.cells[0].row.original)}
                                     >
                                         {row.cells.map(cell => {
                                             return <td className='text-center' {...cell.getCellProps()}>{cell.render('Cell')}</td>
@@ -230,9 +177,9 @@ function Taple(
                 </Container>
 
             </div>
-            <button className={loading ? `${classes.hide}` : `${classes.print}`} onClick={handlePrint}>Print</button>
-        </>
+
+        </div>
     )
 }
 
-export default Taple
+export default FirstTable
