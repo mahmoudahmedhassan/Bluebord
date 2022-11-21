@@ -4,9 +4,9 @@ import { useTable, usePagination } from 'react-table';
 import SpinnerLoading from '../../components/sppiner/Sppiner';
   
 import { Container, Row, Col } from 'react-bootstrap';
-import { useReactToPrint } from 'react-to-print';
 import {useDispatch} from 'react-redux';
 import {fetchPG5MdData} from '../../redux/PG5MdSlice';
+
 function Taple(
     { tableDataPG05Tp01,
         tableData_PG05Ch01,
@@ -18,32 +18,7 @@ function Taple(
     }
 ) {
     const dispatch = useDispatch()
-    const componentRef = useRef();
-    const handlePrint = useReactToPrint({
-        content: () => componentRef.current,
-    });
-
-    //  add option button 
-    // const getSd = (id) => {
-    //     console.log('id', id)
-    // }
-
-    // const tableHooks = (hooks) => {
-
-    //     hooks.visibleColumns.push((columns) => [
-    //         ...columns,
-    //         {
-    //             id: "Opstions",
-    //             Header: "Opstions",
-    //             Cell: ({ row }) => (
-    //                 <button className={classes.openModal} onClick={() => getSd(row.values.sd)} >
-    //                     <FaBars />
-    //                 </button>
-    //             ),
-    //         },
-    //     ]);
-    // };
-
+  
     const data = useMemo(() => {
         if (tapData === "PG05Tp01") {
             return tableDataPG05Tp01;
@@ -124,8 +99,7 @@ function Taple(
         initialState: { pageIndex: 0 },
     },
         usePagination,
-        // useRowSelect,
-        // tableHooks
+       
     );
     const gitId = (id) => {
         let t101 = id.t101;
@@ -146,7 +120,7 @@ function Taple(
             <div className={classes.taple_container}>
                 {loading ? (<div className='text-center'><SpinnerLoading /></div>) : (
 
-                    <table {...getTableProps()} ref={componentRef}>
+                    <table {...getTableProps()}>
                         <thead className={classes.thead} >
                             {headerGroups.map(headerGroup => (
                                 <tr  {...headerGroup.getHeaderGroupProps()}>
@@ -230,8 +204,7 @@ function Taple(
                 </Container>
 
             </div>
-            <button className={loading ? `${classes.hide}` : `${classes.print}`} onClick={handlePrint}>Print</button>
-        </>
+         </>
     )
 }
 

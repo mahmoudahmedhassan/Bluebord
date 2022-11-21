@@ -3,10 +3,12 @@ import classes from './table1.module.css'
 import { useTable, usePagination } from 'react-table';
 import { Container, Row, Col } from 'react-bootstrap';
 import SpinnerLoading from '../../../components/sppiner/Sppiner';
-function FirstTable({ tableData, loading }) {
-      console.log(tableData);
+import {useDispatch} from 'react-redux';
 
- 
+import {fetchPg06Bt01Data} from '../../../redux/Pg06Bt01TableSlice'
+function FirstTable({ tableData, loading }) {
+    const dispatch = useDispatch()
+
     const columns = useMemo(
         () => [
             {
@@ -64,7 +66,7 @@ function FirstTable({ tableData, loading }) {
         ],
         []
     )
-    const data =useMemo(() => tableData , [tableData])
+    const data = useMemo(() => tableData, [tableData])
 
     const {
         getTableProps,
@@ -89,6 +91,12 @@ function FirstTable({ tableData, loading }) {
     },
         usePagination,
     );
+    const gitId = (id) => {
+        let t101 = id.t101;
+        let t103 = id.t103;
+        
+         dispatch(fetchPg06Bt01Data({t101,t103}))
+     }
     return (
         <div>
             <div className={classes.taple_container}>
@@ -97,7 +105,7 @@ function FirstTable({ tableData, loading }) {
                     <table {...getTableProps()}>
                         <thead className={classes.thead} >
                             {headerGroups.map(headerGroup => (
-                                <tr  {...headerGroup.getHeaderGroupProps()}>
+                                <tr  {...headerGroup.getHeaderGroupProps()} >
                                     {headerGroup.headers.map(column => (
                                         <th {...column.getHeaderProps()}>{column.render('Header')}</th>
                                     ))}
@@ -108,8 +116,7 @@ function FirstTable({ tableData, loading }) {
                             {page?.map((row, i) => {
                                 prepareRow(row)
                                 return (
-                                    <tr {...row.getRowProps()}
-                                    >
+                                    <tr {...row.getRowProps()} onClick={() => gitId(row.cells[0].row.original)}>
                                         {row.cells.map(cell => {
                                             return <td className='text-center' {...cell.getCellProps()}>{cell.render('Cell')}</td>
                                         })}

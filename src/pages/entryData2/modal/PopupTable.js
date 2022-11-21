@@ -1,8 +1,8 @@
 import { React, useEffect, useState } from 'react';
 import DataTable from "react-data-table-component";
 import Form from 'react-bootstrap/Form';
-import { useDispatch } from 'react-redux';
-import { deleteRow } from '../../../redux/PG5MdSlice'
+import classes from './modal.module.css';
+
 let CheckInput = (props) => {
   return (
     <input
@@ -16,11 +16,10 @@ let CheckInput = (props) => {
 }
 
 let DropDwon3 = (props) => {
-  console.log("ghfhffjj", props.value && props.value)
   const [dropdownData, setDropdownData] = useState([]);
   useEffect(() => {
-    const url ="https://tstauth.smartgate-egypt.com/jobs/GetPG05Cmb01a";
- 
+    const url = "https://tstauth.smartgate-egypt.com/jobs/GetPG05Cmb01a";
+
     const fetchData = async () => {
       try {
         const response = await fetch(url);
@@ -38,19 +37,18 @@ let DropDwon3 = (props) => {
 
       {dropdownData &&
         dropdownData.map((el) => (
-          <option value={el.sd}>{el.ity}</option>  
-
+          <option key={el.sd} value={el.sd}>{el.ity}</option>
         ))
       }
     </Form.Select>
   )
 }
-let DropDwon6= (props) => {
+let DropDwon6 = (props) => {
   console.log("ghfhffjj", props.value && props.value)
   const [dropdownData, setDropdownData] = useState([]);
   useEffect(() => {
     const url = "https://tstauth.smartgate-egypt.com/jobs/GetPG04Combo01a";
- 
+
     const fetchData = async () => {
       try {
         const response = await fetch(url);
@@ -68,7 +66,7 @@ let DropDwon6= (props) => {
 
       {dropdownData &&
         dropdownData.map((el) => (
-           <option value={el.sd}>{el.rs}</option>
+          <option key={el.sd} value={el.sd}>{el.rs}</option>
 
         ))
       }
@@ -97,6 +95,12 @@ function PopupTable({ tableData }) {
     setData(newArr)
   }, [tableData]);
 
+  let buttonStyle ={
+    border:'none',
+    color:'white',
+    backgroundColor:'red',
+
+  }
   const columns = [
 
     {
@@ -130,12 +134,12 @@ function PopupTable({ tableData }) {
     },
     {
       name: 'delete',
-      cell: (row) => <button rowID={row.id} onClick={() =>deleteRow(row.id)}>delete</button>
+      cell: (row) => <button style={buttonStyle} onClick={() => deleteRow(row.id)}>delete</button>
     },
   ]
 
-  const deleteRow =(id)=>{
-     setData(current =>
+  const deleteRow = (id) => {
+    setData(current =>
       current.filter(employee => {
         return employee.id !== id;
       }),

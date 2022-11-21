@@ -8,3 +8,32 @@
 .search span{
     margin-inline-end: 10px;
 }
+.table_2{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.table_2 span{
+    margin-inline-end: 10px;
+}
+.checkbox{
+    visibility: visible !important;
+    width: 15px !important;
+    height: 15px !important;
+    margin-inline-end: 15px;
+
+}
+.button{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+
+}
+.button button{
+    width: 100%;
+    border: none;
+    padding: 6px;
+    background:#2A9D8F;
+    color: #fff;
+    border-radius: 5px;
+}
