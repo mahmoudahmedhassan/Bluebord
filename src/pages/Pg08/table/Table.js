@@ -1,21 +1,17 @@
-import React, { useEffect, useState, useMemo } from 'react';
-import classes from './table1.module.css'
+import React,{useMemo} from 'react';
+import classes from './table.module.css';
 import { useTable, usePagination } from 'react-table';
-import { Container, Row, Col } from 'react-bootstrap';
 import SpinnerLoading from '../../../components/sppiner/Sppiner';
-import {useDispatch} from 'react-redux';
-import {fetchPg06Bt01Data} from '../../../redux/Pg06Bt01TableSlice';
+import {Container, Row, Col} from 'react-bootstrap';
+import { AiFillDelete } from "react-icons/ai";
 
-function FirstTable({ tableData, loading }) {
-    const dispatch = useDispatch()
+function Table({tableData,loading}) {
+
+    const data = useMemo(() => tableData, [tableData])
 
     const columns = useMemo(
         () => [
-            {
-                Header: 'T101',
-
-                accessor: "t101"
-            },
+  
             {
                 Header: 'T102',
                 accessor: "t102"
@@ -49,25 +45,38 @@ function FirstTable({ tableData, loading }) {
                 Header: 'T109',
                 accessor: "t109"
             },
-
             {
                 Header: 'T110',
                 accessor: "t110"
             },
             {
                 Header: 'T111',
+                accessor: "t111"
+            },
+            {
+                Header: 'T112',
                 accessor: "t112"
             },
             {
                 Header: 'T113',
                 accessor: "t113"
             },
-
+            {
+                Header: 'T114',
+                accessor: "t114"
+            },
+            {
+                Header: 'T115',
+                accessor: "t115"
+            },
+            {
+                Header: 'T116',
+                accessor: "t116"
+            },
         ],
         []
     )
-    const data = useMemo(() => tableData, [tableData])
-
+  
     const {
         getTableProps,
         getTableBodyProps,
@@ -90,13 +99,8 @@ function FirstTable({ tableData, loading }) {
         initialState: { pageIndex: 0 },
     },
         usePagination,
-    );
-    const gitId = (id) => {
-        let t101 = id.t101;
-        let t103 = id.t103;
-        
-         dispatch(fetchPg06Bt01Data({t101,t103}))
-     }
+     );
+
     return (
         <div>
             <div className={classes.taple_container}>
@@ -105,7 +109,7 @@ function FirstTable({ tableData, loading }) {
                     <table {...getTableProps()}>
                         <thead className={classes.thead} >
                             {headerGroups.map(headerGroup => (
-                                <tr  {...headerGroup.getHeaderGroupProps()} >
+                                <tr  {...headerGroup.getHeaderGroupProps()}>
                                     {headerGroup.headers.map(column => (
                                         <th {...column.getHeaderProps()}>{column.render('Header')}</th>
                                     ))}
@@ -116,7 +120,9 @@ function FirstTable({ tableData, loading }) {
                             {page?.map((row, i) => {
                                 prepareRow(row)
                                 return (
-                                    <tr {...row.getRowProps()} onClick={() => gitId(row.cells[0].row.original)}>
+                                    <tr {...row.getRowProps()}
+                                        // onClick={() => gitId(row.cells[0].row.original)}
+                                    >
                                         {row.cells.map(cell => {
                                             return <td className='text-center' {...cell.getCellProps()}>{cell.render('Cell')}</td>
                                         })}
@@ -184,9 +190,8 @@ function FirstTable({ tableData, loading }) {
                 </Container>
 
             </div>
-
         </div>
     )
 }
 
-export default FirstTable
+export default Table

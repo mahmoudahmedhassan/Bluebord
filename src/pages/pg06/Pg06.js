@@ -56,6 +56,7 @@ function Pg06() {
 
     fetchdataTable1();
   }, []);
+  
   // search state
   const [query, setQuery] = useState('');
   const handelQuery = (e) => {
@@ -102,7 +103,7 @@ function Pg06() {
         </Row>
 
         <Row>
-          <Table2 tableData={Pg06Bt01Data} />
+          <Table2 tableData={Pg06Bt01Data} style={{marginBottom:'40px'}} />
 
         </Row>
 
