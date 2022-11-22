@@ -3,35 +3,30 @@ import classes from './pg07.module.css';
 import Form from 'react-bootstrap/Form';
 import { Container, Row, Col } from 'react-bootstrap';
 import Table from "../pg07/table/Table";
+import {useDispatch, useSelector} from 'react-redux';
+import {fetchPG07Data} from '../../redux/PG07Slice';
+import InsertRow from '../../components/insertTablePg07/InsertRow';
 
 function Pg07() {
+    const dispatch = useDispatch()
     // table1
-    const [tableData, setTabData] = useState([]);
-    const [loading, setLoading] = useState(true);
-    useEffect(() => {
-        const url = "https://tstauth.smartgate-egypt.com/jobs/Pg07";
-        const fetchdataTable1 = async () => {
-            try {
-                const response = await fetch(url);
-                const data = await response.json();
-                setTabData(data);
-                setLoading(false)
-            } catch (error) {
-                console.log("error", error);
-            }
-        };
+ 
+    const{PG07Data, loading}= useSelector(state => state.PG07DataSlice)
+    console.log('PG07DataPG07Data',PG07Data)
 
-        fetchdataTable1();
-    }, []);
+    useEffect(() => {
+        dispatch(fetchPG07Data())
+    }, [dispatch]);
+
     // search state
     const [query, setQuery] = useState('');
     const handelQuery = (e) => {
         setQuery(e.target.value)
     }
     // filter search
-    const keys = ["sd", "t102", "t103", "t104"];
+    const keys = ["t101", "t102", "t103", "t104"];
     const search = (data) => {
-        return data.filter((item) => keys.some((key) => item[key].toString().toLowerCase().includes(query)))
+         return data.filter((item) => keys.some((key) => item[key].toString().toLowerCase().includes(query)))
     };
 
     return (
@@ -41,7 +36,9 @@ function Pg07() {
                     <span>search</span>
                     <Form.Control type="text" placeholder="search" value={query} onChange={handelQuery} />
                 </div>
-                <Table tableData={ tableData} loading={loading} />
+                <div><InsertRow/></div>
+
+                <Table tableData={search(PG07Data)} loading={loading} />
             </div>
         </Container>
     )

@@ -4,8 +4,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 export const fetchPG5MdData = createAsyncThunk(
     'PG5MdData/fetchPG5MdData',
     async (value, thunkAPI) => {
-        console.log('value', value)
-        const { rejectWithValue } = thunkAPI;
+         const { rejectWithValue } = thunkAPI;
         try {
             const res = await fetch(`https://tstauth.smartgate-egypt.com/jobs/PG05TbInfo/${value.t101String}/${value.t102}`, {
                 headers: {

@@ -37,7 +37,7 @@ let DropDwon = () => {
 
 function Pg06() {
   const { Pg06Bt01Data } = useSelector(state => state.Pg06Bt01DataSlice)
- 
+
   // table1
   const [tableData1, setTabData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -56,7 +56,7 @@ function Pg06() {
 
     fetchdataTable1();
   }, []);
-  
+
   // search state
   const [query, setQuery] = useState('');
   const handelQuery = (e) => {
@@ -65,7 +65,7 @@ function Pg06() {
   }
 
   // filter search
-  const keys = ["sd", "t102", "t103", "t104"];
+  const keys = ["t101", "t102", "t103", "t104"];
   const search = (data) => {
     return data.filter((item) => keys.some((key) => item[key].toString().toLowerCase().includes(query)))
   };
@@ -81,13 +81,13 @@ function Pg06() {
         <FirstTable tableData={tableData1} loading={loading} />
       </div>
 
-      <div style={{margin:"20px 0"}}>
+      <div style={{ margin: "20px 0" }}>
         <Row>
           <Col>
             <div className={classes.table_2}>
               <div className='d-flex align-items-center'>
                 <span>Pg06Ch01</span>
-                <input type='checkbox' name='Pg06Ch01' className={classes.checkbox}/>
+                <input type='checkbox' name='Pg06Ch01' className={classes.checkbox} />
               </div>
               <DropDwon />
             </div>
@@ -103,10 +103,26 @@ function Pg06() {
         </Row>
 
         <Row>
-          <Table2 tableData={Pg06Bt01Data} style={{marginBottom:'40px'}} />
-
+          <Table2 tableData={(Pg06Bt01Data)} style={{ marginBottom: '40px' }} />
         </Row>
+        <Row>
+          <Col>
+            <div className={classes.Pg06Ch}>
+              <div className='d-flex align-items-center'>
+                <span> Pg06Ch02</span>
+                <input type="checkbox" className={classes.checkbox} />
+              </div>
+              <div className='d-flex align-items-center'>
+                <span> Pg06Ch03</span>
+                <input type="checkbox" className={classes.checkbox} />
+              </div>
 
+            </div>
+          </Col>
+          <Col>
+            <div className={classes.button_submit}><button  >submit</button></div>
+          </Col>
+        </Row>
       </div>
 
 

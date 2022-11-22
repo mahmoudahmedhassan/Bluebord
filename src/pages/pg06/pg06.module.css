@@ -23,17 +23,29 @@
     margin-inline-end: 15px;
 
 }
-.button{
+.button ,.button_submit{
     display: flex;
     align-items: center;
     margin-bottom: 20px;
 
 }
-.button button{
+.button_submit{
+    margin: 20px 0;
+
+}
+.button button, .button_submit button{
     width: 100%;
     border: none;
     padding: 6px;
     background:#2A9D8F;
     color: #fff;
     border-radius: 5px;
+}
+.Pg06Ch{
+    margin: 30px 0;
+    display : flex;
+    align-items : center;
+}
+.Pg06Ch span {
+    margin-inline-end: 10px;
 }

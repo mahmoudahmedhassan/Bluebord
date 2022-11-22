@@ -4,8 +4,11 @@ import { useTable, usePagination } from 'react-table';
 import SpinnerLoading from '../../../components/sppiner/Sppiner';
 import {Container, Row, Col} from 'react-bootstrap';
 import { AiFillDelete } from "react-icons/ai";
+import {useDispatch} from 'react-redux';
+import {deleteRow} from '../../../redux/PG07Slice'
 
 function Table({tableData,loading}) {
+    const dispatch = useDispatch()
 
     const data = useMemo(() => tableData, [tableData])
 
@@ -46,12 +49,6 @@ function Table({tableData,loading}) {
         []
     )
  
-    const deleteRow = (id) => {
-    
-        data.filter(el => {
-            return el.id !== id;
-          })
-       }
     const tableHooks = (hooks) => {
 
         hooks.visibleColumns.push((columns) => [
@@ -60,7 +57,7 @@ function Table({tableData,loading}) {
                 id: "Opstions",
                 Header: "Opstions",
                 Cell: ({ row }) => (
-                    <span style={{fontSize: '18px' }} className={classes.openModal} onClick={() => deleteRow(row.values.sd)}>
+                    <span style={{fontSize: '18px' }} className={classes.openModal} onClick={() =>dispatch(deleteRow(row.values.t106)) }>
                           <AiFillDelete/>
                     </span>
                  ),
