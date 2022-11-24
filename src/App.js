@@ -11,6 +11,7 @@ import { BrowserRouter, Routes, Route, } from "react-router-dom";
 import Pg06 from './pages/pg06/Pg06';
 import Pg07 from './pages/pg07/Pg07';
 import Pg08 from './pages/Pg08/Pg08';
+import Pg09 from './pages/pg09/Pg09';
 
 function App() {
   // const user_1 = true;
@@ -33,6 +34,7 @@ function App() {
               <Route path="/pg06" exact element={<Pg06 />} />
               <Route path="/pg07" exact element={<Pg07 />} />
               <Route path="/pg08" exact element={<Pg08/>} />
+              <Route path="/pg09" exact element={<Pg09/>} />
                
              </Route>
           </Route>

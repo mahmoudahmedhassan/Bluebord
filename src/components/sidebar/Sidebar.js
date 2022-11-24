@@ -50,6 +50,7 @@ function SidebarMenu() {
             <MenuItem icon={<RiDashboardFill />}><NavLink to='./pg06'><span style={{ color: '#fff' }}>Grop-4</span> </NavLink> </MenuItem>
             <MenuItem icon={<RiDashboardFill />}><NavLink to='./pg07'><span style={{ color: '#fff' }}>Grop-5</span> </NavLink> </MenuItem>
             <MenuItem icon={<RiDashboardFill />}><NavLink to='./pg08'><span style={{ color: '#fff' }}>Grop-6</span> </NavLink> </MenuItem>
+            <MenuItem icon={<RiDashboardFill />}><NavLink to='./pg09'><span style={{ color: '#fff' }}>Grop-7</span> </NavLink> </MenuItem>
 
 
             {/* <SubMenu icon={<FaRegSun />} label="Maps">

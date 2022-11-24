@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Table from './table/Table'
 import InsertRow from '../../components/insertTablePg07/InsertRow';
 export default function Pg08() {
+
     // table1
     const [tableData, setTabData] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -23,6 +24,8 @@ export default function Pg08() {
 
         fetchdataTable1();
     }, []);
+
+    
     // search state
     const [query, setQuery] = useState('');
     const handelQuery = (e) => {

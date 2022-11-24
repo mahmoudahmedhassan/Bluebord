@@ -49,3 +49,9 @@
 .Pg06Ch span {
     margin-inline-end: 10px;
 }
+.hide{
+    display: none;
+}
+.apper{
+    display: block
+}

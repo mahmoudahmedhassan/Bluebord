@@ -3,37 +3,11 @@ import classes from './table2.module.css';
 import { useTable } from 'react-table';
 import SpinnerLoading from '../../../components/sppiner/Sppiner';
 import { useSelector } from 'react-redux';
-import { AiFillDelete } from "react-icons/ai";
 
 function Table2({ tableData }) {
-    // console.log(tableData)
-    //  const data = useMemo(() => tableData, [tableData])
-     const [data, setData] = React.useState(React.useMemo(() => tableData, []));
-
-    const {loading } = useSelector(state => state.Pg06Bt01DataSlice)
- 
-    const deleteRow = (id) => {
-        setData(current =>
-          current.filter(employee => {
-            return employee.t201 !== id;
-          }),
-        );
-      }
-
-    const tableHooks = (hooks) => {
-        hooks.visibleColumns.push((columns) => [
-            ...columns,
-            {
-                id: "Opstions",
-                Header: "Delete",
-                Cell: ({ row }) => (
-                    <span style={{fontSize: '18px' }} className={classes.openModal} onClick={()=>deleteRow(row.values.t201)}>
-                          <AiFillDelete/>
-                    </span>
-                 ),
-            },
-        ]);
-    };    const columns = useMemo(
+    const { loading } = useSelector(state => state.PG09T2DataSlice)
+    const data = useMemo(() => tableData, [tableData])
+    const columns = useMemo(
         () => [
             {
                 Header: 'T201',
@@ -67,33 +41,10 @@ function Table2({ tableData }) {
             },
             {
                 Header: 'T208',
-                accessor: "t208"
+                accessor: "t108"
             },
-            // {
-            //     Header: "Delete",
-            //     id: "delete",
-            //     accessor: (str) => "delete",
-        
-            //     Cell: (tableProps) => (
-            //       <span
-            //         style={{
-            //           cursor: "pointer",
-            //           color: "blue",
-            //           textDecoration: "underline"
-            //         }}
-            //         onClick={() => {
-            //           // ES6 Syntax use the rvalue if your data is an array.
-            //           const dataCopy = [...data];
-            //           // It should not matter what you name tableProps. It made the most sense to me.
-            //           dataCopy.splice(tableProps.row.index, 1);
-            //           setData(dataCopy);
-            //         }}
-            //       >
-            //         Delete
-            //       </span>
-            //     )
-            //   }
-            
+
+
         ],
         []
     )
@@ -109,9 +60,8 @@ function Table2({ tableData }) {
         data,
         initialState: { pageIndex: 0 },
     },
-    tableHooks
     );
-     return (
+    return (
         <div>
             <div className={classes.taple_container}>
                 {loading ? (<div className='text-center'><SpinnerLoading /></div>) : (
@@ -141,7 +91,6 @@ function Table2({ tableData }) {
                     </table>
                 )}
             </div>
-
 
         </div>
     )

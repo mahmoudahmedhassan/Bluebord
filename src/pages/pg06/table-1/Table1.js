@@ -3,12 +3,11 @@ import classes from './table1.module.css'
 import { useTable, usePagination } from 'react-table';
 import { Container, Row, Col } from 'react-bootstrap';
 import SpinnerLoading from '../../../components/sppiner/Sppiner';
-import {useDispatch} from 'react-redux';
-import {fetchPg06Bt01Data} from '../../../redux/Pg06Bt01TableSlice';
+import { useDispatch } from 'react-redux';
+import { fetchPg06Bt01Data } from '../../../redux/Pg06Bt01TableSlice';
 
-function FirstTable({ tableData, loading }) {
-    const dispatch = useDispatch()
-
+function FirstTable({ tableData, loading, setAddRow }) {
+ 
     const columns = useMemo(
         () => [
             {
@@ -91,12 +90,14 @@ function FirstTable({ tableData, loading }) {
     },
         usePagination,
     );
+     const [rowId, setRowId] = useState(null);
+ 
     const gitId = (id) => {
         let t101 = id.t101;
         let t103 = id.t103;
-        
-         dispatch(fetchPg06Bt01Data({t101,t103}))
-     }
+        setAddRow({t101, t103})
+
+    }
     return (
         <div>
             <div className={classes.taple_container}>
@@ -116,9 +117,9 @@ function FirstTable({ tableData, loading }) {
                             {page?.map((row, i) => {
                                 prepareRow(row)
                                 return (
-                                    <tr {...row.getRowProps()} onClick={() => gitId(row.cells[0].row.original)}>
+                                    <tr className={rowId === row.cells[0].row.original.t101 ? `${classes.markRow}`: ''}  {...row.getRowProps()} onClick={() =>{ gitId(row.cells[0].row.original); setRowId(row.cells[0].row.original.t101)}} >
                                         {row.cells.map(cell => {
-                                            return <td className='text-center' {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                                            return <td {...cell.getCellProps()} >{cell.render('Cell')}</td>
                                         })}
                                     </tr>
                                 )

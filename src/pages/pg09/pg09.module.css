@@ -1,0 +1,46 @@
+.search{
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    justify-content: space-around;
+ }
+.search span{
+    margin-inline-end: 10px;
+}
+.section_1{
+    background: #fff;
+    padding: 10px;
+    height: 100vh;
+    box-shadow: rgb(149 157 165 / 20%) 0px 8px 24px;
+    border-radius: 10px;
+}
+.comValeu{
+
+    padding: 10px;
+}
+.insert , .section_1{
+    margin: 20px 0;
+}
+.button{
+    display: flex;
+    align-items: center;
+    margin:20px 0;
+
+}
+.button button{
+    width: 100%;
+    border: none;
+    padding: 6px;
+    background:#2A9D8F;
+    color: #fff;
+    border-radius: 5px;
+}
+.collapse{
+    margin: 20px 0 4px;
+    border: none;
+    color: #fff;
+    background: #2a9d8f;
+    padding: 5px;
+    width: 40px;
+
+}

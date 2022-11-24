@@ -3,10 +3,11 @@ import classes from './pg06.module.css';
 import FirstTable from './table-1/Table1';
 import Form from 'react-bootstrap/Form';
 import { Container, Row, Col } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Table2 from './table-2/Table2';
+import { fetchPg06Bt01Data } from '../../redux/Pg06Bt01TableSlice';
 
-let DropDwon = () => {
+let DropDwon = ({ isAppearCom }) => {
   const [dropdownData, setDropdownData] = useState([]);
   useEffect(() => {
     const url = "https://tstauth.smartgate-egypt.com/jobs/GetCname";
@@ -24,7 +25,7 @@ let DropDwon = () => {
   }, []);
 
   return (
-    <Form.Select aria-label="Floating label select example" placeholder="PG2md03" name='PG2Md01Comb1'>
+    <Form.Select aria-label="Floating label select example" placeholder="PG2md03" name='PG2Md01Comb1' className={isAppearCom ? `${classes.apper}` : `${classes.hide}`}>
 
       {dropdownData &&
         dropdownData.map((el) => (
@@ -36,6 +37,8 @@ let DropDwon = () => {
 }
 
 function Pg06() {
+  const dispatch = useDispatch()
+
   const { Pg06Bt01Data } = useSelector(state => state.Pg06Bt01DataSlice)
 
   // table1
@@ -70,6 +73,10 @@ function Pg06() {
     return data.filter((item) => keys.some((key) => item[key].toString().toLowerCase().includes(query)))
   };
 
+  const [isAppearCom, setAppearCom] = useState(false)
+  const [isAppearFeild, setAppearFeild] = useState(false)
+  const [addRows, setAddRow] = useState({})
+
 
   return (
     <Container fluid>
@@ -78,7 +85,7 @@ function Pg06() {
           <span>search</span>
           <Form.Control type="text" placeholder="search" value={query} onChange={handelQuery} />
         </div>
-        <FirstTable tableData={tableData1} loading={loading} />
+        <FirstTable tableData={tableData1} loading={loading} setAddRow={setAddRow} />
       </div>
 
       <div style={{ margin: "20px 0" }}>
@@ -87,17 +94,25 @@ function Pg06() {
             <div className={classes.table_2}>
               <div className='d-flex align-items-center'>
                 <span>Pg06Ch01</span>
-                <input type='checkbox' name='Pg06Ch01' className={classes.checkbox} />
+                <input type='checkbox' name='Pg06Ch01' className={classes.checkbox} onChange={() => setAppearCom(!isAppearCom)} />
               </div>
-              <DropDwon />
+              <DropDwon isAppearCom={isAppearCom} />
             </div>
 
           </Col>
           <Col>
             <div className={classes.button}>
-              <button>
-                Pg06Bt01
-              </button>
+
+              {Object.keys(addRows).length > 0 ? (
+                <button onClick={() => dispatch(fetchPg06Bt01Data(addRows))}>
+                  Pg06Bt01
+                </button>
+              ) : (
+                <button disabled onClick={() => dispatch(fetchPg06Bt01Data(addRows))}>
+                  Pg06Bt01
+                </button>
+              )}
+
             </div>
           </Col>
         </Row>
@@ -106,26 +121,39 @@ function Pg06() {
           <Table2 tableData={(Pg06Bt01Data)} style={{ marginBottom: '40px' }} />
         </Row>
         <Row>
-          <Col>
+          <Col lg={2}>
             <div className={classes.Pg06Ch}>
-              <div className='d-flex align-items-center'>
+              <div>Pg06lb</div>
+
+
+            </div>
+          </Col>
+          <Col lg={6}>
+            <div className='d-flex align-items-center justify-content-around' style={{ margin: "20px 0" }}>
+              <div className='d-flex align-items-center '>
                 <span> Pg06Ch02</span>
-                <input type="checkbox" className={classes.checkbox} />
+                <input type="checkbox" className={classes.checkbox} onChange={() => setAppearFeild(!isAppearFeild)} />
+                <Form.Control
+                  type="text"
+                  id="Pg06Bt02"
+                  aria-describedby="passwordHelpBlock"
+                  placeholder="Pg06Bt02"
+                  className={isAppearFeild ? `${classes.apper}` : `${classes.hide}`}
+                />
+
               </div>
               <div className='d-flex align-items-center'>
                 <span> Pg06Ch03</span>
                 <input type="checkbox" className={classes.checkbox} />
               </div>
-
             </div>
+
           </Col>
-          <Col>
-            <div className={classes.button_submit}><button  >submit</button></div>
+          <Col lg={4}>
+            <div className={classes.button_submit}> <button>submit</button></div>
           </Col>
         </Row>
       </div>
-
-
 
     </Container>
   )
