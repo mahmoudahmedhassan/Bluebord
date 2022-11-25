@@ -11,7 +11,7 @@ import SpinnerLoading from '../../../components/sppiner/Sppiner';
 const Div = (props) => (
     <div className={classes.labels}>
         <div className={classes.label}>{props.label}</div>
-        <div className={classes.label_api}>{props.label_api} {props.label_api2 && +'X' + props.label_api2}</div>
+        <div className={classes.label_api}>{props.label_api} {props.label_api2 &&  'X' + props.label_api2}</div>
     </div>
 )
 

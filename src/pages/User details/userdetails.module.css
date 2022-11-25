@@ -65,3 +65,14 @@
     justify-content: center;
     align-items: center;
 }
+.labels{
+    display: flex;
+    font-size: 12px;
+}
+.label{
+    font-weight: bold;
+    margin-inline-end: 10px;
+}
+.label_api{
+    border-bottom: 1px dotted #ddd;
+}

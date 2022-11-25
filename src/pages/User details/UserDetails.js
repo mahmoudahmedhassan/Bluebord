@@ -5,10 +5,7 @@ import axios from 'axios';
 
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs'; // title components g2K 
 import UsersTaple from '../../components/user details taple/UsersTaple';
-import TapleDetailsUser from '../../components/user details taple/TapleDetailsUser';
 import TapleDetailsUserTest from '../../components/user details taple/TapleDetailsUserTest';
-import PageTowTableRight from '../../components/user details taple/Editable Taple/PageTowTableRight';
-import Test from '../../components/user details taple/Editable Taple/Apprr';
 // redux
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchUsersTapleData } from '../../redux/usersTaple'
@@ -16,6 +13,30 @@ import { fetchUsersTapleData } from '../../redux/usersTaple'
 // bootstartp
 import { Container, Row, Col, } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
+
+// ================ table info ===============================
+
+const Div = (props) => (
+  <div className={classes.labels}>
+    <div className={classes.label}>{props.label}</div>
+    <div className={classes.label_api}>{props.label_api}  {props.label_api2 && 'X' + props.label_api2}</div>
+  </div>
+)
+
+const InputField = (props) => {
+  return (
+    <div className={classes.labels}>
+      <div className={classes.label}>{props.label}</div>
+      <Form.Control
+        type="text"
+        placeholder={props.label_api}
+        name='pG03Lb02a'
+        value={props.label_api}
+      />
+    </div>
+
+  )
+}
 
 export default function UserDetails() {
 
@@ -94,7 +115,6 @@ export default function UserDetails() {
                     type="checkbox"
                     name="sW_N"
                     onChange={(e) => setSwitchValue(e.target.checked)}
-
                   />
                   <label htmlFor="switch-1111"></label>
                   <span className='mx-2'>no</span>
@@ -118,17 +138,9 @@ export default function UserDetails() {
 
                 {/* UserTapleDetails_row_0 */}
                 <div className={classes.UserTapleDetails_row_0}>
-                  <Row className='align-items-center'>
-                    <Col sm={12} md={8} className='d-flex justify-content-between'>
-                      <div className={classes.UserTapleDetails_label}>pG03Lb02</div>
-                      <div>
-                        <Form.Control
-                          type="text"
-                          placeholder={firstObj ? firstObj.pG03Tx02a : "notfound"}
-                          name='pG03Lb02a'
-                        // value={pG03Tx02a?.pG03Tx02a}
-                        />
-                      </div>
+                  <Row>
+                    <Col>
+                      <InputField label='pG03Lb02' label_api={firstObj?.pG03Tx02a} />
                     </Col>
                     <Col className='text-center' md={4}> <button>Button-1</button></Col>
                   </Row>
@@ -138,23 +150,12 @@ export default function UserDetails() {
 
                 <div className={classes.UserTapleDetails_row_1}>
                   <Row>
-                    <Col md={2} className='d-flex'>
-                      <div className={classes.UserTapleDetails_label}>label-2</div>
+                    <Col lg={4}>
+                      <Div label='label-2' label_api={firstObj?.pG03Lb02a} />
                     </Col>
-                    <Col md={4} className='d-flex'>
-                      <div className={`${classes.UserTapleDetails_label} ${classes.UserTapleDetails_label_api} `}>{firstObj ? firstObj.pG03Lb02a : "notfound"}</div>
-                    </Col>
-                    <Col md={2} className='d-flex'>
-                      <div className={classes.UserTapleDetails_label}>label-3</div>
-                    </Col>
-                    <Col md={4}>
-                      <div>
-                        <Form.Control
-                          type="text"
-                          placeholder={firstObj ? firstObj.G03Tx02a : "notfound"}
-                        // value={G03Tx02a?.G03Tx02a}
-                        />
-                      </div>
+
+                    <Col lg={8}>
+                      <InputField label='pG03Lb02' label_api={firstObj?.G03Tx02a} />
                     </Col>
                   </Row>
                 </div>
@@ -165,40 +166,21 @@ export default function UserDetails() {
                 <div className={classes.UserTapleDetails_row_2}>
 
                   <Row>
-                    <Col md={2}>
-                      <div className={classes.UserTapleDetails_label}>label-4</div>
+                    <Col lg={4}>
+                      <Div label='label-4' label_api={firstObj?.pG03Lb04a} />
+                    </Col>
+                    <Col lg={8}>
+                      <Div label='label-8' label_api={firstObj?.pG03Lb07a} label_api2={firstObj?.pG03Lb08a} />
                     </Col>
 
-                    <Col md={3}>
-                      <div className={`${classes.UserTapleDetails_label} ${classes.UserTapleDetails_label_api} `}>{firstObj ? firstObj.pG03Lb04a : "notfound"}</div>
-                    </Col>
-
-                    <Col md={2} className='d-flex'>
-                      <div className={classes.UserTapleDetails_label}>label-8</div>
-                    </Col>
-
-                    <Col md={2} className='d-flex'>
-                      <div className={`${classes.UserTapleDetails_label} ${classes.UserTapleDetails_label_api} `}>{firstObj ? firstObj.pG03Lb07a : "pG03Lb07a"}</div>
-                    </Col>
-                    <Col md={1} className='d-flex'>
-                      <div className={classes.multiplie}>X</div>
-                    </Col>
-
-                    <Col md={2} className='d-flex'>
-                      <div className={`${classes.UserTapleDetails_label} ${classes.UserTapleDetails_label_api} `}>{firstObj ? firstObj.pG03Lb08a : 'notfound'}</div>
-                    </Col>
                   </Row>
                 </div>
 
                 {/* UserTapleDetails_row_3 */}
                 <div className={classes.UserTapleDetails_row_3}>
                   <Row>
-
-                    <Col md={2} className='d-flex'>
-                      <div className={classes.UserTapleDetails_label}>label-6</div>
-                    </Col>
-                    <Col md={10} className='d-flex'>
-                      <div className={`${classes.UserTapleDetails_label} ${classes.UserTapleDetails_label_api} `}> {firstObj ? firstObj.pG03Lb05a : "notfound"}</div>
+                    <Col>
+                      <Div label='label-6' label_api={firstObj?.pG03Lb05a} />
                     </Col>
                   </Row>
 
@@ -258,13 +240,15 @@ export default function UserDetails() {
                 {/*  row-6*/}
 
                 <div>
-                  <div>
+                  {/* <div>
                     <Form.Control
                       type="text"
                       placeholder={firstObj ? firstObj.G03Tx06 : "notfound"}
                       value={firstObj?.G03Tx06}
                     />
-                  </div>
+                  </div> */}
+                        <InputField label='pG03Lb06' label_api={firstObj?.G03Tx06} />
+
 
                 </div>
 

@@ -91,8 +91,7 @@ function Table2({ tableData }) {
                     </table>
                 )}
             </div>
-
-        </div>
+         </div>
     )
 }
 

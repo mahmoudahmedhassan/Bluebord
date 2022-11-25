@@ -73,6 +73,21 @@ let InputField = (props) => (
   </InputGroup>
 )
 
+let Search = (props) => {
+  const search5 = (data) => {
+    return data.filter((item) =>props.key.some((key) => item[key].toString().toLowerCase().includes(props.value)))
+  };
+  return (
+    <div className={classes.search}>
+      <span>search</span>
+      <Form.Control type="text" placeholder="search" value={props.value}
+      //  onChange={() => handelQuery(e.target.value)}
+        />
+    </div>
+  )
+}
+
+
 function Pg09() {
 
   const [comValeu, setComValeu] = useState(1)
@@ -104,17 +119,22 @@ function Pg09() {
   const [open, setOpen] = useState(false);
 
   // search state
-  const [query, setQuery] = useState('');
+  const [queryT1, setQueryT1] = useState('');
+  const [queryT2, setQueryT2] = useState('');
+
   const handelQuery = (e) => {
-    setQuery(e.target.value)
+    setQueryT1(e.target.value)
   }
   // filter search
-  const keys = ["t101", "t102", "t103",];
-  const search = (data) => {
-    return data.filter((item) => keys.some((key) => item[key].toString().toLowerCase().includes(query)))
+  const keysT1 = ["t101", "t102", "t103",];
+  const keysT2 = ["t201", "t202", "t203",];
+
+  const search = (data,key) => {
+    return data.filter((item) => key.some((key) => item[key].toString().toLowerCase().includes(queryT1)))
   };
+
   return (
-    <div style={{marginBottom: '40px'}}>
+    <div style={{ marginBottom: '40px' }}>
       <Container fluid>
         <Row>
           {/* table-1 */}
@@ -124,16 +144,16 @@ function Pg09() {
               <DropDwon setComValeu={setComValeu} />
               <div className={classes.search}>
                 <span>search</span>
-                <Form.Control type="text" placeholder="search" value={query} onChange={handelQuery} />
+                <Form.Control type="text" placeholder="search" value={queryT1} onChange={handelQuery} />
               </div>
-              <div><FirstTable tableData={search(tableData)} loading={loading} /></div>
+              <div><FirstTable tableData={search(tableData,keysT1)} loading={loading} /></div>
             </div>
           </Col>
 
           {/* table-2 */}
           <Col lg={8}>
             <button
-            className={classes.collapse}
+              className={classes.collapse}
               onClick={() => setOpen(!open)}
               aria-controls="example-collapse-text"
               aria-expanded={open}
@@ -142,6 +162,7 @@ function Pg09() {
             </button>
             <Collapse in={open}>
               <div className={classes.insert}>
+                <form>
                 <Row>
                   <Col><InputField label='Pg09Tx02' /></Col>
                   <Col> <InputField label='Pg09Tx03' /></Col>
@@ -161,17 +182,18 @@ function Pg09() {
                     <div className={classes.button}><button>Rest</button></div>
                   </Col>
                 </Row>
+                </form>
               </div>
             </Collapse>
-
-
 
             <div>
               <div className={classes.search}>
                 <span>search</span>
-                <Form.Control type="text" placeholder="search" value={query} onChange={handelQuery} />
+                <Form.Control type="text" placeholder="search" value={queryT1} onChange={handelQuery} />
               </div>
-              <Table2 tableData={(PG09T2Data)} />
+              
+              {/* <Search key={keysT2} value={queryT2} /> */}
+              <Table2 tableData={search(PG09T2Data,keysT2)}/>
             </div>
           </Col>
         </Row>
