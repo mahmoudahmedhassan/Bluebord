@@ -75,14 +75,14 @@ let InputField = (props) => (
 
 let Search = (props) => {
   const search5 = (data) => {
-    return data.filter((item) =>props.key.some((key) => item[key].toString().toLowerCase().includes(props.value)))
+    return data.filter((item) => props.key.some((key) => item[key].toString().toLowerCase().includes(props.value)))
   };
   return (
     <div className={classes.search}>
       <span>search</span>
       <Form.Control type="text" placeholder="search" value={props.value}
       //  onChange={() => handelQuery(e.target.value)}
-        />
+      />
     </div>
   )
 }
@@ -129,7 +129,7 @@ function Pg09() {
   const keysT1 = ["t101", "t102", "t103",];
   const keysT2 = ["t201", "t202", "t203",];
 
-  const search = (data,key) => {
+  const search = (data, key) => {
     return data.filter((item) => key.some((key) => item[key].toString().toLowerCase().includes(queryT1)))
   };
 
@@ -146,7 +146,7 @@ function Pg09() {
                 <span>search</span>
                 <Form.Control type="text" placeholder="search" value={queryT1} onChange={handelQuery} />
               </div>
-              <div><FirstTable tableData={search(tableData,keysT1)} loading={loading} /></div>
+              <div><FirstTable tableData={search(tableData, keysT1)} loading={loading} /></div>
             </div>
           </Col>
 
@@ -163,25 +163,25 @@ function Pg09() {
             <Collapse in={open}>
               <div className={classes.insert}>
                 <form>
-                <Row>
-                  <Col><InputField label='Pg09Tx02' /></Col>
-                  <Col> <InputField label='Pg09Tx03' /></Col>
-                </Row>
-                <Row>
-                  <Col><InputField label='Pg09Tx04' /></Col>
-                  <Col><InputField label='Pg09Tx05' /></Col>
-                </Row>
-                <Row>
-                  <Col><DropDwon1 /></Col>
-                </Row>
-                <Row>
-                  <Col>
-                    <div className={classes.button}><button>Submit</button></div>
-                  </Col>
-                  <Col>
-                    <div className={classes.button}><button>Rest</button></div>
-                  </Col>
-                </Row>
+                  <Row>
+                    <Col><InputField label='Pg09Tx02' /></Col>
+                    <Col> <InputField label='Pg09Tx03' /></Col>
+                  </Row>
+                  <Row>
+                    <Col><InputField label='Pg09Tx04' /></Col>
+                    <Col><InputField label='Pg09Tx05' /></Col>
+                  </Row>
+                  <Row>
+                    <Col><DropDwon1 /></Col>
+                  </Row>
+                  <Row>
+                    <Col>
+                      <div className={classes.button}><button onClick={() => setOpen(!open)}>Submit</button></div>
+                    </Col>
+                    <Col>
+                      <div className={classes.button}><button onClick={() => setOpen(!open)}>Rest</button></div>
+                    </Col>
+                  </Row>
                 </form>
               </div>
             </Collapse>
@@ -191,9 +191,9 @@ function Pg09() {
                 <span>search</span>
                 <Form.Control type="text" placeholder="search" value={queryT1} onChange={handelQuery} />
               </div>
-              
+
               {/* <Search key={keysT2} value={queryT2} /> */}
-              <Table2 tableData={search(PG09T2Data,keysT2)}/>
+              <Table2 tableData={search(PG09T2Data, keysT2)} />
             </div>
           </Col>
         </Row>

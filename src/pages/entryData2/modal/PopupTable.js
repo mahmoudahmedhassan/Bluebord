@@ -2,6 +2,7 @@ import { React, useEffect, useState } from 'react';
 import DataTable from "react-data-table-component";
 import Form from 'react-bootstrap/Form';
 import classes from './modal.module.css';
+import { AiFillDelete } from "react-icons/ai";
 
 let CheckInput = (props) => {
   return (
@@ -97,9 +98,8 @@ function PopupTable({ tableData }) {
 
   let buttonStyle ={
     border:'none',
-    color:'white',
-    backgroundColor:'red',
-
+    background: 'transparent',
+    textAlign:'center',
   }
   const columns = [
 
@@ -134,7 +134,7 @@ function PopupTable({ tableData }) {
     },
     {
       name: 'delete',
-      cell: (row) => <button style={buttonStyle} onClick={() => deleteRow(row.id)}>delete</button>
+      cell: (row) => <div style={buttonStyle} onClick={() => deleteRow(row.id)} ><AiFillDelete/> </div>
     },
   ]
 

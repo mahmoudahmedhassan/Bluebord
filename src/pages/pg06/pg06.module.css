@@ -50,8 +50,11 @@
     margin-inline-end: 10px;
 }
 .hide{
-    display: none;
+    display: none !important;
 }
 .apper{
-    display: block
+    display: block !important
+}
+.Pg06Ch02{
+    margin-inline-end: 10px;
 }

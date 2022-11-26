@@ -8,6 +8,8 @@ import Table2 from './table-2/Table2';
 import { fetchPg06Bt01Data } from '../../redux/Pg06Bt01TableSlice';
 
 let DropDwon = ({ isAppearCom }) => {
+  console.log(isAppearCom)
+
   const [dropdownData, setDropdownData] = useState([]);
   useEffect(() => {
     const url = "https://tstauth.smartgate-egypt.com/jobs/GetCname";
@@ -131,7 +133,7 @@ function Pg06() {
           <Col lg={6}>
             <div className='d-flex align-items-center justify-content-around' style={{ margin: "20px 0" }}>
               <div className='d-flex align-items-center '>
-                <span> Pg06Ch02</span>
+                <span className={classes.Pg06Ch02}> Pg06Ch02</span>
                 <input type="checkbox" className={classes.checkbox} onChange={() => setAppearFeild(!isAppearFeild)} />
                 <Form.Control
                   type="text"
@@ -143,8 +145,8 @@ function Pg06() {
 
               </div>
               <div className='d-flex align-items-center'>
-                <span> Pg06Ch03</span>
-                <input type="checkbox" className={classes.checkbox} />
+                <span className={classes.Pg06Ch02}> Pg06Ch03</span>
+                 <input type="checkbox" className={classes.checkbox} />
               </div>
             </div>
 

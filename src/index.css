@@ -76,3 +76,6 @@ a {
 button:disabled{
   cursor: not-allowed
 }
+table{
+  width: 100%;
+}

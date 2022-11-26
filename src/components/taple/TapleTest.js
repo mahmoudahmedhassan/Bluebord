@@ -5,12 +5,13 @@ import SpinnerLoading from '../../components/sppiner/Sppiner';
 import { FaBars } from "react-icons/fa";
 import 'react-perfect-scrollbar/dist/css/styles.css';
 
-import {Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Pagination } from 'react-bootstrap';
 import { useReactToPrint } from 'react-to-print';
 import Options from './Options';
-import {useSelector,useDispatch} from 'react-redux';
-import {toggleModal} from '../../redux/allstateofmaintable';
+import { useSelector, useDispatch } from 'react-redux';
+import { toggleModal } from '../../redux/allstateofmaintable';
 import TableModal from './TableModal';
+import { SearchPagination, TablePagination } from '../table Pagination/Pagination';
 
 function TapleTest(
     { dataTablePro,
@@ -32,7 +33,7 @@ function TapleTest(
 
     //  add option button 
     const getSd = (id) => {
-        console.log('id',id)
+        console.log('id', id)
     }
 
     const tableHooks = (hooks) => {
@@ -46,7 +47,7 @@ function TapleTest(
                     // <button className={classes.openModal} onClick={() => getSd(row.values.sd)}>
                     //     <FaBars />
                     // </button>
-                    <Options id={row.values.sd}/>
+                    <Options id={row.values.sd} />
                 ),
             },
         ]);
@@ -196,69 +197,36 @@ function TapleTest(
             </div>
             {<span>rows : {data && rowsLength}</span>}
 
-
-            <div className={loading ? `${classes.hide}` : `${classes.pagination}`} >
-                {/* <button className='next' onClick={() => nextPage()} disabled={!canNextPage}>next</button>
-                <button onClick={() => previousPage()} disabled={!canPreviousPage} >prev</button> */}
-                <Container fluid>
+            <Container fluid>
                 <Row className='align-items-center'>
                     <Col>
-                        <div className={classes.pagination_section_1}>
-                            <input
-                                type="number"
-                                min="1"
-                                defaultValue={pageIndex + 1}
-                                onChange={e => {
-                                    const page = e.target.value ? Number(e.target.value) - 1 : 0
-                                    gotoPage(page)
-                                }}
-                            />
-                            <select
-                                value={pageSize}
-                                onChange={e => {
-                                    setPageSize(Number(e.target.value))
-                                }}
-                            >
-                                {[10, 20, 30, 40, 50].map(pageSize => (
-                                    <option key={pageSize} value={pageSize}>
-                                        Show {pageSize}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
+                        <SearchPagination
+                            gotoPage={gotoPage}
+                            nextPage={nextPage}
+                            setPageSize={setPageSize}
+                            pageSize={pageSize}
+                            loading={loading}
+                        />
                     </Col>
                     <Col>
+                        <TablePagination
+                            gotoPage={gotoPage}
+                            previousPage={previousPage}
+                            canPreviousPage={canPreviousPage}
+                            pageIndex={pageIndex}
+                            pageOptions={pageOptions}
+                            nextPage={nextPage}
+                            canNextPage={canNextPage}
+                            pageCount={pageCount}
+                            loading={loading}
+                        />
 
-                        <div className={classes.pagination_section_2}>
-                            <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
-                                {'<<'}
-                            </button>{' '}
-                            <button onClick={() => previousPage()} disabled={!canPreviousPage}>
-                                {'<'}
-                            </button>
-                            <span style={{ padding: '10px' }}>
-                                Page{' '}
-                                <strong>
-                                    {pageIndex + 1} of {pageOptions.length}
-                                </strong>{' '}
-                            </span>
-                            <button onClick={() => nextPage()} disabled={!canNextPage}>
-                                {'>'}
-                            </button>{' '}
-                            <button onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
-                                {'>>'}
-                            </button>{' '}
-                        </div>
                     </Col>
                 </Row>
-                </Container>
+            </Container>
 
-
-
-
-            </div>
             <button className={loading ? `${classes.hide}` : `${classes.print}`} onClick={handlePrint}>Print</button>
-            <TableModal/>
+            <TableModal />
         </>
     )
 }

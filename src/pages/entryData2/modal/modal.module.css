@@ -1,6 +1,6 @@
 .PG05Bt01{
     border:none;
-    padding: 10px;
+    padding: 5px;
     color: #fff;
     background-color:#2a9d8f;
 }
@@ -28,9 +28,9 @@ margin-inline-end: 10px;
     justify-content:center
 }
 .submit button{
-    padding: 7px;
+    padding: 4px;
     border: none;
     color: #fff;
-    background-color:gray;
+    background-color:#2a9d8f;
 }
     

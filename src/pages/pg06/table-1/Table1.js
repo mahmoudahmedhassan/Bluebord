@@ -5,6 +5,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import SpinnerLoading from '../../../components/sppiner/Sppiner';
 import { useDispatch } from 'react-redux';
 import { fetchPg06Bt01Data } from '../../../redux/Pg06Bt01TableSlice';
+import { SearchPagination, TablePagination } from '../../../components/table Pagination/Pagination';
 
 function FirstTable({ tableData, loading, setAddRow }) {
  
@@ -130,61 +131,33 @@ function FirstTable({ tableData, loading, setAddRow }) {
             </div>
             {/* {<span>rows : {data && rowsLength}</span>} */}
 
-            <div className={loading ? `${classes.hide}` : `${classes.pagination}`} >
-
-                <Container fluid>
+            <Container fluid>
                     <Row className='align-items-center'>
                         <Col>
-                            <div className={classes.pagination_section_1}>
-                                <input
-                                    type="number"
-                                    min="1"
-                                    defaultValue={pageIndex + 1}
-                                    onChange={e => {
-                                        const page = e.target.value ? Number(e.target.value) - 1 : 0
-                                        gotoPage(page)
-                                    }}
-                                />
-                                <select
-                                    value={pageSize}
-                                    onChange={e => {
-                                        setPageSize(Number(e.target.value))
-                                    }}
-                                >
-                                    {[10, 20, 30, 40, 50].map(pageSize => (
-                                        <option key={pageSize} value={pageSize}>
-                                            Show {pageSize}
-                                        </option>
-                                    ))}
-                                </select>
-                            </div>
+                            <SearchPagination
+                                gotoPage={gotoPage}
+                                nextPage={nextPage}
+                                setPageSize={setPageSize}
+                                pageSize={pageSize}
+                                loading={loading}
+                            />
                         </Col>
                         <Col>
-                            <div className={classes.pagination_section_2}>
-                                <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
-                                    {'<<'}
-                                </button>{' '}
-                                <button onClick={() => previousPage()} disabled={!canPreviousPage}>
-                                    {'<'}
-                                </button>
-                                <span style={{ padding: '10px' }}>
-                                    Page{' '}
-                                    <strong>
-                                        {pageIndex + 1} of {pageOptions.length}
-                                    </strong>{' '}
-                                </span>
-                                <button onClick={() => nextPage()} disabled={!canNextPage}>
-                                    {'>'}
-                                </button>{' '}
-                                <button onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
-                                    {'>>'}
-                                </button>{' '}
-                            </div>
+                            <TablePagination
+                                gotoPage={gotoPage}
+                                previousPage={previousPage}
+                                canPreviousPage={canPreviousPage}
+                                pageIndex={pageIndex}
+                                pageOptions={pageOptions}
+                                nextPage={nextPage}
+                                canNextPage={canNextPage}
+                                pageCount={pageCount}
+                                loading={loading}
+                              />
+
                         </Col>
                     </Row>
                 </Container>
-
-            </div>
 
         </div>
     )
