@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchUserDetailsTapleData } from '../../redux/userDetailsTapleData';
 import SpinnerLoading from '../../components/sppiner/Sppiner';
 import Table from 'react-bootstrap/Table';
+import moment from 'moment';
 
 // import { useTable, usePagination } from 'react-table';
 
@@ -101,7 +102,8 @@ function UsersTaple({ usersTapleData }) {
                                     <td>{el.t102}</td>
                                     <td>{el.t103}</td>
                                     <td>{el.t104}</td>
-                                    <td>{new Date(el.t105).toLocaleString('en-us', { month: 'short', year: 'numeric' })}</td>
+                                     <td>{new Date(el.t105).toLocaleString('en-us', { month: 'short', year: 'numeric', day: 'numeric'})}</td>
+                                    {/* <td>{ moment(el.t105).format("MMM Do YY")}</td> */}
                                 </tr>
                             ))
                         }

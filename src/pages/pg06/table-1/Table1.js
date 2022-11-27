@@ -6,6 +6,7 @@ import SpinnerLoading from '../../../components/sppiner/Sppiner';
 import { useDispatch } from 'react-redux';
 import { fetchPg06Bt01Data } from '../../../redux/Pg06Bt01TableSlice';
 import { SearchPagination, TablePagination } from '../../../components/table Pagination/Pagination';
+import * as moment from 'moment';
 
 function FirstTable({ tableData, loading, setAddRow }) {
  
@@ -60,7 +61,9 @@ function FirstTable({ tableData, loading, setAddRow }) {
             },
             {
                 Header: 'T113',
-                accessor: "t113"
+                accessor: "t113",
+                Cell: props => <div> {moment(props.value).format('DD/MM/YYYY')} </div>
+
             },
 
         ],
@@ -92,10 +95,12 @@ function FirstTable({ tableData, loading, setAddRow }) {
         usePagination,
     );
      const [rowId, setRowId] = useState(null);
+     console.log('rowId',rowId)
  
     const gitId = (id) => {
         let t101 = id.t101;
         let t103 = id.t103;
+
         setAddRow({t101, t103})
 
     }

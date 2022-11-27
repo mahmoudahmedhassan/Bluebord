@@ -12,6 +12,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { toggleModal } from '../../redux/allstateofmaintable';
 import TableModal from './TableModal';
 import { SearchPagination, TablePagination } from '../table Pagination/Pagination';
+import * as moment from 'moment';
 
 function TapleTest(
     { dataTablePro,
@@ -122,7 +123,9 @@ function TapleTest(
             },
             {
                 Header: 'T112',
-                accessor: "t112"
+                accessor: "t112",
+                Cell: props => <div> {moment(props.value).format('DD/MM/YYYY')} </div>
+
             },
             {
                 Header: 'T113',

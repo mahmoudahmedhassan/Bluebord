@@ -7,6 +7,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import {useDispatch} from 'react-redux';
 import {fetchPG5MdData} from '../../redux/PG5MdSlice';
 import { SearchPagination, TablePagination } from '../../components/table Pagination/Pagination';
+import * as moment from 'moment';
 
 function Taple(
     { tableDataPG05Tp01,
@@ -72,7 +73,8 @@ function Taple(
             },
             {
                 Header: 'T108',
-                accessor: "t108"
+                accessor: "t108",
+                Cell: props => <div> {moment(props.value).format('DD/MM/YYYY')} </div>
             },
         ],
         []

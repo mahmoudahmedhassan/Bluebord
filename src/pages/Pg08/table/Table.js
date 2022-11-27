@@ -4,7 +4,7 @@ import { useTable, usePagination } from 'react-table';
 import SpinnerLoading from '../../../components/sppiner/Sppiner';
 import { Container, Row, Col } from 'react-bootstrap';
 import { Pagination, SearchPagination, TablePagination } from '../../../components/table Pagination/Pagination';
-
+ import * as moment from 'moment';
 function Table({ tableData, loading }) {
 
     const data = useMemo(() => tableData, [tableData])
@@ -71,7 +71,8 @@ function Table({ tableData, loading }) {
             },
             {
                 Header: 'T116',
-                accessor: "t116"
+                accessor: "t116",
+                Cell: props => <div> {moment(props.value).format('DD/MM/YYYY')} </div>
             },
         ],
         []

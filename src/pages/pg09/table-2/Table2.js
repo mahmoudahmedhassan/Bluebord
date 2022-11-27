@@ -3,6 +3,7 @@ import classes from './table2.module.css';
 import { useTable } from 'react-table';
 import SpinnerLoading from '../../../components/sppiner/Sppiner';
 import { useSelector } from 'react-redux';
+import * as moment from 'moment';
 
 function Table2({ tableData }) {
     const { loading } = useSelector(state => state.PG09T2DataSlice)
@@ -41,10 +42,9 @@ function Table2({ tableData }) {
             },
             {
                 Header: 'T208',
-                accessor: "t108"
+                accessor: "t108",
+                Cell: props => <div> {moment(props.value).format('DD/MM/YYYY')} </div>
             },
-
-
         ],
         []
     )

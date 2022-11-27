@@ -1,14 +1,15 @@
-import React,{useMemo} from 'react';
+import React, { useMemo } from 'react';
 import classes from './table.module.css';
 import { useTable, usePagination } from 'react-table';
 import SpinnerLoading from '../../../components/sppiner/Sppiner';
-import {Container, Row, Col} from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import { AiFillDelete } from "react-icons/ai";
-import {useDispatch} from 'react-redux';
-import {deleteRow} from '../../../redux/PG07Slice'
+import { useDispatch } from 'react-redux';
+import { deleteRow } from '../../../redux/PG07Slice'
 import { SearchPagination, TablePagination } from '../../../components/table Pagination/Pagination';
+import * as moment from 'moment';
 
-function Table({tableData,loading}) {
+function Table({ tableData, loading }) {
     const dispatch = useDispatch()
 
     const data = useMemo(() => tableData, [tableData])
@@ -43,13 +44,14 @@ function Table({tableData,loading}) {
 
             {
                 Header: 'T107',
-                accessor: "t107"
+                accessor: "t107",
+                Cell: props => <div> {moment(props.value).format('DD/MM/YYYY')} </div>
             },
-      
+
         ],
         []
     )
- 
+
     const tableHooks = (hooks) => {
 
         hooks.visibleColumns.push((columns) => [
@@ -58,10 +60,10 @@ function Table({tableData,loading}) {
                 id: "Opstions",
                 Header: "Opstions",
                 Cell: ({ row }) => (
-                    <span style={{fontSize: '18px' }} className={classes.openModal} onClick={() =>dispatch(deleteRow(row.values.t106)) }>
-                          <AiFillDelete/>
+                    <span style={{ fontSize: '18px' }} className={classes.openModal} onClick={() => dispatch(deleteRow(row.values.t106))}>
+                        <AiFillDelete />
                     </span>
-                 ),
+                ),
             },
         ]);
     };
@@ -111,7 +113,7 @@ function Table({tableData,loading}) {
                                 prepareRow(row)
                                 return (
                                     <tr {...row.getRowProps()}
-                                        // onClick={() => gitId(row.cells[0].row.original)}
+                                    // onClick={() => gitId(row.cells[0].row.original)}
                                     >
                                         {row.cells.map(cell => {
                                             return <td className='text-center' {...cell.getCellProps()}>{cell.render('Cell')}</td>
@@ -126,32 +128,32 @@ function Table({tableData,loading}) {
             {/* {<span>rows : {data && rowsLength}</span>} */}
 
             <Container fluid>
-                    <Row className='align-items-center'>
-                        <Col>
-                            <SearchPagination
-                                gotoPage={gotoPage}
-                                nextPage={nextPage}
-                                setPageSize={setPageSize}
-                                pageSize={pageSize}
-                                loading={loading}
-                            />
-                        </Col>
-                        <Col>
-                            <TablePagination
-                                gotoPage={gotoPage}
-                                previousPage={previousPage}
-                                canPreviousPage={canPreviousPage}
-                                pageIndex={pageIndex}
-                                pageOptions={pageOptions}
-                                nextPage={nextPage}
-                                canNextPage={canNextPage}
-                                pageCount={pageCount}
-                                loading={loading}
-                              />
+                <Row className='align-items-center'>
+                    <Col>
+                        <SearchPagination
+                            gotoPage={gotoPage}
+                            nextPage={nextPage}
+                            setPageSize={setPageSize}
+                            pageSize={pageSize}
+                            loading={loading}
+                        />
+                    </Col>
+                    <Col>
+                        <TablePagination
+                            gotoPage={gotoPage}
+                            previousPage={previousPage}
+                            canPreviousPage={canPreviousPage}
+                            pageIndex={pageIndex}
+                            pageOptions={pageOptions}
+                            nextPage={nextPage}
+                            canNextPage={canNextPage}
+                            pageCount={pageCount}
+                            loading={loading}
+                        />
 
-                        </Col>
-                    </Row>
-                </Container>
+                    </Col>
+                </Row>
+            </Container>
         </div>
     )
 }

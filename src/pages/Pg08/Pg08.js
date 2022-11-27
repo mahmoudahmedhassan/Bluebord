@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, forwardRef } from 'react';
 import classes from './pg08.module.css'
 import { Container, Row, Col } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
@@ -10,7 +10,7 @@ export default function Pg08() {
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
     console.log(startDate);
-    const forwardRef = useRef();
+
 
     // table1
     const [tableData, setTabData] = useState([]);
@@ -41,6 +41,8 @@ export default function Pg08() {
     const keys = ["t102", "t103", "t104", "t105"];
     const search = (data) => {
         return data.filter((item) => keys.some((key) => item[key].toString().toLowerCase().includes(query)))
+            // .filter((item) => keys.some((key) => item[key].toString().toLowerCase().includes(startDate)))
+            // .filter((item) => keys.some((key) => item[key].toString().toLowerCase().includes(endDate)))
     };
     let style = {
         width: '250px',
@@ -49,11 +51,14 @@ export default function Pg08() {
         padding: '10px',
         borderRadius: '5px',
     };
+    const ExampleCustomInput = forwardRef(({ value, onClick }, ref) => (
+        <input className="example-custom-input" onChange={onClick} ref={ref} value={startDate} />
 
+    ));
+    const handleClick = () => {
+        alert("djsjdsh")
+    }
 
-    // const CustomInput = forwardRef((props: any, ref) => {
-    //     return <Input {...props} ref={ref} />;
-    // });
     return (
         <Container fluid>
             <div>
@@ -62,7 +67,7 @@ export default function Pg08() {
                         <span>search</span>
                         <Form.Control type="text" placeholder="search" value={query} onChange={handelQuery} />
                     </div>
-                    <div>
+                    <div className={classes.datePickerWrapper}>
                         <DatePicker
                             selected={startDate}
                             onChange={(date) => setStartDate(date)}
@@ -71,13 +76,11 @@ export default function Pg08() {
                             timeIntervals={15}
                             timeCaption="time"
                             dateFormat="MMMM d, yyyy h:mm aa"
-                            // customInput={<CustomInput inputRef={inputRef} />}
-                        //    style={style}
-
+                        // customInput={<ExampleCustomInput />}
                         />
 
                     </div>
-                    <div>
+                    <div className={classes.datePickerWrapper}>
                         <DatePicker
                             selected={endDate}
                             onChange={(date) => setEndDate(date)}
