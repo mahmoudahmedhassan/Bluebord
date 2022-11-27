@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Collapse from 'react-bootstrap/Collapse';
 import Button from 'react-bootstrap/Button';
-
+import { GrAddCircle } from "react-icons/gr";
 let DropDwon = ({ setComValeu }) => {
   const [dropdownData, setDropdownData] = useState([]);
   useEffect(() => {
@@ -158,7 +158,8 @@ function Pg09() {
               aria-controls="example-collapse-text"
               aria-expanded={open}
             >
-              +
+              {/* <GrAddCircle/> */}
+              Add
             </button>
             <Collapse in={open}>
               <div className={classes.insert}>

@@ -87,10 +87,14 @@ function InsertRow() {
         console.log(values)
         handleClose()
     }
+    let style={
+        marginTop: '20px',
+        background: '#2a9d8f'
+    }
 
     return (
         <div>
-            <Button variant="primary" onClick={handleShow} className='mb-3'>
+            <Button variant="primary" style={style} onClick={handleShow} className='mb-3'>
                 Add New Row
             </Button>
             <Modal show={show} onHide={handleClose}>

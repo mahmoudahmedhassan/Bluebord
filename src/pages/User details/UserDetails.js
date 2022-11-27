@@ -213,7 +213,7 @@ export default function UserDetails() {
                           id='pG03Sw02'
                           type="checkbox"
                           name="sW_N"
-                          checked={firstObj?.pG03Sw02}
+                          // checked={firstObj?.pG03Sw02}
                         />
                         <label htmlFor="pG03Sw02"></label>
                         <span className='mx-2'>no</span>
@@ -227,7 +227,7 @@ export default function UserDetails() {
                           id='pG03Sw03'
                           type="checkbox"
                           name="sW_N"
-                          checked={firstObj?.pG03Sw03}
+                          // checked={firstObj?.pG03Sw03}
                         />
                         <label htmlFor="pG03Sw03"></label>
                         <span className='mx-2'>no</span>

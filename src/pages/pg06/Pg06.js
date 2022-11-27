@@ -6,7 +6,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import Table2 from './table-2/Table2';
 import { fetchPg06Bt01Data } from '../../redux/Pg06Bt01TableSlice';
-
+import InsertRow from '../../components/insertTablePg07/InsertRow'
 let DropDwon = ({ isAppearCom }) => {
   console.log(isAppearCom)
 
@@ -83,10 +83,19 @@ function Pg06() {
   return (
     <Container fluid>
       <div>
-        <div className={classes.search}>
-          <span>search</span>
-          <Form.Control type="text" placeholder="search" value={query} onChange={handelQuery} />
-        </div>
+        <Row>
+          <Col>    <div className={classes.search}>
+            <span>search</span>
+            <Form.Control type="text" placeholder="search" value={query} onChange={handelQuery} />
+          </div>
+          </Col>
+          <Col>
+            <InsertRow />
+          </Col>
+        </Row>
+
+
+
         <FirstTable tableData={tableData1} loading={loading} setAddRow={setAddRow} />
       </div>
 
@@ -98,6 +107,7 @@ function Pg06() {
                 <span>Pg06Ch01</span>
                 <input type='checkbox' name='Pg06Ch01' className={classes.checkbox} onChange={() => setAppearCom(!isAppearCom)} />
               </div>
+
               <DropDwon isAppearCom={isAppearCom} />
             </div>
 
@@ -146,7 +156,7 @@ function Pg06() {
               </div>
               <div className='d-flex align-items-center'>
                 <span className={classes.Pg06Ch02}> Pg06Ch03</span>
-                 <input type="checkbox" className={classes.checkbox} />
+                <input type="checkbox" className={classes.checkbox} />
               </div>
             </div>
 

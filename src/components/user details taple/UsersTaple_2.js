@@ -7,24 +7,28 @@ import SpinnerLoading from '../../components/sppiner/Sppiner'
 import Table from 'react-bootstrap/Table';
 import { useTable, usePagination } from 'react-table';
 
-function UsersTapleTow({ usersTapleData ,setAllChecked,setShow }) {
+function UsersTapleTow({ usersTapleData, setAllChecked, setShow, switchValue }) {
     // console.log("sgadgjskajkasbkjwdu", usersTapleData)
     // redux 
     const dispatch = useDispatch();
     const { loading } = useSelector(state => state.UsersTapleDataSlice)
 
     const getDetailsUserData = (id) => {
-        dispatch(fetchUserDetailsTapleData_2(id));
+        if (switchValue) {
+            setShow(true)
+
+        }
+            dispatch(fetchUserDetailsTapleData_2(id));
+
         setAllChecked(false);
-        setShow(true)
     }
     const styleTaple = {
         overflow: 'auto',
-         height: '100vh'
+        height: '100vh'
     }
 
 
-//  react table library
+    //  react table library
 
     // const data = useMemo(() => usersTapleData, [usersTapleData])
     // const columns = useMemo(
@@ -86,7 +90,7 @@ function UsersTapleTow({ usersTapleData ,setAllChecked,setShow }) {
             {loading ? (<div className='text-center'> <SpinnerLoading /></div>) : (
 
                 // native taple
-                <Table className='table' striped bordered hover responsive style={{ height: '600px !important',overflow:'auto',width:'800px' }}>
+                <Table className='table' striped bordered hover responsive style={{ height: '600px !important', overflow: 'auto', width: '800px' }}>
                     <thead className='text-center'>
                         <tr>
                             <th className='row-2 row-test-2'> SD</th>
@@ -96,12 +100,12 @@ function UsersTapleTow({ usersTapleData ,setAllChecked,setShow }) {
                             <th className='row-5 row-test-6'> T104</th>
                             <th className='row-6 row-test-7'> T105</th>
                             <th className='row-6 row-test-7'> T106</th>
-                         </tr>
+                        </tr>
                     </thead>
                     <tbody >
                         {
                             usersTapleData.map((el, index) => (
-                                <tr key={index} onClick={() => { getDetailsUserData(el.sd);  }} >
+                                <tr key={index} onClick={() => { getDetailsUserData(el.sd); }} >
                                     <td>{el.sd}</td>
                                     <td>{el.t101}</td>
                                     <td>{el.t102}</td>
@@ -109,13 +113,13 @@ function UsersTapleTow({ usersTapleData ,setAllChecked,setShow }) {
                                     <td>{el.t104}</td>
                                     <td>{el.t105}</td>
                                     <td>{el.t106} </td>
-                                  </tr>
+                                </tr>
                             ))
                         }
                     </tbody>
                 </Table>
 
-            //   react taple library
+                //   react taple library
 
                 // <table {...getTableProps()}>
                 //     <thead>

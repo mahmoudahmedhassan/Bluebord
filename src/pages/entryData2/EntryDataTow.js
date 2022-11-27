@@ -18,7 +18,6 @@ function EntryDataTow() {
   const { tableData_PG05Ch02 } = useSelector(state => state.entryDatatable_PG05Ch02Slice);
   const { tableData_PG05Ch03 } = useSelector(state => state.entryDatatable_PG05Ch03Slice);
 
-
   const { PG5MdData } = useSelector(state => state.PG5MdDataSlice);
   console.log('PG5MdData',PG5MdData)
 

@@ -93,6 +93,7 @@ function TapleDetailsUserTest({ logDataTable }) {
             }
         },
     ];
+
  
     function beforeSaveCell(oldValue, newValue, row, column, done) {
         let newData = newTable.filter(item => item.id !== row.id);

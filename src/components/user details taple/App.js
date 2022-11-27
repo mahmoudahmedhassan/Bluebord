@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import DataTable from "react-data-table-component";
+import './Editable Taple/app.css'
+ 
 
 let CheckInput = (props) => {
   return (
@@ -145,6 +147,10 @@ function TableDetailsUserTow({dataTable, setAllChecked, setAppear }) {
       selector: row => <span style={{ cursor: "pointer" }} onDoubleClick={() => setAppear(true)}>{row.t201}</span>
     },
     {
+      name: 'T202',
+      selector: row => <span>{row.t202}</span>
+    },
+    {
       name: 'T203',
       selector: row => <span style={{ cursor: "pointer" }} onDoubleClick={() => setAppear(true)}>{row.t203}</span>
     },
@@ -154,7 +160,7 @@ function TableDetailsUserTow({dataTable, setAllChecked, setAppear }) {
       cell: (row) => <CheckInput rowID={row.id} id={'t204'} onChange={onCheck} check={row.t204} disabled={row.t204 || row.t204 == null} />
     },
     {
-      name: 'T204',
+      name: 'T204X',
       selector: row => row.t204tx,
       cell: (row) => <NumberInput rowID={row.id} id={'t204tx'} onChange={onNumberChange} row={row} value={row.t204tx} disabled={row.t204} />
     },
@@ -175,7 +181,7 @@ function TableDetailsUserTow({dataTable, setAllChecked, setAppear }) {
       cell: (row) => <CheckInput rowID={row.id} id={'t207'} onChange={onCheck} check={row.t207} disabled={row.t207 || row.t207 == null} />
     },
     {
-      name: 'T207',
+      name: 'T207X',
       selector: row => row.t207tx,
       cell: (row) => <NumberInput rowID={row.id} id={'t207tx'} onChange={onNumberChange} row={row} value={row.t207tx} disabled={row.t207} />
     },
@@ -190,7 +196,7 @@ function TableDetailsUserTow({dataTable, setAllChecked, setAppear }) {
       cell: (row) => <CheckInput rowID={row.id} id={'t209'} onChange={onCheck} check={row.t209} disabled={row.t209 || row.t209 == null} />
     },
     {
-      name: 'T209',
+      name: 'T209X',
       selector: row => row.t209tx,
       cell: (row) => <NumberInput rowID={row.id} id={'t209tx'} onChange={onNumberChange} row={row} value={row.t209tx} disabled={row.t209} />
     },
@@ -210,16 +216,37 @@ function TableDetailsUserTow({dataTable, setAllChecked, setAppear }) {
       cell: (row) => <CheckInput rowID={row.id} id={'t212'} onChange={onCheck} check={row.t212} disabled={row.t212 || row.t212 == null} />
     },
     {
-      name: 'T209',
+      name: 'T212X',
       selector: row => row.t212tx,
       cell: (row) => <NumberInput rowID={row.id} id={'t212tx'} onChange={onNumberChange} row={row} value={row.t212tx} disabled={row.t212} />
     },
 
   ]
+  const customStyles = {
+    rows: {
+        style: {
+          minHeight: '30px', // override the row height
+             
+        },
+    },
+    headCells: {
+        style: {
+            paddingLeft: '8px', // override the cell padding for head cells
+            paddingRight: '8px',
+        },
+    },
+    cells: {
+        style: {
+            paddingLeft: '8px', // override the cell padding for data cells
+            paddingRight: '8px',
+        },
+    },
+};
   return (
     <DataTable
       keyField="id"
       columns={columns}
+      customStyles={customStyles} 
       data={data}
     />
   )

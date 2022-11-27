@@ -1,10 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import classes from './pg08.module.css'
 import { Container, Row, Col } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
-import Table from './table/Table'
-import InsertRow from '../../components/insertTablePg07/InsertRow';
+import Table from './table/Table';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css'
+
 export default function Pg08() {
+    const [startDate, setStartDate] = useState(new Date());
+    const [endDate, setEndDate] = useState(new Date());
+    console.log(startDate);
+    const forwardRef = useRef();
 
     // table1
     const [tableData, setTabData] = useState([]);
@@ -25,7 +31,7 @@ export default function Pg08() {
         fetchdataTable1();
     }, []);
 
-    
+
     // search state
     const [query, setQuery] = useState('');
     const handelQuery = (e) => {
@@ -36,6 +42,18 @@ export default function Pg08() {
     const search = (data) => {
         return data.filter((item) => keys.some((key) => item[key].toString().toLowerCase().includes(query)))
     };
+    let style = {
+        width: '250px',
+        height: '38px',
+        border: '1px solid #ddd',
+        padding: '10px',
+        borderRadius: '5px',
+    };
+
+
+    // const CustomInput = forwardRef((props: any, ref) => {
+    //     return <Input {...props} ref={ref} />;
+    // });
     return (
         <Container fluid>
             <div>
@@ -45,26 +63,34 @@ export default function Pg08() {
                         <Form.Control type="text" placeholder="search" value={query} onChange={handelQuery} />
                     </div>
                     <div>
-                        <Form.Select aria-label="Default select example">
-                            <option>Open this select menu</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </Form.Select>
+                        <DatePicker
+                            selected={startDate}
+                            onChange={(date) => setStartDate(date)}
+                            showTimeSelect
+                            timeFormat="HH:mm"
+                            timeIntervals={15}
+                            timeCaption="time"
+                            dateFormat="MMMM d, yyyy h:mm aa"
+                            // customInput={<CustomInput inputRef={inputRef} />}
+                        //    style={style}
+
+                        />
 
                     </div>
                     <div>
-                        <Form.Select aria-label="Default select example">
-                            <option>Open this select menu</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </Form.Select>
+                        <DatePicker
+                            selected={endDate}
+                            onChange={(date) => setEndDate(date)}
+                            showTimeSelect
+                            timeFormat="HH:mm"
+                            timeIntervals={15}
+                            timeCaption="time"
+                            dateFormat="MMMM d, yyyy h:mm aa"
+                        />
 
                     </div>
 
                 </div>
-                <InsertRow />
                 <Table tableData={search(tableData)} loading={loading} />
             </div>
         </Container>

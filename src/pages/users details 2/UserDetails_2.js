@@ -55,7 +55,7 @@ function UserDetailsTow() {
 
     const [query, setQuery] = useState('');
     const [switchValue, setSwitchValue] = useState(false)
-    console.log(switchValue);
+    console.log('switchValue',switchValue);
 
     useEffect(() => {
         dispatch(fetchUsersTapleData_2());
@@ -98,7 +98,7 @@ function UserDetailsTow() {
             <Container fluid>
                 <Row>
                     {/* first col */}
-                    <Col md={5}>
+                    <Col md={4}>
                         <Row>
                             <div className={classes.SearchTaple}>
                                 <Col>
@@ -129,7 +129,7 @@ function UserDetailsTow() {
                         </Row>
 
                         <div className={classes.UsersTaple}>
-                            <UsersTapleTow usersTapleData={search(switchValue ? switchData : usrsTapleData_2)} setShow={setShow} setAllChecked={setAllChecked} />
+                            <UsersTapleTow usersTapleData={search(switchValue ? switchData : usrsTapleData_2)} setShow={setShow} setAllChecked={setAllChecked} switchValue={switchValue} />
                             {
                                 switchValue ? (<span> rows : {switchData && switchData.length}</span>) : (<span>rows : {usrsTapleData_2 && rowsLength}</span>)
                             }
@@ -139,7 +139,7 @@ function UserDetailsTow() {
                     </Col>
                     {/* secnd col */}
                     {!switchValue &&
-                        <Col md={7}>
+                        <Col md={8}>
                             {loading ? (<div className='text-center'><Spinner /> </div>) : (
 
                                 <div className={classes.UserTapleDetails}>
