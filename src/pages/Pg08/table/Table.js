@@ -18,7 +18,8 @@ function Table({ tableData, loading }) {
             },
             {
                 Header: 'T103',
-                accessor: "t103"
+                accessor: "t103",
+                Cell: props => <div> {moment(props.value).format('DD/MM/YYYY')} </div>
             },
             {
                 Header: 'T104',

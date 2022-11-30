@@ -49,13 +49,7 @@ export default function Pg08() {
         .filter((item) =>  moment(item.t116).format('DD/MM/YYYY h:mm:ss').toString().toLowerCase().includes(moment(startDate).format('DD/MM/YYYY h:mm:ss') ))
         .filter((item) =>  moment(item.t116).format('DD/MM/YYYY h:mm:ss').toString().toLowerCase().includes(moment(endDate).format('DD/MM/YYYY h:mm:ss') ))
     };
-    // const filterPassedTime = (time) => {
-    //     const currentDate = new Date();
-    //     const selectedDate = new Date(time);
-    
-    //     return currentDate.getTime() < selectedDate.getTime();
-    //   };
-    
+ 
     return (
         <Container fluid>
             <div>
@@ -73,11 +67,9 @@ export default function Pg08() {
                             timeIntervals={15}
                             timeCaption="time"
                             dateFormat="MMMM d, yyyy h:mm aa"
-                            // filterTime={filterPassedTime}
+ 
 
-
-                            // dateFormat="dd/MM/yyyy"
-                         />
+                          />
                      </div>
                     <div className={classes.datePickerWrapper}>
                         <DatePicker

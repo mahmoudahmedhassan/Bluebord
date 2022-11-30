@@ -49,4 +49,7 @@
     color: #2a9d8f;
     padding: 5px;
   }
-  
+  .markRow{
+    background-color: #2A9D8F !important;
+    color: white;
+  }

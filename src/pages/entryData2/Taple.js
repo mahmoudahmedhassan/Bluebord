@@ -1,4 +1,4 @@
-import { React, useMemo, useRef } from 'react';
+import { React, useMemo, useState } from 'react';
 import classes from './index.module.css';
 import { useTable, usePagination } from 'react-table';
 import SpinnerLoading from '../../components/sppiner/Sppiner';
@@ -104,6 +104,8 @@ function Taple(
         usePagination,
        
     );
+    const [rowId, setRowId] = useState(null);
+
     const gitId = (id) => {
         let t101 = id.t101;
         let t102 = id.t102;
@@ -138,7 +140,8 @@ function Taple(
                                 prepareRow(row)
                                 return (
                                     <tr {...row.getRowProps()}
-                                        onClick={() => gitId(row.cells[0].row.original)}
+                                        onClick={() => {gitId(row.cells[0].row.original); setRowId(row.cells[0].row.original.t101) }}
+                                        className={rowId === row.cells[0].row.original.t101 ? `${classes.markRow}` : ''}
                                     >
                                         {row.cells.map(cell => {
                                             return <td className='text-center' {...cell.getCellProps()}>{cell.render('Cell')}</td>

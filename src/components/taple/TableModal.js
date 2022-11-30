@@ -169,7 +169,7 @@ function TableModal({ setLgShow, lgShow }) {
                                         {/* section 2 */}
                                         <Row className='row_1 '>
                                             {/* {col-1-inputs } */}
-                                            <Col lg={8}>
+                                            <Col lg={7}>
                                                 <Row className='col-1-inputs'>
                                                     <Col lg={7}>
                                                         <div className='d-flex mb-2'>
@@ -304,7 +304,7 @@ function TableModal({ setLgShow, lgShow }) {
                                             </Col>
 
                                             {/* {col-1-switch } */}
-                                            <Col lg={4} className={classes.all_switchs}>
+                                            <Col lg={5} className={classes.all_switchs}>
 
                                                 <div className="row_checkbox row-PGMd01Sw1">
                                                     <p>PGMd01Lb15 </p>
@@ -347,7 +347,7 @@ function TableModal({ setLgShow, lgShow }) {
                                     <Pg2md02Table dataTable={PG2Md01Data} />
                                 </div>
 
-                                <div className='d-flex mt-3 justify-content-between '>
+                                <div className='d-flex mt-3 justify-content-between ' style={{marginBottom: '10px' }}>
                                     <InputField label="pG2Md02Lb18a" />
                                     <InputField label="pG2Md02Lb19a" />
                                 </div>
