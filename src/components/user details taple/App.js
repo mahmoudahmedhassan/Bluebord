@@ -46,8 +46,7 @@ function TableDetailsUserTow({dataTable, setAllChecked, setAppear }) {
   // const { userTapleData_2 } = useSelector(state => state.UserTapleData_2Slice);
   const [data, setData] = useState(dataTable);
   // const [isAllChecked, setAllChecked] = useState(false);
-  console.log('dataTable dataTable dataTable',dataTable)
-
+ 
   useEffect(() => {
     let newArr = dataTable.map(item => {
       return {
@@ -144,11 +143,18 @@ function TableDetailsUserTow({dataTable, setAllChecked, setAppear }) {
 
     {
       name: 'T201',
-      selector: row => <span style={{ cursor: "pointer" }} onDoubleClick={() => setAppear(true)}>{row.t201}</span>
+      selector: row => <span style={{ cursor: "pointer" }} onDoubleClick={() => setAppear(true)}>{row.t201}</span>,
+      style: {
+        backgroundColor: '#FFA07A',
+        color: 'white',
+      }
     },
     {
       name: 'T202',
-      selector: row => <span>{row.t202}</span>
+      selector: row => <span>{row.t202}</span>,
+      style: {
+        backgroundColor: '#FFA07A'
+      }
     },
     {
       name: 'T203',

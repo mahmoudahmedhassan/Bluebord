@@ -5,9 +5,13 @@ import Form from 'react-bootstrap/Form';
 import Table from './table/Table';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css'
+import moment from 'moment';
 
 export default function Pg08() {
-    const [startDate, setStartDate] = useState(new Date());
+    let initialDate = new Date();
+        initialDate.setHours(8,0,0);
+     
+    const [startDate, setStartDate] =useState(initialDate);
     const [endDate, setEndDate] = useState(new Date());
     console.log(startDate);
 
@@ -40,25 +44,18 @@ export default function Pg08() {
     // filter search
     const keys = ["t102", "t103", "t104", "t105"];
     const search = (data) => {
+        console.log(data,startDate);
         return data.filter((item) => keys.some((key) => item[key].toString().toLowerCase().includes(query)))
-            // .filter((item) => keys.some((key) => item[key].toString().toLowerCase().includes(startDate)))
-            // .filter((item) => keys.some((key) => item[key].toString().toLowerCase().includes(endDate)))
+        .filter((item) =>  moment(item.t116).format('DD/MM/YYYY h:mm:ss').toString().toLowerCase().includes(moment(startDate).format('DD/MM/YYYY h:mm:ss') ))
+        .filter((item) =>  moment(item.t116).format('DD/MM/YYYY h:mm:ss').toString().toLowerCase().includes(moment(endDate).format('DD/MM/YYYY h:mm:ss') ))
     };
-    let style = {
-        width: '250px',
-        height: '38px',
-        border: '1px solid #ddd',
-        padding: '10px',
-        borderRadius: '5px',
-    };
-    const ExampleCustomInput = forwardRef(({ value, onClick }, ref) => (
-        <input className="example-custom-input" onChange={onClick} ref={ref} value={startDate} />
-
-    ));
-    const handleClick = () => {
-        alert("djsjdsh")
-    }
-
+    // const filterPassedTime = (time) => {
+    //     const currentDate = new Date();
+    //     const selectedDate = new Date(time);
+    
+    //     return currentDate.getTime() < selectedDate.getTime();
+    //   };
+    
     return (
         <Container fluid>
             <div>
@@ -76,10 +73,12 @@ export default function Pg08() {
                             timeIntervals={15}
                             timeCaption="time"
                             dateFormat="MMMM d, yyyy h:mm aa"
-                        // customInput={<ExampleCustomInput />}
-                        />
+                            // filterTime={filterPassedTime}
 
-                    </div>
+
+                            // dateFormat="dd/MM/yyyy"
+                         />
+                     </div>
                     <div className={classes.datePickerWrapper}>
                         <DatePicker
                             selected={endDate}
@@ -90,10 +89,8 @@ export default function Pg08() {
                             timeCaption="time"
                             dateFormat="MMMM d, yyyy h:mm aa"
                         />
-
-                    </div>
-
-                </div>
+                     </div>
+                 </div>
                 <Table tableData={search(tableData)} loading={loading} />
             </div>
         </Container>

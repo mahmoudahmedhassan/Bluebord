@@ -5,7 +5,7 @@ import MenuItem from '@mui/material/MenuItem';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import TableModal from './TableModal';
 import { useSelector, useDispatch } from 'react-redux';
-
+import {fetchPG2Md01Data} from '../../redux/PG2Md01'
 const options = [
   'data-1',
   'data-2',
@@ -13,10 +13,11 @@ const options = [
 
 const ITEM_HEIGHT = 30;
 
-export default function Options({ id }) {
-  const [lgShow, setLgShow] = useState(false);
+export default function Options({ id1, id2}) {
+  const dispatch = useDispatch()
+   const [lgShow, setLgShow] = useState(false);
 
-  const { Show } = useSelector(state => state.stateOfMainTable)
+  // const { Show } = useSelector(state => state.stateOfMainTable)
   const [anchorEl, setAnchorEl] = useState(null);
 
   const open = Boolean(anchorEl);
@@ -26,22 +27,18 @@ export default function Options({ id }) {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const [rowId, setRowId] = useState()
 
-  //   const handleChange =(e)=>{
-  //     setRowId(e.target.value)
-
-  //   }
   const handelOptionOne = () => {
     setLgShow(true)
+    dispatch(fetchPG2Md01Data({id:id1,id2:"Edit"}))
     handleClose()
   }
   const handelOptionTow = () => {
     setLgShow(true)
+    dispatch(fetchPG2Md01Data({id:id1,id2:id2}))
     handleClose()
   }
-
-
+  
   return (
     <div>
       <IconButton

@@ -48,3 +48,8 @@
   border-radius: 20px;
   border: 1px solid #ddd;
 }
+
+.markRow{
+  background-color: #2A9D8F !important;
+  color: white;
+}

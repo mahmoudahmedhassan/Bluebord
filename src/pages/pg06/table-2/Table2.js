@@ -1,24 +1,24 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import classes from './table2.module.css';
 import { useTable } from 'react-table';
 import SpinnerLoading from '../../../components/sppiner/Sppiner';
 import { useSelector } from 'react-redux';
 import { AiFillDelete } from "react-icons/ai";
+import { t } from 'i18next';
 
 function Table2({ tableData }) {
-    // console.log(tableData)
-    //  const data = useMemo(() => tableData, [tableData])
-     const [data, setData] = React.useState(React.useMemo(() => tableData, []));
+     const [data, setData]= useState([])
+     useMemo(() => setData(tableData), [tableData]);
+    const { loading } = useSelector(state => state.Pg06Bt01DataSlice)
 
-    const {loading } = useSelector(state => state.Pg06Bt01DataSlice)
- 
-    const deleteRow = (id) => {
+    const deleteRow = (t201,t208) => {
+        console.log(t201,t208);
         setData(current =>
-          current.filter(employee => {
-            return employee.t201 !== id;
-          }),
+            current.filter(el => {
+                return el.t201 !== t201 && el.t208 !== t208
+            }),
         );
-      }
+    }
 
     const tableHooks = (hooks) => {
         hooks.visibleColumns.push((columns) => [
@@ -27,13 +27,17 @@ function Table2({ tableData }) {
                 id: "Opstions",
                 Header: "Delete",
                 Cell: ({ row }) => (
-                    <span style={{fontSize: '18px' }} className={classes.openModal} onClick={()=>deleteRow(row.values.t201)}>
-                          <AiFillDelete/>
+                    <span style={{ fontSize: '18px',cursor: "pointer"}} className={classes.openModal} 
+                    onClick={() => deleteRow( row.values.t201 ,row.values.t208)}
+                    >
+                        <AiFillDelete />
                     </span>
-                 ),
+                ),
             },
         ]);
-    };    const columns = useMemo(
+    };
+    
+    const columns = useMemo(
         () => [
             {
                 Header: 'T201',
@@ -73,7 +77,7 @@ function Table2({ tableData }) {
             //     Header: "Delete",
             //     id: "delete",
             //     accessor: (str) => "delete",
-        
+
             //     Cell: (tableProps) => (
             //       <span
             //         style={{
@@ -93,7 +97,7 @@ function Table2({ tableData }) {
             //       </span>
             //     )
             //   }
-            
+
         ],
         []
     )
@@ -109,9 +113,9 @@ function Table2({ tableData }) {
         data,
         initialState: { pageIndex: 0 },
     },
-    tableHooks
+        tableHooks
     );
-     return (
+    return (
         <div>
             <div className={classes.taple_container}>
                 {loading ? (<div className='text-center'><SpinnerLoading /></div>) : (

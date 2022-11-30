@@ -10,6 +10,43 @@
 .InputField{
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
-    font-size:12px
+    /* margin-top: 20px; */
+    font-size:12px;
+    margin-inline-end: 10px;
+
+}
+.InputField span{
+    margin-inline-end: 10px;
+}
+.all_switchs{
+    box-shadow: rgb(0 0 0 / 16%) 0px 1px 4px;
+    padding: 10px;
+}
+ 
+.resalt {
+    width: 50px;
+    border: 1px solid #ddd;
+    height: 29px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+.multiplied_mark{
+    margin-top: 6px;
+}
+.submit{
+    display: flex;
+    justify-content:center
+}
+.submit button{
+    width: 120px;
+    border: none;
+    padding: 5px;
+    text-transform: capitalize;
+    background: #2a9d8f;
+    color: #fff;
+    border-radius: 6px;
+    margin: 10px;
 }

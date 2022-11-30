@@ -1,38 +1,38 @@
-.search{
+.search {
     display: flex;
     align-items: center;
     margin: 20px 0;
     justify-content: space-around;
- }
-.search span{
+}
+
+.search span {
     margin-inline-end: 10px;
 }
+
 /* .datePicker { */
-    :global(.react-datepicker-ignore-onclickoutside){
-        width: 250px !important;
-        height: 38px !important;
-        border: 1px solid #ddd !important;
-        padding: 10px;
-        border-radius: 5px;
-    }
-/* } */
+/* :global(.react-datepicker-ignore-onclickoutside) {
+    width: 250px !important;
+    height: 38px !important;
+    border: 1px solid #ddd !important;
+    padding: 10px;
+    border-radius: 5px;
+} */
 
 .datePickerWrapper :global(.react-datepicker__input-container input) {
     padding: 0px 10px;
     padding-left: 12px;
 
+    background: #2a9d8f;
+    width: 100%;
+    line-height: 1.9rem;
+    border: none;
+    outline: none;
+    border-radius: 15px;
+    padding: 1px 10px;
+    font-size: 16px;
+    font-family: "reg";
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
 
-      background: #0c6d72;
-      width: 100%;
-      line-height: 1.7rem;
-      border: none;
-      outline: none;
-      border-radius: 15px;
-      padding: 1px 10px;
-      font-size: 16px;
-      font-family: "reg";
-      color: #fff;
-      cursor: pointer;
-      text-align: center;
-      
-  }
+}

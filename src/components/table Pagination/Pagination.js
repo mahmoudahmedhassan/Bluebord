@@ -12,7 +12,7 @@ export const TablePagination = ({ gotoPage, previousPage, nextPage, canPreviousP
                 <button onClick={() => previousPage()} disabled={!canPreviousPage}>
                     {'<'}
                 </button>
-                <span style={{ padding: '10px' }}>
+                <span >
                     Page{' '}
                     <strong>
                         {pageIndex + 1} of {pageOptions.length}

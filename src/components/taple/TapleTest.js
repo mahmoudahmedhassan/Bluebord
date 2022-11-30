@@ -33,10 +33,7 @@ function TapleTest(
     });
 
     //  add option button 
-    const getSd = (id) => {
-        console.log('id', id)
-    }
-
+     
     const tableHooks = (hooks) => {
 
         hooks.visibleColumns.push((columns) => [
@@ -45,10 +42,8 @@ function TapleTest(
                 id: "Opstions",
                 Header: "Opstions",
                 Cell: ({ row }) => (
-                    // <button className={classes.openModal} onClick={() => getSd(row.values.sd)}>
-                    //     <FaBars />
-                    // </button>
-                    <Options id={row.values.sd} />
+                     
+                    <Options id1={row.values.sd} id2={row.values.t102}/>
                 ),
             },
         ]);
@@ -166,9 +161,7 @@ function TapleTest(
         tableHooks
     );
 
-
-
-    return (
+     return (
         <>
             <div className={classes.taple_container}>
                 {loading ? (<div className='text-center'><SpinnerLoading /></div>) : (
@@ -209,6 +202,7 @@ function TapleTest(
                             setPageSize={setPageSize}
                             pageSize={pageSize}
                             loading={loading}
+
                         />
                     </Col>
                     <Col>

@@ -5,6 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 import { useSelector, useDispatch } from 'react-redux';
 import { Container, Row, Col } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
+import Pg2md02Table from './Pg2md02Table';
 
 const SectionOne = () => (
     <div>
@@ -50,31 +51,98 @@ const SectionOne = () => (
         </Row>
     </div >
 )
-const InputField = () => {
-    <div className={classes.InputField}>
-        <span>PG2md01</span>
-        <Form.Control
-            type="text"
-            placeholder="PG2md01"
-            name="PG2Md01Tx1"
-        />
-    </div>
+
+const InputField = (props) => {
+    return (
+        <div className={classes.InputField}>
+            <span>{props.label}</span>
+            <Form.Control
+                type="text"
+                placeholder={props.label}
+                name={props.name}
+                value={props.label_api}
+             />
+        </div>
+)}
+
+const InputFieldNumber = (props) => {
+    return (
+        <div className='me-2'>
+            <Form.Control
+                type="number"
+                placeholder="PG2Md01Tx7"
+                name='PG2Md01Tx7'
+            // value={data.PG2Md01Tx7}
+            onChange={props.handleChange}
+            />
+        </div>
+    )
 }
+
 const CheckBox = (props) => {
-    <div className='d-flex align-items-center justify-content-center mb-2'>
-        <span className='mx-2'>PGMd01Sw1-1</span>
-        <input
-            id='PGMd01Sw1'
-            type="checkbox"
-        />
-        <label htmlFor="PGMd01Sw1"></label>
-        <span className='mx-2'>PGMd01Sw1-2</span>
-    </div>
+    return (
+        <div className='d-flex align-items-center justify-content-center mb-2'>
+            <span className='mx-2'>{props.label_1}</span>
+            <input
+                id={props.label_1}
+                type="checkbox"
+                // name="check_5"
+            // onChange={(val) => setData({ ...data, check_5: val.target.checked })}
+            // checked={data.check_5}
+            />
+            <label htmlFor={props.label_1}>Togglee</label>
+            <span className='mx-2'>{props.label_2}</span>
+        </div>
+    )
+
 }
 
+function TableModal({ setLgShow, lgShow }) {
+    const initialState = {
+        pG2Md01Ch01a: true,
+        pG2Md01Ch02a: false,
+        pG2Md01Ch031a: false,
+        pG2Md01Ch032a: false,
+        pG2Md01Comb1a: 84,
+        pG2Md01Lb1a: "20-093-22-1310-6",
+        pG2Md01Sw4a: false,
+        pG2Md01Sw5a: false,
+        pG2Md01Sw11a: true,
+        pG2Md01Sw12a: false,
+        pG2Md01Sw21a: true,
+        pG2Md01Sw22a: false,
+        pG2Md01Sw31a: true,
+        pG2Md01Sw32a: false,
+        pG2Md01Tx1a: "0",
+        pG2Md01Tx2a: "Pro 34308Pro 34308Pro 34308Pro 34308Pro 34308Pro 34308Pro 34308Pro 34308",
+        pG2Md01Tx3a: 175.7,
+        pG2Md01Tx4a: 3,
+        pG2Md01Tx5a: 527.1,
+        pG2Md01Tx6a: "LM34308",
+        pG2Md01Tx7a: 134,
+        pG2Md01Tx8a: 8,
+        pG2Md01Tx9a: 1072,
+        pG2Md01Tx10a: "LM34308",
+        pG2Md01Tx11a: 527.1,
+        pG2Md01Tx12a: 1300,
+        pG2Md01Tx13a: 1087,
+        pG2Md01Tx16a: 6,
+        pG2Md01Tx17a: "Rk34308",
+        pG2Md01Tx20a: null,
+        pG2Md02Tx11a: 34308,
+        pG2Md02Tx14a: 6,
+        pG2Md02Tx15a: 0,
+        pG2Md02Tx18a: "0",
+        pG2Md02Tx19a: "0",
 
-function TableModal({setLgShow,lgShow}) {
+    }
 
+    const [data, setData] = useState(initialState);
+    console.log('data',data.value)
+ 
+ 
+    const { PG2Md01Data } = useSelector(state => state.PG2Md01DataSlice)
+    console.log('PG2Md01Data', PG2Md01Data)
     return (
         <>
             <Modal
@@ -86,11 +154,11 @@ function TableModal({setLgShow,lgShow}) {
             >
                 <Modal.Header closeButton>
                     <Modal.Title id="example-modal-sizes-title-lg">
-                        Large Modal
+                        Modal
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Container fluid style={{fontSize:'12px'}}>
+                    <Container fluid style={{ fontSize: '12px' }}>
                         <Row>
                             <Col lg={8}>
                                 <Container>
@@ -103,72 +171,34 @@ function TableModal({setLgShow,lgShow}) {
                                             {/* {col-1-inputs } */}
                                             <Col lg={8}>
                                                 <Row className='col-1-inputs'>
-                                                    <Col lg={8}>
+                                                    <Col lg={7}>
                                                         <div className='d-flex mb-2'>
-                                                            <div className='me-2' >
-                                                                <Form.Control
-                                                                    type="number"
-                                                                    placeholder="PG2Md01Tx4"
-                                                                    name='PG2Md01Tx4'
-                                                                // value={data.PG2Md01Tx4}
-                                                                // onChange={handleChange}
-                                                                />
-                                                            </div>
+                                                            <InputFieldNumber />
+                                                            <span className={classes.multiplied_mark}>X</span>
+                                                            <InputFieldNumber />
 
-                                                            <span className='multiplied_mark'>*</span>
-
-                                                            <div className='me-2'>
-                                                                <Form.Control
-                                                                    type="number"
-                                                                    placeholder="PG2Md01Tx5"
-                                                                    name='PG2Md01Tx5'
-                                                                // value={data.PG2Md01Tx5}
-                                                                // onChange={handleChange}
-                                                                />
-                                                            </div>
-
-                                                            <div className=' resalt'>
+                                                            <div className={classes.resalt}>
                                                                 {/* {Multiplying ? Multiplying : null} */}
                                                             </div>
                                                         </div>
 
                                                         <div className='d-flex mb-2'>
-                                                            <div className='me-2'>
-                                                                <Form.Control
-                                                                    type="number"
-                                                                    placeholder="PG2Md01Tx6"
-                                                                    name='PG2Md01Tx6'
-                                                                // value={data.PG2Md01Tx6}
-                                                                // onChange={handleChange}
-                                                                />
-                                                            </div>
-                                                            <span className='multiplied_mark'>
-                                                                {'*'}
+
+                                                            <InputFieldNumber />
+                                                            <span className={classes.multiplied_mark}>
+                                                                {'X'}
                                                             </span>
-
-
-                                                            <div className='me-2'>
-                                                                <Form.Control
-                                                                    type="number"
-                                                                    placeholder="PG2Md01Tx7"
-                                                                    name='PG2Md01Tx7'
-                                                                // value={data.PG2Md01Tx7}
-                                                                // onChange={handleChange}
-                                                                />
-                                                            </div>
-
-                                                            <div className='me-2 resalt'>
+                                                             <InputFieldNumber />
+                                                             <div className={classes.resalt}>
                                                                 {/* {MultiplyingNu3_4 ? MultiplyingNu3_4 : null} */}
                                                             </div>
-
-                                                        </div>
+                                                         </div>
                                                     </Col>
 
-                                                    <Col lg={4}>
+                                                    <Col lg={5}>
                                                         <div>
                                                             <div className='me-2 mb-2 mr-2 PG2Md01Lb'>
-
-                                                                <span className=''>PG2Md01Lb5</span>
+                                                                 <span className=''>PG2Md01Lb5</span>
                                                                 <Form.Control
                                                                     type="text"
                                                                     placeholder="PG2Md01Tx8"
@@ -194,13 +224,13 @@ function TableModal({setLgShow,lgShow}) {
                                                 </Row>
 
                                                 <Row className='section-2-row2'>
-                                                    <Col lg={8}>
+                                                    <Col lg={7}>
                                                         <div className='d-flex mb-2 row_2_col_1 section-2-row2-div1'>
 
-                                                            <div className='me-2 resalt section-2-row2-resalt'>
+                                                            <div className={classes.resalt}>
                                                                 {/* {Multiplying ? Multiplying : null} */}
                                                             </div>
-                                                            <span style={{ margin: '20px 10px 0px' }}> x </span>
+                                                            <span className={classes.multiplied_mark} >  {'X'} </span>
 
                                                             <div className='me-2'>
                                                                 <span>PG2md01Lb7</span>
@@ -227,7 +257,7 @@ function TableModal({setLgShow,lgShow}) {
                                                                 // onChange={handleChange}
                                                                 />
                                                             </div>
-                                                            <span style={{ margin: '30px 10px 0px' }}> + </span>
+                                                            <span style={{ marginTop: '20px' }} className={classes.multiplied_mark}> {'+'}</span>
 
                                                             <div className='me-2'>
                                                                 <span >PG2md01Lb9</span>
@@ -239,15 +269,10 @@ function TableModal({setLgShow,lgShow}) {
                                                                 // onChange={handleChange}
                                                                 />
                                                             </div>
-
-                                                            {/* <div className='me-2 resalt'>
-                          {sum ? sum : null}
-                        </div> */}
-
                                                         </div>
                                                     </Col>
 
-                                                    <Col lg={4}>
+                                                    <Col lg={5}>
                                                         <div>
                                                             <div className='me-2  mb-2'>
                                                                 <span>PG2md01Lb10</span>
@@ -279,82 +304,21 @@ function TableModal({setLgShow,lgShow}) {
                                             </Col>
 
                                             {/* {col-1-switch } */}
-                                            <Col lg={4} className="all_switchs">
+                                            <Col lg={4} className={classes.all_switchs}>
+
                                                 <div className="row_checkbox row-PGMd01Sw1">
                                                     <p>PGMd01Lb15 </p>
-
-                                                    <div className='d-flex align-items-center justify-content-center mb-2'>
-                                                        <span className='mx-2'>PGMd01Sw1-1</span>
-                                                        <input
-                                                            id='PGMd01Sw1'
-                                                            type="checkbox"
-                                                            name="check_1"
-                                                        // onChange={(val) => setData({ ...data, check_1: val.target.checked })}
-                                                        // checked={data.check_1}
-                                                        />
-                                                        <label htmlFor="PGMd01Sw1"></label>
-                                                        <span className='mx-2'>PGMd01Sw1-2</span>
-                                                    </div>
-
-                                                    <div className='d-flex align-items-center justify-content-center mb-2'>
-                                                        <span className='mx-2 multiplied_mark'>PGMd01Sw2-1</span>
-                                                        <input
-                                                            id='PGMd01Sw2'
-                                                            type="checkbox"
-                                                            name="check_2"
-                                                        // onChange={(val) => setData({ ...data, check_2: val.target.checked })}
-                                                        // checked={data.check_2}
-                                                        />
-                                                        <label htmlFor="PGMd01Sw2">Toggle</label>
-                                                        <span className='mx-2'>PGMd01Sw2-2</span>
-                                                    </div>
+                                                    <CheckBox label_1='Pg2Md02Sw1-1a' label_2='Pg2Md02Sw1-2a' />
+                                                    <CheckBox label_1='Pg2Md02Sw2-1a' label_2='Pg2Md02Sw2-2a'/>
                                                 </div>
 
                                                 <div className="row_checkbox">
-
-                                                    <div className='d-flex align-items-center justify-content-center mb-2'>
-                                                        <span className='mx-2'>PGMd01Sw3-1</span>
-                                                        <input
-                                                            id='PGMd01Sw3'
-                                                            type="checkbox"
-                                                            name="check_3"
-                                                        // onChange={(val) => setData({ ...data, check_3: val.target.checked })}
-                                                        // checked={data.check_3}
-                                                        />
-                                                        <label htmlFor="PGMd01Sw3">Togglee</label>
-                                                        <span className='mx-2'>PGMd01Sw3-1</span>
-                                                    </div>
-
-                                                    <div className='d-flex align-items-center justify-content-center mb-2'>
-                                                        <span className='mx-2 multiplied_mark'>PGMd01Lb16</span>
-                                                        <input
-                                                            id='PGMd01Sw4'
-                                                            type="checkbox"
-                                                            name="check_4"
-                                                        // onChange={(val) => setData({ ...data, check_4: val.target.checked })}
-                                                        // checked={data.check_4}
-                                                        />
-                                                        <label htmlFor="PGMd01Sw4">Toggle</label>
-                                                        <span className='mx-2'>PGMd01Sw4</span>
-                                                    </div>
+                                                    <CheckBox label_1='Pg2Md02Sw3-1a' label_2='Pg2Md02Sw3-2a'/>
+                                                    <CheckBox label_1='Pg2Md02Sw4-1a' label_2='Pg2Md02Sw4-2a'/>
                                                 </div>
                                                 <div className="row_checkbox">
-
-                                                    <div className='d-flex align-items-center justify-content-center mb-2'>
-                                                        <span className='mx-2'>PGMd01Lb17</span>
-                                                        <input
-                                                            id='PGMd01Sw5'
-                                                            type="checkbox"
-                                                            name="check_5"
-                                                        // onChange={(val) => setData({ ...data, check_5: val.target.checked })}
-                                                        // checked={data.check_5}
-                                                        />
-                                                        <label htmlFor="PGMd01Sw5">Togglee</label>
-                                                        <span className='mx-2'>PGMd01Sw5</span>
-                                                    </div>
-
+                                                    <CheckBox label_1='Pg2Md02Sw5-1a' label_2='Pg2Md02Sw5-2a'/>
                                                 </div>
-
                                             </Col>
 
                                         </Row>
@@ -363,27 +327,33 @@ function TableModal({setLgShow,lgShow}) {
 
                                         <Row className='row_1 align-items-center'>
                                             <Col lg={8}>
-                                                <span style={{ fontSize: '12px' }}>PG2Md01Lb14</span>
-                                                <div className='d-flex mb-2'>
-                                                    <Form.Control type="text"
-                                                        placeholder="PG2Md01Tx16"
-                                                        name='PG2Md01Tx16'
-                                                    //   value={data.PG2Md01Tx16}
-                                                    //   onChange={handleChange}
-                                                    />
-                                                </div>
+                                                <InputField label='PG2Md01Lb14' label_api={data.pG2Md01Tx17a} name={data.pG2Md01Tx17a} setData={setData} data={data}/>
                                             </Col>
 
-                                            <Col lg={4} className='d-flex align-content-center ' style={{ height: '40px', marginTop: '11px' }}>
-                                                <Button>PG2Md01But1</Button>
+                                            <Col lg={4}>
+                                                <div className={classes.submit}>
+                                                    <button>PG2Md01But1</button>
+                                                </div>
                                             </Col>
 
                                         </Row>
                                     </form>
                                 </Container>
                             </Col>
+
+                            {/* table */}
                             <Col lg={4}>
-                                table
+                                <div>
+                                    <Pg2md02Table dataTable={PG2Md01Data} />
+                                </div>
+
+                                <div className='d-flex mt-3 justify-content-between '>
+                                    <InputField label="pG2Md02Lb18a" />
+                                    <InputField label="pG2Md02Lb19a" />
+                                </div>
+                                <div>
+                                    <InputField label="pG2Md02Lb20a" />
+                                </div>
                             </Col>
                         </Row>
                     </Container>

@@ -17,12 +17,7 @@ export const fetchPg06Bt01Data = createAsyncThunk(
                 },
             });
             const data = await res.json();
-            if(data)
-            localStorage.setItem(
-                "Pg06Bt01Data",
-                JSON.stringify(data)
-            );
-            return data;
+             return data;
         } catch (error) {
             return rejectWithValue(error.message);
         }
@@ -32,10 +27,7 @@ export const fetchPg06Bt01Data = createAsyncThunk(
 const Pg06Bt01DataSlice = createSlice({
     name: 'Pg06Bt01Data',
     initialState: {
-        Pg06Bt01Data:
-             localStorage.getItem("Pg06Bt01Data")
-            ? JSON.parse(localStorage.getItem("Pg06Bt01Data"))
-            : [],
+        Pg06Bt01Data:[],
         loading: false,
         error: null
     },

@@ -42,7 +42,7 @@ function Pg06() {
   const dispatch = useDispatch()
 
   const { Pg06Bt01Data } = useSelector(state => state.Pg06Bt01DataSlice)
-
+ 
   // table1
   const [tableData1, setTabData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -78,16 +78,16 @@ function Pg06() {
   const [isAppearCom, setAppearCom] = useState(false)
   const [isAppearFeild, setAppearFeild] = useState(false)
   const [addRows, setAddRow] = useState({})
-
-
+ 
   return (
     <Container fluid>
       <div>
         <Row>
-          <Col>    <div className={classes.search}>
-            <span>search</span>
-            <Form.Control type="text" placeholder="search" value={query} onChange={handelQuery} />
-          </div>
+          <Col>
+            <div className={classes.search}>
+              <span>search</span>
+              <Form.Control type="text" placeholder="search" value={query} onChange={handelQuery} />
+            </div>
           </Col>
           <Col>
             <InsertRow />
@@ -120,7 +120,7 @@ function Pg06() {
                   Pg06Bt01
                 </button>
               ) : (
-                <button disabled onClick={() => dispatch(fetchPg06Bt01Data(addRows))}>
+                <button disabled>
                   Pg06Bt01
                 </button>
               )}

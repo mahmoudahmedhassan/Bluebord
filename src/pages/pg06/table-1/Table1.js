@@ -100,10 +100,9 @@ function FirstTable({ tableData, loading, setAddRow }) {
     const gitId = (id) => {
         let t101 = id.t101;
         let t103 = id.t103;
-
         setAddRow({t101, t103})
-
     }
+    
     return (
         <div>
             <div className={classes.taple_container}>
@@ -123,7 +122,7 @@ function FirstTable({ tableData, loading, setAddRow }) {
                             {page?.map((row, i) => {
                                 prepareRow(row)
                                 return (
-                                    <tr className={rowId === row.cells[0].row.original.t101 ? `${classes.markRow}`: ''}  {...row.getRowProps()} onClick={() =>{ gitId(row.cells[0].row.original); setRowId(row.cells[0].row.original.t101)}} >
+                                    <tr className={rowId === row.cells[0].row.original.t101 ? `${classes.markRow}`: ''} {...row.getRowProps()} onClick={() =>{ gitId(row.cells[0].row.original); setRowId(row.cells[0].row.original.t101)}} >
                                         {row.cells.map(cell => {
                                             return <td {...cell.getCellProps()} >{cell.render('Cell')}</td>
                                         })}

@@ -34,7 +34,6 @@ const InputField = (props) => {
         value={props.label_api}
       />
     </div>
-
   )
 }
 
@@ -44,8 +43,7 @@ export default function UserDetails() {
   const dispatch = useDispatch();
   const { usrsTapleData, loading } = useSelector(state => state.UsersTapleDataSlice);
   let rowsLength = usrsTapleData.length;
-
-
+ 
   //  search
   const [query, setQuery] = useState('');
 
@@ -79,8 +77,7 @@ export default function UserDetails() {
   }, []);
 
   // switch tableData 
-
-
+ 
   // filter search
   const keys = ["t101", "t102", "t103"];
 
@@ -120,8 +117,7 @@ export default function UserDetails() {
                   <span className='mx-2'>no</span>
                 </div>
               </Col>
-
-            </div>
+             </div>
 
             <div className={classes.UsersTaple}>
               <UsersTaple usersTapleData={search(switchValue ? switchData : usrsTapleData)} />
