@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import DataTable from "react-data-table-component";
 import './Editable Taple/app.css'
- 
+
 
 let CheckInput = (props) => {
   return (
@@ -42,11 +42,11 @@ let NumberInput = (props) => {
   )
 }
 
-function TableDetailsUserTow({dataTable, setAllChecked, setAppear }) {
+function TableDetailsUserTow({ dataTable, setAllChecked, setAppear }) {
   // const { userTapleData_2 } = useSelector(state => state.UserTapleData_2Slice);
   const [data, setData] = useState(dataTable);
   // const [isAllChecked, setAllChecked] = useState(false);
- 
+
   useEffect(() => {
     let newArr = dataTable.map(item => {
       return {
@@ -145,30 +145,39 @@ function TableDetailsUserTow({dataTable, setAllChecked, setAppear }) {
       name: 'T201',
       selector: row => <span style={{ cursor: "pointer" }} onDoubleClick={() => setAppear(true)}>{row.t201}</span>,
       style: {
-        backgroundColor: '#FFA07A',
-        color: 'white',
+        backgroundColor: '#ffa07aa3',
       }
     },
     {
       name: 'T202',
       selector: row => <span>{row.t202}</span>,
       style: {
-        backgroundColor: '#FFA07A'
+        backgroundColor: '#ffa07aa3'
       }
     },
     {
       name: 'T203',
-      selector: row => <span style={{ cursor: "pointer" }} onDoubleClick={() => setAppear(true)}>{row.t203}</span>
+      selector: row => <span style={{ cursor: "pointer" }} onDoubleClick={() => setAppear(true)}>{row.t203}</span>,
+
     },
     {
       name: 'T204',
       selector: row => row.t204,
-      cell: (row) => <CheckInput rowID={row.id} id={'t204'} onChange={onCheck} check={row.t204} disabled={row.t204 || row.t204 == null} />
+      cell: (row) => <CheckInput rowID={row.id} id={'t204'} onChange={onCheck} check={row.t204} disabled={row.t204 || row.t204 == null} />,
+      style: {
+        background:'#bdc3c7',
+      }
     },
     {
       name: 'T204X',
       selector: row => row.t204tx,
-      cell: (row) => <NumberInput rowID={row.id} id={'t204tx'} onChange={onNumberChange} row={row} value={row.t204tx} disabled={row.t204} />
+      cell: (row) => <NumberInput rowID={row.id} id={'t204tx'} onChange={onNumberChange} row={row} value={row.t204tx} disabled={row.t204} />,
+      style: {
+        background:'#bdc3c7',
+         // background:' -webkit - linear - gradient(to right, #2c3e50, #bdc3c7)',   
+        // background:' linear-gradient(to right, #2c3e50, #bdc3c7)' 
+
+      }
     },
 
     {
@@ -184,12 +193,15 @@ function TableDetailsUserTow({dataTable, setAllChecked, setAppear }) {
     {
       name: 'T207',
       selector: row => row.t207,
-      cell: (row) => <CheckInput rowID={row.id} id={'t207'} onChange={onCheck} check={row.t207} disabled={row.t207 || row.t207 == null} />
+      cell: (row) => <CheckInput rowID={row.id} id={'t207'} onChange={onCheck} check={row.t207} disabled={row.t207 || row.t207 == null} />,
+      style:{background:'#f7b7337d'}
     },
     {
       name: 'T207X',
       selector: row => row.t207tx,
-      cell: (row) => <NumberInput rowID={row.id} id={'t207tx'} onChange={onNumberChange} row={row} value={row.t207tx} disabled={row.t207} />
+      cell: (row) => <NumberInput rowID={row.id} id={'t207tx'} onChange={onNumberChange} row={row} value={row.t207tx} disabled={row.t207} />,
+      style:{background:'#f7b7337d'}
+
     },
     {
       name: 'T208',
@@ -204,12 +216,15 @@ function TableDetailsUserTow({dataTable, setAllChecked, setAppear }) {
     {
       name: 'T209X',
       selector: row => row.t209tx,
-      cell: (row) => <NumberInput rowID={row.id} id={'t209tx'} onChange={onNumberChange} row={row} value={row.t209tx} disabled={row.t209} />
+      cell: (row) => <NumberInput rowID={row.id} id={'t209tx'} onChange={onNumberChange} row={row} value={row.t209tx} disabled={row.t209} />,
+      style: {backgroundColor:"#7fc9c3"}
     },
     {
       name: 'T210',
       selector: row => row.t210,
-      cell: (row) => <CheckInput rowID={row.id} id={'t210'} onChange={onCheck} check={row.t210} disabled={row.t210 || row.t210 == null} />
+      cell: (row) => <CheckInput rowID={row.id} id={'t210'} onChange={onCheck} check={row.t210} disabled={row.t210 || row.t210 == null} />,
+      style: {backgroundColor:"#7fc9c3"}
+
     },
     {
       name: 'T211',
@@ -219,40 +234,43 @@ function TableDetailsUserTow({dataTable, setAllChecked, setAppear }) {
     {
       name: 'T212',
       selector: row => row.t212,
-      cell: (row) => <CheckInput rowID={row.id} id={'t212'} onChange={onCheck} check={row.t212} disabled={row.t212 || row.t212 == null} />
+      cell: (row) => <CheckInput rowID={row.id} id={'t212'} onChange={onCheck} check={row.t212} disabled={row.t212 || row.t212 == null} />,
+      style: {backgroundColor:"#f0cfe3"}
+
     },
     {
       name: 'T212X',
       selector: row => row.t212tx,
-      cell: (row) => <NumberInput rowID={row.id} id={'t212tx'} onChange={onNumberChange} row={row} value={row.t212tx} disabled={row.t212} />
+      cell: (row) => <NumberInput rowID={row.id} id={'t212tx'} onChange={onNumberChange} row={row} value={row.t212tx} disabled={row.t212} />,
+      style: {backgroundColor:"#f0cfe3"}
     },
 
   ]
   const customStyles = {
     rows: {
-        style: {
-          minHeight: '30px', // override the row height
-             
-        },
+      style: {
+        minHeight: '30px', // override the row height
+
+      },
     },
     headCells: {
-        style: {
-            paddingLeft: '8px', // override the cell padding for head cells
-            paddingRight: '8px',
-        },
+      style: {
+        paddingLeft: '8px', // override the cell padding for head cells
+        paddingRight: '8px',
+      },
     },
     cells: {
-        style: {
-            paddingLeft: '8px', // override the cell padding for data cells
-            paddingRight: '8px',
-        },
+      style: {
+        paddingLeft: '8px', // override the cell padding for data cells
+        paddingRight: '8px',
+      },
     },
-};
+  };
   return (
     <DataTable
       keyField="id"
       columns={columns}
-      customStyles={customStyles} 
+      customStyles={customStyles}
       data={data}
     />
   )

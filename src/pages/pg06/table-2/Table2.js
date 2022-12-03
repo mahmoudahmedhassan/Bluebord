@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState,useEffect } from 'react';
 import classes from './table2.module.css';
 import { useTable } from 'react-table';
 import SpinnerLoading from '../../../components/sppiner/Sppiner';
@@ -7,16 +7,20 @@ import { AiFillDelete } from "react-icons/ai";
 import { t } from 'i18next';
 
 function Table2({ tableData }) {
-     const [data, setData]= useState([])
-     useMemo(() => setData(tableData), [tableData]);
+    const [data, setData] = useState([])
+    useMemo(() => setData(tableData), [tableData]);
     const { loading } = useSelector(state => state.Pg06Bt01DataSlice)
 
-    const deleteRow = (t201,t208) => {
-        console.log(t201,t208);
+    const deleteRow = (t201, t208, t203,row) => {
+        console.log(row);
+        let arr = [];
         setData(current =>
-            current.filter(el => {
-                return el.t201 !== t201 && el.t208 !== t208
-            }),
+            current.map((el,index) => (
+                arr.push(index)
+                // arr.filter((el)=>
+                //    el !== row
+                // ) 
+            ))
         );
     }
 
@@ -27,16 +31,16 @@ function Table2({ tableData }) {
                 id: "Opstions",
                 Header: "Delete",
                 Cell: ({ row }) => (
-                    <span style={{ fontSize: '18px',cursor: "pointer"}} className={classes.openModal} 
-                    onClick={() => deleteRow( row.values.t201 ,row.values.t208)}
+                    <span style={{ fontSize: '18px', cursor: "pointer" }} className={classes.openModal}
+                        onClick={() => deleteRow(row.values.t201, row.values.t208, row.values.t203,row.id)}
                     >
-                        <AiFillDelete />
+                        <AiFillDelete /> 
                     </span>
                 ),
             },
         ]);
     };
-    
+
     const columns = useMemo(
         () => [
             {

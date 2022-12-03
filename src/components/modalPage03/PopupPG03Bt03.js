@@ -8,7 +8,7 @@ import Modal from 'react-bootstrap/Modal';
 import { Container, Row, Col, } from 'react-bootstrap';
 import TablePG03B03 from './TablePG03B03';
 
-const Hey = (props) => (
+const Div = (props) => (
 
     <Col>
         <div className={classes.main_1}>
@@ -53,24 +53,24 @@ function PopupPG03Bt03({ Show, setShow, pG04Lb01a }) {
                         <div className={classes.main}>
 
                             <Row>
-                                <Hey label='PG04Md01Lb01' labelApi={firstObj ? firstObj.pG04Md01Lb01a : "notfound"} />
-                                <Hey label='PG04Md01Lb06' labelApi={firstObj ? firstObj.pG04Md01Lb06a : "notfound"} />
+                                <Div label='PG04Md01Lb01' labelApi={firstObj ? firstObj.pG04Md01Lb01a : "notfound"} />
+                                <Div label='PG04Md01Lb06' labelApi={firstObj ? firstObj.pG04Md01Lb06a : "notfound"} />
                             </Row>
                             <Row>
-                                <Hey label='PG04Md01Lb02' labelApi={firstObj ? firstObj.pG04Md01Lb02a : "notfound"} />
-                                <Hey label='PG04Md01Lb07' labelApi={firstObj ? firstObj.pG04Md01Lb07a : "notfound"} />
+                                <Div label='PG04Md01Lb02' labelApi={firstObj ? firstObj.pG04Md01Lb02a : "notfound"} />
+                                <Div label='PG04Md01Lb07' labelApi={firstObj ? firstObj.pG04Md01Lb07a : "notfound"} />
 
                             </Row>
                             <Row>
-                                <Hey label='PG04Md01Lb03' labelApi={firstObj ? firstObj.pG04Md01Lb03a : "notfound"} />
+                                <Div label='PG04Md01Lb03' labelApi={firstObj ? firstObj.pG04Md01Lb03a : "notfound"} />
 
                             </Row>
                             <Row>
-                                <Hey label='PG04Md01Lb04' labelApi={firstObj ? firstObj.pG04Md01Lb04a1 : "notfound"} labelApi_2={firstObj ? firstObj.pG04Md01Lb04a2 : "notfound"} />
-                                <Hey label='PG04Md01Lb08' labelApi={firstObj ? firstObj.pG04Md01Lb08a : "notfound"} />
+                                <Div label='PG04Md01Lb04' labelApi={firstObj ? firstObj.pG04Md01Lb04a1 : "notfound"} labelApi_2={firstObj ? firstObj.pG04Md01Lb04a2 : "notfound"} />
+                                <Div label='PG04Md01Lb08' labelApi={firstObj ? firstObj.pG04Md01Lb08a : "notfound"} />
                             </Row>
                             <Row>
-                                <Hey label='PG04Md01Lb05' labelApi={firstObj ? firstObj.pG04Md01Lb05a : "notfound"} />
+                                <Div label='PG04Md01Lb05' labelApi={firstObj ? firstObj.pG04Md01Lb05a : "notfound"} />
                             </Row>
                         </div>
 

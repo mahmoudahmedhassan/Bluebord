@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import './login.css';
-
-import SliderLogin from './slider';
+import Carousel from './Carousel'
 import Lang from '../../../components/lang/Lang';
 
 import { Formik, Form, } from 'formik';
@@ -24,7 +23,7 @@ function UserDetails() {
 
   const { dirction } = useSelector(state => state.dirction);
   const { users, loading, error } = useSelector(state => state.users)
- 
+
   const validate = Yup.object({
     UserName: Yup.string()
       .max(15, 'Must be 15 characters or less')
@@ -40,16 +39,13 @@ function UserDetails() {
   }, [users, navigate])
 
   return (
-    <div className={dirction=== 'ar'? 'userDetails ar_dirction ' :" userDetails"}>
+    <div className={dirction === 'ar' ? 'userDetails ar_dirction ' : " userDetails"}>
       <Container className='main_container'>
         <Row>
           <Col md={6}>
-
-            <div className='ss'>
+            <div className='main_container_platform'>
               <div className='platform'>
-
                 <div className='platform-smart-gate'>
-
                   <div className='platform_name'>
                     <span>S</span>mart <span>G</span>ate
                   </div>
@@ -59,13 +55,12 @@ function UserDetails() {
                 </div>
 
                 <div className='platform-title text-center'>
-                  <h1>  {t("Hello!")}</h1> 
+                  <h1>  {t("Hello!")}</h1>
 
                 </div>
+               </div>
 
-              </div>
-
-              <Formik
+               <Formik
                 initialValues={{
                   UserName: '',
                   Password: '',
@@ -85,7 +80,7 @@ function UserDetails() {
                           <TextField name="UserName" type="text" placeholder={t("UserName")} icon={<FaUserAlt />} />
                         </Col>
                         <Col sm={12}>
-                          <TextField name="Password" type="Password" placeholder={t("Password")}icon={<RiLockPasswordLine />} />
+                          <TextField name="Password" type="Password" placeholder={t("Password")} icon={<RiLockPasswordLine />} />
                         </Col>
                       </Row>
                       <div>{error && <p style={{ color: 'red' }}> {error} </p>}</div>
@@ -94,7 +89,7 @@ function UserDetails() {
                         <button className="btn btn-dark mt-3"
                           type="submit"
                           style={{ width: '100%', background: '#4B77BE', border: 'none' }}>
-                          {loading ? (`${t(" Loading...")}`) : (`${t("Login")}`) }
+                          {loading ? (`${t(" Loading...")}`) : (`${t("Login")}`)}
                         </button>
                       </div>
                     </Form>
@@ -104,9 +99,7 @@ function UserDetails() {
                 )}
 
               </Formik>
-
               <footer className="footer text-center">
-
                 <div className="support my-5">
                   <p className="text-center">
                     {t("for technical support call us on")}{' '}
@@ -120,20 +113,16 @@ function UserDetails() {
                   <a href="/" style={{ color: '#095ffc' }}> Smart Gate</a>
                 </div>
               </footer>
-
             </div>
-
           </Col>
 
-          <Col md={6} className='p-0'>
+          <Col md={6}>
             <div className='slider_login'>
-              <SliderLogin />
+              <Carousel />
             </div>
           </Col>
         </Row>
       </Container>
-
-
     </div >
   )
 }

@@ -1,7 +1,8 @@
-.ar_dirction{
-    direction:rtl;
+.ar_dirction {
+    direction: rtl;
 }
-.ss {
+
+.main_container_platform {
     padding: 0;
     margin: 0;
     height: 100%;
@@ -67,7 +68,7 @@
 .buts {
     display: flex;
     justify-content: space-evenly;
- }
+}
 
 .buts button {
     width: 200px;
@@ -124,13 +125,14 @@
     color: red
 }
 
-.slider_login{
+.slider_login {
+
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
-}
 
+}
 
 .slideLgin_img {
     min-height: 400px !important
@@ -141,14 +143,21 @@
     border-radius: 20px;
 }
 
-.support{
+.support {
     margin-top: 50px;
 }
+
+.swiper-slide{
+    display:flex;
+    justify-content:center;
+    align-items: center
+}
+
 @media screen and (min-width: 768px) and (max-width: 991px) {
     .slideLgin_img {
         min-height: 350px !important
     }
- 
+
 }
 
 @media only screen and (max-width: 450px) {
@@ -169,14 +178,17 @@
     .slideLgin_img {
         min-height: 300px !important
     }
-    .slider-overlay{
-        display:none
+
+    .slider-overlay {
+        display: none
     }
+
     .slider-overlay h3 {
-        font-size:18px
+        font-size: 18px
     }
+
     .slider-overlay p {
-        font-size:14px
+        font-size: 14px
     }
 
 }

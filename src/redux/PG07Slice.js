@@ -1,29 +1,30 @@
 
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-
+import API from '../assets/API';
 export const fetchPG07Data = createAsyncThunk(
     'PG07Data/fetchPG07Data',
     async (_, thunkAPI) => {
-        const { rejectWithValue } = thunkAPI;
-        try {
-            const res = await fetch(`https://tstauth.smartgate-egypt.com/jobs/Pg07`, {
-                headers: {
-                    DataType: "JSON",
-                    Authorization:
-                        "Bearer " + JSON.parse(localStorage.getItem("access-token")),
-                    mode: 'cors',
-                    Accept: 'application/json',
-                },
-            });
-            const data = await res.json();
-            // localStorage.setItem(
-            //     "userDetailsData",
-            //     JSON.stringify(data)
-            // );
-            return data;
-        } catch (error) {
-            return rejectWithValue(error.message);
-        }
+        // const { rejectWithValue } = thunkAPI;
+        API(`jobs/Pg07`)
+        .then(() => {
+
+        })
+        // try {
+        //     const res = await fetch(`https://tstauth.smartgate-egypt.com/jobs/Pg07`, {
+        //         headers: {
+        //             DataType: "JSON",
+        //             Authorization:
+        //                 "Bearer " + JSON.parse(localStorage.getItem("access-token")),
+        //             mode: 'cors',
+        //             Accept: 'application/json',
+        //         },
+        //     });
+
+        //     const data = await res.json();
+        //     return data;
+        // } catch (error) {
+        //     return rejectWithValue(error.message);
+        // }
     }
 );
 
@@ -96,3 +97,21 @@ const PG07DataSlice = createSlice({
 
 export default PG07DataSlice.reducer;
 
+// axios({
+//     method: "post",
+//     url: "Alarm/GetNedapAccessControlStatus",
+//     baseURL: alarmApiUrl,
+//     data: {
+//       touchPointIp: ip,
+//     },
+//     headers: {
+//       "Cache-Control": "no-cache",
+//       "Content-Type": "application/json",
+//     },
+//   })
+//     .then((responseText) => {
+//       res(responseText);
+//     })
+//     .catch((error) => {
+//       rej(error);
+//     });
