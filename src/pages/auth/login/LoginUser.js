@@ -17,6 +17,7 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 
 function UserDetails() {
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [t] = useTranslation();
@@ -29,14 +30,13 @@ function UserDetails() {
       .max(15, 'Must be 15 characters or less')
       .required('Required'),
     Password: Yup.string().required(),
+  });
 
-  })
   useEffect(() => {
     if (users && users.isAuthenticated) {
       navigate('/');
     }
-
-  }, [users, navigate])
+   }, [users, navigate])
 
   return (
     <div className={dirction === 'ar' ? 'userDetails ar_dirction ' : " userDetails"}>
@@ -56,11 +56,10 @@ function UserDetails() {
 
                 <div className='platform-title text-center'>
                   <h1>  {t("Hello!")}</h1>
-
                 </div>
-               </div>
+              </div>
 
-               <Formik
+              <Formik
                 initialValues={{
                   UserName: '',
                   Password: '',
@@ -94,7 +93,6 @@ function UserDetails() {
                       </div>
                     </Form>
                     {/* <div>{t("don't have an account?")}<span className='go_registration' onClick={() => navigate('/registration')}>{t("go to Register")} </span></div> */}
-
                   </div>
                 )}
 
@@ -128,3 +126,4 @@ function UserDetails() {
 }
 
 export default UserDetails
+

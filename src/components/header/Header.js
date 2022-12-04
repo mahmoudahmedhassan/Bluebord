@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import classes from './header.module.css';
 import AccountMenu from '../../components/profile menu/ProfileMenu'
- 
+
 import egy from '../../assets/egypt.png'
 import unitedstates from '../../assets/united-states.png'
 import { FaBars } from "react-icons/fa";
@@ -24,10 +24,11 @@ function Header() {
 
     const [openSidebar, setOpenSidebar] = useState(true);
     const { collapseSidebar } = useProSidebar();
+
     const toggleSidebarButton = () => {
         collapseSidebar();
         setOpenSidebar(!openSidebar)
-        dispatch(switerSidebar(openSidebar))
+        dispatch(switerSidebar(openSidebar)) 
     }
 
     const UserDropdown = (
@@ -37,7 +38,6 @@ function Header() {
     )
     return (
         <div className={classes.header}>
-
 
             <div className={classes.user} >
                 <div className={classes.lang}>
@@ -51,7 +51,7 @@ function Header() {
                                     dispatch(toggleSwitchAr('en'))
                                 }}
                             />
-                         ) : (
+                        ) : (
                             <img src={egy}
                                 alt='en'
                                 height="30px"

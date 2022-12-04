@@ -11,12 +11,12 @@
 }
 .main-container-close{
     width: 100%;
-    padding-left: 80px;
+    padding-left: 50px;
     transition:  all 0.2s ease-in-out;
 }
 .main-container-ar-close{
     transition:  all 0.2s ease-in-out;
-    padding-right: 80px;
+    padding-right: 50px;
     width: 100%;
 }
 
@@ -25,15 +25,10 @@
     width: 100%;
     transition:  all 0.2s ease-in-out;
 }
-
 .main-outlet{
     min-height:calc(100vh - 100px);
 }
-
-
-
 @media only screen and (max-width: 768px) {
-
    .main-container-open{
      padding-left: 0;
  }
@@ -41,5 +36,4 @@
     padding-right: 0;
     width: 100%;
  }
-
 }

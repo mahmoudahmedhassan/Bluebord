@@ -4,6 +4,7 @@ import Header from "../../components/header/Header";
 import Footer from "../../components/Footer/Footer";
 import './root.css';
 import { useSelector } from 'react-redux';
+import SideBarMenu from "../../components/sidebar/SideBarMenu";
  
  const Root = () => {
   // const togglee = false
@@ -15,8 +16,9 @@ import { useSelector } from 'react-redux';
       <div className='main'>
 
         <div style={{zIndex:'99'}} className='scrollbar'>
-        <SidebarMenu />
+        {/* <SidebarMenu /> */}
         {/* <SideBarTest/> */}
+        <SideBarMenu/>
         </div>
         
         <div className={dirction==="en"? witchSidebar? "main-container-close": 'main-container-open':witchSidebar? "main-container-ar-close": 'main-containe-ar-open'}>
