@@ -7,8 +7,7 @@ import Table2 from './table-2/Table2';
 import { useSelector } from 'react-redux';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Collapse from 'react-bootstrap/Collapse';
-import Button from 'react-bootstrap/Button';
-import { GrAddCircle } from "react-icons/gr";
+ 
 let DropDwon = ({ setComValeu }) => {
   const [dropdownData, setDropdownData] = useState([]);
   useEffect(() => {
@@ -36,6 +35,7 @@ let DropDwon = ({ setComValeu }) => {
     </Form.Select>
   )
 }
+
 let DropDwon1 = ({ setComValeu }) => {
   const [dropdownData, setDropdownData] = useState([]);
   useEffect(() => {

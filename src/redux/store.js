@@ -22,6 +22,8 @@ import Pg06Bt01DataSlice from './Pg06Bt01TableSlice';
 import PG07DataSlice from './PG07Slice';
 import PG09T2DataSlice from './Pg09T2';
 import PG2Md01DataSlice from './PG2Md01';
+import PG10TbDataSlice from './pg10'
+import PG11TbDataSlice from './pg11'
 export  const store = configureStore({
   reducer: {
     users ,
@@ -46,7 +48,10 @@ export  const store = configureStore({
     Pg06Bt01DataSlice,
     PG07DataSlice,
     PG09T2DataSlice,
-    PG2Md01DataSlice
+    PG2Md01DataSlice,
+    PG10TbDataSlice,
+    PG11TbDataSlice,
+    
 
   },
 })

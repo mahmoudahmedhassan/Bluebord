@@ -1,13 +1,12 @@
 
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-export const fetchPG09T2Data = createAsyncThunk(
-    'PG09T2Data/fetchPG09T2Data',
-    async (value, thunkAPI) => {
-        console.log(value)
-         const { rejectWithValue } = thunkAPI;
+export const fetchPG10TbData = createAsyncThunk(
+    'PG10TbData/fetchPG10TbData',
+    async (_, thunkAPI) => {
+          const { rejectWithValue } = thunkAPI;
         try {
-            const res = await fetch(`https://tstauth.smartgate-egypt.com/jobs/Pg09T2/${value.sd}/${value.t101}`, {
+            const res = await fetch(`https://tstauth.smartgate-egypt.com/jobs/PG09`, {
                 headers: {
                     DataType: "JSON",
                     Authorization:
@@ -27,14 +26,10 @@ export const fetchPG09T2Data = createAsyncThunk(
 
  
 
-const PG09T2DataSlice = createSlice({
-    name: 'PG09T2Data',
+const PG10TbDataSlice = createSlice({
+    name: 'PG10TbData',
     initialState: {
-        PG09T2Data:
-            //  localStorage.getItem("userDetailsData")
-            // ? JSON.parse(localStorage.getItem("userDetailsData"))
-            // : 
-            [],
+        PG10TbData:[],
         loading: false,
         error: null
     },
@@ -42,15 +37,15 @@ const PG09T2DataSlice = createSlice({
     extraReducers: {
 
         //fetch
-        [fetchPG09T2Data.pending]: (state, action) => {
+        [fetchPG10TbData.pending]: (state, action) => {
             state.loading = true;
             state.error = null;
         },
-        [fetchPG09T2Data.fulfilled]: (state, action) => {
-            state.PG09T2Data = action.payload;
+        [fetchPG10TbData.fulfilled]: (state, action) => {
+            state.PG10TbData = action.payload;
             state.loading = false;
         },
-        [fetchPG09T2Data.rejected]: (state, action) => {
+        [fetchPG10TbData.rejected]: (state, action) => {
             state.error = action.payload;
             state.loading = false;
         },
@@ -58,5 +53,5 @@ const PG09T2DataSlice = createSlice({
     },
 });
  
-export default PG09T2DataSlice.reducer;
+export default PG10TbDataSlice.reducer;
 

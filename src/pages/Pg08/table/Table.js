@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo,useState } from 'react';
 import classes from './table.module.css';
 import { useTable, usePagination } from 'react-table';
 import SpinnerLoading from '../../../components/sppiner/Sppiner';
@@ -8,6 +8,7 @@ import { Pagination, SearchPagination, TablePagination } from '../../../componen
 function Table({ tableData, loading }) {
 
     const data = useMemo(() => tableData, [tableData])
+    const [rowId, setRowId] = useState(null);
 
     const columns = useMemo(
         () => [
@@ -122,8 +123,8 @@ function Table({ tableData, loading }) {
                                 prepareRow(row)
                                 return (
                                     <tr {...row.getRowProps()}
-                                    // onClick={() => gitId(row.cells[0].row.original)}
-                                    >
+                                    className={rowId === row.cells[0].row.original.t102 ? `markRow` : ''}
+                                    onClick={() => { setRowId(row.cells[0].row.original.t102) }}                                    >
                                         {row.cells.map(cell => {
                                             return <td className='text-center' {...cell.getCellProps()}>{cell.render('Cell')}</td>
                                         })}

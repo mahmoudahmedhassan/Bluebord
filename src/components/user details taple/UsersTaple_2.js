@@ -135,7 +135,7 @@ function UsersTapleTow({ usersTapleData, setAllChecked, setShow, switchValue }) 
                             {page?.map((row, i) => {
                                 prepareRow(row)
                                 return (
-                                    <tr key={i} {...row.getRowProps()} className={rowId === row.cells[0].row.original.sd ? `${classes.markRow}` : ''} onClick={() => { getDetailsUserData(row.cells[0].row.original); setRowId(row.cells[0].row.original.sd) }} >
+                                    <tr key={i} {...row.getRowProps()} className={rowId === row.cells[0].row.original.sd ? `markRow` : ''} onClick={() => { getDetailsUserData(row.cells[0].row.original); setRowId(row.cells[0].row.original.sd) }} >
                                         {row.cells.map(cell => {
                                             // console.log('cell', cell.render('Cell'))
                                             return <td  {...cell.getCellProps()}>{cell.render('Cell')}</td>

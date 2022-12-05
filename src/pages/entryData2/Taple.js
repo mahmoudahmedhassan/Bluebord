@@ -141,7 +141,7 @@ function Taple(
                                 return (
                                     <tr {...row.getRowProps()}
                                         onClick={() => {gitId(row.cells[0].row.original); setRowId(row.cells[0].row.original.t101) }}
-                                        className={rowId === row.cells[0].row.original.t101 ? `${classes.markRow}` : ''}
+                                        className={rowId === row.cells[0].row.original.t101 ? `markRow` : ''}
                                     >
                                         {row.cells.map(cell => {
                                             return <td className='text-center' {...cell.getCellProps()}>{cell.render('Cell')}</td>

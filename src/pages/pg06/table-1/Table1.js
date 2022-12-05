@@ -9,7 +9,7 @@ import { SearchPagination, TablePagination } from '../../../components/table Pag
 import * as moment from 'moment';
 
 function FirstTable({ tableData, loading, setAddRow }) {
- 
+
     const columns = useMemo(
         () => [
             {
@@ -94,15 +94,15 @@ function FirstTable({ tableData, loading, setAddRow }) {
     },
         usePagination,
     );
-     const [rowId, setRowId] = useState(null);
-     console.log('rowId',rowId)
- 
+    const [rowId, setRowId] = useState(null);
+    console.log('rowId', rowId)
+
     const gitId = (id) => {
         let t101 = id.t101;
         let t103 = id.t103;
-        setAddRow({t101, t103})
+        setAddRow({ t101, t103 })
     }
-    
+
     return (
         <div>
             <div className={classes.taple_container}>
@@ -122,7 +122,9 @@ function FirstTable({ tableData, loading, setAddRow }) {
                             {page?.map((row, i) => {
                                 prepareRow(row)
                                 return (
-                                    <tr className={rowId === row.cells[0].row.original.t101 ? `${classes.markRow}`: ''} {...row.getRowProps()} onClick={() =>{ gitId(row.cells[0].row.original); setRowId(row.cells[0].row.original.t101)}} >
+                                    <tr {...row.getRowProps()}
+                                        className={rowId === row.cells[0].row.original.t101 ? `markRow` : ''}
+                                        onClick={() => { gitId(row.cells[0].row.original); setRowId(row.cells[0].row.original.t101) }} >
                                         {row.cells.map(cell => {
                                             return <td {...cell.getCellProps()} >{cell.render('Cell')}</td>
                                         })}
@@ -136,32 +138,32 @@ function FirstTable({ tableData, loading, setAddRow }) {
             {/* {<span>rows : {data && rowsLength}</span>} */}
 
             <Container fluid>
-                    <Row className='align-items-center'>
-                        <Col>
-                            <SearchPagination
-                                gotoPage={gotoPage}
-                                nextPage={nextPage}
-                                setPageSize={setPageSize}
-                                pageSize={pageSize}
-                                loading={loading}
-                            />
-                        </Col>
-                        <Col>
-                            <TablePagination
-                                gotoPage={gotoPage}
-                                previousPage={previousPage}
-                                canPreviousPage={canPreviousPage}
-                                pageIndex={pageIndex}
-                                pageOptions={pageOptions}
-                                nextPage={nextPage}
-                                canNextPage={canNextPage}
-                                pageCount={pageCount}
-                                loading={loading}
-                              />
+                <Row className='align-items-center'>
+                    <Col>
+                        <SearchPagination
+                            gotoPage={gotoPage}
+                            nextPage={nextPage}
+                            setPageSize={setPageSize}
+                            pageSize={pageSize}
+                            loading={loading}
+                        />
+                    </Col>
+                    <Col>
+                        <TablePagination
+                            gotoPage={gotoPage}
+                            previousPage={previousPage}
+                            canPreviousPage={canPreviousPage}
+                            pageIndex={pageIndex}
+                            pageOptions={pageOptions}
+                            nextPage={nextPage}
+                            canNextPage={canNextPage}
+                            pageCount={pageCount}
+                            loading={loading}
+                        />
 
-                        </Col>
-                    </Row>
-                </Container>
+                    </Col>
+                </Row>
+            </Container>
 
         </div>
     )

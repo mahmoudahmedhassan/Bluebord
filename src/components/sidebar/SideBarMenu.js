@@ -61,36 +61,38 @@ const routes = [
         name: "Grop-6",
         icon: <AiFillHeart />,
     },
-    {
-        path: "./pg09",
-        name: "Grop-7",
-        icon: <AiFillHeart />,
-    },
- 
+
     {
         path: "/settings",
-        name: "Grop-3",
+        name: "Grop-7",
         icon: <BiCog />,
         exact: true,
         subRoutes: [
             {
-                path: "/settings/profile",
-                name: "Profile ",
-                icon: <FaUser />,
+                path: "./pg09",
+                name: "Grop-7 page01",
+                icon: <AiFillHeart />,
             },
             {
-                path: "/settings/2fa",
-                name: "2FA",
+                path: "./pg10",
+                name: "Grop-7 page02",
+                icon: <FaMoneyBill />,
+            },
+            {
+                path: "./pg11",
+                name: "Grop-7 page03",
                 icon: <FaLock />,
             },
             {
-                path: "/settings/billing",
-                name: "Billing",
-                icon: <FaMoneyBill />,
+                path: "./pg12",
+                name: "Grop-7 page04",
+                icon: <FaLock />,
             },
         ],
     },
-
+   
+    
+ 
 ];
 
 function SideBarMenu() {

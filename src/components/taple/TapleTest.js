@@ -1,4 +1,4 @@
-import { React, useMemo, useRef } from 'react';
+import { React, useMemo, useRef,useState } from 'react';
 import classes from './taple.module.css';
 import { useTable, usePagination, useRowSelect } from 'react-table';
 import SpinnerLoading from '../../components/sppiner/Sppiner';
@@ -31,6 +31,7 @@ function TapleTest(
     const handlePrint = useReactToPrint({
         content: () => componentRef.current,
     });
+
 
     //  add option button 
      
@@ -66,6 +67,7 @@ function TapleTest(
     }, [tapData, tapleDataGitAll, dataTablePro, dataTableHid, tapleDataGitFin]);
     // console.log("datadd", data)
     let rowsLength = data.length;
+    const [rowId, setRowId] = useState(null);
 
     const columns = useMemo(
         () => [
@@ -180,7 +182,7 @@ function TapleTest(
                             {page?.map((row, i) => {
                                 prepareRow(row)
                                 return (
-                                    <tr {...row.getRowProps()}>
+                                    <tr {...row.getRowProps()}  className={rowId === row.cells[0].row.original.sd ? `markRow`: ''}   onClick={() =>{ setRowId(row.cells[0].row.original.sd)}} >
                                         {row.cells.map(cell => {
                                             return <td className='text-center' {...cell.getCellProps()}>{cell.render('Cell')}</td>
                                         })}

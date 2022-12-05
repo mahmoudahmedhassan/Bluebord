@@ -4,27 +4,24 @@ import API from '../assets/API';
 export const fetchPG07Data = createAsyncThunk(
     'PG07Data/fetchPG07Data',
     async (_, thunkAPI) => {
-        // const { rejectWithValue } = thunkAPI;
-        API(`jobs/Pg07`)
-        .then(() => {
+        const { rejectWithValue } = thunkAPI;
+       
+        try {
+            const res = await fetch(`https://tstauth.smartgate-egypt.com/jobs/Pg07`, {
+                headers: {
+                    DataType: "JSON",
+                    Authorization:
+                        "Bearer " + JSON.parse(localStorage.getItem("access-token")),
+                    mode: 'cors',
+                    Accept: 'application/json',
+                },
+            });
 
-        })
-        // try {
-        //     const res = await fetch(`https://tstauth.smartgate-egypt.com/jobs/Pg07`, {
-        //         headers: {
-        //             DataType: "JSON",
-        //             Authorization:
-        //                 "Bearer " + JSON.parse(localStorage.getItem("access-token")),
-        //             mode: 'cors',
-        //             Accept: 'application/json',
-        //         },
-        //     });
-
-        //     const data = await res.json();
-        //     return data;
-        // } catch (error) {
-        //     return rejectWithValue(error.message);
-        // }
+            const data = await res.json();
+            return data;
+        } catch (error) {
+            return rejectWithValue(error.message);
+        }
     }
 );
 

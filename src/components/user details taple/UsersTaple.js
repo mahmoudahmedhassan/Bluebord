@@ -127,7 +127,7 @@ function UsersTaple({ usersTapleData }) {
                         {page?.map((row, i) => {
                             prepareRow(row)
                             return (
-                                <tr key={i} {...row.getRowProps()} className={rowId === row.cells[0].row.original.t101 ? `${classes.markRow}`: ''}   onClick={() =>{ getDetailsUserData(row.cells[0].row.original); setRowId(row.cells[0].row.original.t101)}} >
+                                <tr key={i} {...row.getRowProps()} className={rowId === row.cells[0].row.original.t101 ? `markRow`: ''}   onClick={() =>{ getDetailsUserData(row.cells[0].row.original); setRowId(row.cells[0].row.original.t101)}} >
                                     {row.cells.map(cell => {
                                         return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
                                     })}

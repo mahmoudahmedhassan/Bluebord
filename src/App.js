@@ -12,6 +12,9 @@ import Pg06 from './pages/pg06/Pg06';
 import Pg07 from './pages/pg07/Pg07';
 import Pg08 from './pages/Pg08/Pg08';
 import Pg09 from './pages/pg09/Pg09';
+import PG10 from './pages/Pg10/PG10';
+import Pg11 from './pages/pg11/Pg11';
+import Pg12 from './pages/pg12/Pg12';
 
 function App() {
   // const user_1 = true;
@@ -35,6 +38,9 @@ function App() {
               <Route path="/pg07" exact element={<Pg07 />} />
               <Route path="/pg08" exact element={<Pg08/>} />
               <Route path="/pg09" exact element={<Pg09/>} />
+              <Route path="/pg10" exact element={<PG10/>} />
+              <Route path="/pg11" exact element={<Pg11/>} />
+              <Route path="/pg12" exact element={<Pg12/>} />
                
              </Route>
           </Route>

@@ -92,3 +92,7 @@ table {
 .form-control {
   font-size: .8rem !important;
 }
+
+.markRow{
+  background-color: #59c3b6 !important;
+ }

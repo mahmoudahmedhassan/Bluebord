@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo , useState} from 'react';
 import classes from './table2.module.css';
 import { useTable } from 'react-table';
 import SpinnerLoading from '../../../components/sppiner/Sppiner';
@@ -8,6 +8,8 @@ import * as moment from 'moment';
 function Table2({ tableData }) {
     const { loading } = useSelector(state => state.PG09T2DataSlice)
     const data = useMemo(() => tableData, [tableData])
+    const [rowId, setRowId] = useState(null);
+
     const columns = useMemo(
         () => [
             {
@@ -80,7 +82,10 @@ function Table2({ tableData }) {
                             {rows?.map((row, i) => {
                                 prepareRow(row)
                                 return (
-                                    <tr {...row.getRowProps()}>
+                                    <tr {...row.getRowProps()}
+                                    className={rowId === row.cells[0].row.original.t201 ? `markRow` : ''}
+                                     onClick={() =>{ setRowId(row.cells[0].row.original.t201)}}
+                                    >
                                         {row.cells.map(cell => {
                                             return <td className='text-center' {...cell.getCellProps()}>{cell.render('Cell')}</td>
                                         })}
