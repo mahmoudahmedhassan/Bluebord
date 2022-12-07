@@ -7,6 +7,7 @@ import Collapse from 'react-bootstrap/Collapse';
 import { useSelector, useDispatch} from 'react-redux';
 import {fetchPG10TbData} from '../../redux/pg10';
 import FirstTable from './table-1/Table1';
+import { useTranslation } from 'react-i18next';
 
 let InputField = (props) => (
     <InputGroup className="mb-3">
@@ -18,10 +19,11 @@ let InputField = (props) => (
     </InputGroup>
 )
 function PG10() {
-    const dispatch = useDispatch()
+    const [t] = useTranslation();
+    const dispatch = useDispatch();
     const { PG10TbData } = useSelector(state => state.PG10TbDataSlice);
-    console.log(PG10TbData)
-    useEffect(() => {
+
+     useEffect(() => {
         dispatch(fetchPG10TbData())
     },[dispatch])
 
@@ -48,25 +50,25 @@ function PG10() {
                     aria-expanded={open}
                 >
                     {/* <GrAddCircle/> */}
-                    Add
+                 {t("Add")}
                 </button>
                 <Collapse in={open}>
                     <div className={classes.insert}>
                         <form>
                             <Row>
-                                <Col><InputField label='Pg09Tx02' /></Col>
-                                <Col> <InputField label='Pg09Tx03' /></Col>
+                                <Col><InputField label={t('Pg09Tx02')} /></Col>
+                                <Col> <InputField label={t('Pg09Tx03')} /></Col>
                             </Row>
                             <Row>
-                                <Col><InputField label='Pg09Tx04' /></Col>
+                                <Col><InputField label={t('Pg09Tx04')} /></Col>
                             </Row>
                              
                             <Row>
                                 <Col>
-                                    <div className={classes.button}><button onClick={() => setOpen(!open)}>Submit</button></div>
+                                    <div className={classes.button}><button onClick={() => setOpen(!open)}>{t("Submit")}</button></div>
                                 </Col>
                                 <Col>
-                                    <div className={classes.button}><button onClick={() => setOpen(!open)}>Rest</button></div>
+                                    <div className={classes.button}><button onClick={() => setOpen(!open)}>{t("Rest")}</button></div>
                                 </Col>
                             </Row>
                         </form>
@@ -75,8 +77,8 @@ function PG10() {
 
                 <div>
                     <div className={classes.search}>
-                        <span>search</span>
-                        <Form.Control type="text" placeholder="search" value={query} onChange={handelQuery} />
+                        <span>{t("search")}</span>
+                        <Form.Control type="text" placeholder={t("search")} value={query} onChange={handelQuery} />
                     </div>
                     <FirstTable dataTable={search(PG10TbData)}/>
 

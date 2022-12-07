@@ -7,6 +7,7 @@ import Collapse from 'react-bootstrap/Collapse';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchPG11TbData } from '../../redux/pg11';
 import FirstTable from './table-1/Table1';
+import { useTranslation } from 'react-i18next';
 
 let InputField = (props) => (
     <InputGroup className="mb-3">
@@ -45,6 +46,7 @@ let DropDwon = ({ setComValeu }) => {
     )
 }
 function Pg11() {
+    const [t] = useTranslation();
     const dispatch = useDispatch()
     const { PG11TbData } = useSelector(state => state.PG11TbDataSlice);
     console.log(PG11TbData)
@@ -55,9 +57,7 @@ function Pg11() {
         dispatch(fetchPG11TbData(comValeu))
     }, [dispatch, comValeu])
 
-
     const [open, setOpen] = useState(false);
-
     // search state
     const [query, setQuery] = useState('');
     const handelQuery = (e) => {
@@ -79,7 +79,7 @@ function Pg11() {
                     aria-expanded={open}
                 >
                     {/* <GrAddCircle/> */}
-                    Add
+                    {t("Add")}
                 </button>
                 <Collapse in={open}>
                     <div className={classes.insert}>
@@ -88,18 +88,18 @@ function Pg11() {
                                 <Col><DropDwon setComValeu={setComValeu} /></Col>
                             </Row>
                             <Row>
-                                <Col><InputField label='Pg09Tx02' /></Col>
-                                <Col> <InputField label='Pg09Tx03' /></Col>
+                                <Col><InputField label={t('Pg09Tx02')}/></Col>
+                                <Col> <InputField label={t('Pg09Tx02')}/></Col>
                             </Row>
                             <Row>
-                                <Col><InputField label='Pg09Tx04' /></Col>
+                                <Col><InputField label={t('Pg09Tx02')}/></Col>
                             </Row>
                             <Row>
                                 <Col>
-                                    <div className={classes.button}><button onClick={() => setOpen(!open)}>Submit</button></div>
+                                    <div className={classes.button}><button onClick={() => setOpen(!open)}>{t("Submit")}</button></div>
                                 </Col>
                                 <Col>
-                                    <div className={classes.button}><button onClick={() => setOpen(!open)}>Rest</button></div>
+                                    <div className={classes.button}><button onClick={() => setOpen(!open)}>{t("Rest")}</button></div>
                                 </Col>
                             </Row>
                         </form>
@@ -108,8 +108,8 @@ function Pg11() {
 
                 <div style={{ marginBottom: '40px' }}>
                     <div className={classes.search}>
-                        <span>search</span>
-                        <Form.Control type="text" placeholder="search" value={query} onChange={handelQuery} />
+                        <span>{t("search")}</span>
+                        <Form.Control type="text" placeholder={t("search")} value={query} onChange={handelQuery} />
                     </div>
                     <FirstTable dataTable={search(PG11TbData)} />
                 </div>

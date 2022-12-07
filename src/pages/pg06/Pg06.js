@@ -6,7 +6,9 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import Table2 from './table-2/Table2';
 import { fetchPg06Bt01Data } from '../../redux/Pg06Bt01TableSlice';
-import InsertRow from '../../components/insertTablePg07/InsertRow'
+import InsertRow from '../../components/insertTablePg07/InsertRow';
+import { useTranslation } from 'react-i18next';
+
 let DropDwon = ({ isAppearCom }) => {
   console.log(isAppearCom)
 
@@ -39,8 +41,8 @@ let DropDwon = ({ isAppearCom }) => {
 }
 
 function Pg06() {
+  const [t] = useTranslation();
   const dispatch = useDispatch()
-
   const { Pg06Bt01Data } = useSelector(state => state.Pg06Bt01DataSlice)
  
   // table1
@@ -86,7 +88,7 @@ function Pg06() {
           <Col>
             <div className={classes.search}>
               <span>search</span>
-              <Form.Control type="text" placeholder="search" value={query} onChange={handelQuery} />
+              <Form.Control type="text" placeholder={t("search")} value={query} onChange={handelQuery} />
             </div>
           </Col>
           <Col>
@@ -104,7 +106,7 @@ function Pg06() {
           <Col>
             <div className={classes.table_2}>
               <div className='d-flex align-items-center'>
-                <span>Pg06Ch01</span>
+                <span>{t("Pg06Ch01")}</span>
                 <input type='checkbox' name='Pg06Ch01' className={classes.checkbox} onChange={() => setAppearCom(!isAppearCom)} />
               </div>
 
@@ -117,11 +119,11 @@ function Pg06() {
 
               {Object.keys(addRows).length > 0 ? (
                 <button onClick={() => dispatch(fetchPg06Bt01Data(addRows))}>
-                  Pg06Bt01
+                  {t("Pg06Bt01 ")}
                 </button>
               ) : (
                 <button disabled>
-                  Pg06Bt01
+                 {t("Pg06Bt01 ")}
                 </button>
               )}
 
@@ -135,15 +137,13 @@ function Pg06() {
         <Row>
           <Col lg={2}>
             <div className={classes.Pg06Ch}>
-              <div>Pg06lb</div>
-
-
+              <div>{t("Pg06lb")}</div>
             </div>
           </Col>
           <Col lg={6}>
             <div className='d-flex align-items-center justify-content-around' style={{ margin: "20px 0" }}>
               <div className='d-flex align-items-center '>
-                <span className={classes.Pg06Ch02}> Pg06Ch02</span>
+                <span className={classes.Pg06Ch02}> {t("Pg06Ch02")}</span>
                 <input type="checkbox" className={classes.checkbox} onChange={() => setAppearFeild(!isAppearFeild)} />
                 <Form.Control
                   type="text"
@@ -155,14 +155,14 @@ function Pg06() {
 
               </div>
               <div className='d-flex align-items-center'>
-                <span className={classes.Pg06Ch02}> Pg06Ch03</span>
+                <span className={classes.Pg06Ch02}> {t("Pg06Ch03")}</span>
                 <input type="checkbox" className={classes.checkbox} />
               </div>
             </div>
 
           </Col>
           <Col lg={4}>
-            <div className={classes.button_submit}> <button>submit</button></div>
+            <div className={classes.button_submit}> <button>{t("submit")}</button></div>
           </Col>
         </Row>
       </div>

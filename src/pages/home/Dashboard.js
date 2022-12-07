@@ -16,8 +16,13 @@ import axios from 'axios';
 import { BsCalendarDateFill } from "react-icons/bs";
 import CountUp from 'react-countup';
 import PrintModal from './PrintModal';
+import { useTranslation } from 'react-i18next';
+import {useSelector} from 'react-redux'
 
 function Dashboard() {
+  const [t] = useTranslation();
+  const { dirction } = useSelector(state => state.dirction);
+
   const [dashbords, setDashboards] = useState([]);
   const [loading,setLoading] = useState(true);
    useEffect(() => {
@@ -31,15 +36,15 @@ function Dashboard() {
       },
     })
       .then(res => {
-        let chartData = [];
+        let chartData_en = [];
+        let chartData_ar = [];
         const data = res.data;
         setLoading(false)
         data.forEach(element => {
-          chartData.push({
+          chartData_en.push({
             labels: [element.t202Lb+":"+element.t202,element.t203Lb+":"+element.t203,element.t204Lb+":"+element.t204],
             datasets: [{
               data: [element.t202, element.t203, element.t204,],
-             
               backgroundColor: [
                  "#e9c46a",
                 "#f4a261",
@@ -50,15 +55,33 @@ function Dashboard() {
             }],
             all: element.t201,
             title:element.title
+          },);
+
+          chartData_ar.push({
+            labels: [element.t201LbA+":"+element.t202,element.t203LbA+":"+element.t203,element.t204LbA+":"+element.t204],
+            datasets: [{
+              data: [element.t202, element.t203, element.t204,],
+              backgroundColor: [
+                 "#e9c46a",
+                "#f4a261",
+                "#2a9d8f",
+              ],
+              borderColor: "black",
+              borderWidth: 2,
+            }],
+            all: element.t201,
+            title:element.titleA
+
           })
+
         })
-        setDashboards(chartData)
+        setDashboards(dirction ==='en' ? chartData_en : chartData_ar)
       })
-  }, [])
+  }, [dirction])
 
   return (
     <Container fluid>
-      <h1 className='text-bb text-center m-2'>welcome</h1>
+      <h1 className='text-bb text-center m-2'>{t("welcome")}</h1>
       <PrintModal/>
        <Row>
         {loading ? <div className='text-center'><Spinner/></div>:

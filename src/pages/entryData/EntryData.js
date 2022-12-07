@@ -11,14 +11,17 @@ import SelectSearch from '../../components/dropdwon/SelectSearch'
 import { Container, Row, Col, } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import Collapse from 'react-bootstrap/Collapse';
-import Button from 'react-bootstrap/Button';
-
+ 
 // redux
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchTapleData } from '../../redux/tapleData'
+import { fetchTapleData } from '../../redux/tapleData';
+
+import { useTranslation } from 'react-i18next';
 
 // =====================================================
 function EntryData() {
+  const [t] = useTranslation();
+
   // redux
   const dispatch = useDispatch()
   const { tapleData, loading, error } = useSelector(state => state.tapleDataSlice)
@@ -65,8 +68,6 @@ function EntryData() {
   // filter search
   const keys = ["sd", "t102", "t103", "t104"];
   // const keysSlection = ['sW_N', 'sW_S', 'sW_R', 'sw_ST'];
-
-
   const search = (data) => {
     if (toggleSwitches === 0) {
       return data.filter((item) => keys.some((key) => item[key].toString().toLowerCase().includes(query)))
@@ -81,14 +82,14 @@ function EntryData() {
   return (
     <div style={{ marginBottom: '30px' }}>
       <Container fluid>
-        <Breadcrumbs className='mr-3' main="Grop-1" sub="Page01" />
+        <Breadcrumbs className='mr-3' main={t("Grop-1")} sub={t("Page01")} />
       </Container>
 
       <Container fluid>
         <EntryPopupData />
 
         <button variant="primary" className='searchTaple_but'
-          onClick={() => setOpen(!open)}>search</button>
+          onClick={() => setOpen(!open)}> {t('search')} </button>
 
         <Collapse in={open}>
           <form className="form" style={{ backgroundColor: 'white' }}>
@@ -101,7 +102,7 @@ function EntryData() {
                       <div>
                         <Form.Control
                           type="text"
-                          placeholder="search"
+                          placeholder={t('search')}
                           onChange={handelQuery}
                         />
                       </div>
@@ -116,7 +117,7 @@ function EntryData() {
               <Col md={12} lg={6}>
                 <div className="section_2">
                   <div className='d-flex align-items-center mb-2'>
-                    <span className='mx-2'>sW_N_false</span>
+                    <span className='mx-2'>{t('sW_N_false')}</span>
                     <input
                       id='switch-11'
                       type="checkbox"
@@ -125,11 +126,11 @@ function EntryData() {
                       checked={switchValue.sW_N}
                     />
                     <label htmlFor="switch-11"></label>
-                    <span className='mx-2'>sW_N_true</span>
+                    <span className='mx-2'>{t('sW_N_true')}</span>
                   </div>
 
                   <div className='d-flex align-items-center mb-2'>
-                    <span className='mx-2'>sW_S_false</span>
+                    <span className='mx-2'>{t('sW_S_false')}</span>
                     <input
                       id='switch-22'
                       type="checkbox"
@@ -138,14 +139,14 @@ function EntryData() {
                       checked={switchValue.sW_S}
                     />
                     <label htmlFor="switch-22"></label>
-                    <span className='mx-2'>sW_S_true</span>
+                    <span className='mx-2'>{t('sW_S_true')}</span>
                   </div>
                 </div>
 
                 <div className="section_2">
 
                   <div className='d-flex align-items-center mb-2'>
-                    <span className='mx-2'>sW_R_false</span>
+                    <span className='mx-2'>{t('sW_R_false')}</span>
                     <input
                       id='switch-33'
                       type="checkbox"
@@ -154,11 +155,11 @@ function EntryData() {
                       checked={switchValue.sW_R}
                     />
                     <label htmlFor="switch-33"></label>
-                    <span className='mx-2'>sW_R_true</span>
+                    <span className='mx-2'>{t('sW_R_true')}</span>
                   </div>
 
                   <div className='d-flex align-items-center mb-2'>
-                    <span className='mx-2'>sw_ST_false</span>
+                    <span className='mx-2'>{t('sw_ST_false')}</span>
                     <input
                       id='switch-44'
                       type="checkbox"
@@ -167,7 +168,7 @@ function EntryData() {
                       checked={switchValue.sw_ST}
                     />
                     <label htmlFor="switch-44"></label>
-                    <span className='mx-2'>sw_ST_true</span>
+                    <span className='mx-2'>{t('sw_ST_true')}</span>
                   </div>
 
 

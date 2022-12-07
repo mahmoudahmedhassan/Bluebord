@@ -1,12 +1,13 @@
 
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import {BaseURL} from '../assets/API';
 
 export const fetchPG5MdData = createAsyncThunk(
     'PG5MdData/fetchPG5MdData',
     async (value, thunkAPI) => {
          const { rejectWithValue } = thunkAPI;
         try {
-            const res = await fetch(`https://tstauth.smartgate-egypt.com/jobs/PG05TbInfo/${value.t101String}/${value.t102}`, {
+            const res = await fetch(`${BaseURL}jobs/PG05TbInfo/${value.t101String}/${value.t102}`, {
                 headers: {
                     DataType: "JSON",
                     Authorization:

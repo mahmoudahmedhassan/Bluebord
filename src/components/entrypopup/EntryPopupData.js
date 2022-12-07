@@ -5,25 +5,15 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import { Container, Row, Col, FloatingLabel } from 'react-bootstrap';
-import { use } from 'i18next';
+// import { use } from 'i18next';
+import {useSelector} from 'react-redux'
 import axios from 'axios';
+import { useTranslation } from 'react-i18next';
+
 function EntryPopupData() {
+  const [t] = useTranslation();
 
-  // const Checkbox = ({ name, fnChange, checked=false}) => (
-
-  //   <div className='d-flex mb-2'>
-  //     <span>no</span>
-  //     <Form.Check
-  //       className="switch"
-  //       type="switch"
-  //       id="custom-switch"
-  //       checked={checked}
-  //     />
-  //     <span>name</span>
-  //   </div>
-
-  // )
-
+  const { dirction } = useSelector(state => state.dirction);
   // popup apper 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -105,10 +95,10 @@ function EntryPopupData() {
   return (
     <>
       <button variant="primary" onClick={handleShow} className="add_btn">
-        Add
+       {t('Add')}
       </button>
 
-      <Modal show={show} onHide={handleClose} size="xl">
+      <Modal show={show} onHide={handleClose} size="xl" dir={dirction ==="ar" ? "rtl" :null}>
         <Modal.Header closeButton>
         </Modal.Header>
 

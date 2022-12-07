@@ -22,7 +22,7 @@ export default function AccountMenu() {
 
     const { users} = useSelector(state => state.users);
 
-    // const { dirction } = useSelector(state => state.dirction);
+    const { dirction } = useSelector(state => state.dirction);
  
     const logOut =()=>{
         localStorage.clear();
@@ -56,7 +56,8 @@ export default function AccountMenu() {
           </IconButton>
         </Tooltip>
       </Box>
-      <Menu
+      <Menu 
+       dir={dirction ==="ar" ? "rtl" :null}
         anchorEl={anchorEl}
         id="account-menu"
         open={open}
@@ -65,7 +66,7 @@ export default function AccountMenu() {
         PaperProps={{
           elevation: 0,
           sx: {
-             direction: 'rtl',
+            //  direction: 'rtl',
             overflow: 'visible',
             filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
             mt: 1.5,
@@ -93,7 +94,7 @@ export default function AccountMenu() {
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
         <MenuItem>
-          <Avatar /> {t("Profile")}
+          <Avatar /> <span style={{marginRight:"10px"}}>{t("Profile")}</span> 
         </MenuItem>
         {/* <MenuItem>
           <Avatar /><span>{t("My account")}</span>

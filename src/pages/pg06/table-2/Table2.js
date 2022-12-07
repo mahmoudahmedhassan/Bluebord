@@ -13,15 +13,18 @@ function Table2({ tableData }) {
 
     const deleteRow = (t201, t208, t203,row) => {
         console.log(row);
-        let arr = [];
-        setData(current =>
-            current.map((el,index) => (
-                arr.push(index)
-                // arr.filter((el)=>
-                //    el !== row
-                // ) 
-            ))
-        );
+        let newData = data.filter(item => item.ID === row );
+        setData(newData);
+        // let arr = [];
+        // setData(current =>
+        //     current.map((el,index) => (
+        //         console.log(index)
+        //         // arr.push(index)
+        //         // arr.filter((el)=>
+        //         //el !== row
+        //         // ) 
+        //     ))
+        // );
     }
 
     const tableHooks = (hooks) => {

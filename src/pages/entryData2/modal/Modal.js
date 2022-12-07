@@ -17,8 +17,10 @@ const Div = (props) => (
 
 
 function Popup({ data }) {
+
     const [lgShow, setLgShow] = useState(false);
     let firstObj = data[0]
+    const { dirction } = useSelector(state => state.dirction);
     const { loading } = useSelector(state => state.PG5MdDataSlice);
 
 
@@ -27,6 +29,7 @@ function Popup({ data }) {
             <button className={classes.PG05Bt01} onClick={() => setLgShow(true)}> PG05Bt01</button>
 
             <Modal
+                dir={dirction ==="ar" ? "rtl" :null}
                 size="lg"
                 show={lgShow}
                 onHide={() => setLgShow(false)}

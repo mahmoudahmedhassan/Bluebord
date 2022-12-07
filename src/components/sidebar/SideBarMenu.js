@@ -135,7 +135,7 @@ function SideBarMenu() {
                 >
                     <div className="top_section">
                         <AnimatePresence>
-                            {!witchSidebar && (
+                            {  (
                                 <motion.p
                                     variants={showAnimation}
                                     initial="hidden"

@@ -3,7 +3,8 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import InputGroup from 'react-bootstrap/InputGroup';
-
+import { useTranslation } from 'react-i18next';
+import {useSelector} from 'react-redux'
 let DropDwon = (props) => {
     const [dropdownData, setDropdownData] = useState([]);
     useEffect(() => {
@@ -22,7 +23,7 @@ let DropDwon = (props) => {
     }, []);
 
     return (
-        <Form.Select aria-label="Floating label select example" placeholder="PG2md03" name='PG2Md01Comb1' onChange={props.onChange}>
+        <Form.Select style={{marginBottom:"20px"}} aria-label="Floating label select example" placeholder="PG2md03" name='PG2Md01Comb1' onChange={props.onChange}>
 
             {dropdownData &&
                 dropdownData.map((el) => (
@@ -50,7 +51,7 @@ let DropDwon1 = (props) => {
     }, []);
 
     return (
-        <Form.Select aria-label="Floating label select example" placeholder="PG2md03" name='PG2Md01Comb2' onChange={props.onChange}>
+        <Form.Select  style={{marginBottom:"20px"}} aria-label="Floating label select example" placeholder="PG2md03" name='PG2Md01Comb2' onChange={props.onChange}>
 
             {dropdownData &&
                 dropdownData.map((el) => (
@@ -62,6 +63,8 @@ let DropDwon1 = (props) => {
 }
 
 function InsertRow() {
+    const [t] = useTranslation();
+    const { dirction } = useSelector(state => state.dirction);
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -95,53 +98,49 @@ function InsertRow() {
     return (
         <div>
             <Button variant="primary" style={style} onClick={handleShow} className='mb-3'>
-                Add New Row
+                {t("Add New Row")}
             </Button>
-            <Modal show={show} onHide={handleClose}>
+            <Modal show={show} onHide={handleClose} dir={dirction ==="ar" ? "rtl" :null}>
                 <Modal.Header closeButton>
                     <Modal.Title>Modal heading</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
-                        <DropDwon className="mb-3" onChange={handleChange}/>
+                        <DropDwon onChange={handleChange}/>
                         <InputGroup className="mb-3">
-                            <InputGroup.Text id="basic-addon1">Pg06Md01Lb01</InputGroup.Text>
+                            <InputGroup.Text id="basic-addon1">{t("Pg06Md01Lb01")}</InputGroup.Text>
                             <Form.Control
-                                placeholder="Pg06Md01Lb02"
+                                placeholder={t("Pg06Md01Lb01")}
                                 name="Pg06Md01Lb01"
                                 aria-describedby="basic-addon1"
                                 onChange={handleChange}
-
                             />
                         </InputGroup>
                         <InputGroup className="mb-3">
-                            <InputGroup.Text id="basic-addon1">Pg06Md01Lb02</InputGroup.Text>
+                            <InputGroup.Text id="basic-addon1">{t("Pg06Md01Lb02")}</InputGroup.Text>
                             <Form.Control
-                                placeholder="Pg06Md01Lb02"
+                                placeholder={t("Pg06Md01Lb02")}
                                 name="Pg06Md01Lb02"
                                 aria-describedby="basic-addon1"
                                 onChange={handleChange}
-
                             />
                         </InputGroup>
                         <InputGroup className="mb-3">
-                            <InputGroup.Text id="basic-addon1">Pg06Md01Lb03</InputGroup.Text>
+                            <InputGroup.Text id="basic-addon1">{t("Pg06Md01Lb03")}</InputGroup.Text>
                             <Form.Control
-                                placeholder="Pg06Md01Lb03"
+                                placeholder={t("Pg06Md01Lb03")}
                                 name="Pg06Md01Lb03"
                                 aria-describedby="basic-addon1"
                                 onChange={handleChange}
-
                             />
                         </InputGroup>
                         <InputGroup className="mb-3">
-                            <InputGroup.Text id="basic-addon1">Pg06Md01Lb04</InputGroup.Text>
+                            <InputGroup.Text id="basic-addon1">{t("Pg06Md01Lb04")}</InputGroup.Text>
                             <Form.Control
-                                placeholder="Pg06Md01Lb04"
+                                placeholder={t("Pg06Md01Lb04")}
                                 name="Pg06Md01Lb04"
                                 aria-describedby="basic-addon1"
                                 onChange={handleChange}
-
                             />
                         </InputGroup>
                         <DropDwon1 className="mb-3"onChange={handleChange} />
@@ -149,10 +148,10 @@ function InsertRow() {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
-                        Close
+                        {t("Close")}
                     </Button>
                     <Button variant="primary" onClick={handelClick} >
-                        Save Changes
+                        {t("Save Changes")}
                     </Button>
                 </Modal.Footer>
             </Modal>

@@ -14,6 +14,7 @@ import { fetchUsersTapleData } from '../../redux/usersTaple'
 import { Container, Row, Col, } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 
+import { useTranslation } from 'react-i18next';
 // ================ table info ===============================
 
 const Div = (props) => (
@@ -38,12 +39,13 @@ const InputField = (props) => {
 }
 
 export default function UserDetails() {
+  const [t] = useTranslation();
 
   // redux
   const dispatch = useDispatch();
   const { usrsTapleData, loading } = useSelector(state => state.UsersTapleDataSlice);
   let rowsLength = usrsTapleData.length;
- 
+
   //  search
   const [query, setQuery] = useState('');
 
@@ -77,7 +79,7 @@ export default function UserDetails() {
   }, []);
 
   // switch tableData 
- 
+
   // filter search
   const keys = ["t101", "t102", "t103"];
 
@@ -87,7 +89,7 @@ export default function UserDetails() {
   return (
     <div className={classes.userDetails}>
       <Container fluid>
-        <Breadcrumbs className='mr-2' main="Grop-1" sub="Page02" />
+        <Breadcrumbs className='mr-2' main={t('Grop-1')} sub={t('Page02')} />
       </Container>
 
       <Container fluid className={classes.main_container}>
@@ -99,14 +101,14 @@ export default function UserDetails() {
                 <div>
                   <Form.Control
                     type="text"
-                    placeholder="search"
+                    placeholder={t("search")}
                     onChange={e => { setQuery(e.target.value) }}
                   />
                 </div>
               </Col>
               <Col>
                 <div className='d-flex align-items-center justify-content-center mb-2'>
-                  <span className='mx-2'>yes</span>
+                  <span className='mx-2'>{t("yes")}</span>
                   <input
                     id='switch-1111'
                     type="checkbox"
@@ -114,10 +116,10 @@ export default function UserDetails() {
                     onChange={(e) => setSwitchValue(e.target.checked)}
                   />
                   <label htmlFor="switch-1111"></label>
-                  <span className='mx-2'>no</span>
+                  <span className='mx-2'>{t("no")}</span>
                 </div>
               </Col>
-             </div>
+            </div>
 
             <div className={classes.UsersTaple}>
               <UsersTaple usersTapleData={search(switchValue ? switchData : usrsTapleData)} />
@@ -136,7 +138,7 @@ export default function UserDetails() {
                 <div className={classes.UserTapleDetails_row_0}>
                   <Row>
                     <Col>
-                      <InputField label='pG03Lb02' label_api={firstObj?.pG03Tx02a} />
+                      <InputField label={t('pG03Lb02')} label_api={firstObj?.pG03Tx02a} />
                     </Col>
                     <Col className='text-center' md={4}> <button>Button-1</button></Col>
                   </Row>
@@ -147,11 +149,11 @@ export default function UserDetails() {
                 <div className={classes.UserTapleDetails_row_1}>
                   <Row>
                     <Col lg={4}>
-                      <Div label='label-2' label_api={firstObj?.pG03Lb02a} />
+                      <Div label={t('label-2')} label_api={firstObj?.pG03Lb02a} />
                     </Col>
 
                     <Col lg={8}>
-                      <InputField label='pG03Lb02' label_api={firstObj?.G03Tx02a} />
+                      <InputField label={t('pG03Lb02')} label_api={firstObj?.G03Tx02a} />
                     </Col>
                   </Row>
                 </div>
@@ -163,10 +165,10 @@ export default function UserDetails() {
 
                   <Row>
                     <Col lg={4}>
-                      <Div label='label-4' label_api={firstObj?.pG03Lb04a} />
+                      <Div label={t('label-4')} label_api={firstObj?.pG03Lb04a} />
                     </Col>
                     <Col lg={8}>
-                      <Div label='label-8' label_api={firstObj?.pG03Lb07a} label_api2={firstObj?.pG03Lb08a} />
+                      <Div label={t('label-8')} label_api={firstObj?.pG03Lb07a} label_api2={firstObj?.pG03Lb08a} />
                     </Col>
 
                   </Row>
@@ -176,7 +178,7 @@ export default function UserDetails() {
                 <div className={classes.UserTapleDetails_row_3}>
                   <Row>
                     <Col>
-                      <Div label='label-6' label_api={firstObj?.pG03Lb05a} />
+                      <Div label={t('label-6')} label_api={firstObj?.pG03Lb05a} />
                     </Col>
                   </Row>
 
@@ -185,10 +187,7 @@ export default function UserDetails() {
                 {/* taple */}
 
                 <div className={classes.UsersTaple}>
-                  {/* <TapleDetailsUser /> */}
                   <TapleDetailsUserTest logDataTable={logDataTable} />
-                  {/* <PageTowTableRight/> */}
-                  {/* <Test logDataTable={logDataTable} /> */}
                 </div>
 
                 {/*  row-4*/}
@@ -199,34 +198,34 @@ export default function UserDetails() {
                 <div>
                   <Row>
                     <Col>
-                      <div className={classes.UserTapleDetails_label}>label-11</div>
+                      <div className={classes.UserTapleDetails_label}>{t('label-11')} </div>
                     </Col>
 
                     <Col>
                       <div className='d-flex align-items-center mb-2'>
-                        <span className='mx-2'>yes</span>
+                        <span className='mx-2'>{t('yes')}</span>
                         <input
                           id='pG03Sw02'
                           type="checkbox"
                           name="sW_N"
-                          // checked={firstObj?.pG03Sw02}
+                        // checked={firstObj?.pG03Sw02}
                         />
                         <label htmlFor="pG03Sw02"></label>
-                        <span className='mx-2'>no</span>
+                        <span className='mx-2'>{t('no')}</span>
                       </div>
                     </Col>
 
                     <Col>
                       <div className='d-flex align-items-center mb-2'>
-                        <span className='mx-2'>yes</span>
+                        <span className='mx-2'>{t('yes')}</span>
                         <input
                           id='pG03Sw03'
                           type="checkbox"
                           name="sW_N"
-                          // checked={firstObj?.pG03Sw03}
+                        // checked={firstObj?.pG03Sw03}
                         />
                         <label htmlFor="pG03Sw03"></label>
-                        <span className='mx-2'>no</span>
+                        <span className='mx-2'>{t('no')}</span>
                       </div>
                     </Col>
 
@@ -236,16 +235,7 @@ export default function UserDetails() {
                 {/*  row-6*/}
 
                 <div>
-                  {/* <div>
-                    <Form.Control
-                      type="text"
-                      placeholder={firstObj ? firstObj.G03Tx06 : "notfound"}
-                      value={firstObj?.G03Tx06}
-                    />
-                  </div> */}
-                        <InputField label='pG03Lb06' label_api={firstObj?.G03Tx06} />
-
-
+                  <InputField label={t('pG03Lb06')} label_api={firstObj?.G03Tx06} />
                 </div>
 
               </div>

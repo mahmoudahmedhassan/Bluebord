@@ -1,5 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-let URL =" https://tstauth.smartgate-egypt.com/jobs/PG05Ch01";
+import {BaseURL} from '../assets/API';
+
+let URL =`${BaseURL}jobs/PG05Ch01`;
 
 export const fetchEntryDatatable_PG05Ch01 =createAsyncThunk(
     'tableData_PG05Ch01/fetchEntryDatatable_PG05Ch01',
@@ -15,8 +17,7 @@ export const fetchEntryDatatable_PG05Ch01 =createAsyncThunk(
           Accept: 'application/json',
         },
       });
-       const data = await res.json();
-
+      const data = await res.json();
       return data;
     } catch (error) {
       return rejectWithValue(error.message);

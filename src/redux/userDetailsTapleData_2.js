@@ -1,11 +1,13 @@
 
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import {BaseURL} from '../assets/API'
+
 export const fetchUserDetailsTapleData_2 = createAsyncThunk(
     'userTapleData_2/fetchUserDetailsTapleData_2',
     async (id, thunkAPI) => {
         const { rejectWithValue } = thunkAPI;
         try {
-            const res = await fetch(`https://tstauth.smartgate-egypt.com/jobs/getinfoprod/${id}`, {
+            const res = await fetch(`${BaseURL}jobs/getinfoprod/${id}`, {
                 headers: {
                     DataType: "JSON",
                     Authorization:

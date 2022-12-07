@@ -1,5 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-let URL =" https://tstauth.smartgate-egypt.com/jobs/PG05Ch03";
+import {BaseURL} from '../assets/API';
+
+let URL =`${BaseURL}jobs/PG05Ch03`;
 
 export const fetchEntryDatatable_PG05Ch03 =createAsyncThunk(
     'tableData_PG05Ch03/fetchEntryDatatable_PG05Ch03',

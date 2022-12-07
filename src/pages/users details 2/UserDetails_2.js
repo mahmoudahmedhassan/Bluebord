@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import classes from './userdetails-2.module.css';
+import { useTranslation } from 'react-i18next';
 
 // components
 import Spinner from '../../components/sppiner/Sppiner';
@@ -28,6 +29,7 @@ const Div = (props) => (
 
 
 function UserDetailsTow() {
+    const [t] = useTranslation();
     const dispatch = useDispatch();
     // left taple
     const { usrsTapleData_2, loading } = useSelector(state => state.UsersTapleData_2Slice);
@@ -94,7 +96,7 @@ function UserDetailsTow() {
     };
     return (
         <div className={classes.userDetails_2}>
-            <Container fluid> <Breadcrumbs className='mr-2' main="Grop-1" sub="Page03" /> </Container>
+            <Container fluid> <Breadcrumbs className='mr-2' main={t("Grop-1")} sub={t("Page03")} /> </Container>
             <Container fluid>
                 <Row>
                     {/* first col */}
@@ -105,14 +107,14 @@ function UserDetailsTow() {
                                     <div>
                                         <Form.Control
                                             type="text"
-                                            placeholder="search"
+                                            placeholder={t("search")}
                                             onChange={e => { setQuery(e.target.value) }}
                                         />
                                     </div>
                                 </Col>
                                 <Col>
                                     <div className='d-flex align-items-center justify-content-center mb-2'>
-                                        <span className='mx-2'>yes</span>
+                                        <span className='mx-2'>{t("yes")}</span>
                                         <input
                                             id='switch-SearchTaple-2'
                                             type="checkbox"
@@ -121,7 +123,7 @@ function UserDetailsTow() {
                                             checked={switchValue}
                                         />
                                         <label htmlFor="switch-SearchTaple-2"></label>
-                                        <span className='mx-2'>no</span>
+                                        <span className='mx-2'>{t("no")}</span>
                                     </div>
                                 </Col>
 
@@ -148,18 +150,18 @@ function UserDetailsTow() {
                                         <Row>
                                             <Col lg={3}>
                                         
-                                                <Div label='pG03Lb01' label_api={firstObj?.pG04Lb01a} />
+                                                <Div label={t('pG03Lb01')} label_api={firstObj?.pG04Lb01a} />
 
                                             </Col>
 
                                             <Col lg={5}>
                                             
-                                                <Div label='pG03Lb04' label_api={firstObj?.pG04Lb04a} />
+                                                <Div label={t('pG03Lb04')}   label_api={firstObj?.pG04Lb04a} />
 
                                             </Col>
                                             <Col lg={4}>
                                                 
-                                                <Div label='pG03Lb05' label_api={firstObj?.pG04Lb05a} />
+                                                <Div label={t('pG03Lb05')} label_api={firstObj?.pG04Lb05a} />
 
                                             </Col>
                                         </Row>
@@ -171,17 +173,17 @@ function UserDetailsTow() {
                                         <Row>
                                             <Col lg={3}>
                                              
-                                                <Div label='pG03Lb02' label_api={firstObj?.pG04Lb02a} />
+                                                <Div label={t('pG03Lb02')} label_api={firstObj?.pG04Lb02a} />
 
                                             </Col>
                                             <Col lg={5}>
                                               
-                                                <Div label='pG03Lb06' label_api={firstObj?.pG04Lb06a1} label_api2={firstObj?.pG04Lb06a2} />
+                                                <Div label={t('pG03Lb06')} label_api={firstObj?.pG04Lb06a1} label_api2={firstObj?.pG04Lb06a2} />
 
                                             </Col>
                                             <Col lg={4}>
                                              
-                                                <Div label='pG04Lb07a' label_api={firstObj?.pG04Lb07a} />
+                                                <Div label={t('pG04Lb07a')} label_api={firstObj?.pG04Lb07a} />
 
                                             </Col>
 
@@ -194,7 +196,7 @@ function UserDetailsTow() {
                                         <Row>
                                             <Col>
                                              
-                                                <Div label='pG04Lb03a' label_api={firstObj?.pG04Lb03a} />
+                                                <Div label={t('pG04Lb03a')} label_api={firstObj?.pG04Lb03a} />
 
                                             </Col>
 
@@ -206,7 +208,7 @@ function UserDetailsTow() {
 
                                     <div className={classes.UserTapleDetails_row_3}>
                                         <div className="d-flex align-items-center">
-                                            <div className={classes.label}>pG04Tx02a</div>
+                                            <div className={classes.label}>{t('pG04Tx02a')}</div>
                                             <div>
                                                 <Form.Control
                                                     type="text"
@@ -228,7 +230,7 @@ function UserDetailsTow() {
                                                     <div className='d-flex align-items-center'>
                                                         <span>Reason</span>
                                                         <Form.Select aria-label="Default select example" onChange={(e) => setSelection(e.target.value)}>
-                                                            <option>select</option>
+                                                            <option> {t('select')}</option>
 
                                                             {reasonDataSelection &&
                                                                 reasonDataSelection.map((el) => (
@@ -240,8 +242,8 @@ function UserDetailsTow() {
                                                 </Col>
                                                 <Col>
                                                     <div className='d-flex align-items-center justify-content-around'>
-                                                        <button onClick={handelSubmit}>PG04Buo1</button>
-                                                        <button onClick={() => setAppear(false)}>PG04Buo1</button>
+                                                        <button onClick={handelSubmit}> {t('PG04Buo1')}</button>
+                                                        <button onClick={() => setAppear(false)}> {t('PG04Buo1')}</button>
                                                     </div>
                                                 </Col>
                                             </Row>
@@ -255,7 +257,7 @@ function UserDetailsTow() {
                                         <Row>
                                             <Col lg={8}>
                                                 <div className='d-flex align-items-center '>
-                                                    <div className={classes.label}>PG04Tx03</div>
+                                                    <div className={classes.label}> {t("PG04Tx03")}</div>
                                                     <div>
                                                         <Form.Control
                                                             type="text"
@@ -270,10 +272,10 @@ function UserDetailsTow() {
                                             <Col className="text-center" lg={4}>
                                                 {
                                                     isAllChecked ? (
-                                                        <button className={classes.last_bun} onClick={() => setShow(true)}> PG03Bt03 </button>
+                                                        <button className={classes.last_bun} onClick={() => setShow(true)}> {t("PG03Bt03")} </button>
 
                                                     ) : (
-                                                        <button disabled title="check last column" className={classes.last_bun}> PG03Bt03 </button>
+                                                        <button disabled title="check last column" className={classes.last_bun}>{t('PG03Bt03')} </button>
                                                     )
                                                 }
                                             </Col>

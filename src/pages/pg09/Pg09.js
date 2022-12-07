@@ -7,7 +7,8 @@ import Table2 from './table-2/Table2';
 import { useSelector } from 'react-redux';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Collapse from 'react-bootstrap/Collapse';
- 
+import { useTranslation } from 'react-i18next';
+
 let DropDwon = ({ setComValeu }) => {
   const [dropdownData, setDropdownData] = useState([]);
   useEffect(() => {
@@ -89,6 +90,7 @@ let Search = (props) => {
 
 
 function Pg09() {
+  const [t] = useTranslation();
 
   const [comValeu, setComValeu] = useState(1)
   console.log(comValeu)
@@ -143,8 +145,8 @@ function Pg09() {
               <div className={classes.comValeu}>{comValeu && comValeu}</div>
               <DropDwon setComValeu={setComValeu} />
               <div className={classes.search}>
-                <span>search</span>
-                <Form.Control type="text" placeholder="search" value={queryT1} onChange={handelQuery} />
+                <span>{t("search")}</span>
+                <Form.Control type="text" placeholder={t("search")} value={queryT1} onChange={handelQuery} />
               </div>
               <div><FirstTable tableData={search(tableData, keysT1)} loading={loading} /></div>
             </div>
@@ -159,18 +161,18 @@ function Pg09() {
               aria-expanded={open}
             >
               {/* <GrAddCircle/> */}
-              Add
+              {t("Add")}
             </button>
             <Collapse in={open}>
               <div className={classes.insert}>
                 <form>
                   <Row>
-                    <Col><InputField label='Pg09Tx02' /></Col>
-                    <Col> <InputField label='Pg09Tx03' /></Col>
+                    <Col><InputField label={t('Pg09Tx02')} /></Col>
+                    <Col> <InputField label={t('Pg09Tx03')} /></Col>
                   </Row>
                   <Row>
-                    <Col><InputField label='Pg09Tx04' /></Col>
-                    <Col><InputField label='Pg09Tx05' /></Col>
+                    <Col><InputField label={t('Pg09Tx04')}/></Col>
+                    <Col><InputField label={t('Pg09Tx05')} /></Col>
                   </Row>
                   <Row>
                     <Col><DropDwon1 /></Col>
@@ -189,8 +191,8 @@ function Pg09() {
 
             <div>
               <div className={classes.search}>
-                <span>search</span>
-                <Form.Control type="text" placeholder="search" value={queryT1} onChange={handelQuery} />
+                <span>{t("search")}</span>
+                <Form.Control type="text" placeholder={t("search")} value={queryT1} onChange={handelQuery} />
               </div>
 
               {/* <Search key={keysT2} value={queryT2} /> */}

@@ -1,12 +1,13 @@
 
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import {BaseURL} from '../assets/API'
 
 export const fetchWitchTableDataPage3 = createAsyncThunk(
   'switchTableData/fetchWitchTableDataPage3',
   async (_, thunkAPI) => {
     const { rejectWithValue } = thunkAPI; 
     try {
-      const res = await fetch('https://tstauth.smartgate-egypt.com/jobs/PG04Sw01', {
+      const res = await fetch(`${BaseURL}jobs/PG04Sw01`, {
      
       });
        const data = await res.json();

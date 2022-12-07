@@ -6,8 +6,11 @@ import Table from './table/Table';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css'
 import moment from 'moment';
+import { useTranslation } from 'react-i18next';
 
 export default function Pg08() {
+    const [t] = useTranslation();
+
     let initialDate = new Date();
         initialDate.setHours(8,0,0);
      
@@ -55,8 +58,8 @@ export default function Pg08() {
             <div>
                 <div className={classes.search}>
                     <div className='d-flex align-items-center'>
-                        <span>search</span>
-                        <Form.Control type="text" placeholder="search" value={query} onChange={handelQuery} />
+                        <span>{t("search")}</span>
+                        <Form.Control type="text" placeholder={t("search")} value={query} onChange={handelQuery} />
                     </div>
                     <div className={classes.datePickerWrapper}>
                         <DatePicker
@@ -67,8 +70,6 @@ export default function Pg08() {
                             timeIntervals={15}
                             timeCaption="time"
                             dateFormat="MMMM d, yyyy h:mm aa"
- 
-
                           />
                      </div>
                     <div className={classes.datePickerWrapper}>

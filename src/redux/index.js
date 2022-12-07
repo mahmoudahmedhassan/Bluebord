@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { toast } from 'react-toastify';
 import axios from 'axios';
+import {BaseURL} from '../assets/API';
 
 const URL = "https://tstauth.smartgate-egypt.com/auth/token";
 
@@ -11,7 +12,7 @@ export const insertUserData = createAsyncThunk("user/insertUserData",
     const { rejectWithValue, getState } = thunkAPI;
     try {
  
-      const res = await fetch(URL, {
+      const res = await fetch(`${BaseURL}auth/token`, {
         method: 'POST',
         headers: {
           'Content-type': 'application/json'

@@ -10,8 +10,10 @@ import Form from 'react-bootstrap/Form';
 import DropDwon from './DropDwon';
 import Taple from './Taple';
 import Popup from './modal/Modal';
-
+import {useTranslation} from 'react-i18next';
 function EntryDataTow() {
+  const [t] = useTranslation();
+
   const dispatch = useDispatch()
   const { tableDataPG05Tp01, loading, error } = useSelector(state => state.entryDatatablePG05Tp01Slice);
   const { tableData_PG05Ch01 } = useSelector(state => state.entryDatatable_PG05Ch01Slice);
@@ -47,10 +49,10 @@ function EntryDataTow() {
         <Row>
           <Col>
             <div className="d-flex align-items-center">
-              <span className='mx-2'>PG05Lb1</span>
+              <span className='mx-2'>{t('PG05Lb1')}</span>
               <Form.Control
                 type="text"
-                placeholder="search"
+                placeholder={t('search')}
                 onChange={handelQuery}
               />
             </div>
