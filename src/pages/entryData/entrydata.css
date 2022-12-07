@@ -7,8 +7,47 @@
     color: #fff;
     border-radius: 6px;
     margin: 5px;
+    background-image: linear-gradient(to right, #50C9C3 0%, #96DEDA  51%, #50C9C3  100%);
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    transition: 0.5s;
 
 }
+                
+.searchTaple_but {
+    background-image: linear-gradient(to right, #50C9C3 0%, #96DEDA  51%, #50C9C3  100%);
+    margin: 10px;
+    text-align: center;
+     transition: 0.5s;
+    background-size: 200% auto;
+    color: white;            
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+   }
+   .searchTaple_but {
+    background-image: linear-gradient(to right, #00bf8f 0%, #001510  51%, #00bf8f  100%);
+    margin: 10px;
+     text-align: center;
+     transition: 0.5s;
+    background-size: 200% auto;
+    color: white;            
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+   }
+
+  .searchTaple_but:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+  }
+ 
+
+  .searchTaple_but:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+  }
+ 
 .section_2{
     display:flex;
     justify-content:space-around;
